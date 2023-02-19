@@ -1,52 +1,74 @@
 import { createTheme } from '@mui/material/styles';
 
+// 가로 패딩 값
+export const paddingHorPC = '56px';
+export const paddingHorMob = '24px';
+
+// 모서리 값
+export const borderRadiusPc = '16px';
+export const borderRadiusMob = '8px';
+
+// 색상 값
+export const primary = '#00F2C3';
+export const secondary = '#00BB97';
+export const black = '#1C1C1C';
+export const black_dark = '#131313';
+export const gray_light = '#EEEEEE';
+export const gray = '#5F5F5F';
+export const gary_dark = '#323232';
+export const error = '#E33535';
+
 // MUI 전체 테마
-const StyleTheme = createTheme({
+export const StyleTheme = createTheme({
   palette: {
     primary: {
-      main: '#00F2C3',
+      main: primary,
     },
     secondary: {
-      main: '#00BB97',
+      main: secondary,
     },
     black: {
-      main: '#1C1C1C',
+      main: black,
     },
     black_dark: {
-      main: '#131313',
+      main: black_dark,
     },
     gray_light: {
-      main: '#EEEEEE',
+      main: gray_light,
     },
-    gary: {
-      main: '#5F5F5F',
+    gray: {
+      main: gray,
     },
     gary_dark: {
-      main: '#323232',
+      main: gary_dark,
+    },
+    error: {
+      main: error,
     },
   },
   breakpoints: {
     values: {
       xs: 360,
       sm: 744,
-      lg: 1400,
+      lg: 1440,
+      xl: 9999,
     },
   },
   typography: {
     body1: {
-      color: '#333333',
+      color: '#FFFFFF',
     },
     body2: {
-      color: '#333333',
+      color: '#FFFFFF',
     },
     h5: {
-      color: '#333333',
+      color: '#FFFFFF',
     },
     h4: {
-      color: '#333333',
+      color: '#FFFFFF',
     },
     h3: {
-      color: '#333333',
+      color: '#FFFFFF',
     },
     fontFamily: [
       'Pretendard',
@@ -68,13 +90,16 @@ const StyleTheme = createTheme({
       defaultProps: {
         variant: 'contained',
         disableElevation: true,
-        style: { fontWeight: 600, maxWidth: '400px', padding: 2 },
+        style: { fontWeight: 600 },
       },
     },
     MuiTextField: {
       defaultProps: {
         inputProps: {
-          style: { padding: '7px 0px 7px 13px', backgroundColor: '#FFFFFF' },
+          style: {
+            padding: '7px 0px 7px 0px',
+            color: '#FFFFFF',
+          },
         },
       },
     },
@@ -83,12 +108,5 @@ const StyleTheme = createTheme({
         disableGutters: true,
       },
     },
-    MuiTableCell: {
-      defaultProps: {
-        align: 'center',
-      },
-    },
   },
 });
-
-export default StyleTheme;

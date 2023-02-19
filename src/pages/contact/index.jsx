@@ -1,7 +1,7 @@
+import ContactPage from '@/component/pageComponent/Contact';
 import Head from 'next/head';
-import Main from '../component/pageComponent/main';
 
-export default function Home() {
+export default function Contact() {
   return (
     <>
       <Head>
@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Main />
+        <ContactPage />
       </main>
     </>
   );

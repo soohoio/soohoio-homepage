@@ -1,0 +1,30 @@
+a {
+  text-decoration: none;
+}
+
+textarea {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.buttonHover {
+  cursor: pointer;
+}
+.buttonHover:hover {
+  opacity: 0.85;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out 0s 1 normal forwards;
+}
