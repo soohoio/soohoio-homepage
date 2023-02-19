@@ -615,6 +615,7 @@ export default function ContactForm() {
                       paddingLeft: { xs: '12px', sm: '20px' },
                       paddingRight: { xs: '24px', sm: '40px' },
                       paddingY: { xs: '12px', sm: '24px' },
+                      maxWidth: 1000,
                       // 툹팁 배경색
                       bgcolor: gray,
                       '& .MuiTooltip-arrow': {
