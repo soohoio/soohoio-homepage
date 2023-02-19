@@ -1,4 +1,5 @@
 import './App.css';
+import './Font.css';
 import NavBar from '@/component/NavBar';
 import { ThemeProvider } from '@mui/material/styles';
 import { StyleTheme } from '../component/style/StyleTheme';
