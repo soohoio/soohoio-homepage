@@ -8,7 +8,7 @@ export default function FirstSection() {
   return (
     <BodyContainer ptPc="180px" pbPc="180px" ptMob="46px" pbMob="58px">
       <Typography
-        className="pcTitle56KR"
+        className={isMob ? 'mobTitle19KR' : 'pcTitle56KR'}
         component="div"
         color="primary"
         sx={{ fontWeight: 300, mb: { xs: '4px', sm: '21px' } }}
@@ -17,7 +17,7 @@ export default function FirstSection() {
         <Box sx={{ display: 'inline-block' }}>연결하고 수호합니다.</Box>
       </Typography>
 
-      <Typography className="pcTitle36KR" sx={{ fontWeight: 300 }}>
+      <Typography className={isMob ? 'mobTitle14KR' : 'pcTitle36KR'} sx={{ fontWeight: 300 }}>
         수호와 함께 DeFi 생태계를 확장하세요.
       </Typography>
     </BodyContainer>
