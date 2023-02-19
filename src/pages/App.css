@@ -11,6 +11,9 @@ a {
   text-decoration: none;
 }
 
+canvas {
+  overflow: visible !important;
+}
 textarea {
   padding-top: 0 !important;
   padding-bottom: 0 !important;

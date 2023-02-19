@@ -1,7 +1,6 @@
-import { BodyText1, TitleText2, TitleText4 } from '@/component/style/TextStyle';
 import { BodyContainer } from '@/component/ui/BodyContainer';
 import { black } from '@/component/style/StyleTheme';
-import { Box, Grid } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 
@@ -10,12 +9,24 @@ export default function Mission() {
 
   return (
     <BodyContainer backgroundColor="#00F2C3" ptPc="120px" pbMob="120px">
-      <TitleText4 component="div" color="secondary" align="center">
+      <Typography
+        className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'}
+        component="div"
+        color="secondary"
+        align="center"
+        fontWeight={600}
+      >
         Mission
-      </TitleText4>
-      <TitleText2 color={black} align="center" sx={{ mt: '28px', mb: '48px' }}>
+      </Typography>
+      <Typography
+        className={isMob ? 'mobTitle19KR' : 'pcTitle48KR'}
+        color={black}
+        align="center"
+        fontWeight={600}
+        sx={{ mt: '28px', mb: '48px' }}
+      >
         더 많은 금융 기회를 연결하고 수호합니다.
-      </TitleText2>
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -34,9 +45,15 @@ export default function Mission() {
         />
       </Box>
 
-      <BodyText1 color={black} align="center" sx={{ mt: '36px' }}>
+      <Typography
+        className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+        fontWeight={600}
+        color={black}
+        align="center"
+        sx={{ mt: '36px' }}
+      >
         {`블록체인 금융 서비스들은 특정 체인 안에\n고립되어 있어 접근성이 떨어집니다.`}
-      </BodyText1>
+      </Typography>
     </BodyContainer>
   );
 }

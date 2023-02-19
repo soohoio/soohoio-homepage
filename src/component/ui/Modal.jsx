@@ -2,10 +2,12 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { TitleText5 } from '../style/TextStyle';
 import { RoundContainedButton } from './BoxButton';
+import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { useContext } from 'react';
 
 export function ConfirmModal({ modalSwitch, setModalSwitch, contents }) {
+  const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const modalClose = () => setModalSwitch(false);
 
   return (
@@ -13,28 +15,40 @@ export function ConfirmModal({ modalSwitch, setModalSwitch, contents }) {
       <Modal open={modalSwitch} onClose={modalClose}>
         <Box
           sx={{
-            width: 560,
+            width: { xs: 312, sm: 560 },
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             bgcolor: '#F8F8F8',
             borderRadius: '8px',
-            py: '40px',
+            py: { xs: '22px', sm: '40px' },
             outline: 'none',
           }}
         >
-          <TitleText5 align="center" color="#242424">
+          <Typography
+            className={isMob ? 'mobTitle14KR' : 'pcTitle24KR'}
+            align="center"
+            color="#242424"
+            fontWeight={600}
+          >
             {contents}
-          </TitleText5>
+          </Typography>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '44px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mt: { xs: '12px', sm: '30px' },
+            }}
+          >
             <RoundContainedButton
               onClick={modalClose}
               text="확인"
-              py="21px"
-              px="130px"
-              fontSx={{ fontSize: '24px !important' }}
+              py={{ xs: '10px', sm: '21px' }}
+              px={{ xs: '76px', sm: '130px' }}
+              fontSx={{ fontSize: { sm: '24px !important' } }}
             />
           </Box>
         </Box>

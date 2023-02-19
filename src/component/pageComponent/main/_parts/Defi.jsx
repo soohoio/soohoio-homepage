@@ -1,9 +1,9 @@
-import { BodyText2, PointText1, TitleText3, TitleText4 } from '@/component/style/TextStyle';
 import { BodyContainer } from '@/component/ui/BodyContainer';
 import { RoundOutlinedButton } from '@/component/ui/BoxButton';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { gray } from '@/component/style/StyleTheme';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -31,9 +31,15 @@ export default function Defi() {
 
   return (
     <BodyContainer ptPc="152px" pbPc="184px">
-      <TitleText4 color="primary" align="center" sx={{ mb: '56px' }}>
+      <Typography
+        className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
+        color="primary"
+        align="center"
+        fontWeight={600}
+        sx={{ mb: '56px' }}
+      >
         수호 자체 운영 DeFi 프로덕트
-      </TitleText4>
+      </Typography>
 
       {defiList.map(function (each) {
         return (
@@ -48,9 +54,19 @@ export default function Defi() {
               borderRadius: '16px',
             }}
           >
-            <TitleText3>{each.title}</TitleText3>
-            <BodyText2 sx={{ fontWeight: 400, mt: '16px', mb: '42px' }}>{each.contents}</BodyText2>
-            <RoundOutlinedButton text={each.buttonLabel} color="#FFFFFF" />
+            <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'} fontWeight={600}>
+              {each.title}
+            </Typography>
+            <Typography
+              className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
+              sx={{ fontWeight: 400, mt: '16px', mb: '42px' }}
+            >
+              {each.contents}
+            </Typography>
+            <RoundOutlinedButton
+              text={each.buttonLabel}
+              color={each.title === 'Martian' ? gray : '#FFFFFF'}
+            />
           </Box>
         );
       })}

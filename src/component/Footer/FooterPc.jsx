@@ -8,9 +8,6 @@ export default function FooterPc() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const snsButtonList = ['twitter', 'facebook', 'linkedIn'];
 
-  console.log('isMob', isMob, 'isTablet', isTablet, 'isPc', isPc);
-  console.log(isMob ? 'mobTitle16KR' : 'pcTitle32KR');
-
   return (
     <footer>
       <Box sx={{ display: { xs: 'none', lg: 'block' } }}>

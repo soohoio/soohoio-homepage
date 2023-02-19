@@ -1,7 +1,6 @@
 import { gray } from '@/component/style/StyleTheme';
-import { PointText1, TitleText2, TitleText4 } from '@/component/style/TextStyle';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { Box, CardMedia, Stack } from '@mui/material';
+import { Box, CardMedia, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 
@@ -9,17 +8,17 @@ export default function Reference() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
 
   const clientList = [
-    { label: 'wemix', width: '134px', height: '37px' },
-    { label: 'krust', width: '89px', height: '37px' },
-    { label: 'luniverse', width: '170px', height: '42px' },
-    { label: 'ozys', width: '96px', height: '34px' },
-    { label: 'superblock', width: '194px', height: '41px' },
-    { label: 'planetarium', width: '204px', height: '39px' },
-    { label: 'chainPartners', width: '100px', height: '44px' },
-    { label: 'samsungSDS', width: '157px', height: '18px' },
-    { label: 'lgCNS', width: '110px', height: '25px' },
-    { label: 'sk', width: '115px', height: '42px' },
-    { label: 'fss', width: '142px', height: '42px' },
+    { label: 'wemix', width: 134, height: 37 },
+    { label: 'krust', width: 89, height: 37 },
+    { label: 'luniverse', width: 170, height: 42 },
+    { label: 'ozys', width: 96, height: 34 },
+    { label: 'superblock', width: 194, height: 41 },
+    { label: 'planetarium', width: 204, height: 39 },
+    { label: 'chainPartners', width: 100, height: 44 },
+    { label: 'samsungSDS', width: 157, height: 18 },
+    { label: 'lgCNS', width: 110, height: 25 },
+    { label: 'sk', width: 115, height: 42 },
+    { label: 'fss', width: 142, height: 42 },
   ];
 
   const partnerList = [
@@ -42,23 +41,36 @@ export default function Reference() {
   ];
 
   return (
-    <BodyContainer ptPc="75px" pbPc="152px">
-      <TitleText4 component="div" color="primary" align="center">
+    <BodyContainer ptPc="75px" pbPc="152px" ptMob="56px">
+      <Typography
+        className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
+        component="div"
+        color="primary"
+        align="center"
+        fontWeight={600}
+      >
         <Box sx={{ fontWeight: 300, display: 'inline' }}>수호의</Box> 기술력,
-      </TitleText4>
-      <TitleText4 component="div" color="primary" align="center">
-        Fortune 500 기업<Box sx={{ fontWeight: 300, display: 'inline' }}>과</Box> 글로벌 Web3.0 기업
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }} />
+        Fortune 500 기업<Box sx={{ fontWeight: 300, display: 'inline' }}>과</Box>{' '}
+        <Box sx={{ display: { sm: 'none' } }} />
+        글로벌 Web3.0 기업
         <Box sx={{ fontWeight: 300, display: 'inline' }}>이 증명합니다.</Box>
-      </TitleText4>
+      </Typography>
 
       {/* 클라이언트 */}
-      <PointText1 color={gray} align="center" sx={{ mt: '56px', mb: '32px' }}>
+      <Typography
+        className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
+        color={gray}
+        fontWeight={500}
+        align="center"
+        sx={{ mt: { xs: '24px', sm: '56px' }, mb: { xs: '20px', sm: '32px' } }}
+      >
         Clients
-      </PointText1>
+      </Typography>
       <Stack
         direction="row"
-        columnGap="68px"
-        rowGap="32px"
+        columnGap={{ xs: '34px', sm: '68px' }}
+        rowGap={{ xs: '18px', sm: '32px' }}
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -70,17 +82,27 @@ export default function Reference() {
           return (
             <CardMedia
               key={`client_${each.label}`}
-              image={`/image/company/${each.label}.png`}
-              sx={{ width: each.width, height: each.height }}
+              alt={`client_${each.label} logo`}
+              image={`/image/pageImage/home/company/${each.label}.png`}
+              sx={{
+                width: { xs: each.width * 0.5, sm: each.width },
+                height: { xs: each.height * 0.5, sm: each.height },
+              }}
             />
           );
         })}
       </Stack>
 
       {/* 파트너스 */}
-      <PointText1 color={gray} align="center" sx={{ mt: '56px', mb: '32px' }}>
+      <Typography
+        className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
+        color={gray}
+        fontWeight={500}
+        align="center"
+        sx={{ mt: '56px', mb: '32px' }}
+      >
         Partners
-      </PointText1>
+      </Typography>
       <Stack direction="row" sx={{ justifyContent: 'center' }}>
         <Stack
           direction="row"
@@ -98,7 +120,7 @@ export default function Reference() {
             return (
               <CardMedia
                 key={`partner_${each.label}`}
-                image={`/image/company/${each.label}.png`}
+                image={`/image/pageImage/home/company/${each.label}.png`}
                 sx={{ width: each.width, height: each.height }}
               />
             );
@@ -107,16 +129,36 @@ export default function Reference() {
       </Stack>
 
       {/* 누적 투자액 */}
-      <TitleText4 component="div" color="primary" align="center" sx={{ mt: '130px', mb: '56px' }}>
+      <Typography
+        className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
+        component="div"
+        fontWeight={600}
+        color="primary"
+        align="center"
+        sx={{ mt: '130px', mb: '56px' }}
+      >
         15명 규모 팀<Box sx={{ fontWeight: 300, display: 'inline' }}>으로 달성한 누적 투자액</Box>
-      </TitleText4>
+      </Typography>
 
-      <TitleText2 align="center">100억원 +</TitleText2>
+      <Typography
+        className={isMob ? 'mobTitle19KR' : 'pcTitle48KR'}
+        align="center"
+        fontWeight={600}
+      >
+        100억원 +
+      </Typography>
 
-      <TitleText4 component="div" color="primary" align="center" sx={{ mt: '152px', mb: '56px' }}>
+      <Typography
+        className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
+        component="div"
+        color="primary"
+        fontWeight={600}
+        align="center"
+        sx={{ mt: '152px', mb: '56px' }}
+      >
         <Box sx={{ fontWeight: 300 }}>Web3.0 대표 주자 컨센시스로부터 </Box>
         국내 유일 시드 투자 유치
-      </TitleText4>
+      </Typography>
       <Stack
         direction="row"
         columnGap="68px"
@@ -132,7 +174,7 @@ export default function Reference() {
           return (
             <CardMedia
               key={`invest_${each.label}`}
-              image={`/image/company/${each.label}.png`}
+              image={`/image/pageImage/home/company/${each.label}.png`}
               sx={{ width: each.width, height: each.height }}
             />
           );
