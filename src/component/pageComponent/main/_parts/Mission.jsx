@@ -8,7 +8,7 @@ export default function Mission() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
 
   return (
-    <BodyContainer backgroundColor="#00F2C3" ptPc="120px" pbMob="120px">
+    <BodyContainer backgroundColor="#00F2C3" ptPc="120px" pbPc="120px" ptMob="42px" pbMob="42px">
       <Typography
         className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'}
         component="div"
@@ -23,9 +23,11 @@ export default function Mission() {
         color={black}
         align="center"
         fontWeight={600}
-        sx={{ mt: '28px', mb: '48px' }}
+        sx={{ mt: { xs: '8px', sm: '28px' }, mb: { xs: '16px', sm: '48px' } }}
       >
-        더 많은 금융 기회를 연결하고 수호합니다.
+        {isMob
+          ? `더 많은 금융 기회를 연결하고\n수호합니다.`
+          : '더 많은 금융 기회를 연결하고 수호합니다.'}
       </Typography>
       <Box
         sx={{

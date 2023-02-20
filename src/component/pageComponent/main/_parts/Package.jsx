@@ -4,6 +4,7 @@ import { RoundOutlinedButton } from '@/component/ui/BoxButton';
 import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import ObserverAnimation from '@/component/ui/ObserverAnimation';
 
 export default function Package() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -19,16 +20,22 @@ export default function Package() {
         maxWidth={false}
         sx={{
           backgroundImage: {
-            xs: 'radial-gradient(50.6% 41.92% at 50% 41.02%, rgba(19, 19, 19, 0) 0%, rgba(0, 0, 0, 0.42) 80.77%), url(/image/PageImage/home/packageBackgroundMob.png);',
-            sm: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/PageImage/home/packageBackgroundTablet.png)',
-            lg: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/PageImage/home/packageBackgroundPc.png)',
+            xs: 'radial-gradient(50.6% 41.92% at 50% 41.02%, rgba(19, 19, 19, 0) 0%, rgba(0, 0, 0, 0.42) 80.77%), url(/image/pageImage/home/packageBackgroundMob.png);',
+            sm: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/pageImage/home/packageBackgroundTablet.png)',
+            lg: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/pageImage/home/packageBackgroundPc.png)',
           },
-          backgroundSize: { sm: 'cover' },
+          backgroundSize: { xs: 'contain', sm: 'cover' },
           backgroundPositionX: 'center',
           backgroundPositionY: 'top',
         }}
       >
-        <BodyContainer ptPc="88px" pbPc="94px" backgroundColor="transparent">
+        <BodyContainer
+          ptPc="88px"
+          pbPc="94px"
+          backgroundColor="transparent"
+          ptMob="42px"
+          pbMob="42px"
+        >
           <Typography
             className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
             color="primary"
@@ -40,19 +47,25 @@ export default function Package() {
           <Typography
             className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
             align="center"
-            sx={{ fontWeight: 300, mt: '32px' }}
+            sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' } }}
           >
-            {`기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
+            {isMob &&
+              `기업들이 쉽고 안전하게 DeFi 생태계를\n구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
+            {!isMob &&
+              `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
           </Typography>
 
-          <Box sx={{ width: 1, height: { sm: '500px', lg: '500px' }, my: { lg: '20px' } }} />
+          {/* 빈 박스 */}
+          <Box
+            sx={{ width: 1, height: { xs: '225px', sm: '500px', lg: '500px' }, my: { lg: '20px' } }}
+          />
 
           <Typography
             className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
             align="center"
             color={gray}
             fontWeight={500}
-            sx={{ mb: '38px' }}
+            sx={{ mb: { xs: '16px', sm: '38px' } }}
           >
             DeFi 패키지 구성
           </Typography>
@@ -68,45 +81,57 @@ export default function Package() {
               alignItems: 'center',
             }}
           >
-            {packageList.map(function (each) {
+            {packageList.map(function (each, index) {
               return (
-                <Box
+                <ObserverAnimation
                   key={each.title}
-                  sx={{
-                    width: '426px',
-                    height: '150px',
-                    borderRadius: '16px',
-                    backgroundColor: '#1C1C1C',
-                    display: 'inline-block',
-                  }}
+                  animationName="fadeInSlow"
+                  delay={!isMob && index * 200}
                 >
-                  <Grid container direction="row" justifyContent="space-between">
-                    <Box sx={{ pl: '32px', py: '24px' }}>
-                      <Typography
-                        className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
-                        fontWeight={600}
-                      >
-                        {each.title}
-                      </Typography>
-                      <Typography
-                        className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
-                        sx={{ fontWeight: { xs: 300, sm: 400 }, mt: '16px' }}
-                      >
-                        {each.contents}
-                      </Typography>
-                    </Box>
-                    <CardMedia
-                      image={`/image/pageImage/home/${each.img}.png`}
-                      sx={{ width: '207px', height: '150px' }}
-                    />
-                  </Grid>
-                </Box>
+                  <Box
+                    sx={{
+                      width: { xs: 1, sm: '426px' },
+                      minWidth: '312px',
+                      height: { xs: '100px', sm: '150px' },
+                      borderRadius: '16px',
+                      backgroundColor: '#1C1C1C',
+                      display: 'inline-block',
+                    }}
+                  >
+                    <Grid container direction="row" justifyContent="space-between">
+                      <Box sx={{ pl: { xs: '16px', sm: '32px' }, py: { xs: '12px', sm: '24px' } }}>
+                        <Typography
+                          className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
+                          fontWeight={600}
+                        >
+                          {each.title}
+                        </Typography>
+                        <Typography
+                          className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
+                          sx={{ fontWeight: { xs: 300, sm: 400 }, mt: { xs: '8px', sm: '16px' } }}
+                        >
+                          {each.contents}
+                        </Typography>
+                      </Box>
+                      <CardMedia
+                        image={`/image/pageImage/home/${each.img}.png`}
+                        sx={{
+                          width: { xs: '144px', sm: '207px' },
+                          height: { xs: '100px', sm: '150px' },
+                        }}
+                      />
+                    </Grid>
+                  </Box>
+                </ObserverAnimation>
               );
             })}
           </Stack>
 
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <RoundOutlinedButton text="패키지 자세히 보기" sx={{ mt: '88px' }} />
+            <RoundOutlinedButton
+              text="패키지 자세히 보기"
+              sx={{ mt: { xs: '42px', sm: '88px' }, width: { xs: 1, sm: 'auto' } }}
+            />
           </Box>
         </BodyContainer>
       </Container>

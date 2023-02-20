@@ -46,9 +46,11 @@ export default function FirstSection() {
           />
         </Grid>
       </Grid>
+      {/* <Spline scene="https://prod.spline.design/MVsyhXh1yVXE1HZu/scene.splinecode" /> */}
+
       <RoundOutlinedButton
         text="수호 Defi 문의하기"
-        sx={{ mt: '60px', width: { xs: 1, sm: 'auto' } }}
+        sx={{ mt: '60px', width: { xs: 1, sm: 'auto' }, px: { xs: '0px', sm: '78px' } }}
       />
     </BodyContainer>
   );

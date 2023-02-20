@@ -40,3 +40,27 @@ textarea {
 .fadeIn {
   animation: fadeIn 0.5s ease-in-out 0s 1 normal forwards;
 }
+
+@keyframes fadeInSlow {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInSlow {
+  animation: fadeInSlow 1s ease-in-out 0s 1 normal forwards;
+}
+
+.blind {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}

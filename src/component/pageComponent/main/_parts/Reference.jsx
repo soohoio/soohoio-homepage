@@ -3,6 +3,7 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import ObserverAnimation from '@/component/ui/ObserverAnimation';
 
 export default function Reference() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -22,26 +23,26 @@ export default function Reference() {
   ];
 
   const partnerList = [
-    { label: 'wemix', width: '135px', height: '38px' },
-    { label: 'luniverse', width: '172px', height: '42px' },
-    { label: 'oasys', width: '122px', height: '30px' },
-    { label: 'bora', width: '108px', height: '33px' },
-    { label: 'klaytn', width: '135px', height: '40px' },
-    { label: 'aurora', width: '153px', height: '34px' },
-    { label: 'solana', width: '164px', height: '31px' },
-    { label: 'near', width: '110px', height: '30px' },
-    { label: 'cronos', width: '145px', height: '40px' },
-    { label: 'kava', width: '73px', height: '22px' },
+    { label: 'wemix', width: 135, height: 38 },
+    { label: 'luniverse', width: 172, height: 42 },
+    { label: 'oasys', width: 122, height: 30 },
+    { label: 'bora', width: 108, height: 33 },
+    { label: 'klaytn', width: 135, height: 40 },
+    { label: 'aurora', width: 153, height: 34 },
+    { label: 'solana', width: 164, height: 31 },
+    { label: 'near', width: 110, height: 30 },
+    { label: 'cronos', width: 145, height: 40 },
+    { label: 'kava', width: 73, height: 22 },
   ];
 
   const investList = [
-    { label: 'consensys', width: '310px', height: '70px' },
-    { label: 'wemix', width: '195px', height: '55px' },
-    { label: 'techInvest', width: '294px', height: '52px' },
+    { label: 'consensys', width: 310, height: 70 },
+    { label: 'wemix', width: 195, height: 55 },
+    { label: 'techInvest', width: 294, height: 52 },
   ];
 
   return (
-    <BodyContainer ptPc="75px" pbPc="152px" ptMob="56px">
+    <BodyContainer ptPc="75px" pbPc="152px" ptMob="56px" pbMob="56px">
       <Typography
         className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
         component="div"
@@ -78,17 +79,22 @@ export default function Reference() {
           alignItems: 'center',
         }}
       >
-        {clientList.map(function (each) {
+        {clientList.map(function (each, index) {
           return (
-            <CardMedia
+            <ObserverAnimation
               key={`client_${each.label}`}
-              alt={`client_${each.label} logo`}
-              image={`/image/pageImage/home/company/${each.label}.png`}
-              sx={{
-                width: { xs: each.width * 0.5, sm: each.width },
-                height: { xs: each.height * 0.5, sm: each.height },
-              }}
-            />
+              animationName="fadeInSlow"
+              delay={index * 150}
+            >
+              <CardMedia
+                alt={`client_${each.label} logo`}
+                image={`/image/pageImage/home/company/${each.label}.png`}
+                sx={{
+                  width: { xs: each.width * 0.5, sm: each.width },
+                  height: { xs: each.height * 0.5, sm: each.height },
+                }}
+              />
+            </ObserverAnimation>
           );
         })}
       </Stack>
@@ -99,15 +105,15 @@ export default function Reference() {
         color={gray}
         fontWeight={500}
         align="center"
-        sx={{ mt: '56px', mb: '32px' }}
+        sx={{ mt: { xs: '36px', sm: '56px' }, mb: { xs: '20px', sm: '32px' } }}
       >
         Partners
       </Typography>
       <Stack direction="row" sx={{ justifyContent: 'center' }}>
         <Stack
           direction="row"
-          columnGap="68px"
-          rowGap="32px"
+          columnGap={{ xs: '34px', sm: '68px' }}
+          rowGap={{ xs: '18px', sm: '32px' }}
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -118,11 +124,19 @@ export default function Reference() {
         >
           {partnerList.map(function (each, index) {
             return (
-              <CardMedia
+              <ObserverAnimation
                 key={`partner_${each.label}`}
-                image={`/image/pageImage/home/company/${each.label}.png`}
-                sx={{ width: each.width, height: each.height }}
-              />
+                animationName="fadeInSlow"
+                delay={index * 150}
+              >
+                <CardMedia
+                  image={`/image/pageImage/home/company/${each.label}.png`}
+                  sx={{
+                    width: { xs: each.width * 0.5, sm: each.width },
+                    height: { xs: each.height * 0.5, sm: each.height },
+                  }}
+                />
+              </ObserverAnimation>
             );
           })}
         </Stack>
@@ -135,7 +149,7 @@ export default function Reference() {
         fontWeight={600}
         color="primary"
         align="center"
-        sx={{ mt: '130px', mb: '56px' }}
+        sx={{ mt: { xs: '56px', sm: '130px' }, mb: { xs: '24px', sm: '56px' } }}
       >
         15명 규모 팀<Box sx={{ fontWeight: 300, display: 'inline' }}>으로 달성한 누적 투자액</Box>
       </Typography>
@@ -154,15 +168,15 @@ export default function Reference() {
         color="primary"
         fontWeight={600}
         align="center"
-        sx={{ mt: '152px', mb: '56px' }}
+        sx={{ mt: { xs: '56px', sm: '152px' }, mb: { xs: '35px', sm: '56px' } }}
       >
         <Box sx={{ fontWeight: 300 }}>Web3.0 대표 주자 컨센시스로부터 </Box>
         국내 유일 시드 투자 유치
       </Typography>
       <Stack
         direction="row"
-        columnGap="68px"
-        rowGap="32px"
+        columnGap={{ xs: '34px', sm: '68px' }}
+        rowGap={{ xs: '18px', sm: '32px' }}
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -170,13 +184,21 @@ export default function Reference() {
           alignItems: 'center',
         }}
       >
-        {investList.map(function (each) {
+        {investList.map(function (each, index) {
           return (
-            <CardMedia
+            <ObserverAnimation
               key={`invest_${each.label}`}
-              image={`/image/pageImage/home/company/${each.label}.png`}
-              sx={{ width: each.width, height: each.height }}
-            />
+              animationName="fadeInSlow"
+              delay={index * 200}
+            >
+              <CardMedia
+                image={`/image/pageImage/home/company/${each.label}.png`}
+                sx={{
+                  width: { xs: each.width * 0.5, sm: each.width },
+                  height: { xs: each.height * 0.5, sm: each.height },
+                }}
+              />
+            </ObserverAnimation>
           );
         })}
       </Stack>

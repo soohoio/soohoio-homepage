@@ -40,7 +40,7 @@ RoundOutlinedButton.defaultProps = {
   onClick: () => {},
   color: '#00F2C3',
   py: { xs: '10px', sm: '20px' },
-  px: { sm: '80px' },
+  px: { xs: '24px', sm: '80px' },
 };
 
 /** MUI Button 대신 Box로 만든 contained 버튼  */
