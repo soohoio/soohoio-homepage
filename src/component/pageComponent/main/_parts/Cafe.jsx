@@ -13,6 +13,7 @@ export default function Cafe() {
       sx={{
         backgroundImage: 'url(/image/PageImage/home/cafeBackground.png)',
         backgroundPositionX: 'center',
+        backgroundSize: 'cover',
       }}
     >
       <BodyContainer
