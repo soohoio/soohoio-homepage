@@ -108,5 +108,12 @@ export const StyleTheme = createTheme({
         disableGutters: true,
       },
     },
+    MuiTypography: {
+      defaultProps: {
+        style: {
+          wordBreak: 'keep-all',
+        },
+      },
+    },
   },
 });
