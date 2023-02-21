@@ -47,9 +47,11 @@ export default function Defi() {
 
   const onScroll = () => {
     const boxPosition = ref.current.offsetTop;
-    if (window.scrollY > boxPosition - 400) {
-      // console.log(window.scrollY - boxPosition);
-      // setPosition(window.scrollY - boxPosition);
+    const scrollDistance = window.scrollY - boxPosition + 300;
+    const endPosition = isMob ? 225 : 300;
+    console.log(scrollDistance);
+    if (scrollDistance > 0 && scrollDistance < endPosition) {
+      setPosition(scrollDistance);
     }
   };
 
@@ -73,7 +75,12 @@ export default function Defi() {
           수호 자체 운영 DeFi 프로덕트
         </Typography>
 
-        <Stack ref={ref} direction="row" spacing="16px" sx={{ width: '100vw', overflow: 'hidden' }}>
+        <Stack
+          ref={ref}
+          direction="row"
+          spacing="16px"
+          sx={{ overflow: 'hidden', position: 'relative' }}
+        >
           {defiList.map(function (each) {
             return (
               <Box
@@ -81,12 +88,13 @@ export default function Defi() {
                 sx={{
                   pl: { xs: '16px', sm: '48px' },
                   py: { xs: '16px', sm: '48px' },
-                  minWidth: { sm: '608px' },
+                  minWidth: { xs: '300px', sm: '608px' },
                   width: { xs: '300px', sm: '608px' },
                   heigth: '252px',
                   backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background.png)`,
                   backgroundSize: { xs: '350px 168px', sm: 'cover' },
                   borderRadius: '16px',
+                  transform: `translateX(${-position * 3}px)`,
                 }}
               >
                 <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'} fontWeight={600}>
