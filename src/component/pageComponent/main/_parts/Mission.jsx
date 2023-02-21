@@ -31,29 +31,17 @@ export default function Mission() {
     },
     {
       img: 'step3',
-      text: `단, 보안에 취약한 브릿지는 막대한 규모의 해킹 사고로 이어질 수\n있기 때문에 매우 높은 수준의 보안 기술이 뒷받침되어야만 합니다.`,
+      text: isMob
+        ? `단, 보안에 취약한 브릿지는 막대한 규모의 해킹 사고로 이어질 수 있기 때문에 매우 높은 수준의 보안 기술이 뒷받침되어야만 합니다.`
+        : `단, 보안에 취약한 브릿지는 막대한 규모의 해킹 사고로 이어질 수\n있기 때문에 매우 높은 수준의 보안 기술이 뒷받침되어야만 합니다.`,
     },
     {
       img: 'step4',
-      text: `수호는 가장 안전한 브릿지로 연결된 크로스체인 생태계를 구축하여,\n다양한 금융 기회를 간편하게 경험할 수 있는 Gateway가 되고자 합니다.`,
+      text: isMob
+        ? `수호는 가장 안전한 브릿지로 연결된 크로스체인 생태계를 구축하여, 다양한 금융 기회를 간편하게 경험할 수 있는 Gateway가 되고자 합니다.`
+        : `수호는 가장 안전한 브릿지로 연결된 크로스체인 생태계를 구축하여,\n다양한 금융 기회를 간편하게 경험할 수 있는 Gateway가 되고자 합니다.`,
     },
   ];
-
-  const swipeCarousel = direction => {
-    if (direction === 'left') {
-      if (carouselIndex === 3) {
-        setCarouselIndex(0);
-      } else {
-        setCarouselIndex(carouselIndex + 1);
-      }
-    } else {
-      if (carouselIndex === 0) {
-        setCarouselIndex(3);
-      } else {
-        setCarouselIndex(carouselIndex - 1);
-      }
-    }
-  };
 
   return (
     <BodyContainer backgroundColor="#00F2C3" ptPc="120px" pbPc="120px" ptMob="42px" pbMob="42px">
@@ -78,7 +66,7 @@ export default function Mission() {
           : '더 많은 금융 기회를 연결하고 수호합니다.'}
       </Typography>
       <Box sx={{ px: { sm: '10vh', lg: '0px' } }}>
-        <Slider {...settings} onSwipe={direction => swipeCarousel(direction)}>
+        <Slider {...settings} beforeChange={(current, next) => setCarouselIndex(next)}>
           {carouselList.map(function (each) {
             return (
               <Box
@@ -91,7 +79,7 @@ export default function Mission() {
                     width: 1,
                     aspectRatio: '1328/713',
                     borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
-                    mb: '30px',
+                    mb: { xs: '12px', sm: '30px' },
                   }}
                 />
               </Box>
@@ -104,7 +92,7 @@ export default function Mission() {
             fontWeight={600}
             color={black}
             align="center"
-            sx={{ mt: { xs: '45px', sm: '55px' } }}
+            sx={{ mt: { xs: '38px', sm: '55px' } }}
           >
             {carouselList[carouselIndex].text}
           </Typography>

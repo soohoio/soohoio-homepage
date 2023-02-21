@@ -24,7 +24,7 @@ export default function Package() {
             sm: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/pageImage/home/packageBackgroundTablet.png)',
             lg: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/pageImage/home/packageBackgroundPc.png)',
           },
-          backgroundSize: { xs: 'contain', sm: 'cover' },
+          backgroundSize: { xs: 'cover', sm: 'cover' },
           backgroundPositionX: 'center',
           backgroundPositionY: 'top',
         }}
@@ -107,8 +107,8 @@ export default function Package() {
                           {each.title}
                         </Typography>
                         <Typography
-                          className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
-                          sx={{ fontWeight: { xs: 300, sm: 400 }, mt: { xs: '8px', sm: '16px' } }}
+                          className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
+                          sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                         >
                           {each.contents}
                         </Typography>

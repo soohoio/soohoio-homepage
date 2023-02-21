@@ -37,21 +37,21 @@ export default function ContactForm() {
       img: 'solution',
     },
     {
-      label: 'Recruit',
+      label: '채용',
       contents: isMob
         ? `수호 합류를 위한 콜챗 신청과\n궁금한 점을 남겨주세요. `
         : '수호 합류를 위한 콜챗 신청 및 궁금한 점을 남겨주세요.',
       img: 'recruit',
     },
     {
-      label: 'Cafe Space Rental',
+      label: '카페 대관',
       contents: isMob
         ? `Web3 크리에이터를 위한\n블록체인 커뮤니티 공간입니다.`
         : '블록체인 커뮤니티를 위한 공간 대관 문의를 남겨주세요.',
       img: 'cafe',
     },
     {
-      label: 'ETC',
+      label: '기타',
       contents: isMob
         ? `수호의 프로덕트 및 기타 궁금한 점이 있다면\n무엇이든 남겨주세요.`
         : '수호의 프로덕트 및 기타 궁금한 점이 있다면 무엇이든 남겨주세요.',

@@ -1,4 +1,3 @@
-import { BodyContainer } from '@/component/ui/BodyContainer';
 import { RoundOutlinedButton } from '@/component/ui/Button';
 import { Box, Container, Stack, Typography } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -54,7 +53,6 @@ export default function Defi() {
   const onScroll = e => {
     const boxPosition = ref.current.offsetTop;
     const scrollDistance = window.scrollY - boxPosition + correctionValue;
-    console.log(scrollDistance);
     if (scrollDistance < 0) {
       setPosition(0);
     } else if (scrollDistance > 0 && scrollDistance < endPosition) {
@@ -96,13 +94,16 @@ export default function Defi() {
                 key={each.title}
                 sx={{
                   pl: { xs: '16px', sm: '48px' },
-                  py: { xs: '16px', sm: '48px' },
-                  minWidth: { xs: '284px', sm: '608px' },
-                  width: { xs: '284px', sm: '608px' },
+                  py: { xs: '12px', sm: '48px' },
+                  minWidth: { xs: '300px', sm: '608px' },
+                  width: { xs: '300px', sm: '608px' },
                   heigth: '252px',
-                  backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background.png)`,
-                  backgroundSize: { xs: '350px 168px', sm: 'cover' },
+                  backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background${
+                    isMob ? 'Mob' : ''
+                  }.png)`,
+                  backgroundSize: { xs: '300px 168px', sm: 'cover' },
                   borderRadius: '16px',
+                  boxSizing: 'border-box',
                   transform: `translateX(${-position * translateMultiple}px)`,
                 }}
               >
@@ -112,10 +113,11 @@ export default function Defi() {
                 {/* 여기는 -0.023em... */}
                 <Typography
                   sx={{
-                    fontWeight: { xs: 300, sm: 400 },
+                    fontWeight: { xs: 300, sm: 300 },
+                    color: '#EEEEEE',
                     mt: { xs: '8px', sm: '16px' },
                     mb: { xs: '16px', sm: '42px' },
-                    fontSize: { xs: '14px', sm: '20px' },
+                    fontSize: { xs: '14px', sm: '18px' },
                     lineHeight: { xs: '20px', sm: '28px' },
                     letterSpacing: { xs: '-0.023em !important', sm: '-0.02em;' },
                   }}

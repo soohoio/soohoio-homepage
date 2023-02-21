@@ -64,3 +64,9 @@ textarea {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+
+/* 캐러셀 점 간격 */
+.slick-dots li {
+  margin: 0 0px;
+  width: 10px !important;
+}
