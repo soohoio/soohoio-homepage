@@ -17,11 +17,11 @@ import MobDrawler from './MobDrawler';
 function NavBar(props) {
   const navBarHeight = '96px';
   const pageList = [
-    { label: '기업 솔루션', link: '/solution' },
-    { label: '프로덕트', link: '/product' },
-    { label: '뉴스', link: '/news' },
-    { label: '팀 소개', link: '/team' },
-    { label: '채용', link: '/recruit' },
+    // { label: '기업 솔루션', link: '/solution' },
+    // { label: '프로덕트', link: '/product' },
+    // { label: '뉴스', link: '/news' },
+    // { label: '팀 소개', link: '/team' },
+    // { label: '채용', link: '/recruit' },
     { label: '블로그', link: '/blog' },
   ];
 
@@ -93,10 +93,10 @@ function NavBar(props) {
                 </Box>
 
                 {/* 모바일 우측 글로벌 메뉴 */}
-                <IconButton onClick={openMobMenu} color="primary" sx={{ p: 0 }}>
+                <IconButton onClick={() => {}} color="primary" sx={{ p: 0 }}>
                   <CardMedia
                     component="img"
-                    image="/image/icon/global.png"
+                    image="/image/icon/globalGray.png"
                     alt="global"
                     sx={{ width: '24px', cursor: 'pointer', display: { xs: 'flex', lg: 'none' } }}
                   />
@@ -148,7 +148,7 @@ function NavBar(props) {
                     borderRadius: '16px',
                     width: '88px',
                     py: '2px',
-                    fontWeight: 400,
+                    fontWeight: 300,
                     ml: '18px',
                   }}
                 >
@@ -162,7 +162,7 @@ function NavBar(props) {
                   menuClick(0);
                 }}
                 component="img"
-                image="/image/icon/global.png"
+                image="/image/icon/globalGray.png"
                 alt="logo"
                 sx={{
                   width: '24px',

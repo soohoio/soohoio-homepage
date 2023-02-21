@@ -94,7 +94,6 @@ export const StyleTheme = createTheme({
       defaultProps: {
         variant: 'contained',
         disableElevation: true,
-        style: { fontWeight: 600 },
       },
     },
     MuiTextField: {
