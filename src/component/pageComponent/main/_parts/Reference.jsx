@@ -4,9 +4,14 @@ import { Box, CardMedia, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 
 export default function Reference() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { ref, inView } = useInView({
+    threshold: 0.1, // trigger when nn% of the target is visible
+  });
 
   const clientList = [
     { label: 'wemix', width: 134, height: 37 },
@@ -155,11 +160,13 @@ export default function Reference() {
       </Typography>
 
       <Typography
-        className={isMob ? 'mobTitle19KR' : 'pcTitle48KR'}
+        ref={ref}
+        className={isMob ? 'mobTitle24KR' : 'pcTitle56KR'}
         align="center"
         fontWeight={600}
       >
-        100억원 +
+        {inView && <CountUp end={100} start={35} duration={1} />}
+        &nbsp;억원 +
       </Typography>
 
       <Typography

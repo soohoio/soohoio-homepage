@@ -1,7 +1,7 @@
 import { gray_light } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { RoundOutlinedButton } from '@/component/ui/BoxButton';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import Spline from '@splinetool/react-spline';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
@@ -37,10 +37,11 @@ export default function FirstSection() {
 
         {/* 모바일 spline을 위한 공간 */}
         <Box sx={{ height: { xs: '280px', sm: '360px' }, display: { lg: 'none' } }} />
-        <RoundOutlinedButton
-          text="수호 Defi 문의하기"
-          sx={{ mt: '60px', width: { xs: 1, sm: 'auto' }, px: { xs: '0px', sm: '78px' } }}
+        <MUIOutlinedButton
+          text="수호 DeFi 문의하기"
+          sx={{ mt: '60px', width: { xs: 1, sm: 'auto' } }}
         />
+
         {/* 태블릿 이상~ */}
         <Box
           sx={{

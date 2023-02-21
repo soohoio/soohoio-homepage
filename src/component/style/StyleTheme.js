@@ -55,6 +55,10 @@ export const StyleTheme = createTheme({
     },
   },
   typography: {
+    button: {
+      // 텍스트 대문자 방지
+      textTransform: 'none',
+    },
     body1: {
       color: '#FFFFFF',
     },

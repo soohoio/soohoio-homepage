@@ -20,8 +20,8 @@ function NavBar(props) {
     { label: '기업 솔루션', link: '/solution' },
     { label: '프로덕트', link: '/product' },
     { label: '뉴스', link: '/news' },
-    { label: '채용', link: '/recruit' },
     { label: '팀 소개', link: '/team' },
+    { label: '채용', link: '/recruit' },
     { label: '블로그', link: '/blog' },
   ];
 
@@ -50,7 +50,7 @@ function NavBar(props) {
         >
           <Container
             maxWidth={false}
-            sx={{ maxWidth: '1440px', px: { xs: paddingHorMob, lg: paddingHorPC } }}
+            sx={{ maxWidth: '1440px', px: { xs: paddingHorMob, sm: paddingHorPC } }}
           >
             <Toolbar disableGutters variant="dense" sx={{ height: navBarHeight }}>
               {/* Mob 부분 */}
@@ -62,7 +62,7 @@ function NavBar(props) {
                 sx={{ display: { xs: 'flex', lg: 'none' } }}
               >
                 <Box>
-                  <IconButton onClick={openMobMenu} color="primary">
+                  <IconButton onClick={openMobMenu} color="primary" sx={{ p: 0 }}>
                     <CardMedia
                       component="img"
                       image={`/image/icon/${drawerMenu ? 'cancelMint' : 'menuPrimary'}.png`}
@@ -93,7 +93,7 @@ function NavBar(props) {
                 </Box>
 
                 {/* 모바일 우측 글로벌 메뉴 */}
-                <IconButton onClick={openMobMenu} color="primary">
+                <IconButton onClick={openMobMenu} color="primary" sx={{ p: 0 }}>
                   <CardMedia
                     component="img"
                     image="/image/icon/global.png"

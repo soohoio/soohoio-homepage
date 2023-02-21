@@ -1,6 +1,6 @@
 import { gray } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { RoundOutlinedButton } from '@/component/ui/BoxButton';
+import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
 import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
@@ -128,9 +128,9 @@ export default function Package() {
           </Stack>
 
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <RoundOutlinedButton
+            <MUIOutlinedButton
               text="패키지 자세히 보기"
-              sx={{ mt: { xs: '42px', sm: '88px' }, width: { xs: 1, sm: 'auto' } }}
+              sx={{ width: { xs: 1, sm: 'auto' }, mt: { xs: '42px', sm: '88px' } }}
             />
           </Box>
         </BodyContainer>

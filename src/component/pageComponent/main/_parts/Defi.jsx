@@ -1,5 +1,5 @@
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { RoundOutlinedButton } from '@/component/ui/BoxButton';
+import { RoundOutlinedButton } from '@/component/ui/Button';
 import { Box, Container, Stack, Typography } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';

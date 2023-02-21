@@ -8,7 +8,7 @@ import {
   primary,
 } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { RoundContainedButton, RoundOutlinedButton } from '@/component/ui/BoxButton';
+import { RoundContainedButton, RoundOutlinedButton } from '@/component/ui/Button';
 import { CountryNumUnderline } from '@/component/ui/DropDown';
 import {
   Box,

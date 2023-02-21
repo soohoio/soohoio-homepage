@@ -2,7 +2,7 @@ import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-export default function ObserverAnimation({ children, animationName, delay }) {
+export default function ObserverAnimation({ children, animationName, delay, sx, innerSx }) {
   const { ref, inView } = useInView({
     threshold: 0.1, // trigger when nn% of the target is visible
   });
@@ -24,9 +24,11 @@ export default function ObserverAnimation({ children, animationName, delay }) {
     <Box
       ref={ref}
       className={inView ? animationName : ''}
-      style={{ animationDelay: delay ? `${delay}ms` : '0ms' }}
+      sx={([{ animationDelay: delay ? `${delay}ms` : '0ms' }], sx)}
     >
-      <div className={isVisible && inView ? 'show' : 'blind'}>{children}</div>
+      <Box className={isVisible && inView ? 'show' : 'blind'} sx={[sx]}>
+        {children}
+      </Box>
     </Box>
   );
 }

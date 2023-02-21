@@ -13,14 +13,16 @@ export default function CardSection() {
       <Grid container columnSpacing="16px" rowGap="16px">
         {/* 카드1 */}
         <Grid className="fadeIn" item xs={12} sm={6}>
-          <Box
-            sx={{
-              backgroundColor: '#1C1C1C',
-              borderRadius: '16px',
-              p: { xs: '24px', sm: '48px' },
-            }}
-          >
-            <ObserverAnimation animationName="fadeInSlow">
+          <ObserverAnimation animationName="fadeInSlow" sx={{ height: 1 }} innerSx={{ height: 1 }}>
+            <Box
+              sx={{
+                backgroundColor: '#1C1C1C',
+                borderRadius: '16px',
+                p: { xs: '24px', sm: '48px' },
+                boxSizing: 'border-box',
+                height: 1,
+              }}
+            >
               <Box>
                 <Typography
                   className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
@@ -57,6 +59,7 @@ export default function CardSection() {
 
                 <Typography
                   className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
+                  color={gray}
                   sx={{ fontWeight: { xs: 300, sm: 400 }, mt: { xs: '8px', sm: '16px' } }}
                 >
                   {isPc &&
@@ -67,26 +70,33 @@ export default function CardSection() {
                     `2018년 4월 국내 첫 블록체인 보안 감사 리포트를\n발행하여 디지털 자산을 보호해왔습니다.`}
                 </Typography>
               </Box>
-            </ObserverAnimation>
-          </Box>
+            </Box>
+          </ObserverAnimation>
         </Grid>
         {/* 카드2 */}
         <Grid item xs={12} sm={6}>
-          <Box
-            sx={{
-              backgroundColor: '#1C1C1C',
-              borderRadius: '16px',
-              p: { xs: '24px', sm: '48px' },
-            }}
+          <ObserverAnimation
+            animationName="fadeInSlow"
+            delay={!isMob && 800}
+            sx={{ height: 1 }}
+            innerSx={{ height: 1 }}
           >
-            <ObserverAnimation animationName="fadeInSlow" delay={!isMob && 800}>
+            <Box
+              sx={{
+                backgroundColor: '#1C1C1C',
+                borderRadius: '16px',
+                p: { xs: '24px', sm: '48px' },
+                boxSizing: 'border-box',
+                height: 1,
+              }}
+            >
               <Box>
                 <Typography
                   className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
                   color="primary"
                   fontWeight={600}
                 >
-                  {isTablet ? `To Building DeFi\n\n` : `To Building DeFi`}
+                  {isTablet ? `To Building DeFi` : `To Building DeFi`}
                 </Typography>
                 <Typography
                   className={isMob ? 'mobTitle19KR' : 'pcTitle36KR'}
@@ -118,6 +128,7 @@ export default function CardSection() {
 
                 <Typography
                   className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
+                  color={gray}
                   sx={{ fontWeight: { xs: 300, sm: 400 }, mt: { xs: '8px', sm: '16px' } }}
                 >
                   {isPc &&
@@ -128,8 +139,8 @@ export default function CardSection() {
                     `위믹스와 협업하여 클레이튼 생태계의 DeFi\n서비스 KLEVA를 성공적으로 런칭하였습니다.`}
                 </Typography>
               </Box>
-            </ObserverAnimation>
-          </Box>
+            </Box>
+          </ObserverAnimation>
         </Grid>
       </Grid>
     </BodyContainer>

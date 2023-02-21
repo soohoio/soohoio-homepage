@@ -2,7 +2,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { RoundContainedButton } from './BoxButton';
+import { RoundContainedButton } from './Button';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useContext } from 'react';
 

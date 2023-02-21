@@ -1,5 +1,5 @@
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { RoundOutlinedButton } from '@/component/ui/BoxButton';
+import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
 import { Container, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
@@ -24,7 +24,7 @@ export default function Cafe() {
         pbMob="42px"
       >
         <Grid container direction="row" justifyContent="space-between" alignItems="flex-end">
-          <Grid sx={{ mb: { xs: '42px', sm: '0px' } }}>
+          <Grid sx={{ mb: { xs: '42px', lg: '0px' } }}>
             <Typography
               className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
               color="primary"
@@ -43,7 +43,7 @@ export default function Cafe() {
                 `수호 카페는 다양한 블록체인 커뮤니티가 모이는 공간입니다.\n여러 NFT 커뮤니티, web3 빌더 혹은 예술 작가분들이\n수호 카페와 함께 새로운 프로젝트를 전개해나가고 있습니다.`}
             </Typography>
           </Grid>
-          <RoundOutlinedButton text="카페 대관 문의하기" sx={{ width: { xs: 1, sm: 'auto' } }} />
+          <MUIOutlinedButton text="카페 대관 문의하기" sx={{ width: { xs: 1, sm: 'auto' } }} />
         </Grid>
       </BodyContainer>
     </Container>

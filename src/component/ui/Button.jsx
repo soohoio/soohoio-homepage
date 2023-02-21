@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import { black_dark, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useContext } from 'react';
@@ -88,4 +88,37 @@ RoundContainedButton.defaultProps = {
   color: black_dark,
   py: { xs: '10px', sm: '16px' },
   px: { sm: '40px' },
+};
+
+/** MUI outlined 버튼  */
+export function MUIOutlinedButton({ onClick, text, borderColor, sx }) {
+  const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  return (
+    <Button
+      className={isMob ? 'mobBody14KR' : 'pcPoint20KR'}
+      onClick={onClick}
+      variant="outlined"
+      sx={[
+        {
+          borderRadius: '120px',
+          px: { sm: '78px' },
+          py: { xs: '10px', sm: '20px' },
+          border: { xs: `1px solid ${borderColor}`, sm: `2px solid ${borderColor}` },
+          ':hover': {
+            borderWidth: { sm: '2px' },
+          },
+          zIndex: 100,
+        },
+        sx,
+      ]}
+    >
+      {text}
+    </Button>
+  );
+}
+
+MUIOutlinedButton.defaultProps = {
+  onClick: () => {},
+  text: '텍스트를 입력해주세요',
+  borderColor: primary,
 };

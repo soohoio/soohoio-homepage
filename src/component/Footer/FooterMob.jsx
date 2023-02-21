@@ -6,7 +6,15 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 
 export default function FooterMob() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
-  const snsButtonList = ['twitter', 'facebook', 'linkedIn'];
+  const snsButtonList = [
+    { img: 'twitter', link: 'https://twitter.com/sooho_cafe' },
+    // { img: 'facebook', link: '', },
+    { img: 'linkedIn', link: 'https://www.linkedin.com/company/sooho' },
+  ];
+
+  const goToLink = link => {
+    window.open(link);
+  };
 
   return (
     <footer>
@@ -33,17 +41,19 @@ export default function FooterMob() {
                 color={gray_light}
                 sx={{ fontWeight: 600 }}
               >
-                <Box className="buttonHover">회사 소개서 다운받기</Box>
-                <Box sx={{ color: gray, mt: '25px' }}>SOOHO.IO</Box>
+                <Box sx={{ color: gray }}>SOOHO.IO</Box>
+                {/* <Box className="buttonHover">수호 소개서 다운로드</Box>
+                <Box sx={{ color: gray, mt: '25px' }}>SOOHO.IO</Box> */}
               </Typography>
               <Stack direction="row" spacing="24px" sx={{ mt: '18px', mb: '32px' }}>
                 {snsButtonList.map(function (each) {
                   return (
                     <CardMedia
                       className="buttonHover"
-                      key={each}
-                      alt={`soohoio service sns link(${each})`}
-                      image={`/image/sns/${each}.png`}
+                      onClick={() => goToLink(each.link)}
+                      key={each.img}
+                      alt={`soohoio service sns link(${each.img})`}
+                      image={`/image/sns/${each.img}.png`}
                       sx={{ width: '24px', height: '24px' }}
                     />
                   );
@@ -60,6 +70,7 @@ export default function FooterMob() {
 
               <CardMedia
                 className="buttonHover"
+                onClick={() => goToLink('https://twitter.com/sooho_cafe')}
                 alt={`soohoio cafe sns link(twitter)`}
                 image={`/image/sns/twitter.png`}
                 sx={{ width: '24px', height: '24px', mt: '22px' }}
@@ -70,7 +81,9 @@ export default function FooterMob() {
             <Box sx={{ my: '16px' }}>
               {`070-4121-8936\ncontact@sooho.io\nB1, 126, Teheran-ro, Gangnam-gu, Seoul, Republic of Korea`}
             </Box>
-            <Box sx={{ fontSize: '14px' }}>Ⓒ2023. SOOHO.IO Inc. All Rights Reserved.</Box>
+            <Box sx={{ fontSize: '14px !important' }}>
+              Ⓒ2023. SOOHO.IO Inc. All Rights Reserved.
+            </Box>
           </Typography>
         </BodyContainer>
       </Box>
