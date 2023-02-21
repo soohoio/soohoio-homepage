@@ -48,7 +48,7 @@ export default function Defi() {
   const onScroll = () => {
     const boxPosition = ref.current.offsetTop;
     if (window.scrollY > boxPosition - 400) {
-      console.log(window.scrollY - boxPosition);
+      // console.log(window.scrollY - boxPosition);
       // setPosition(window.scrollY - boxPosition);
     }
   };

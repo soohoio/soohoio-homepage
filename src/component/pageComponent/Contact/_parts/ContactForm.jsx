@@ -179,7 +179,10 @@ export default function ContactForm() {
       emailjs
         .send(
           process.env.NEXT_PUBLIC_MAIL_SERVICE_ID,
-          process.env.NEXT_PUBLIC_MAIL_TEMPLETE_ID,
+          // 리크루트면 리쿠르트 메일로
+          body.category === 'Recruit'
+            ? process.env.NEXT_PUBLIC_MAIL_TEMPLETE_RECRUIT_ID
+            : process.env.NEXT_PUBLIC_MAIL_TEMPLETE_NORMAL_ID,
           body,
           process.env.NEXT_PUBLIC_MAIL_PUBLIC_KEY,
         )
@@ -214,11 +217,11 @@ export default function ContactForm() {
       <Container maxWidth={false} sx={{ backgroundColor: '#1C1C1C' }}>
         <BodyContainer backgroundColor="transparent">
           <Grid container justifyContent="space-between" alignItems="center">
-            <Box sx={{ pt: '47px', pb: '48px' }}>
+            <Box sx={{ pt: { xs: '21px', sm: '47px' }, pb: { sm: '48px' } }}>
               <Typography
                 className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
                 component="div"
-                sx={{ mb: '28px' }}
+                sx={{ mb: { xs: '23px', sm: '28px' } }}
               >
                 문의 카테고리
               </Typography>
@@ -267,7 +270,32 @@ export default function ContactForm() {
               >
                 {contactTypeList[currentTypeIndex].contents}
               </Typography>
+              {/* 모바일 사진 */}
+              <Grid
+                container
+                justifyContent="flex-end"
+                alignItems="center"
+                sx={{ mt: { xs: '-10px', sm: '0px' } }}
+              >
+                <CardMedia
+                  key={currentTypeIndex}
+                  className="fadeIn"
+                  component="img"
+                  image={`/image/pageImage/contact/${contactTypeList[currentTypeIndex].img}.png`}
+                  alt={`${contactTypeList[currentTypeIndex].label} image`}
+                  sx={{
+                    width: { xs: 1, sm: '25vw' },
+                    minWidth: '109px',
+                    maxWidth: { xs: '109px', sm: '400px' },
+                    aspectRatio: '546/336',
+                    objectFit: 'cover',
+                    display: { lg: 'none' },
+                  }}
+                />
+              </Grid>
             </Box>
+            <Box sx={{ lg: 'none' }} />
+            {/* PC 사진 */}
             <CardMedia
               key={currentTypeIndex}
               className="fadeIn"
@@ -275,9 +303,11 @@ export default function ContactForm() {
               image={`/image/pageImage/contact/${contactTypeList[currentTypeIndex].img}.png`}
               alt={`${contactTypeList[currentTypeIndex].label} image`}
               sx={{
-                width: { xs: '108px', sm: '546px' },
-                height: { xs: '67px', sm: '336px' },
+                width: 1,
+                maxWidth: '536px',
+                aspectRatio: '546/336',
                 objectFit: 'cover',
+                display: { xs: 'none', lg: 'block' },
               }}
             />
           </Grid>
@@ -701,7 +731,7 @@ export default function ContactForm() {
                 <CardMedia
                   onClick={removeFile}
                   component="img"
-                  image="/image/icon/deleteX.png"
+                  image="/image/icon/cancel.png"
                   alt="file delete Button"
                   sx={{
                     width: { xs: '19px', sm: '28px' },

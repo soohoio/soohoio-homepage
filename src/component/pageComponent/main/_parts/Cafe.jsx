@@ -11,7 +11,7 @@ export default function Cafe() {
     <Container
       maxWidth="false"
       sx={{
-        backgroundImage: 'url(/image/PageImage/home/cafeBackground.png)',
+        backgroundImage: 'url(/image/pageImage/home/cafeBackground.png)',
         backgroundPositionX: 'center',
         backgroundSize: 'cover',
       }}
