@@ -4,10 +4,16 @@ import { Box, Container, Stack, Typography } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { gray } from '@/component/style/StyleTheme';
+import { paddingHorMob, paddingHorPC } from '../../../style/StyleTheme';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+
+  // 스크롤 캐러셀
   const ref = useRef();
+  const translateMultiple = isMob ? 3 : 3;
+  const correctionValue = isMob ? 450 : 300;
+  const endPosition = isMob ? 205 : 300;
 
   const defiList = [
     {
@@ -45,12 +51,12 @@ export default function Defi() {
     };
   }, []);
 
-  const onScroll = () => {
+  const onScroll = e => {
     const boxPosition = ref.current.offsetTop;
-    const scrollDistance = window.scrollY - boxPosition + 300;
-    const endPosition = isMob ? 225 : 300;
-    console.log(scrollDistance);
-    if (scrollDistance > 0 && scrollDistance < endPosition) {
+    const scrollDistance = window.scrollY - boxPosition + correctionValue;
+    if (scrollDistance < 0) {
+      setPosition(0);
+    } else if (scrollDistance > 0 && scrollDistance < endPosition) {
       setPosition(scrollDistance);
     }
   };
@@ -64,7 +70,9 @@ export default function Defi() {
         backgroundColor: '#131313',
       }}
     >
-      <BodyContainer>
+      <Container
+        sx={{ backgroundColor: '#131313', pl: { xs: paddingHorMob }, px: { sm: paddingHorPC } }}
+      >
         <Typography
           className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
           color="primary"
@@ -88,13 +96,13 @@ export default function Defi() {
                 sx={{
                   pl: { xs: '16px', sm: '48px' },
                   py: { xs: '16px', sm: '48px' },
-                  minWidth: { xs: '300px', sm: '608px' },
-                  width: { xs: '300px', sm: '608px' },
+                  minWidth: { xs: '284px', sm: '608px' },
+                  width: { xs: '284px', sm: '608px' },
                   heigth: '252px',
                   backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background.png)`,
                   backgroundSize: { xs: '350px 168px', sm: 'cover' },
                   borderRadius: '16px',
-                  transform: `translateX(${-position * 3}px)`,
+                  transform: `translateX(${-position * translateMultiple}px)`,
                 }}
               >
                 <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'} fontWeight={600}>
@@ -123,7 +131,7 @@ export default function Defi() {
             );
           })}
         </Stack>
-      </BodyContainer>
+      </Container>
     </Container>
   );
 }
