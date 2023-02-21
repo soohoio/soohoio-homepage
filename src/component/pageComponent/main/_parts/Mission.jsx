@@ -4,6 +4,7 @@ import { Box, CardMedia, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import Slider from 'react-slick';
+import ObserverAnimation from '@/component/ui/ObserverAnimation';
 
 export default function Mission() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -70,15 +71,17 @@ export default function Mission() {
                   borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
                 }}
               />
-              <Typography
-                className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
-                fontWeight={600}
-                color={black}
-                align="center"
-                sx={{ mt: { xs: '45px', sm: '80px' } }}
-              >
-                {each.text}
-              </Typography>
+              <ObserverAnimation animationName="fadeInSlow">
+                <Typography
+                  className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+                  fontWeight={600}
+                  color={black}
+                  align="center"
+                  sx={{ mt: { xs: '45px', sm: '80px' } }}
+                >
+                  {each.text}
+                </Typography>
+              </ObserverAnimation>
             </Box>
           );
         })}
