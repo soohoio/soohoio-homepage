@@ -12,8 +12,8 @@ export default function Defi() {
   // 스크롤 캐러셀
   const ref = useRef();
   const translateMultiple = isMob ? 3 : 3;
-  const correctionValue = isMob ? 450 : 300;
-  const endPosition = isMob ? 205 : 300;
+  const correctionValue = isMob ? 450 : 400;
+  const endPosition = isMob ? 205 : 200;
 
   const defiList = [
     {
@@ -54,6 +54,7 @@ export default function Defi() {
   const onScroll = e => {
     const boxPosition = ref.current.offsetTop;
     const scrollDistance = window.scrollY - boxPosition + correctionValue;
+    console.log(scrollDistance);
     if (scrollDistance < 0) {
       setPosition(0);
     } else if (scrollDistance > 0 && scrollDistance < endPosition) {
