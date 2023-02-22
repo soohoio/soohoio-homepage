@@ -79,9 +79,18 @@ export default function Defi() {
           color="primary"
           align="center"
           fontWeight={600}
-          sx={{ mb: { xs: '16px', sm: '56px' } }}
         >
-          수호 자체 운영 DeFi 프로덕트
+          개인 투자자를 위한 DeFi 프로덕트
+        </Typography>
+
+        <Typography
+          className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+          align="center"
+          sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' }, mb: { xs: '20px', sm: '42px' } }}
+        >
+          {isMob && `유저에게 새로운 투자 기회를 제공하는\n다양한 금융 서비스를 만들고 연결합니다.`}
+          {!isMob &&
+            `유저에게 새로운 투자 기회를 제공하는\n다양한 금융 서비스를 만들고 연결합니다.`}
         </Typography>
 
         <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }}>

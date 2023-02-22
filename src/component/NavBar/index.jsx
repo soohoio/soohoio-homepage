@@ -10,7 +10,7 @@ import {
   Grid,
   CardMedia,
 } from '@mui/material';
-import { paddingHorMob, paddingHorPC } from '../style/StyleTheme';
+import { paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import Link from 'next/link';
 import MobDrawler from './MobDrawler';
 import { MUIOutlinedButton } from '../ui/Button';
@@ -128,7 +128,6 @@ function NavBar(props) {
                     target={page.label === '블로그' ? '_blank' : undefined}
                   >
                     <Typography
-                      className="buttonHover"
                       onClick={num => {
                         menuClick(index);
                       }}
@@ -137,6 +136,10 @@ function NavBar(props) {
                       sx={{
                         mr: { xs: '15px', lg: '24px' },
                         fontSize: { lg: '15px', xl: '18px' },
+                        ':hover': {
+                          color: primary,
+                          fontWeight: 600,
+                        },
                       }}
                     >
                       {page.label}

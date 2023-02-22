@@ -236,7 +236,7 @@ export default function ContactForm() {
             <Box
               sx={{
                 pt: { xs: '21px', sm: '47px' },
-                pb: { sm: '48px' },
+                pb: { lg: '48px' },
                 width: { xs: 1, lg: 'auto' },
               }}
             >
@@ -294,7 +294,7 @@ export default function ContactForm() {
               >
                 {contactTypeList[currentTypeIndex].contents}
               </Typography>
-              {/* 모바일 사진 */}
+              {/* 모바일 + 태블릿 사진 */}
               <Grid
                 container
                 justifyContent="flex-end"
@@ -310,7 +310,7 @@ export default function ContactForm() {
                   sx={{
                     width: { xs: 1, sm: '25vw' },
                     minWidth: '109px',
-                    maxWidth: { xs: '109px', sm: '400px' },
+                    maxWidth: { xs: '156px', sm: '400px' },
                     aspectRatio: '546/336',
                     objectFit: 'cover',
                     display: { lg: 'none' },
@@ -575,7 +575,7 @@ export default function ContactForm() {
                   (필수)
                 </Typography>
                 <Tooltip
-                  placement={isPc ? 'left-start' : 'bottom-end'}
+                  placement={isPc ? 'bottom' : 'bottom-end'}
                   // 여백
                   PopperProps={{
                     modifiers: [

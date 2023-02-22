@@ -107,6 +107,7 @@ export function MUIOutlinedButton({ onClick, text, borderColor, noClass, sx }) {
           border: { xs: `1px solid ${borderColor}`, sm: `2px solid ${borderColor}` },
           ':hover': {
             borderWidth: { sm: '2px' },
+            fontWeight: '600 !important',
             backgroundColor: primary,
             color: black,
           },
