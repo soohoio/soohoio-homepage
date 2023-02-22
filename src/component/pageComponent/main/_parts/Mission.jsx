@@ -56,14 +56,14 @@ export default function Mission() {
       </Typography>
       {/* lineHeight 24 */}
       <Typography
-        className={isMob ? '' : 'pcTitle48KR'}
+        className={isPc ? 'pcTitle48KR' : ''}
         color={black}
         align="center"
         fontWeight={600}
         sx={{
           mt: { xs: '8px', sm: '28px' },
           mb: { xs: '8px', sm: '24px' },
-          fontSize: { xs: '19px' },
+          fontSize: { xs: '19px', sm: '36px' },
           lineHeight: { xs: '24px !important' },
         }}
       >
@@ -71,7 +71,7 @@ export default function Mission() {
           ? `더 많은 금융 기회를 연결하고\n수호합니다.`
           : '더 많은 금융 기회를 연결하고 수호합니다.'}
       </Typography>
-      <Box sx={{ px: { sm: '22vw', lg: '0px' }, mt: { xs: '24px', sm: '0px' } }}>
+      <Box sx={{ px: { sm: '19vw', lg: '0px' }, mt: { xs: '24px', sm: '0px' } }}>
         <Slider {...settings} beforeChange={(current, next) => setCarouselIndex(next)}>
           {carouselList.map(function (each) {
             return (
@@ -94,7 +94,7 @@ export default function Mission() {
         </Slider>
         <ObserverAnimation key={carouselIndex} animationName="fadeInSlow">
           <Typography
-            className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+            className={isMob ? 'mobBody14KR' : isPc ? 'pcBody24KR' : 'pcBody20KR'}
             fontWeight={600}
             color={black}
             align="center"

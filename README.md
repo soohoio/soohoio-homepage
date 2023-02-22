@@ -1,38 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# sooho.io 홈페이지
 
-## Getting Started
+Package Manager는 npm을 사용합니다
 
-First, run the development server:
+### 개발 환경 시작
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+$> npm install
+$> npm dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000에서 확인합니다
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### 정적 파일 빌드
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+$> npm run build
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+out 폴더 내의 파일들을 업로드합니다
+emailJS의 API 정보가 바뀐 경우 .env 파일을 수정 후 배포합니다
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# 폴더 구조
 
-## Learn More
+### 루트 폴더 구조
 
-To learn more about Next.js, take a look at the following resources:
+    ├── public                  #
+    ├── src                     #
+        ├── components          #
+            ├── Footer          #
+            ├── NavBar          #
+            ├── pageComponent   #
+            ├── style           #
+            ├── ui              #
+        ├── constants           #
+        ├── module              #
+        ├── pages               #
+    ├── README.md               #
+    └── ...
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- pageComponent는 실제 페이지의 화면단의 소스이며 각 섹션별로 나뉘어져 있습니다.
+- Footer와 NavBar는 각각 푸터와 네비게이션 바의 소스입니다.
+- style에는 MUI 및 기본 스타일 세팅값이 들어있습니다.
+  (기본 세팅값과 폰트 사이즈 및 행간의 경우는 별도 css파일을 통해 관리합니다 ../pages/App.css와 ../pages/Font.css)
+- ui에는 공통으로 사용하는 컴포넌트들이 들어있습니다.
+  (본문 컨테이너, 버튼, 애니메이션 컴포넌트 등)
 
-## Deploy on Vercel
+### constant
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 전화번호 코드 등의 상수값들을 보관합니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### module
+
+- contextAPI(반응형 유무, 글로벌 적용), GA를 위한 요소 등을 포함하고 있습니다.
