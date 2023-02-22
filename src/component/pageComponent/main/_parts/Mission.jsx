@@ -12,7 +12,7 @@ export default function Mission() {
   const settings = {
     dots: true,
     arrows: false,
-    infinite: true,
+    fade: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -79,6 +79,7 @@ export default function Mission() {
                 key={each.img}
                 sx={{ px: { xs: '5px', sm: '15px', lg: '20px' }, boxSizing: 'border-box' }}
               >
+                {/* <ObserverAnimation animationName="fadeInSlow" delay={200}> */}
                 <CardMedia
                   image={`/image/pageImage/home/${each.img}.png`}
                   sx={{
@@ -88,6 +89,7 @@ export default function Mission() {
                     mb: { xs: '12px', sm: '30px' },
                   }}
                 />
+                {/* </ObserverAnimation> */}
               </Box>
             );
           })}
