@@ -1,5 +1,5 @@
 import { RoundOutlinedButton } from '@/component/ui/Button';
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography, useTheme } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { gray } from '@/component/style/StyleTheme';
@@ -9,15 +9,18 @@ import {
   borderRadiusMob,
   borderRadiusPc,
 } from '../../../style/StyleTheme';
+import Draggable from 'react-draggable';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const [screenSize, setScreenSize] = useState(1440);
 
-  // 스크롤 캐러셀
-  const ref = useRef();
-  const translateMultiple = isMob ? 3 : 3;
-  const correctionValue = isMob ? 450 : 400;
-  const endPosition = isMob ? 205 : 200;
+  const theme = useTheme();
+
+  // const maximum = (100 * window.innerWidth) / 100 - theme.spacing(37.5);
+  const leftLimit = isPc ? -676 : screenSize;
+  const contentsSize = isMob ? 300 : 656;
+  const padding = isMob ? 24 : 90;
 
   const defiList = [
     {
@@ -46,24 +49,12 @@ export default function Defi() {
     },
   ];
 
-  const [position, setPosition] = useState(0);
+  const ref = useRef(null);
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
+    setScreenSize(window.innerWidth - 2 * contentsSize - 2 * padding);
+    console.log(window.innerWidth - 2 * contentsSize - 2 * padding);
   }, []);
-
-  const onScroll = e => {
-    const boxPosition = ref.current.offsetTop;
-    const scrollDistance = window.scrollY - boxPosition + correctionValue;
-    if (scrollDistance < 0) {
-      setPosition(0);
-    } else if (scrollDistance > 0 && scrollDistance < endPosition) {
-      setPosition(scrollDistance);
-    }
-  };
 
   return (
     <Container
@@ -93,58 +84,59 @@ export default function Defi() {
           수호 자체 운영 DeFi 프로덕트
         </Typography>
 
-        <Stack
-          ref={ref}
-          direction="row"
-          spacing="16px"
-          sx={{ overflow: 'visible', position: 'relative' }}
-        >
-          {defiList.map(function (each) {
-            return (
-              <Box
-                key={each.title}
-                sx={{
-                  pl: { xs: '16px', sm: '48px' },
-                  py: { xs: '12px', sm: '48px' },
-                  minWidth: { xs: '300px', sm: '608px' },
-                  width: { xs: '300px', sm: '608px' },
-                  heigth: '252px',
-                  backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background${
-                    isMob ? 'Mob' : ''
-                  }.png)`,
-                  backgroundSize: { xs: '300px 168px', sm: 'cover' },
-                  borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
-                  boxSizing: 'border-box',
-                  transform: `translateX(${-position * translateMultiple}px)`,
-                }}
-              >
-                <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'} fontWeight={600}>
-                  {each.title}
-                </Typography>
-                {/* 여기는 -0.023em... */}
-                <Typography
+        <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }}>
+          <Stack
+            ref={ref}
+            direction="row"
+            spacing="16px"
+            sx={{ overflow: 'visible', position: 'relative' }}
+          >
+            {defiList.map(function (each) {
+              return (
+                <Box
+                  key={each.title}
                   sx={{
-                    fontWeight: { xs: 300, sm: 300 },
-                    color: '#EEEEEE',
-                    mt: { xs: '8px', sm: '16px' },
-                    mb: { xs: '16px', sm: '42px' },
-                    fontSize: { xs: '14px', sm: '18px' },
-                    lineHeight: { xs: '20px', sm: '28px' },
-                    letterSpacing: { xs: '-0.023em !important', sm: '-0.02em;' },
+                    pl: { xs: '16px', sm: '48px' },
+                    py: { xs: '12px', sm: '48px' },
+                    minWidth: { xs: '300px', sm: '656px' },
+                    width: { xs: '300px', sm: '656px' },
+                    heigth: '252px',
+                    backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background${
+                      isMob ? 'Mob' : ''
+                    }.png)`,
+                    backgroundSize: { xs: '300px 168px', sm: 'cover' },
+                    borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
+                    boxSizing: 'border-box',
                   }}
                 >
-                  {each.contents}
-                </Typography>
-                <RoundOutlinedButton
-                  text={each.buttonLabel}
-                  px={{ xs: '24px', sm: '56px' }}
-                  py={{ xs: '7px', sm: '20px' }}
-                  color={each.title === 'Martian' ? gray : '#FFFFFF'}
-                />
-              </Box>
-            );
-          })}
-        </Stack>
+                  <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'} fontWeight={600}>
+                    {each.title}
+                  </Typography>
+                  {/* 여기는 -0.023em... */}
+                  <Typography
+                    sx={{
+                      fontWeight: { xs: 300, sm: 300 },
+                      color: '#EEEEEE',
+                      mt: { xs: '8px', sm: '16px' },
+                      mb: { xs: '16px', sm: '42px' },
+                      fontSize: { xs: '14px', sm: '18px' },
+                      lineHeight: { xs: '20px', sm: '28px' },
+                      letterSpacing: { xs: '-0.023em !important', sm: '-0.02em;' },
+                    }}
+                  >
+                    {each.contents}
+                  </Typography>
+                  <RoundOutlinedButton
+                    text={each.buttonLabel}
+                    px={{ xs: '24px', sm: '56px' }}
+                    py={{ xs: '7px', sm: '20px' }}
+                    color={each.title === 'Martian' ? gray : '#FFFFFF'}
+                  />
+                </Box>
+              );
+            })}
+          </Stack>
+        </Draggable>
       </Container>
     </Container>
   );

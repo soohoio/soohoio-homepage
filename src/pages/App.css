@@ -70,3 +70,8 @@ textarea {
   margin: 0 0px;
   width: 10px !important;
 }
+
+/* 가로 스크롤바 삭제 */
+div::-webkit-scrollbar {
+  display: none;
+}
