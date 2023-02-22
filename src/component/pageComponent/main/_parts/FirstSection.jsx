@@ -46,7 +46,7 @@ export default function FirstSection() {
             />
           </Link>
         </Grid>
-        <Grid item xs={12} sm={6} sx={{ mt: { sm: '-135px' } }}>
+        <Grid item xs={12} sm={6} sx={{ mt: { sm: '-100px', lg: '-135px' } }}>
           <CardMedia
             image={`/image/pageImage/home/soohoMain.png`}
             sx={{
