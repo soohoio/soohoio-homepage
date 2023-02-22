@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Box, Typography, Grid, Drawer } from '@mui/material';
 import Link from 'next/link';
-import { black, primary } from '../style/StyleTheme';
+import { black, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
 
@@ -28,7 +28,8 @@ export default function MobDrawler({ open, onClose }) {
 
   return (
     <Drawer
-      anchor="right"
+      className="fadeInLeft"
+      anchor="left"
       open={open}
       onClose={onClose}
       PaperProps={{ sx: { width: '100vw', top: navBarHeight, backgroundColor: black } }}
@@ -36,7 +37,7 @@ export default function MobDrawler({ open, onClose }) {
       // 백드롭 효과
       BackdropProps={{ invisible: true }}
     >
-      <Box sx={{ px: '24px', py: '56px' }}>
+      <Box sx={{ px: { xs: paddingHorMob, sm: paddingHorPC }, py: '56px' }}>
         {pageList.map((page, index) => (
           <Box key={page.label} sx={{ mb: { xs: '24px', sm: '32px' } }}>
             <Link
