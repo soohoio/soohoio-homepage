@@ -107,6 +107,7 @@ export default function Defi() {
                   sx={{
                     pl: { xs: '16px', sm: '48px' },
                     py: { xs: '12px', sm: '48px' },
+                    pb: { xs: '16px', sm: '48px' },
                     minWidth: { xs: '300px', sm: '656px' },
                     width: { xs: '300px', sm: '656px' },
                     heigth: '252px',
@@ -137,8 +138,11 @@ export default function Defi() {
                   </Typography>
                   <RoundOutlinedButton
                     text={each.buttonLabel}
-                    px={{ xs: '24px', sm: '56px' }}
-                    py={{ xs: '7px', sm: '20px' }}
+                    // coming soon 전
+                    // px={{ xs: '24px', sm: '56px' }}
+                    px={{ xs: '11px', sm: '10px' }}
+                    py={{ xs: '7px', sm: '18px' }}
+                    sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
                     color={gray}
                   />
                 </Box>
