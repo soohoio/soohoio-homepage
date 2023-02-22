@@ -20,10 +20,10 @@ jobs:
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
       - name: Install dependencies # Dependency 설치
-        run: npm i
+        run: npm install
 
       - name: Build react source # React 소스 빌드
-        run: npm build
+        run: npm run build
 
       - name: Configure AWS credentials # AWS 인증 정보 설정
         uses: aws-actions/configure-aws-credentials@v1
