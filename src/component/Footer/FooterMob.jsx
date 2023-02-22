@@ -24,10 +24,10 @@ export default function FooterMob() {
             <Box>
               <CardMedia
                 image={`/grayLogo.png`}
-                sx={{ width: '120px', height: '122.7px', mb: '42px' }}
+                sx={{ width: '120px', height: '122.7px', mb: '33px' }}
               />
               <Typography
-                className={isMob ? 'pcBody18KR' : 'pcBody18KR'}
+                className={isMob ? 'pcBody14KR' : 'pcBody18KR'}
                 component="div"
                 color={gray}
               >
@@ -77,11 +77,11 @@ export default function FooterMob() {
               />
             </Box>
           </Grid>
-          <Typography className={isMob ? 'pcBody18KR' : 'pcBody18KR'} component="div" color={gray}>
+          <Typography className={isMob ? 'pcBody14KR' : 'pcBody18KR'} component="div" color={gray}>
             <Box sx={{ my: '16px' }}>
-              {`070-4121-8936\ncontact@sooho.io\nB1, 126, Teheran-ro, Gangnam-gu, Seoul, Republic of Korea`}
+              {`070-4121-8936\ncontact@sooho.io\nB1, 126, Teheran-ro, Gangnam-gu,\nSeoul, Republic of Korea`}
             </Box>
-            <Box sx={{ fontSize: '14px !important' }}>
+            <Box sx={{ fontSize: '12px !important' }}>
               Ⓒ2023. SOOHO.IO Inc. All Rights Reserved.
             </Box>
           </Typography>
