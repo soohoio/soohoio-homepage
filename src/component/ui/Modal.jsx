@@ -1,10 +1,10 @@
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { RoundContainedButton } from './Button';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useContext } from 'react';
+import { borderRadiusMob, borderRadiusPc } from '../style/StyleTheme';
 
 export function ConfirmModal({ modalSwitch, setModalSwitch, contents }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -21,7 +21,7 @@ export function ConfirmModal({ modalSwitch, setModalSwitch, contents }) {
             left: '50%',
             transform: 'translate(-50%, -50%)',
             bgcolor: '#F8F8F8',
-            borderRadius: '8px',
+            borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
             py: { xs: '22px', sm: '40px' },
             outline: 'none',
           }}

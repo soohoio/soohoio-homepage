@@ -54,18 +54,24 @@ export default function Mission() {
       >
         Mission
       </Typography>
+      {/* lineHeight 24 */}
       <Typography
-        className={isMob ? 'mobTitle19KR' : 'pcTitle48KR'}
+        className={isMob ? '' : 'pcTitle48KR'}
         color={black}
         align="center"
         fontWeight={600}
-        sx={{ mt: { xs: '8px', sm: '28px' }, mb: { xs: '8px', sm: '24px' } }}
+        sx={{
+          mt: { xs: '8px', sm: '28px' },
+          mb: { xs: '8px', sm: '24px' },
+          fontSize: { xs: '19px' },
+          lineHeight: { xs: '24px !important' },
+        }}
       >
         {isMob
           ? `더 많은 금융 기회를 연결하고\n수호합니다.`
           : '더 많은 금융 기회를 연결하고 수호합니다.'}
       </Typography>
-      <Box sx={{ px: { sm: '10vh', lg: '0px' } }}>
+      <Box sx={{ px: { sm: '22vw', lg: '0px' }, mt: { xs: '24px', sm: '0px' } }}>
         <Slider {...settings} beforeChange={(current, next) => setCarouselIndex(next)}>
           {carouselList.map(function (each) {
             return (

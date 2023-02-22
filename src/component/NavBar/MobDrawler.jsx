@@ -22,7 +22,7 @@ export default function MobDrawler({ open, onClose }) {
     { label: '뉴스', link: currentPage },
     { label: '팀 소개', link: currentPage },
     { label: '채용', link: currentPage },
-    { label: '블로그', link: '/blog' },
+    { label: '블로그', link: 'https://blog.sooho.io' },
     { label: '문의하기', link: '/contact' },
   ];
 
@@ -39,7 +39,11 @@ export default function MobDrawler({ open, onClose }) {
       <Box sx={{ px: '24px', py: '56px' }}>
         {pageList.map((page, index) => (
           <Box key={page.label} sx={{ mb: { xs: '24px', sm: '32px' } }}>
-            <Link href={page.link} onClick={onClose}>
+            <Link
+              href={page.link}
+              onClick={onClose}
+              target={page.label === '블로그' ? '_blank' : undefined}
+            >
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
                 color={currentPage === page.link ? 'primary' : '#FFFFFF'}

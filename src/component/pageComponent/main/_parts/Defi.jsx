@@ -3,7 +3,12 @@ import { Box, Container, Stack, Typography } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { gray } from '@/component/style/StyleTheme';
-import { paddingHorMob, paddingHorPC } from '../../../style/StyleTheme';
+import {
+  paddingHorMob,
+  paddingHorPC,
+  borderRadiusMob,
+  borderRadiusPc,
+} from '../../../style/StyleTheme';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -67,10 +72,16 @@ export default function Defi() {
         pt: { xs: '42px', sm: '152px' },
         pb: { xs: '42px', sm: '184px' },
         backgroundColor: '#131313',
+        overflow: 'auto',
       }}
     >
       <Container
-        sx={{ backgroundColor: '#131313', pl: { xs: paddingHorMob }, px: { sm: paddingHorPC } }}
+        sx={{
+          backgroundColor: '#131313',
+          pl: { xs: paddingHorMob },
+          px: { sm: paddingHorPC },
+          overflow: 'visible !important',
+        }}
       >
         <Typography
           className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
@@ -86,7 +97,7 @@ export default function Defi() {
           ref={ref}
           direction="row"
           spacing="16px"
-          sx={{ overflow: 'hidden', position: 'relative' }}
+          sx={{ overflow: 'visible', position: 'relative' }}
         >
           {defiList.map(function (each) {
             return (
@@ -102,7 +113,7 @@ export default function Defi() {
                     isMob ? 'Mob' : ''
                   }.png)`,
                   backgroundSize: { xs: '300px 168px', sm: 'cover' },
-                  borderRadius: '16px',
+                  borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
                   boxSizing: 'border-box',
                   transform: `translateX(${-position * translateMultiple}px)`,
                 }}

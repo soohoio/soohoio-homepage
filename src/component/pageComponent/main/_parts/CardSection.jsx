@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import { gray } from '@/component/style/StyleTheme';
+import { borderRadiusMob, borderRadiusPc, gray } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Grid, Typography } from '@mui/material';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
@@ -17,7 +17,7 @@ export default function CardSection() {
             <Box
               sx={{
                 backgroundColor: '#1C1C1C',
-                borderRadius: '16px',
+                borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
                 p: { xs: '24px', sm: '48px' },
                 boxSizing: 'border-box',
                 height: 1,
@@ -60,7 +60,7 @@ export default function CardSection() {
                 <Typography
                   className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
                   color={gray}
-                  sx={{ fontWeight: { xs: 300, sm: 400 }, mt: { xs: '8px', sm: '16px' } }}
+                  sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                 >
                   {isPc &&
                     `2018년 4월 국내 첫 블록체인 보안 감사 보고서 발행을\n시작으로 글로벌 디지털 자산을 보호해왔습니다.`}
@@ -84,7 +84,7 @@ export default function CardSection() {
             <Box
               sx={{
                 backgroundColor: '#1C1C1C',
-                borderRadius: '16px',
+                borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
                 p: { xs: '24px', sm: '48px' },
                 boxSizing: 'border-box',
                 height: 1,
@@ -129,7 +129,7 @@ export default function CardSection() {
                 <Typography
                   className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
                   color={gray}
-                  sx={{ fontWeight: { xs: 300, sm: 400 }, mt: { xs: '8px', sm: '16px' } }}
+                  sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                 >
                   {isPc &&
                     `위믹스와 협업하여 클레이튼 생태계의 DeFi 서비스\nKLEVA를 성공적으로 런칭하였습니다.`}

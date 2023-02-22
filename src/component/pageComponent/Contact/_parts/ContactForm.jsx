@@ -8,7 +8,11 @@ import {
   primary,
 } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { RoundContainedButton, RoundOutlinedButton } from '@/component/ui/Button';
+import {
+  MUIOutlinedButton,
+  RoundContainedButton,
+  RoundOutlinedButton,
+} from '@/component/ui/Button';
 import { CountryNumUnderline } from '@/component/ui/DropDown';
 import {
   Box,
@@ -58,24 +62,6 @@ export default function ContactForm() {
       img: 'etc',
     },
   ];
-  const formList = [
-    {
-      label: '성함',
-      placeHolder: '성함을 입력해 주세요.',
-      isRequired: true,
-      keyName: 'name',
-      helperText: '성함은 필수 사항입니다.',
-    },
-    {
-      label: '이메일',
-      placeHolder: '이메일을 입력해 주세요.',
-      isRequired: true,
-      keyName: 'email',
-      helperText: '이메일은 필수 사항입니다.',
-    },
-    { label: '연락처', placeHolder: '010-1234-5678', isRequired: false, keyName: 'phoneNumber' },
-    { label: '소속', placeHolder: '수호아이오 입니다.', isRequired: false, keyName: 'team' },
-  ];
 
   const [currentTypeIndex, setCurrentTypeIndex] = useState(0);
 
@@ -99,9 +85,30 @@ export default function ContactForm() {
   // 에러 체크
   const [errorCheck, setErrorCheck] = useState(false);
   const [fileLimitCheck, setFileLimitCheck] = useState(false);
+  const [emailFormError, setEmailFormError] = useState(false);
 
   // 전송 완료 모달
   const [confirmModalSwitch, setConfirmModalSwitch] = useState(false);
+
+  // 데이터 리스트
+  const formList = [
+    {
+      label: '성함',
+      placeHolder: '성함을 입력해 주세요.',
+      isRequired: true,
+      keyName: 'name',
+      helperText: '성함은 필수 사항입니다.',
+    },
+    {
+      label: '이메일',
+      placeHolder: '이메일을 입력해 주세요.',
+      isRequired: true,
+      keyName: 'email',
+      helperText: emailFormError ? '유효하지 않은 이메일 양식입니다.' : '이메일은 필수 사항입니다.',
+    },
+    { label: '연락처', placeHolder: '010-1234-5678', isRequired: false, keyName: 'phoneNumber' },
+    { label: '소속', placeHolder: '수호아이오 입니다.', isRequired: false, keyName: 'team' },
+  ];
 
   // 문의 메일 선택
   const selectType = ind => {
@@ -114,6 +121,7 @@ export default function ContactForm() {
   // 인풋 onChange
   const onChangeContactInput = e => {
     setErrorCheck(false);
+    setEmailFormError(false);
     const name = e.target.name;
     const value = name === 'isAgree' ? e.target.checked : e.target.value;
     setContactInput({
@@ -160,6 +168,9 @@ export default function ContactForm() {
     const base64File = newFile && (await getBase64(newFile));
     if (!contactInput.name || !contactInput.email || !contactInput.contents) {
       setErrorCheck(true);
+    } else if (!contactInput.email.includes('@') || !contactInput.email.includes('.')) {
+      setErrorCheck(true);
+      setEmailFormError(true);
     } else if (!contactInput.isAgree) {
       alert('개인정보 수집 및 이용에 동의해주세요!');
     } else {
@@ -216,8 +227,19 @@ export default function ContactForm() {
       {/* 문의 카테고리 선택 영역 */}
       <Container maxWidth={false} sx={{ backgroundColor: '#1C1C1C' }}>
         <BodyContainer backgroundColor="transparent">
-          <Grid container justifyContent="space-between" alignItems="center">
-            <Box sx={{ pt: { xs: '21px', sm: '47px' }, pb: { sm: '48px' } }}>
+          <Grid
+            container
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ position: 'relative' }}
+          >
+            <Box
+              sx={{
+                pt: { xs: '21px', sm: '47px' },
+                pb: { sm: '48px' },
+                width: { xs: 1, lg: 'auto' },
+              }}
+            >
               <Typography
                 className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
                 component="div"
@@ -248,13 +270,15 @@ export default function ContactForm() {
                           py={{ xs: '9px', sm: '16px' }}
                         />
                       ) : (
-                        <RoundOutlinedButton
+                        <MUIOutlinedButton
                           onClick={() => selectType(index)}
                           key={each.label}
                           text={each.label}
                           color="#FFFFFF"
-                          px={{ xs: '22px', sm: '38px' }}
-                          py={{ xs: '7px', sm: '14px' }}
+                          sx={{
+                            px: { xs: '22px', sm: '38px' },
+                            py: { xs: '7px', sm: '14px' },
+                          }}
                         />
                       )}
                     </Box>
@@ -263,9 +287,9 @@ export default function ContactForm() {
               </Stack>
 
               <Typography
-                className={isMob ? 'mobBody12KR' : 'pcBody20KR'}
+                className={isMob ? 'mobBody16KR' : 'pcBody20KR'}
                 color="primary"
-                fontWeight={{ xs: 300, sm: 400 }}
+                fontWeight={{ xs: 300, sm: 300 }}
                 sx={{ mt: { xs: '21px', sm: '28px' } }}
               >
                 {contactTypeList[currentTypeIndex].contents}
@@ -275,7 +299,7 @@ export default function ContactForm() {
                 container
                 justifyContent="flex-end"
                 alignItems="center"
-                sx={{ mt: { xs: '-10px', sm: '0px' } }}
+                sx={{ mt: { xs: '-10px', sm: '0px' }, width: 1 }}
               >
                 <CardMedia
                   key={currentTypeIndex}
@@ -308,6 +332,9 @@ export default function ContactForm() {
                 aspectRatio: '546/336',
                 objectFit: 'cover',
                 display: { xs: 'none', lg: 'block' },
+                position: 'absolute',
+                right: 0,
+                bottom: 0,
               }}
             />
           </Grid>
@@ -324,11 +351,26 @@ export default function ContactForm() {
                 <Stack
                   key={each.label}
                   direction="row"
-                  alignItems="center"
+                  alignItems={
+                    (each.label === '이메일' && emailFormError) ||
+                    (errorCheck && contactInput[each.keyName] === '' && each.helperText)
+                      ? 'flex-start'
+                      : 'center'
+                  }
                   sx={{ mb: { xs: '27px', sm: '43px' } }}
                 >
                   <Box sx={{ width: { xs: '80px', sm: '130px', lg: '140px' } }}>
-                    <Typography className={isMob ? 'mobBody14KR' : 'pcBody24KR'} component="div">
+                    <Typography
+                      className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+                      component="div"
+                      sx={[
+                        (each.label === '이메일' && emailFormError) ||
+                        (errorCheck && contactInput[each.keyName] === '' && each.helperText)
+                          ? { pt: { sm: '7px' } }
+                          : {},
+                        {},
+                      ]}
+                    >
                       {each.label}
                       {each.isRequired && (
                         <Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
@@ -355,9 +397,15 @@ export default function ContactForm() {
                       value={contactInput[each.keyName]}
                       onChange={onChangeContactInput}
                       placeholder={each.placeHolder}
-                      error={errorCheck && each.helperText && contactInput[each.keyName] === ''}
+                      error={
+                        (each.label === '이메일' && emailFormError) ||
+                        (errorCheck && each.helperText && contactInput[each.keyName] === '')
+                      }
                       helperText={
-                        errorCheck && contactInput[each.keyName] === '' && each.helperText
+                        (each.label === '이메일' && emailFormError) ||
+                        (errorCheck && contactInput[each.keyName] === '')
+                          ? each.helperText
+                          : ''
                       }
                       sx={{
                         '& .MuiInput-underline:before': { borderBottomColor: gray },
@@ -440,7 +488,7 @@ export default function ContactForm() {
                     },
                     '& .MuiInputBase-input': {
                       fontSize: { xs: '14px', sm: '20px' },
-                      fontWeight: { xs: 300, sm: 400 },
+                      fontWeight: { xs: 300, sm: 300 },
                       lineHeight: { xs: '20px', sm: '28px' },
                     },
                     mb: { xs: '0px', sm: '9px' },
@@ -491,7 +539,7 @@ export default function ContactForm() {
                     },
                     '& .MuiInputBase-input': {
                       fontSize: { xs: '14px', sm: '20px' },
-                      fontWeight: { xs: 300, sm: 400 },
+                      fontWeight: { xs: 300, sm: 300 },
                       lineHeight: { xs: '20px', sm: '28px' },
                     },
                     mb: { xs: '12px', sm: '9px' },
@@ -507,6 +555,10 @@ export default function ContactForm() {
                   sx={{
                     color: '#FFFFFF',
                     p: 0,
+                    '& .MuiSvgIcon-root': {
+                      fontSize: '22px',
+                      color: props => (props.checked ? '#FFFFFF' : '#FFFFFF'),
+                    },
                   }}
                 />
                 <Typography
@@ -524,6 +576,17 @@ export default function ContactForm() {
                 </Typography>
                 <Tooltip
                   placement={isPc ? 'left-start' : 'bottom-end'}
+                  // 여백
+                  PopperProps={{
+                    modifiers: [
+                      {
+                        name: 'offset',
+                        options: {
+                          offset: [50, 0],
+                        },
+                      },
+                    ],
+                  }}
                   arrow
                   enterTouchDelay={0}
                   leaveTouchDelay={isMob ? 3000 : 1500}
@@ -620,40 +683,55 @@ export default function ContactForm() {
               accept=".zip, .jpg, .jpeg, .png, .pdf"
             />
 
-            <Stack
-              direction="row"
-              alignItems="center"
-              // cardMedia 너비가 다른
-              spacing={{ xs: '9px', sm: '16px' }}
-              sx={{ mt: '24px', pl: { xs: '1.5px', sm: '2px' } }}
-            >
-              <Tooltip
-                arrow
-                enterTouchDelay={0}
-                title={
-                  <Typography
-                    className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                    sx={{ fontWeight: 300 }}
-                  >
-                    {`∙ 첨부 파일 최대 용량은 2mb 입니다.\n∙ 파일은 최대 1개 업로드 가능합니다.\n∙ 업로드 가능 파일 형태 zip, jpg, png, pdf`}
-                  </Typography>
-                }
-                placement={isPc ? 'left-start' : 'right-start'}
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      paddingLeft: { xs: '12px', sm: '20px' },
-                      paddingRight: { xs: '24px', sm: '40px' },
-                      paddingY: { xs: '12px', sm: '24px' },
-                      maxWidth: 1000,
-                      // 툹팁 배경색
-                      bgcolor: gray,
-                      '& .MuiTooltip-arrow': {
-                        // 툴팁 글자 색상
-                        color: '#FFFFFFF',
-                      },
+            <Tooltip
+              arrow
+              enterTouchDelay={0}
+              title={
+                <Typography
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  sx={{ fontWeight: 300 }}
+                >
+                  {`∙ 첨부 파일 최대 용량은 2mb 입니다.\n∙ 파일은 최대 1개 업로드 가능합니다.\n∙ 업로드 가능 파일 형태 zip, jpg, png, pdf`}
+                </Typography>
+              }
+              // 여백
+              PopperProps={{
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [isMob ? 50 : 0, 0],
                     },
                   },
+                ],
+              }}
+              placement={isMob ? 'bottom' : 'right-start'}
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    paddingLeft: { xs: '12px', sm: '20px' },
+                    paddingRight: { xs: '24px', sm: '40px' },
+                    paddingY: { xs: '12px', sm: '24px' },
+                    maxWidth: 1000,
+                    // 툹팁 배경색
+                    bgcolor: gray,
+                    '& .MuiTooltip-arrow': {
+                      // 툴팁 글자 색상
+                      color: '#FFFFFFF',
+                    },
+                  },
+                },
+              }}
+            >
+              <Stack
+                direction="row"
+                alignItems="center"
+                // cardMedia 너비가 다른
+                spacing={{ xs: '9px', sm: '16px' }}
+                sx={{
+                  mt: '24px',
+                  pl: { xs: '1.5px', sm: '2px' },
+                  maxWidth: { xs: '105px', sm: '155px' },
                 }}
               >
                 <CardMedia
@@ -666,15 +744,15 @@ export default function ContactForm() {
                     cursor: 'pointer',
                   }}
                 />
-              </Tooltip>
-              <Typography
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                color={gray_light}
-                sx={{ fontWeight: 300 }}
-              >
-                파일 업로드 안내
-              </Typography>
-            </Stack>
+                <Typography
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  color={gray_light}
+                  sx={{ fontWeight: 300 }}
+                >
+                  파일 업로드 안내
+                </Typography>
+              </Stack>
+            </Tooltip>
             {/* 파일 업로드 에러 메시지 */}
             {fileLimitCheck && (
               <Stack

@@ -13,6 +13,7 @@ import {
 import { paddingHorMob, paddingHorPC } from '../style/StyleTheme';
 import Link from 'next/link';
 import MobDrawler from './MobDrawler';
+import { MUIOutlinedButton } from '../ui/Button';
 
 function NavBar(props) {
   const navBarHeight = '96px';
@@ -22,7 +23,7 @@ function NavBar(props) {
     // { label: '뉴스', link: '/news' },
     // { label: '팀 소개', link: '/team' },
     // { label: '채용', link: '/recruit' },
-    { label: '블로그', link: '/blog' },
+    { label: '블로그', link: 'https://blog.sooho.io' },
   ];
 
   const [currentPage, setCurrentPage] = useState('');
@@ -121,14 +122,18 @@ function NavBar(props) {
 
               <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
                 {pageList.map((page, index) => (
-                  <Link key={page.label} href={page.link}>
+                  <Link
+                    key={page.label}
+                    href={page.link}
+                    target={page.label === '블로그' ? '_blank' : undefined}
+                  >
                     <Typography
                       className="buttonHover"
                       onClick={num => {
                         menuClick(index);
                       }}
                       color={currentPage === page.label ? 'primary' : '#FFFFFF'}
-                      fontWeight={currentPage === page.label ? 600 : 400}
+                      fontWeight={currentPage === page.label ? 600 : 300}
                       sx={{
                         mr: { xs: '15px', lg: '24px' },
                         fontSize: { lg: '15px', xl: '18px' },
@@ -140,20 +145,20 @@ function NavBar(props) {
                 ))}
               </Box>
               <Link href="/contact">
-                <Button
-                  variant="outlined"
-                  onClick={() => {}}
+                <MUIOutlinedButton
+                  text="문의하기"
+                  noClass={true}
                   sx={{
                     display: { xs: 'none', lg: 'block' },
                     borderRadius: '16px',
-                    width: '88px',
-                    py: '2px',
-                    fontWeight: 300,
+                    width: '100px',
+                    px: '20px !important',
+                    py: '2px !important',
+                    fontWeight: '300 !important',
+                    fontSize: 14,
                     ml: '18px',
                   }}
-                >
-                  문의하기
-                </Button>
+                />
               </Link>
 
               <CardMedia

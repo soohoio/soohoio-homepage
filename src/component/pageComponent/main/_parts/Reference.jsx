@@ -165,8 +165,7 @@ export default function Reference() {
         align="center"
         fontWeight={600}
       >
-        {inView && <CountUp end={100} start={35} duration={1} />}
-        &nbsp;억원 +
+        {inView && <CountUp end={100} start={35} duration={1} />}억 원+
       </Typography>
 
       <Typography

@@ -1,6 +1,6 @@
-import { gray } from '@/component/style/StyleTheme';
+import { gray, borderRadiusMob, borderRadiusPc } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
+import { MUIOutlinedButton } from '@/component/ui/Button';
 import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
@@ -87,13 +87,14 @@ export default function Package() {
                   key={each.title}
                   animationName="fadeInSlow"
                   delay={!isMob && index * 200}
+                  sx={{ width: { xs: 1, sm: '426px' } }}
                 >
                   <Box
                     sx={{
                       width: { xs: 1, sm: '426px' },
                       minWidth: '312px',
                       height: { xs: '100px', sm: '150px' },
-                      borderRadius: '16px',
+                      borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
                       backgroundColor: '#1C1C1C',
                       display: 'inline-block',
                     }}

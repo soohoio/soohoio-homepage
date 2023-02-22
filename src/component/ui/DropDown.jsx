@@ -30,6 +30,14 @@ export function CountryNumUnderline({ value, onChange }) {
           },
         }}
         MenuProps={{
+          // 메뉴 아래 왼쪽으로 정렬
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'left',
+          },
+          transformOrigin: {
+            horizontal: 'left',
+          },
           // 메뉴 패딩 삭제
           MenuListProps: { disablePadding: true },
           style: {
@@ -46,7 +54,6 @@ export function CountryNumUnderline({ value, onChange }) {
               '& .MuiMenuItem-root:hover': {
                 backgroundColor: primary,
                 color: black_dark,
-                opacity: 0.7,
               },
             },
           },
