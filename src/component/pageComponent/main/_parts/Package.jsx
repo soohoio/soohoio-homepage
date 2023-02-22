@@ -40,6 +40,7 @@ export default function Package() {
             className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
             color="primary"
             align="center"
+            fontWeight={600}
           >
             기업 고객을 위한 패키지 솔루션
           </Typography>
