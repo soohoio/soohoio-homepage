@@ -1,17 +1,22 @@
 # sooho.io 홈페이지
 
 Package Manager는 npm을 사용합니다
+Nextjs와 Material UI를 통해 개발되었습니다
 
 ### 개발 환경 시작
 
+```bash
 $> npm install
 $> npm dev
+```
 
 http://localhost:3000에서 확인합니다
 
 ### 정적 파일 빌드
 
+```bash
 $> npm run build
+```
 
 out 폴더 내의 파일들을 업로드합니다
 emailJS의 API 정보가 바뀐 경우 .env 파일을 수정 후 배포합니다
