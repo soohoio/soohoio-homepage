@@ -137,7 +137,7 @@ export default function Package() {
             <RoundOutlinedButton
               text="Comming soon"
               px={{ xs: '24px', sm: '85px' }}
-              py={{ xs: '7px', sm: '16px' }}
+              py={{ xs: '11px', sm: '16px' }}
               color={gray}
               sx={{
                 height: { sm: '30px' },
