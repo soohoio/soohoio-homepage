@@ -71,7 +71,7 @@ export default function Mission() {
           ? `더 많은 금융 기회를 연결하고\n수호합니다.`
           : '더 많은 금융 기회를 연결하고 수호합니다.'}
       </Typography>
-      <Box sx={{ px: { sm: '19vw', lg: '0px' }, mt: { xs: '24px', sm: '36px', lg: '48px' } }}>
+      <Box sx={{ px: { sm: '21vw', lg: '0px' }, mt: { xs: '24px', sm: '36px', lg: '48px' } }}>
         <Slider {...settings} beforeChange={(current, next) => setCarouselIndex(next)}>
           {carouselList.map(function (each) {
             return (
