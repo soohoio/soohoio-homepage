@@ -19,8 +19,8 @@ export default function Defi() {
 
   // const maximum = (100 * window.innerWidth) / 100 - theme.spacing(37.5);
   const leftLimit = isPc ? -676 : screenSize;
-  const contentsSize = isMob ? 300 : 656;
-  const padding = isMob ? 24 : 90;
+  const contentsSize = isMob ? 300 * 3 : 656 * 3;
+  const padding = isMob ? 40 : 70;
 
   const defiList = [
     {
@@ -52,9 +52,9 @@ export default function Defi() {
   const ref = useRef(null);
 
   useEffect(() => {
-    setScreenSize(window.innerWidth - 2 * contentsSize - 2 * padding);
-    console.log(window.innerWidth - 2 * contentsSize - 2 * padding);
-  }, []);
+    setScreenSize(window.innerWidth - contentsSize - 2 * padding);
+    console.log(window.innerWidth - contentsSize - 2 * padding);
+  }, [isMob, isTablet, isPc]);
 
   return (
     <Container
