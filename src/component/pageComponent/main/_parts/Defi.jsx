@@ -28,7 +28,7 @@ export default function Defi() {
       contents: isMob
         ? `클레이튼 생태계 내부의\n다양한 투자 기회와 레버리지\n기능을 제공합니다.`
         : `클레이튼 생태계 내부의 다양한\n투자 기회와 레버리지 기능을\n제공합니다.`,
-      buttonLabel: '자세히 보기',
+      buttonLabel: 'Comming soon',
       img: '/',
     },
     {
@@ -36,7 +36,7 @@ export default function Defi() {
       contents: isMob
         ? `EVMOS와 같은 신생 체인의 높은\n스테이킹 이율을 레버리지하여\n투자 수익을 극대화합니다.`
         : `EVMOS와 같은 신생 체인의 높은\n스테이킹 이율을 레버리지하여\n투자 수익을 극대화합니다.`,
-      buttonLabel: '자세히 보기',
+      buttonLabel: 'Comming soon',
       img: '/',
     },
     {
@@ -130,7 +130,7 @@ export default function Defi() {
                     text={each.buttonLabel}
                     px={{ xs: '24px', sm: '56px' }}
                     py={{ xs: '7px', sm: '20px' }}
-                    color={each.title === 'Martian' ? gray : '#FFFFFF'}
+                    color={gray}
                   />
                 </Box>
               );

@@ -7,7 +7,7 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 export default function FooterPc() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const snsButtonList = [
-    { img: 'twitter', link: 'https://twitter.com/sooho_cafe' },
+    { img: 'twitter', link: 'https://twitter.com/soohoio' },
     // { img: 'facebook', link: '', },
     { img: 'linkedIn', link: 'https://www.linkedin.com/company/sooho' },
   ];

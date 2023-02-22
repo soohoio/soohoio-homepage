@@ -1,7 +1,7 @@
 import { gray, borderRadiusMob, borderRadiusPc } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { MUIOutlinedButton } from '@/component/ui/Button';
-import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
+import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
+import { Box, Button, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
@@ -129,9 +129,21 @@ export default function Package() {
           </Stack>
 
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <MUIOutlinedButton
+            {/* <MUIOutlinedButton
               text="패키지 자세히 보기"
               sx={{ width: { xs: 1, sm: 'auto' }, mt: { xs: '42px', sm: '88px' } }}
+            /> */}
+            <RoundOutlinedButton
+              text="Comming soon"
+              px={{ xs: '24px', sm: '108px' }}
+              py={{ xs: '7px', sm: '10px' }}
+              color={gray}
+              sx={{
+                height: { sm: '30px' },
+                mt: { xs: '42px', sm: '88px' },
+                width: { xs: 1, sm: 'auto' },
+                mt: { xs: '42px', sm: '88px' },
+              }}
             />
           </Box>
         </BodyContainer>
