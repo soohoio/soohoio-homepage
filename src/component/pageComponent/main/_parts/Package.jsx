@@ -93,7 +93,6 @@ export default function Package() {
                   <Box
                     sx={{
                       width: { xs: 1, sm: '426px' },
-                      minWidth: '312px',
                       height: { xs: '100px', sm: '150px' },
                       borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
                       backgroundColor: '#1C1C1C',
