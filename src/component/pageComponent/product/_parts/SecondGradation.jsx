@@ -22,8 +22,8 @@ export default function SecondGradation({ currentProduct }) {
       name: 'StayKing',
       title: `First Leveraged Staking\nProtocol on Evmos`,
       contents: isTablet
-        ? `Evmos와 같은 신생 체인의 높은 스테이킹 이율을 레버리지하여 투자 수익을 극대화합니다.`
-        : `Evmos와 같은 신생 체인의 높은 스테이킹 이율을\n레버리지하여 투자 수익을 극대화합니다.`,
+        ? `Evmos와 같이 스테이킹 이율이 높은 신생 체인에서 레버리지 투자 기회를 제공합니다.`
+        : `Evmos와 같이 스테이킹 이율이 높은 신생 체인에서 레버리지 투자 기회를 제공합니다.`,
       img: 'stayKing',
       logo: 'stayKingLogo',
     },
