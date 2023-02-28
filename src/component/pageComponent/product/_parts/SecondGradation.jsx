@@ -6,6 +6,7 @@ import ObserverAnimation from '@/component/ui/ObserverAnimation';
 
 export default function SecondGradation({ currentProduct }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+
   const productData = {
     KLEVA: {
       name: 'KLEVA',
