@@ -282,7 +282,7 @@ export default function ContactForm() {
                           onClick={() => selectType(index)}
                           key={each.label}
                           text={each.label}
-                          color={primary}
+                          color="#FFFFFF"
                           sx={{
                             px: { xs: '22px', sm: '38px' },
                             py: { xs: '7px', sm: '14px' },

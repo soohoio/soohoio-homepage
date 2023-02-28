@@ -101,7 +101,8 @@ export default function System() {
                 text="C2CC 더 알아보기"
                 onClick={openLink}
                 color={black}
-                sx={{ width: 1, display: { sm: 'none' } }}
+                hoverColor={black}
+                sx={{ width: 1, display: { sm: 'none' }, ':hover': { color: primary } }}
               />
             </Grid>
           </ObserverAnimation>
