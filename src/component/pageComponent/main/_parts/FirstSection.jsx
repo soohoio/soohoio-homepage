@@ -35,6 +35,7 @@ export default function FirstSection() {
           >
             {`금융 기회를 넓히고 싶은 모든 이들이\n장애물 없이 블록체인을 넘나들 수 있도록,\n수호는 믿을 수 있는 기업 파트너와 함께\n투명하고 안전한 인프라를 만듭니다.`}
           </Typography>
+          {/* 태블릿 & PC 버튼 */}
           <Link href="/contact">
             <MUIOutlinedButton
               text="수호 DeFi 문의하기"
@@ -59,6 +60,7 @@ export default function FirstSection() {
           />
         </Grid>
       </Grid>
+      {/* 모바일 버튼 버튼 */}
       <Link href="/contact">
         <MUIOutlinedButton
           text="수호 DeFi 문의하기"

@@ -32,3 +32,7 @@ export default function ObserverAnimation({ children, animationName, delay, sx, 
     </Box>
   );
 }
+
+ObserverAnimation.defaultProps = {
+  animationName: 'fadeInSlow',
+};

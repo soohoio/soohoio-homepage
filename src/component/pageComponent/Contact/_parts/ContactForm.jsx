@@ -28,15 +28,19 @@ import {
 import emailjs from '@emailjs/browser';
 import { ConfirmModal } from '@/component/ui/Modal';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { useRouter } from 'next/router';
 
 export default function ContactForm() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const router = useRouter();
 
   const contactTypeList = [
     {
       label: '기업 솔루션',
       contents: isMob
         ? `탈중앙 금융 생태계 구축&활성화를 위한\nAudit, Dapp, Bridge 서비스를 제공합니다.`
+        : isTablet
+        ? 'DeFi 생태계 구축 및 활성화를 위한\nBridge, Dapp, Audit 서비스에 대한 문의를 남겨주세요.'
         : 'DeFi 생태계 구축 및 활성화를 위한 Bridge, Dapp, Audit 서비스에 대한 문의를 남겨주세요.',
       img: 'solution',
     },
@@ -63,7 +67,9 @@ export default function ContactForm() {
     },
   ];
 
-  const [currentTypeIndex, setCurrentTypeIndex] = useState(0);
+  const [currentTypeIndex, setCurrentTypeIndex] = useState(
+    router.query.currentTypeIndex ? parseInt(router.query.currentTypeIndex, 10) : 0,
+  );
 
   // 초기값 및 인풋 state
   const defaultInput = {
@@ -90,7 +96,7 @@ export default function ContactForm() {
   // 전송 완료 모달
   const [confirmModalSwitch, setConfirmModalSwitch] = useState(false);
 
-  // 데이터 리스트
+  // 폼 목록
   const formList = [
     {
       label: '성함',
@@ -159,10 +165,12 @@ export default function ContactForm() {
     }
   };
 
+  // 파일 초기화
   const removeFile = () => {
     setNewFile(null);
   };
 
+  // 제출
   const submitForm = async () => {
     // 파일 base64 인코딩
     const base64File = newFile && (await getBase64(newFile));
@@ -211,7 +219,7 @@ export default function ContactForm() {
     }
   };
 
-  // base64로
+  // base64로 변환
   const getBase64 = async file => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -274,7 +282,7 @@ export default function ContactForm() {
                           onClick={() => selectType(index)}
                           key={each.label}
                           text={each.label}
-                          color="#FFFFFF"
+                          color={primary}
                           sx={{
                             px: { xs: '22px', sm: '38px' },
                             py: { xs: '7px', sm: '14px' },

@@ -1,6 +1,6 @@
-import { RoundOutlinedButton } from '@/component/ui/Button';
+import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
 import { Box, Container, Stack, Typography, useTheme } from '@mui/material';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { gray } from '@/component/style/StyleTheme';
 import {
@@ -10,14 +10,14 @@ import {
   borderRadiusPc,
 } from '../../../style/StyleTheme';
 import Draggable from 'react-draggable';
+import { useRouter } from 'next/router';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const [screenSize, setScreenSize] = useState(1440);
 
-  const theme = useTheme();
+  const router = useRouter();
 
-  // const maximum = (100 * window.innerWidth) / 100 - theme.spacing(37.5);
   const leftLimit = isPc ? -676 : screenSize;
   const contentsSize = isMob ? 300 * 3 : 656 * 3;
   const padding = isMob ? 40 : 70;
@@ -28,33 +28,46 @@ export default function Defi() {
       contents: isMob
         ? `클레이튼 생태계 내부의\n다양한 투자 기회와 레버리지\n기능을 제공합니다.`
         : `클레이튼 생태계 내부의 다양한\n투자 기회와 레버리지 기능을\n제공합니다.`,
-      buttonLabel: 'Comming soon',
+      buttonLabel: '자세히 보기',
       img: '/',
+      link: '/product',
     },
     {
       title: 'StayKing',
       contents: isMob
         ? `EVMOS와 같은 신생 체인의 높은\n스테이킹 이율을 레버리지하여\n투자 수익을 극대화합니다.`
         : `EVMOS와 같은 신생 체인의 높은\n스테이킹 이율을 레버리지하여\n투자 수익을 극대화합니다.`,
-      buttonLabel: 'Comming soon',
+      buttonLabel: '자세히 보기',
       img: '/',
+      link: '/product',
     },
     {
       title: 'Martian',
       contents: isMob
         ? `블록체인과 실물경제를 연결하여\nNFT 홀더 및 투자자들에게\n안정적인 수익을 분배합니다.`
         : `블록체인과 실물경제를 연결하여\nNFT 홀더 및 투자자들에게 안정적인\n수익을 분배합니다.`,
-      buttonLabel: 'Comming soon',
+      buttonLabel: 'Coming soon',
       img: '/',
+      link: '/',
     },
   ];
 
   const ref = useRef(null);
 
-  useEffect(() => {
+  const updateScreenSize = useCallback(() => {
     setScreenSize(window.innerWidth - contentsSize - 2 * padding);
-    console.log(window.innerWidth - contentsSize - 2 * padding);
-  }, [isMob, isTablet, isPc]);
+  }, [contentsSize, padding]);
+
+  // 스크린 사이즈에 따라 재적용
+  useEffect(() => {
+    updateScreenSize();
+    window.addEventListener('resize', updateScreenSize);
+    return () => window.removeEventListener('resize', updateScreenSize);
+  }, [updateScreenSize, contentsSize, padding]);
+
+  const goToPage = (link, title) => {
+    router.push({ pathname: link, query: { currentProduct: title } });
+  };
 
   return (
     <Container
@@ -93,7 +106,7 @@ export default function Defi() {
             `유저에게 새로운 투자 기회를 제공하는\n다양한 금융 서비스를 만들고 연결합니다.`}
         </Typography>
 
-        <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }}>
+        <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }} cancel="button">
           <Stack
             ref={ref}
             direction="row"
@@ -136,15 +149,34 @@ export default function Defi() {
                   >
                     {each.contents}
                   </Typography>
-                  <RoundOutlinedButton
-                    text={each.buttonLabel}
-                    // coming soon 전
-                    // px={{ xs: '24px', sm: '56px' }}
-                    px={{ xs: '11px', sm: '10px' }}
-                    py={{ xs: '7px', sm: '18px' }}
-                    sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
-                    color={gray}
-                  />
+                  {each.buttonLabel === 'Coming soon' ? (
+                    <RoundOutlinedButton
+                      text={each.buttonLabel}
+                      onClick={() => goToPage(each.link, each.title)}
+                      // coming soon 전
+                      // px={{ xs: '24px', sm: '56px' }}
+                      px={{ xs: '11px', sm: '10px' }}
+                      py={{ xs: '7px', sm: '18px' }}
+                      sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
+                      color={gray}
+                    />
+                  ) : (
+                    <MUIOutlinedButton
+                      noClass={true}
+                      text={each.buttonLabel}
+                      onClick={() => goToPage(each.link, each.title)}
+                      // coming soon 전
+                      sx={{
+                        width: { xs: '102px', sm: '202px' },
+                        boxSizing: 'border-box',
+                        px: { xs: '10px', sm: '10px' },
+                        py: { xs: '5px', sm: '15px' },
+                        fontSize: { xs: '12px', sm: '20px' },
+                      }}
+                      color="#FFFFFF"
+                      hoverColor="#FFFFFF"
+                    />
+                  )}
                 </Box>
               );
             })}

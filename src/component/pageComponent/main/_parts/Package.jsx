@@ -1,41 +1,29 @@
 import { gray, borderRadiusMob, borderRadiusPc } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
-import { Box, Button, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
+import { MUIOutlinedButton } from '@/component/ui/Button';
+import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useRouter } from 'next/router';
 
 export default function Package() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const router = useRouter();
 
   const packageList = [
     { title: 'Bridge', contents: `기업 고객의\n생태계 확장성 확보`, img: 'bridge' },
     { title: 'Dapp', contents: `생태계 맞춤형\nDeFi 서비스`, img: 'dapp' },
     { title: 'Audit', contents: `안전한 생태계를 위한\n필수 보안 감사`, img: 'audit' },
   ];
+
+  const goToPackage = () => {
+    router.push('/solution');
+  };
   return (
-    <Container maxWidth={false} sx={{ backgroundColor: '#131313' }}>
-      <Container
-        maxWidth={false}
-        sx={{
-          backgroundImage: {
-            xs: 'radial-gradient(50.6% 41.92% at 50% 41.02%, rgba(19, 19, 19, 0) 0%, rgba(0, 0, 0, 0.42) 80.77%), url(/image/pageImage/home/packageBackgroundMob.png);',
-            sm: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/pageImage/home/packageBackgroundTablet.png)',
-            lg: 'radial-gradient(circle, rgba(0,0,0,0), rgba(0,0,0,0.7)), url(/image/pageImage/home/packageBackgroundPc.png)',
-          },
-          backgroundSize: { xs: 'cover', sm: 'cover' },
-          backgroundPositionX: 'center',
-          backgroundPositionY: 'top',
-        }}
-      >
-        <BodyContainer
-          ptPc="88px"
-          pbPc="94px"
-          backgroundColor="transparent"
-          ptMob="42px"
-          pbMob="42px"
-        >
+    <Container maxWidth="false" sx={{ pt: { xs: '42px', sm: '88px' }, backgroundColor: '#131313' }}>
+      <BodyContainer>
+        <ObserverAnimation>
           <Typography
             className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
             color="primary"
@@ -56,11 +44,27 @@ export default function Package() {
               `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
           </Typography>
 
-          {/* 빈 박스 */}
-          <Box
-            sx={{ width: 1, height: { xs: '225px', sm: '500px', lg: '500px' }, my: { lg: '20px' } }}
-          />
+          {/* 패키지 에셋 */}
+          <Grid
+            container
+            justifyContent="center"
+            sx={{ mt: { xs: '15px', sm: '32px' }, mb: { xs: '18px', sm: '24px' } }}
+          >
+            <CardMedia
+              image={`/image/pageImage/home/packageAsset.png`}
+              sx={{
+                width: 1,
+                maxWidth: { xs: '360px', sm: '644px' },
+                aspectRatio: { xs: '360/190', sm: '644/349' },
+              }}
+            />
+          </Grid>
+        </ObserverAnimation>
+      </BodyContainer>
 
+      {/* Container 백그라운드 */}
+      <Container sx={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)' }}>
+        <BodyContainer pbPc="94px" pbMob="42px" backgroundColor="transparent">
           <Typography
             className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
             align="center"
@@ -128,24 +132,13 @@ export default function Package() {
             })}
           </Stack>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            {/* <MUIOutlinedButton
+          <Grid container justifyContent="center">
+            <MUIOutlinedButton
+              onClick={goToPackage}
               text="패키지 자세히 보기"
               sx={{ width: { xs: 1, sm: 'auto' }, mt: { xs: '42px', sm: '88px' } }}
-            /> */}
-            <RoundOutlinedButton
-              text="Comming soon"
-              px={{ xs: '24px', sm: '85px' }}
-              py={{ xs: '11px', sm: '16px' }}
-              color={gray}
-              sx={{
-                height: { sm: '30px' },
-                mt: { xs: '42px', sm: '88px' },
-                width: { xs: 1, sm: 'auto' },
-                mt: { xs: '42px', sm: '88px' },
-              }}
             />
-          </Box>
+          </Grid>
         </BodyContainer>
       </Container>
     </Container>

@@ -5,7 +5,6 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Button,
   Container,
   Grid,
   CardMedia,
@@ -18,9 +17,9 @@ import { MUIOutlinedButton } from '../ui/Button';
 function NavBar(props) {
   const navBarHeight = '96px';
   const pageList = [
-    // { label: '기업 솔루션', link: '/solution' },
-    // { label: '프로덕트', link: '/product' },
-    // { label: '뉴스', link: '/news' },
+    { label: '기업 솔루션', link: '/solution' },
+    { label: '프로덕트', link: '/product' },
+    { label: '뉴스', link: '/news' },
     // { label: '팀 소개', link: '/team' },
     // { label: '채용', link: '/recruit' },
     { label: '블로그', link: 'https://blog.sooho.io' },
@@ -94,14 +93,15 @@ function NavBar(props) {
                 </Box>
 
                 {/* 모바일 우측 글로벌 메뉴 */}
-                <IconButton onClick={() => {}} color="primary" sx={{ p: 0 }}>
+                {/* <IconButton onClick={() => {}} color="primary" sx={{ p: 0 }}>
                   <CardMedia
                     component="img"
                     image="/image/icon/globalGray.png"
                     alt="global"
                     sx={{ width: '24px', cursor: 'pointer', display: { xs: 'flex', lg: 'none' } }}
                   />
-                </IconButton>
+                </IconButton> */}
+                <Box />
               </Grid>
 
               {/* PC 부분 */}
@@ -160,11 +160,12 @@ function NavBar(props) {
                     fontWeight: '300 !important',
                     fontSize: 14,
                     ml: '18px',
+                    // borderWidth: '1px !important',
                   }}
                 />
               </Link>
 
-              <CardMedia
+              {/* <CardMedia
                 className="buttonHover"
                 onClick={() => {
                   menuClick(0);
@@ -177,7 +178,7 @@ function NavBar(props) {
                   display: { xs: 'none', lg: 'flex' },
                   ml: '12px',
                 }}
-              />
+              /> */}
             </Toolbar>
           </Container>
         </AppBar>

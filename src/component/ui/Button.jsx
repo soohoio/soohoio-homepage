@@ -91,11 +91,12 @@ RoundContainedButton.defaultProps = {
 };
 
 /** MUI outlined 버튼  */
-export function MUIOutlinedButton({ onClick, text, borderColor, noClass, sx }) {
+export function MUIOutlinedButton({ onClick, text, color, hoverColor, noClass, sx }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const noneClass = noClass ? 'XXX' : '';
   return (
     <Button
+      // 폰트 사이즈 변경 시
       className={isMob ? `mobBody14KR${noneClass}` : `pcPoint20KR${noneClass}`}
       onClick={onClick}
       variant="outlined"
@@ -104,11 +105,13 @@ export function MUIOutlinedButton({ onClick, text, borderColor, noClass, sx }) {
           borderRadius: '120px',
           px: { sm: '78px' },
           py: { xs: '10px', sm: '20px' },
-          border: { xs: `1px solid ${borderColor}`, sm: `2px solid ${borderColor}` },
+          border: { xs: `1px solid ${color}`, sm: `2px solid ${color}` },
+          color: color,
           ':hover': {
             borderWidth: { sm: '2px' },
             fontWeight: '600 !important',
-            backgroundColor: primary,
+            backgroundColor: hoverColor,
+            border: { xs: `1px solid ${hoverColor}`, sm: `2px solid ${hoverColor}` },
             color: black,
           },
           zIndex: 100,
@@ -124,6 +127,7 @@ export function MUIOutlinedButton({ onClick, text, borderColor, noClass, sx }) {
 MUIOutlinedButton.defaultProps = {
   onClick: () => {},
   text: '텍스트를 입력해주세요',
-  borderColor: primary,
+  color: primary,
   noClass: false,
+  hoverColor: primary,
 };

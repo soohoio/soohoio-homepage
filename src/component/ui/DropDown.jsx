@@ -36,6 +36,7 @@ export function CountryNumUnderline({ value, onChange }) {
             horizontal: 'left',
           },
           transformOrigin: {
+            vertical: 'top',
             horizontal: 'left',
           },
           // 메뉴 패딩 삭제

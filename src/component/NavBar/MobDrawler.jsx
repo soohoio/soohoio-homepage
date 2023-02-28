@@ -12,14 +12,11 @@ export default function MobDrawler({ open, onClose }) {
 
   const navBarHeight = '96px';
   const pageList = [
-    // { label: '기업 솔루션', link: '/solution' },
-    // { label: '프로덕트', link: '/product' },
-    // { label: '뉴스', link: '/news' },
+    { label: '기업 솔루션', link: '/solution' },
+    { label: '프로덕트', link: '/product' },
+    { label: '뉴스', link: '/news' },
     // { label: '팀 소개', link: '/team' },
     // { label: '채용', link: '/recruit' },
-    { label: '기업 솔루션', link: currentPage },
-    { label: '프로덕트', link: currentPage },
-    { label: '뉴스', link: currentPage },
     { label: '팀 소개', link: currentPage },
     { label: '채용', link: currentPage },
     { label: '블로그', link: 'https://blog.sooho.io' },
@@ -48,7 +45,7 @@ export default function MobDrawler({ open, onClose }) {
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
                 color={currentPage === page.link ? 'primary' : '#FFFFFF'}
-                sx={[index < 5 && { color: '#5F5F5F' }]}
+                sx={[(index === 3 || index === 4) && { color: '#5F5F5F' }]}
               >
                 {page.label}
               </Typography>

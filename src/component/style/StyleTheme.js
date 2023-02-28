@@ -45,6 +45,9 @@ export const StyleTheme = createTheme({
     error: {
       main: error,
     },
+    white: {
+      main: '#FFFFFF',
+    },
   },
   breakpoints: {
     values: {
