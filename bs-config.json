@@ -1,0 +1,11 @@
+{
+  "server": {
+    "baseDir": "./out",
+    "routes": {
+      "/_next/static": "./out/_next/static"
+    },
+    "port": 8000
+  },
+  "files": ["./out/**/*"],
+  "open": false
+}
