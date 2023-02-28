@@ -14,18 +14,18 @@ export default function System() {
   };
 
   return (
-    <BodyContainer backgroundColor={primary}>
-      <Container
-        maxWidth="false"
-        sx={{
-          backgroundImage: `url(/image/pageImage/solution/system${isMob ? 'Mob' : ''}.png)`,
-          backgroundPositionX: 'center',
-          backgroundSize: { xs: '360px 290px', sm: 'cover' },
-          backgroundRepeat: 'no-repeat',
-          height: { xs: '290px', sm: 'auto' },
-          py: { xs: '42px', sm: '152px' },
-        }}
-      >
+    <Container
+      maxWidth="false"
+      sx={{
+        backgroundImage: `url(/image/pageImage/solution/system${isMob ? 'Mob' : ''}.png)`,
+        backgroundPositionX: 'center',
+        backgroundSize: { xs: '360px 290px', sm: 'cover' },
+        backgroundRepeat: 'no-repeat',
+        height: { xs: '290px', sm: 'auto' },
+        py: { xs: '42px', sm: '152px' },
+      }}
+    >
+      <BodyContainer backgroundColor="transparent">
         <ObserverAnimation>
           {/* 파트너스 */}
           <Typography
@@ -104,7 +104,7 @@ export default function System() {
             />
           </Grid>
         </ObserverAnimation>
-      </Container>
-    </BodyContainer>
+      </BodyContainer>
+    </Container>
   );
 }
