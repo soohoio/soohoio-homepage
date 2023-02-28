@@ -37,8 +37,7 @@ export default function App({ Component, pageProps }) {
     <DeviceProvider>
       <ThemeProvider theme={StyleTheme}>
         <NavBar />
-        {/* 로딩 스피너 */}
-        {isLoading ? <LoadingScreen /> : <Component {...pageProps} />}
+        <Component {...pageProps} />
         <FooterPc />
         <FooterMob />
       </ThemeProvider>
