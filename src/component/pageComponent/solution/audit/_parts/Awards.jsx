@@ -22,9 +22,9 @@ export default function Awards() {
             image={`/image/pageImage/audit/trophy${isMob ? 'Mob' : ''}.png`}
             sx={{
               position: 'absolute',
-              top: { xs: -50, sm: -110 },
-              left: { xs: -20, sm: -20 },
-              width: '50vw',
+              top: { xs: -50, sm: -135 },
+              left: { xs: -20, sm: -40 },
+              width: { sm: '50vw', lg: '653px' },
               minWidth: '168px',
               maxWidth: { sm: '653px' },
               aspectRatio: { xs: '168/150', sm: '653/565' },

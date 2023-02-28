@@ -20,7 +20,7 @@ export default function System() {
         sx={{
           backgroundImage: `url(/image/pageImage/solution/system${isMob ? 'Mob' : ''}.png)`,
           backgroundPositionX: 'center',
-          backgroundSize: { xs: 'contain', sm: 'cover' },
+          backgroundSize: { xs: 'cover', sm: 'cover' },
           backgroundRepeat: 'no-repeat',
           height: { xs: '290px', sm: 'auto' },
           py: { xs: '42px', sm: '152px' },

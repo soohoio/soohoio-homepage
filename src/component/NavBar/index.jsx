@@ -42,7 +42,7 @@ function NavBar() {
       setCurrentPage('/team');
     } else if (router.pathname.includes('recruit')) {
       setCurrentPage('/recruit');
-    } else if (router.pathname === '/') {
+    } else if (router.pathname === '/' || router.pathname === '/contact') {
       setCurrentPage('/');
     }
   }, [router.pathname]);
