@@ -43,7 +43,7 @@ export default function Partner() {
               color="primary"
               fontWeight={500}
               align="center"
-              sx={{ mt: { xs: '36px', sm: '56px' }, mb: { xs: '20px', sm: '32px' } }}
+              sx={{ mb: { xs: '20px', sm: '32px' } }}
             >
               Partners
             </Typography>

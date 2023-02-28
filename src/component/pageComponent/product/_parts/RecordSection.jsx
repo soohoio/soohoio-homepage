@@ -27,7 +27,7 @@ export function RecordSectionKleva() {
 
           <Typography
             align="center"
-            className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
+            className={isMob ? 'mobBody12KR' : 'pcPoint16KR'}
             fontWeight={300}
             color="#5F5F5F"
             sx={{ mt: { xs: '10px', sm: '24px' }, mb: { xs: '16px', sm: '24px' } }}
