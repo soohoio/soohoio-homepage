@@ -69,7 +69,7 @@ export default function FooterPc() {
                 color={gray}
                 sx={{ fontWeight: 600 }}
               >
-                SOOHO.IO Cafe Test
+                SOOHO.IO Cafe
               </Typography>
 
               <CardMedia
