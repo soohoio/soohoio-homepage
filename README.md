@@ -21,15 +21,6 @@ $> npm run build
 out 폴더 내의 파일들을 업로드합니다  
 emailJS의 API 정보가 바뀐 경우 .env 파일을 수정 후 배포합니다
 
-### 정적 파일 테스트
-
-```bash
-$> npm run test
-```
-
-out 폴더 내의 파일들로 서버를 구동합니다.
-(lite-server 이용)
-
 # 폴더 구조
 
 ### 루트 폴더 구조

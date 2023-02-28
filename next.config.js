@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  exportPathMap: function () {
+  exportPathMap: async function () {
     return {
       '/': { page: '/' },
       '/contact': { page: '/contact' },

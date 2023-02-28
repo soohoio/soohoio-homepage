@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export && serve out",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "lite-server"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
@@ -29,8 +30,5 @@
     "react-parallax": "^3.5.1",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"
-  },
-  "devDependencies": {
-    "serve": "^14.2.0"
   }
 }
