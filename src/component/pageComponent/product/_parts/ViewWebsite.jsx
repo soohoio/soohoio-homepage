@@ -25,15 +25,16 @@ export default function ViewWebsite({ currentProduct }) {
         <MUIOutlinedButton
           onClick={goToLink}
           noClass={true}
-          text={isMob ? '웹사이트 보러가기' : 'View website'}
+          text="View website"
           color="#FFFFFF"
           hoverColor="#FFFFFF"
           sx={{
             fontSize: { xs: '12px', sm: '20px' },
-            fontWeight: { xs: 600, sm: 500 },
-            px: { sm: '69px' },
+            fontWeight: { xs: 300, sm: 400 },
+            px: { sm: '10px' },
             py: { xs: '5px', sm: '15px' },
-            width: { xs: 1, sm: 'auto' },
+            width: { xs: 1, sm: '260px' },
+            boxSizing: 'border-box',
           }}
         />
       </Grid>

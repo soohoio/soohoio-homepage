@@ -126,7 +126,7 @@ export default function ThreeIntro() {
             {/* 포인트 3가지 부분 */}
             <Grid
               container
-              columnSpacing={{ sm: '9px', lg: '0px' }}
+              columnSpacing={{ sm: '24px', lg: '0px' }}
               sx={{
                 backgroundColor: black,
                 borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },

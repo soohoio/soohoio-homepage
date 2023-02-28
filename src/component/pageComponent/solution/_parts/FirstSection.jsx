@@ -43,10 +43,12 @@ export default function FirstSection() {
               color="#FFFFFF"
               sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '16px', sm: '48px' } }}
             >
-              <Box>
+              <Box sx={{ maxWidth: '630px' }}>
                 {isMob
                   ? `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고\n활성화할 수 있도록 브릿지, 디앱, 보안 감사\n서비스를 제공합니다.`
-                  : `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
+                  : isPc
+                  ? `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`
+                  : `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록 브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
               </Box>
             </Typography>
           </Box>

@@ -25,7 +25,7 @@ export default function MainClients() {
     { label: 'planetarium', width: 204, height: 39 },
     { label: 'chainPartners', width: 100, height: 44 },
     { label: 'samsungSDS', width: 157, height: 18 },
-    { label: 'lgCns', width: 110, height: 25 },
+    { label: 'lgCNS', width: 110, height: 25 },
     { label: 'sk', width: 115, height: 42 },
     { label: 'fss', width: 142, height: 42 },
   ];

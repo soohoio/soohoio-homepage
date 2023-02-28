@@ -16,7 +16,7 @@ export default function Awards() {
 
   return (
     <Container maxWidth="false" sx={{ position: 'relative' }}>
-      <BodyContainer ptPc="128px" pbPc="113px" ptMob="51px" pbMob="23px">
+      <BodyContainer ptPc="128px" pbPc="113px" ptMob="51px" pbMob="23px" backgroundColor="#1C1C1C">
         <ObserverAnimation>
           <CardMedia
             image={`/image/pageImage/audit/trophy${isMob ? 'Mob' : ''}.png`}
@@ -96,46 +96,48 @@ export default function Awards() {
         {/* Mob */}
         {awardsList.map(function (each, index) {
           return (
-            <Grid
-              key={each.name}
-              container
-              justifyContent="center"
-              alignItems="center"
-              columnSpacing="24px"
-              sx={{ display: { sm: 'none' }, mb: '12px', zIndex: 2, position: 'relative' }}
+            <Stack
+              key={each.img}
+              direction="row"
+              spacing="24px"
+              sx={{
+                display: { sm: 'none' },
+                justifyContent: 'center',
+                alignItems: 'center',
+                mb: '12px',
+                zIndex: 2,
+                position: 'relative',
+              }}
             >
-              <Grid item xs={6}>
-                <Grid
-                  container
-                  justifyContent="center"
+              <Grid
+                container
+                justifyContent="center"
+                sx={{
+                  backgroundColor: '#FFFFFF',
+                  py: { xs: '7px' },
+                  borderRadius: { xs: borderRadiusMob },
+                  maxWidth: '40vw',
+                  minWidth: '120px',
+                }}
+              >
+                <CardMedia
+                  image={`/image/pageImage/audit/${each.img}.png`}
                   sx={{
-                    width: 1,
-                    backgroundColor: '#FFFFFF',
-                    py: { xs: '7px', sm: '17px' },
-                    borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
+                    width: { xs: '120px', sm: '316px' },
+                    aspectRatio: { xs: '120/40', sm: '316/107' },
                   }}
-                >
-                  <CardMedia
-                    image={`/image/pageImage/audit/${each.img}.png`}
-                    sx={{
-                      width: { xs: '120px', sm: '316px' },
-                      aspectRatio: { xs: '120/40', sm: '316/107' },
-                    }}
-                  />
-                </Grid>
+                />
               </Grid>
 
-              <Grid item xs={6}>
-                <Typography
-                  className={isMob ? 'mobBody12KR' : 'pcBody20KR'}
-                  color="#FFFFFF"
-                  fontWeight={300}
-                  sx={{ mt: { xs: '0px', sm: '24px' } }}
-                >
-                  {each.name}
-                </Typography>
-              </Grid>
-            </Grid>
+              <Typography
+                component="div"
+                className={isMob ? 'mobBody12KR' : 'pcBody20KR'}
+                color="#FFFFFF"
+                fontWeight={300}
+              >
+                <Box sx={{ width: '120px' }}>{each.name}</Box>
+              </Typography>
+            </Stack>
           );
         })}
       </BodyContainer>

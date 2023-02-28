@@ -121,7 +121,7 @@ export default function PhotoNews() {
               sx={{ cursor: 'pointer', borderRadius: { xs: '4px', sm: '8px' } }}
             >
               <Typography
-                className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+                className={isMob ? 'mobBody16KR' : 'pcBody24KR'}
                 color="#FFFFFF"
                 fontWeight={600}
                 component="div"
@@ -142,7 +142,7 @@ export default function PhotoNews() {
                 color="#818181"
                 fontWeight={300}
                 sx={{
-                  mt: { sm: '16px' },
+                  mt: { xs: '8px', sm: '16px' },
                 }}
               >
                 {each.date}

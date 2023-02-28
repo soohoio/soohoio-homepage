@@ -3,6 +3,7 @@ import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/materia
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { gray_light } from '@/component/style/StyleTheme';
 
 export default function SecondGradation({ currentProduct }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -10,7 +11,9 @@ export default function SecondGradation({ currentProduct }) {
   const productData = {
     KLEVA: {
       name: 'KLEVA',
-      title: `No.1 Leveraged Yield Farming\nProtocol on Klaytn`,
+      title: isTablet
+        ? `No.1 Leveraged Yield Farming Protocol on Klaytn`
+        : `No.1 Leveraged Yield Farming\nProtocol on Klaytn`,
       contents: `클레이튼 생태계 내부의 다양한 투자 기회와\n레버리지 기능을 제공합니다.`,
       img: 'kleva',
       logo: 'klevaLogo',
@@ -18,7 +21,9 @@ export default function SecondGradation({ currentProduct }) {
     StayKing: {
       name: 'StayKing',
       title: `First Leveraged Staking\nProtocol on Evmos`,
-      contents: `Evmos와 같은 신생 체인의 높은 스테이킹 이율을\n레버리지하여 투자 수익을 극대화합니다.`,
+      contents: isTablet
+        ? `Evmos와 같은 신생 체인의 높은 스테이킹 이율을 레버리지하여 투자 수익을 극대화합니다.`
+        : `Evmos와 같은 신생 체인의 높은 스테이킹 이율을\n레버리지하여 투자 수익을 극대화합니다.`,
       img: 'stayKing',
       logo: 'stayKingLogo',
     },
@@ -83,9 +88,9 @@ export default function SecondGradation({ currentProduct }) {
                     component="div"
                     className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
                     fontWeight={300}
-                    color="#FFFFFF"
+                    color={gray_light}
                   >
-                    <Box>{productData[currentProduct].contents}</Box>
+                    <Box sx={{ maxWidth: '500px' }}>{productData[currentProduct].contents}</Box>
                   </Typography>
                 </Box>
               </ObserverAnimation>

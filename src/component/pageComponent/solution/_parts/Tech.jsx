@@ -1,4 +1,4 @@
-import { RoundOutlinedButton } from '@/component/ui/Button';
+import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
 import { Box, CardMedia, Container, Stack, Typography, useTheme } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
@@ -21,18 +21,19 @@ export default function Tech() {
   const contentsSize = isMob ? 300 * 2 : 656 * 2;
   const padding = isMob ? 25 : 65;
 
-  const defiList = [
+  const dataList = [
     {
       name: 'Tealswap',
       contents: 'Oasys 체인 유일의 탈중앙화 거래소(DEX)로\n수호의 기술 지원을 받았습니다.',
       buttonLabel: 'View website',
       img: 'tealswap',
       patch: ['Dapp', 'Audit'],
+      link: 'https://tealswap.com/',
     },
     {
       name: 'Purple Bridge & Swap',
       contents: `카카오게임즈의 블록체인 플랫폼 Bora와 협업하여\n브릿지와 탈중앙화 거래소(DEX)를 구축했습니다.`,
-      buttonLabel: 'Comming soon',
+      buttonLabel: 'Coming soon',
       img: 'purpleBridge',
       patch: ['Bridge', 'Dapp', 'Audit'],
     },
@@ -41,9 +42,12 @@ export default function Tech() {
   const ref = useRef(null);
 
   useEffect(() => {
-    console.log(window.innerWidth - contentsSize - 2 * padding);
     setScreenSize(window.innerWidth - contentsSize - 2 * padding);
   }, [isMob, isTablet, isPc]);
+
+  const openLink = link => {
+    window.open(link);
+  };
 
   return (
     <Container
@@ -86,7 +90,7 @@ export default function Tech() {
             spacing={{ xs: '8px', sm: '16px' }}
             sx={{ overflow: 'visible', position: 'relative' }}
           >
-            {defiList.map(function (each, index) {
+            {dataList.map(function (each, index) {
               return (
                 <ObserverAnimation key={each.name} delay={index * 250}>
                   <Box
@@ -175,15 +179,33 @@ export default function Tech() {
                       {each.contents}
                     </Typography>
 
-                    <RoundOutlinedButton
-                      text={each.buttonLabel}
-                      // coming soon 전
-                      // px={{ xs: '24px', sm: '56px' }}
-                      px={{ xs: '11px', sm: '10px' }}
-                      py={{ xs: '7px', sm: '18px' }}
-                      sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
-                      color={each.name === 'Tealswap' ? '#FFFFFF' : gray}
-                    />
+                    {each.buttonLabel === 'Coming soon' ? (
+                      <RoundOutlinedButton
+                        text={each.buttonLabel}
+                        // coming soon 전
+                        // px={{ xs: '24px', sm: '56px' }}
+                        px={{ xs: '11px', sm: '10px' }}
+                        py={{ xs: '7px', sm: '18px' }}
+                        sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
+                        color={gray}
+                      />
+                    ) : (
+                      <MUIOutlinedButton
+                        noClass={true}
+                        text={each.buttonLabel}
+                        onClick={() => openLink(each.link)}
+                        // coming soon 전
+                        sx={{
+                          width: { xs: '102px', sm: '202px' },
+                          boxSizing: 'border-box',
+                          px: { xs: '10px', sm: '10px' },
+                          py: { xs: '5px', sm: '15px' },
+                          fontSize: { xs: '12px', sm: '20px' },
+                        }}
+                        color="#FFFFFF"
+                        hoverColor="#FFFFFF"
+                      />
+                    )}
                   </Box>
                 </ObserverAnimation>
               );

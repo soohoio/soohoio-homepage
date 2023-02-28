@@ -111,11 +111,12 @@ export default function NewsList() {
             >
               <Box>
                 <Typography
+                  component="div"
                   className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
                   color="#FFFFFF"
                   fontWeight={600}
                 >
-                  {year}
+                  <Box sx={{ mt: { xs: '-1.5px', sm: '-2px' } }}>{year}</Box>
                 </Typography>
               </Box>
               <Box sx={{ width: 1 }}>
@@ -140,7 +141,7 @@ export default function NewsList() {
                           >
                             <Box>
                               <Typography
-                                className={isMob ? 'mobBody12KR' : 'pcBody24KR'}
+                                className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
                                 component="div"
                                 color="#FFFFFF"
                                 fontWeight={600}
@@ -156,7 +157,7 @@ export default function NewsList() {
                                 </Box>
                               </Typography>
                               <Typography
-                                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                                className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
                                 component="div"
                                 color="#818181"
                                 fontWeight={300}
@@ -183,7 +184,7 @@ export default function NewsList() {
                           <Box
                             sx={{
                               height: '1px',
-                              backgroundColor: '#DEDEDE',
+                              backgroundColor: '#5F5F5F',
                               mb: { xs: '17px', sm: '24px' },
                             }}
                           />

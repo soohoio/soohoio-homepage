@@ -45,7 +45,14 @@ export default function MobDrawler({ open, onClose }) {
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
                 color={currentPage === page.link ? 'primary' : '#FFFFFF'}
-                sx={[(index === 3 || index === 4) && { color: '#5F5F5F' }]}
+                sx={[
+                  (index === 3 || index === 4) && { color: '#5F5F5F' },
+                  {
+                    ':hover': {
+                      color: primary,
+                    },
+                  },
+                ]}
               >
                 {page.label}
               </Typography>

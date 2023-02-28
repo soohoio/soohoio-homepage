@@ -13,8 +13,11 @@ import { paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import Link from 'next/link';
 import MobDrawler from './MobDrawler';
 import { MUIOutlinedButton } from '../ui/Button';
+import { useRouter } from 'next/router';
 
-function NavBar(props) {
+function NavBar() {
+  const router = useRouter();
+
   const navBarHeight = '96px';
   const pageList = [
     { label: '기업 솔루션', link: '/solution' },
@@ -28,16 +31,28 @@ function NavBar(props) {
   const [currentPage, setCurrentPage] = useState('');
   const [drawerMenu, setDrawerMenu] = useState(null);
 
+  useEffect(() => {
+    if (router.pathname.includes('solution')) {
+      setCurrentPage('/solution');
+    } else if (router.pathname.includes('product')) {
+      setCurrentPage('/product');
+    } else if (router.pathname.includes('news')) {
+      setCurrentPage('/news');
+    } else if (router.pathname.includes('team')) {
+      setCurrentPage('/team');
+    } else if (router.pathname.includes('recruit')) {
+      setCurrentPage('/recruit');
+    } else if (router.pathname === '/') {
+      setCurrentPage('/');
+    }
+  }, [router.pathname]);
+
   const openMobMenu = event => {
     setDrawerMenu(true);
   };
 
   const closeMobMenu = () => {
     setDrawerMenu(null);
-  };
-
-  const menuClick = num => {
-    console.log(num);
   };
 
   return (
@@ -128,11 +143,8 @@ function NavBar(props) {
                     target={page.label === '블로그' ? '_blank' : undefined}
                   >
                     <Typography
-                      onClick={num => {
-                        menuClick(index);
-                      }}
-                      color={currentPage === page.label ? 'primary' : '#FFFFFF'}
-                      fontWeight={currentPage === page.label ? 600 : 300}
+                      color={currentPage === page.link ? 'primary' : '#FFFFFF'}
+                      fontWeight={currentPage === page.link ? 600 : 300}
                       sx={{
                         mr: { xs: '15px', lg: '24px' },
                         fontSize: { lg: '15px', xl: '18px' },
@@ -160,7 +172,7 @@ function NavBar(props) {
                     fontWeight: '300 !important',
                     fontSize: 14,
                     ml: '18px',
-                    // borderWidth: '1px !important',
+                    borderWidth: '1px !important',
                   }}
                 />
               </Link>

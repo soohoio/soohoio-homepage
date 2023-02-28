@@ -10,7 +10,7 @@ export default function AuditProcess() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
 
   return (
-    <BodyContainer ptPc="128px" pbPc="128px" ptMob="42px" pbMob="42px">
+    <BodyContainer ptPc="128px" pbPc="128px" ptMob="42px" pbMob="42px" backgroundColor={black}>
       <ObserverAnimation>
         <Typography
           className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}

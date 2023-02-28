@@ -3,6 +3,7 @@ import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/materia
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { gray_light } from '@/component/style/StyleTheme';
 
 // Kleva 섹션
 export function RecordSectionKleva() {
@@ -26,12 +27,12 @@ export function RecordSectionKleva() {
 
           <Typography
             align="center"
-            className={isMob ? 'mobBody10KR' : 'pcPoint20KR'}
-            fontWeight={500}
+            className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
+            fontWeight={300}
             color="#5F5F5F"
             sx={{ mt: { xs: '10px', sm: '24px' }, mb: { xs: '16px', sm: '24px' } }}
           >
-            23년 2월 기준
+            TVL, 23년 2월 기준
           </Typography>
 
           <Typography
@@ -39,11 +40,11 @@ export function RecordSectionKleva() {
             align="center"
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
-            color="#FFFFFF"
+            color={gray_light}
           >
             <Box sx={{ display: 'inline' }}>{`런칭 34분 만에 `}</Box>
             <Box sx={{ display: 'inline', fontWeight: 600 }}>{`1,190억 원`}</Box>
-            <Box sx={{ display: 'inline' }}>{`, 2주 만에`}</Box>
+            <Box sx={{ display: 'inline' }}>{`, 2주 만에 `}</Box>
             <Box sx={{ display: 'inline', fontWeight: 600 }}>{`6,000억 원`}</Box>
             <Box>규모의 자산 예치에 성공했습니다.</Box>
           </Typography>
@@ -63,7 +64,7 @@ export function RecordSectionKleva() {
                 border: '1px solid #5F5F5F',
                 borderRadius: '4px',
                 mt: { xs: '48px', sm: '72px' },
-                mb: { xs: '8px', sm: '24px' },
+                mb: { xs: '14px', sm: '24px' },
               }}
             >
               With
@@ -82,7 +83,7 @@ export function RecordSectionKleva() {
             align="center"
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
-            color="#FFFFFF"
+            color={gray_light}
           >
             <Box sx={{ mt: { xs: '20px', sm: '24px' } }}>
               {isMob
@@ -116,18 +117,19 @@ export function RecordSectionStayKing() {
             Evmos Hackathon Grand Prize Winner
           </Typography>
 
+          {/* 태블릿, PC 텍스트 */}
           <Typography
             component="div"
             align="center"
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
-            color="#FFFFFF"
+            color={gray_light}
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
             <Box sx={{ mt: { xs: '18px', sm: '32px' } }}>
               Evmos 체인의 활성화를 위해 탄생한 탈중앙 금융 서비스로,
             </Box>
-            <Box sx={{ display: 'inline' }}>22년 10월 EVMOS 해커톤에서 전 부문</Box>
+            <Box sx={{ display: 'inline' }}>22년 10월 Evmos 해커톤에서 전 부문</Box>
             <Box sx={{ display: 'inline', fontWeight: 600 }}>{` 1위를 수상`}</Box>
             <Box sx={{ display: 'inline' }}>하여</Box>
             <Box />
@@ -135,21 +137,22 @@ export function RecordSectionStayKing() {
             <Box sx={{ display: 'inline' }}>했습니다.</Box>
           </Typography>
 
+          {/* 모바일 텍스트 */}
           <Typography
             component="div"
             align="center"
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
-            color="#FFFFFF"
+            color={gray_light}
             sx={{ display: { sm: 'none' } }}
           >
             <Box sx={{ mt: { xs: '18px', sm: '32px' } }}>
               Evmos 체인의 활성화를 위해 탄생한 탈중앙 금융
             </Box>
-            <Box>서비스로, 22년 10월 EVMOS 해커톤에서 전 부문</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{`1위를 수상`}</Box>
+            <Box>서비스로, 22년 10월 Evmos 해커톤에서 전 부문</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>{` 1위를 수상`}</Box>
             <Box sx={{ display: 'inline' }}>하여</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{`$80,000 상금을 획득`}</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>{` $80,000 상금을 획득`}</Box>
             <Box sx={{ display: 'inline' }}>했습니다.</Box>
           </Typography>
 
@@ -167,7 +170,7 @@ export function RecordSectionStayKing() {
             align="center"
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
-            color="#FFFFFF"
+            color={gray_light}
           >
             {isMob
               ? `StayKing의 목표는 Evmos 체인을 넘어 Cosmos\n생태계의 다양한 체인에서 유저가 스테이킹 기회를 얻고,\n스테이킹 종료 후에도 빠르게 자산의 유동성을\n확보할 수 있도록 확장하는 것입니다.`

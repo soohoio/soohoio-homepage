@@ -63,7 +63,10 @@ export default function Package() {
       </BodyContainer>
 
       {/* Container 백그라운드 */}
-      <Container sx={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)' }}>
+      <Container
+        maxWidth={false}
+        sx={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)' }}
+      >
         <BodyContainer pbPc="94px" pbMob="42px" backgroundColor="transparent">
           <Typography
             className={isMob ? 'mobBody12KR' : 'pcPoint20KR'}
