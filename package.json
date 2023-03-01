@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "lite-server"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
