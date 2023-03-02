@@ -68,3 +68,34 @@
   left: 0;
   transition: transform 0.3s ease-in-out;
 }
+
+/* FAQ 위로 */
+@keyframes fadeInUp {
+  from {
+    opacity: 1;
+    transform: translateY(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.smoothAppear {
+  animation: smoothAppear 0.4s ease-in-out 0s 1 normal forwards;
+}

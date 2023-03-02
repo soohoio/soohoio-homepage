@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint",
-    "test": "lite-server"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
@@ -16,6 +15,7 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
     "@next/font": "13.1.6",
+    "@notionhq/client": "^2.2.3",
     "@splinetool/react-spline": "^2.2.5",
     "@splinetool/runtime": "^0.9.214",
     "eslint": "8.34.0",

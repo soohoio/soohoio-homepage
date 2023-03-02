@@ -15,10 +15,8 @@ export default function MobDrawler({ open, onClose }) {
     { label: '기업 솔루션', link: '/solution' },
     { label: '프로덕트', link: '/product' },
     { label: '뉴스', link: '/news' },
-    // { label: '팀 소개', link: '/team' },
-    // { label: '채용', link: '/recruit' },
-    { label: '팀 소개', link: currentPage },
-    { label: '채용', link: currentPage },
+    { label: '팀 소개', link: '/team' },
+    { label: '채용', link: '/recruit' },
     { label: '블로그', link: 'https://blog.sooho.io' },
     { label: '문의하기', link: '/contact' },
   ];
@@ -45,14 +43,7 @@ export default function MobDrawler({ open, onClose }) {
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
                 color={currentPage === page.link ? 'primary' : '#FFFFFF'}
-                sx={[
-                  (index === 3 || index === 4) && { color: '#5F5F5F' },
-                  {
-                    ':hover': {
-                      color: primary,
-                    },
-                  },
-                ]}
+                sx={{ ':hover': { color: primary } }}
               >
                 {page.label}
               </Typography>

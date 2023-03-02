@@ -23,8 +23,8 @@ function NavBar() {
     { label: '기업 솔루션', link: '/solution' },
     { label: '프로덕트', link: '/product' },
     { label: '뉴스', link: '/news' },
-    // { label: '팀 소개', link: '/team' },
-    // { label: '채용', link: '/recruit' },
+    { label: '팀 소개', link: '/team' },
+    { label: '채용', link: '/recruit' },
     { label: '블로그', link: 'https://blog.sooho.io' },
   ];
 
@@ -108,15 +108,14 @@ function NavBar() {
                 </Box>
 
                 {/* 모바일 우측 글로벌 메뉴 */}
-                {/* <IconButton onClick={() => {}} color="primary" sx={{ p: 0 }}>
+                <IconButton onClick={() => {}} color="primary" sx={{ p: 0 }}>
                   <CardMedia
                     component="img"
-                    image="/image/icon/globalGray.png"
+                    image="/image/icon/globalWhite.png"
                     alt="global"
                     sx={{ width: '24px', cursor: 'pointer', display: { xs: 'flex', lg: 'none' } }}
                   />
-                </IconButton> */}
-                <Box />
+                </IconButton>
               </Grid>
 
               {/* PC 부분 */}
@@ -177,20 +176,20 @@ function NavBar() {
                 />
               </Link>
 
-              {/* <CardMedia
+              <CardMedia
                 className="buttonHover"
                 onClick={() => {
                   menuClick(0);
                 }}
                 component="img"
-                image="/image/icon/globalGray.png"
+                image="/image/icon/globalWhite.png"
                 alt="logo"
                 sx={{
                   width: '24px',
                   display: { xs: 'none', lg: 'flex' },
                   ml: '12px',
                 }}
-              /> */}
+              />
             </Toolbar>
           </Container>
         </AppBar>
