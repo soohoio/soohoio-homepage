@@ -22,8 +22,8 @@ function NavBar() {
   const pageList = [
     { label: '기업 솔루션', link: '/solution' },
     { label: '프로덕트', link: '/product' },
-    { label: '뉴스', link: '/news' },
-    { label: '팀 소개', link: '/team' },
+    // { label: '뉴스', link: '/news' },
+    // { label: '팀 소개', link: '/team' },
     { label: '채용', link: '/recruit' },
     { label: '블로그', link: 'https://blog.sooho.io' },
   ];
