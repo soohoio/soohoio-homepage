@@ -3,24 +3,32 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Grid, InputAdornment, Stack, TextField, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import { borderRadiusMob, borderRadiusPc, gray, gray_light } from '@/component/style/StyleTheme';
+import { gray } from '@/component/style/StyleTheme';
 import { DropDownComponent } from '@/component/ui/DropDown';
-import { Client } from '@notionhq/client';
+import axios from 'axios';
+import Link from 'next/link';
+import { MUIOutlinedButton } from '@/component/ui/Button';
 
-export default function RecruitList() {
+export default function RecruitList({
+  recruitList,
+  setRecruitList,
+  loading,
+  setLoading,
+  refreshData,
+  setRefreshData,
+}) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
 
-  // 노션
-  const notion = new Client({
-    auth: process.env.NEXT_PUBLIC_NOTION_SECRET_KEY,
-  });
+  // 노션 & Proxy
+  const notionKey = process.env.NEXT_PUBLIC_NOTION_SECRET_KEY;
   const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID;
+  const corsURL = `https://cors-anywhere.herokuapp.com/`;
 
   // 초기값 및 인풋 state
   const defaultInput = {
     searchInput: '',
     team: '소속',
-    job: '직무',
+    position: '직무',
     careerType: '경력 사항',
     employType: '고용 형태',
   };
@@ -29,47 +37,166 @@ export default function RecruitList() {
   // 카테고리 리스트
   const careerTypeList = ['신입', '경력', '무관'];
   const employTypeList = ['정규직', '계약직', '인턴', '프리랜서'];
-
-  // 노션 채용 데이터 목록
-  const [recruitList, setRecruitList] = useState([
-    {
-      no: 1,
-      title: 'DeFi Package 프론트앤드 개발자',
-      team: 'Product Team',
-      job: 'Frontend',
-      careerType: '경력',
-      employType: '정규직',
-    },
-    {
-      no: 2,
-      title: 'DeFi Package 프론트앤드 개발자',
-      team: 'Product Team',
-      job: 'Frontend',
-      careerType: '경력',
-      employType: '정규직',
-    },
-  ]);
+  const [listData, setListData] = useState({
+    teamList: [],
+    positionList: [],
+    careerTypeList: careerTypeList,
+    employTypeList: employTypeList,
+  });
 
   useEffect(() => {
-    async function fetchData() {
-      // const dbQueryData = await notion.databases.query({ database_id: databaseId });
-      // console.log(dbQueryData);
-      const response = await notion.databases.retrieve({
-        database_id: databaseId,
-      });
-      // console.log(response);
-    }
-
-    fetchData();
+    fetchList();
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [refreshData]);
 
   // 필터 변경
   const onChangeFilter = e => {
-    const { value, name } = e;
     const tempObj = { ...recruitFilter };
-    tempObj[name] = value;
-    setRecruitFilter(tempObj);
+    // 인풋
+    if (e.target) {
+      tempObj.searchInput = e.target.value;
+      setRecruitFilter(tempObj);
+      // 드롭다운
+    } else {
+      const { value, name } = e;
+      tempObj[name] = value;
+      setRecruitFilter(tempObj);
+      // 드롭다운 필터는 바로 적용
+      reFetchData();
+    }
   };
+
+  const reFetchData = () => {
+    setLoading(true);
+    setRefreshData(!refreshData);
+  };
+
+  // 엔터 검색
+  const onCheckEnter = e => {
+    if (e.key === 'Enter') {
+      reFetchData();
+    }
+  };
+
+  // 채용 데이터 로드
+  async function fetchData() {
+    const notionURL = `https://api.notion.com/v1/databases/${databaseId}/query`;
+    const url = `${corsURL}${notionURL}`;
+
+    // 필터
+    let body = {
+      filter: {
+        and: [],
+      },
+    };
+    recruitFilter.searchInput !== '' &&
+      body.filter.and.push({
+        property: 'title',
+        title: {
+          contains: recruitFilter.searchInput,
+        },
+      });
+    recruitFilter.team !== '소속' &&
+      body.filter.and.push({
+        property: 'team',
+        select: {
+          equals: recruitFilter.team,
+        },
+      });
+    recruitFilter.position !== '직무' &&
+      body.filter.and.push({
+        property: 'position',
+        select: {
+          equals: recruitFilter.position,
+        },
+      });
+    recruitFilter.careerType !== '경력 사항' &&
+      body.filter.and.push({
+        property: 'careerType',
+        select: {
+          equals: recruitFilter.careerType,
+        },
+      });
+    recruitFilter.employType !== '고용 형태' &&
+      body.filter.and.push({
+        property: 'employType',
+        select: {
+          equals: recruitFilter.employType,
+        },
+      });
+
+    // console.log(body);
+    try {
+      const notionData = await axios.post(
+        url,
+        body,
+
+        {
+          headers: {
+            Authorization: `Bearer ${notionKey}`,
+            'Notion-Version': '2021-08-16',
+          },
+        },
+      );
+
+      const result = [];
+      notionData.data.results.map(function (each) {
+        result.push({
+          id: each.id,
+          title: each.properties.title.title[0].plain_text,
+          team: each.properties.team.select.name,
+          position: each.properties.position.select.name,
+          employType: each.properties.employType.select.name,
+          careerType: each.properties.careerType.select.name,
+          link: each.properties.link.url,
+        });
+      });
+      setRecruitList(result);
+      // 로딩 완료
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      alert(
+        '채용 정보를 불러오는데 문제가 발생하였습니다. 문제가 지속되면 관리자에게 문의해주세요!',
+      );
+      setLoading(false);
+    }
+  }
+
+  // 소속 & 직무 목록 받아오기
+  async function fetchList() {
+    const notionURL = `https://api.notion.com/v1/databases/${databaseId}`;
+    const url = `${corsURL}${notionURL}`;
+    try {
+      const notionListData = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${notionKey}`,
+          'Notion-Version': '2021-08-16',
+        },
+      });
+
+      const teamList = [];
+      notionListData.data.properties.team.select.options.map(function (each) {
+        teamList.push(each.name);
+      });
+      const positionList = [];
+      notionListData.data.properties.position.select.options.map(function (each) {
+        positionList.push(each.name);
+      });
+      const tempData = { ...listData };
+      tempData.teamList = teamList;
+      tempData.positionList = positionList;
+      setListData(tempData);
+    } catch (error) {
+      console.log(error);
+      alert(
+        '채용 필터 정보를 불러오는데 문제가 발생하였습니다. 문제가 지속되면 관리자에게 문의해주세요!',
+      );
+    }
+  }
 
   return (
     <BodyContainer ptPc="128px" pbPc="64px" ptMob="48px" pbMob="24px">
@@ -91,6 +218,10 @@ export default function RecruitList() {
         <TextField
           variant="standard"
           placeholder="검색"
+          name="searchInput"
+          value={recruitFilter.searchInput}
+          onChange={onChangeFilter}
+          onKeyPress={onCheckEnter}
           InputProps={{
             style: {
               padding: '7px 0px 3px 0px',
@@ -98,6 +229,7 @@ export default function RecruitList() {
             endAdornment: (
               <InputAdornment position="end">
                 <CardMedia
+                  onClick={reFetchData}
                   component="img"
                   image="/image/icon/search.png"
                   alt="serach"
@@ -135,30 +267,30 @@ export default function RecruitList() {
         >
           <Stack direction="row" spacing={{ xs: '8px', sm: '24px', lg: '28px' }}>
             <DropDownComponent
-              selectList={careerTypeList}
+              selectList={listData.teamList}
               label="소속"
               name="team"
               value={recruitFilter.team}
               onChange={onChangeFilter}
             />
             <DropDownComponent
-              selectList={employTypeList}
+              selectList={listData.positionList}
               label="직무"
-              name="job"
-              value={recruitFilter.job}
+              name="position"
+              value={recruitFilter.position}
               onChange={onChangeFilter}
             />
           </Stack>
           <Stack direction="row" spacing={{ xs: '8px', sm: '24px', lg: '28px' }}>
             <DropDownComponent
-              selectList={careerTypeList}
+              selectList={listData.careerTypeList}
               label="경력 사항"
               name="careerType"
               value={recruitFilter.careerType}
               onChange={onChangeFilter}
             />
             <DropDownComponent
-              selectList={employTypeList}
+              selectList={listData.employTypeList}
               label="고용 형태"
               name="employType"
               value={recruitFilter.employType}
@@ -171,94 +303,197 @@ export default function RecruitList() {
       {/* 채용 목록 */}
       {recruitList.map(function (each) {
         return (
-          <Stack
-            direction={{ xs: 'column', lg: 'row' }}
-            justifyContent="center"
-            alignItems={{ xs: 'flex-start', lg: 'center' }}
-            key={each.no}
-            sx={{
-              borderBottom: '1px solid #FFFFFF',
-              height: { xs: '114px', sm: '114px', lg: '80px' },
-              cursor: 'pointer',
-              ':hover': { opacity: 0.85 },
-            }}
-            spacing={{ xs: '16px', sm: '12px', lg: '28px' }}
-          >
+          <Link key={each.id} href={each.link} target="_blank">
             <Stack
-              direction="row"
-              justifyContent={{ xs: 'space-between', lg: 'flex-start' }}
-              alignItems="center"
-              spacing="6px"
-              sx={{ width: { xs: 1, lg: '544px' } }}
+              direction={{ xs: 'column', lg: 'row' }}
+              justifyContent="center"
+              alignItems={{ xs: 'flex-start', lg: 'center' }}
+              sx={{
+                borderBottom: '1px solid #FFFFFF',
+                height: { xs: '114px', sm: '114px', lg: '80px' },
+                cursor: 'pointer',
+                ':hover': { opacity: 0.85 },
+              }}
+              spacing={{ xs: '16px', sm: '12px', lg: '28px' }}
             >
-              <Typography
-                component="div"
-                className={isMob ? 'mobTitle16KR' : 'pcBody20KR'}
-                color="#FFFFFF"
-                fontWeight={600}
+              <Stack
+                direction="row"
+                justifyContent={{ xs: 'space-between', lg: 'flex-start' }}
+                alignItems="center"
+                spacing="6px"
+                sx={{ width: { xs: 1, lg: '544px' } }}
               >
-                <Box>{each.title}</Box>
-              </Typography>
-              <CardMedia
-                image={`/image/icon/outlink.png`}
-                sx={{
-                  width: { xs: '20px', sm: '32px' },
-                  height: { xs: '20px', sm: '32px' },
-                }}
-              />
+                <Typography
+                  component="div"
+                  className={isMob ? 'mobTitle16KR' : 'pcBody20KR'}
+                  color="#FFFFFF"
+                  fontWeight={600}
+                >
+                  <Box>{each.title}</Box>
+                </Typography>
+                <CardMedia
+                  image={`/image/icon/outlink.png`}
+                  sx={{
+                    width: { xs: '20px', sm: '32px' },
+                    height: { xs: '20px', sm: '32px' },
+                  }}
+                />
+              </Stack>
+              <Stack
+                direction="row"
+                alignItems="center"
+                spacing={{ xs: '32px', sm: '24px', lg: '28px' }}
+              >
+                <Typography
+                  component="div"
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  color="#FFFFFF"
+                  fontWeight={{ xs: 300, lg: 600 }}
+                >
+                  <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
+                    {each.team}
+                  </Box>
+                </Typography>
+
+                <Typography
+                  component="div"
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  color="#FFFFFF"
+                  fontWeight={{ xs: 300, lg: 600 }}
+                >
+                  <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
+                    {each.position}
+                  </Box>
+                </Typography>
+
+                <Typography
+                  component="div"
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  color="#FFFFFF"
+                  fontWeight={{ xs: 300, lg: 600 }}
+                >
+                  <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
+                    {each.careerType}
+                  </Box>
+                </Typography>
+
+                <Typography
+                  component="div"
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  color="#FFFFFF"
+                  fontWeight={{ xs: 300, lg: 600 }}
+                >
+                  <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
+                    {each.employType}
+                  </Box>
+                </Typography>
+              </Stack>
             </Stack>
-            <Stack
-              direction="row"
-              alignItems="center"
-              spacing={{ xs: '32px', sm: '24px', lg: '28px' }}
-            >
-              <Typography
-                component="div"
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                color="#FFFFFF"
-                fontWeight={{ xs: 300, lg: 600 }}
-              >
-                <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
-                  {each.team}
-                </Box>
-              </Typography>
-
-              <Typography
-                component="div"
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                color="#FFFFFF"
-                fontWeight={{ xs: 300, lg: 600 }}
-              >
-                <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
-                  {each.job}
-                </Box>
-              </Typography>
-
-              <Typography
-                component="div"
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                color="#FFFFFF"
-                fontWeight={{ xs: 300, lg: 600 }}
-              >
-                <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
-                  {each.careerType}
-                </Box>
-              </Typography>
-
-              <Typography
-                component="div"
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                color="#FFFFFF"
-                fontWeight={{ xs: 300, lg: 600 }}
-              >
-                <Box sx={{ width: { sm: '18.7vw', lg: '168px' }, maxWidth: { sm: '168px' } }}>
-                  {each.employType}
-                </Box>
-              </Typography>
-            </Stack>
-          </Stack>
+          </Link>
         );
       })}
+
+      {/* 채용 정보 없을 시 (로딩 완료 후) */}
+      {!loading && recruitList.length === 0 && (
+        <Box>
+          <Grid
+            container
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ mt: { xs: '40px', sm: '120px', lg: '56px' } }}
+          >
+            <Box sx={{ width: { xs: '58vw', sm: 'auto' } }}>
+              <Typography
+                component="div"
+                className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
+                color="#FFFFFF"
+                fontWeight={300}
+              >
+                <Box sx={{ display: 'inline-block' }}>해당 부분에 진행 중인 </Box>
+                <Box sx={{ display: 'inline-block' }}>채용 소식이 없습니다.</Box>
+              </Typography>
+              {/* PC & Tablet 버튼 */}
+              <Stack
+                direction="row"
+                spacing={{ sm: '16px' }}
+                sx={{ mt: { sm: '88px' }, display: { xs: 'none', sm: 'block' } }}
+              >
+                <MUIOutlinedButton
+                  text="전체 채용 리스트 보기"
+                  color="#FFFFFF"
+                  hoverColor="#FFFFFF"
+                  sx={{
+                    width: { sm: '246px' },
+                    boxSizing: 'border-box',
+                    px: { sm: '0px' },
+                    py: { sm: '14px' },
+                  }}
+                />
+                <Link
+                  href="https://gyxk3kqq.ninehire.site/job_posting/8fglGG52/apply"
+                  target="_blank"
+                >
+                  <MUIOutlinedButton
+                    text="인재풀 등록하기"
+                    sx={{
+                      width: { sm: '246px' },
+                      boxSizing: 'border-box',
+                      px: { sm: '0px' },
+                      py: { sm: '14px' },
+                    }}
+                  />
+                </Link>
+              </Stack>
+            </Box>
+            <Grid
+              container
+              justifyContent={{ xs: 'flex-start', sm: 'flex-start', lg: 'center' }}
+              sx={{ width: { xs: '27vw', sm: '16vw', lg: '560px' } }}
+            >
+              <CardMedia
+                component="img"
+                image="/image/pageImage/recruit/noData.png"
+                alt="no result"
+                sx={{
+                  width: { xs: 1, sm: '15vw', lg: 1 },
+                  maxWidth: { xs: '95px', sm: '310px' },
+                  aspectRatio: '226/265',
+                }}
+              />
+            </Grid>
+          </Grid>
+
+          {/* 모바일 버튼 */}
+          <Stack direction="row" spacing="8px" sx={{ mt: '40px', display: { sm: 'none' } }}>
+            <MUIOutlinedButton
+              text="전체 채용 리스트 보기"
+              color="#FFFFFF"
+              hoverColor="#FFFFFF"
+              sx={{
+                width: 0.495,
+                boxSizing: 'border-box',
+                px: { sm: '0px' },
+                py: { sm: '14px' },
+              }}
+            />
+            <Link
+              href="https://gyxk3kqq.ninehire.site/job_posting/8fglGG52/apply"
+              target="_blank"
+              style={{ width: '50%' }}
+            >
+              <MUIOutlinedButton
+                text="인재풀 등록하기"
+                sx={{
+                  width: 1,
+                  boxSizing: 'border-box',
+                  px: { sm: '0px' },
+                  py: { sm: '14px' },
+                }}
+              />
+            </Link>
+          </Stack>
+        </Box>
+      )}
     </BodyContainer>
   );
 }

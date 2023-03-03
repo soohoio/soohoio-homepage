@@ -3,7 +3,7 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 
-export default function FirstSection() {
+export default function FirstSection({ recruitList }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
 
   return (
@@ -41,7 +41,9 @@ export default function FirstSection() {
               color="#FFFFFFF"
               fontWeight={600}
             >
-              <Box sx={{ display: 'inline-block' }}>현재 3건의 수호자 채용이 </Box>
+              <Box
+                sx={{ display: 'inline-block' }}
+              >{`현재 ${recruitList.length}건의 수호자 채용이 `}</Box>
               <Box sx={{ display: 'inline-block' }}>진행 중입니다.</Box>
             </Typography>
           </Grid>

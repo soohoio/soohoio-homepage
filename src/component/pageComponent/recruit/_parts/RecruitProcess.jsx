@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import { Box, CardMedia, Grid, Stack, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import EnlargeAnimation from '@/component/ui/EnlargeAnimation';
 import { borderRadiusMob, borderRadiusPc, gray_light } from '@/component/style/StyleTheme';
 
 export default function RecruitProcess() {
