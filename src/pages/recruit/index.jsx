@@ -1,5 +1,12 @@
 import Recruit from '@/component/pageComponent/recruit';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['recruit'])),
+  },
+});
 
 export default function RecruitPage() {
   return (
