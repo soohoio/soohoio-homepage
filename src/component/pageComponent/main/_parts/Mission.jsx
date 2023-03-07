@@ -54,7 +54,7 @@ export default function Mission() {
       </Typography>
       {/* lineHeight 24 */}
       <Typography
-        className={isPc ? 'pcTitle48KR' : ''}
+        className={isMob || isPc ? 'pcTitle48KR' : ''}
         color={black}
         align="center"
         fontWeight={600}

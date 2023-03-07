@@ -4,7 +4,8 @@ import { MUIOutlinedButton } from '@/component/ui/Button';
 import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Link from '@/module/CustomLink';
 import { useTranslation } from 'next-i18next';
 
 export default function FirstSection() {
