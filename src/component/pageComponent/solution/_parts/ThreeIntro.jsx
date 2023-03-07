@@ -62,12 +62,12 @@ export default function ThreeIntro() {
         ? t('threeIntro.auditDescription1Tablet')
         : t('threeIntro.auditDescription1'),
       point1Image: 'audit1',
-      point2: 'Automated',
+      point2: 'State-of-the-art',
       description2: isTablet
         ? t('threeIntro.auditDescription2Tablet')
         : t('threeIntro.auditDescription2'),
       point2Image: 'audit2',
-      point3: 'State-of-the-art',
+      point3: 'Improved with Industry Cases',
       description3: isTablet
         ? t('threeIntro.auditDescription3Tablet')
         : t('threeIntro.auditDescription3'),
