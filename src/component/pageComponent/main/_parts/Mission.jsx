@@ -62,7 +62,7 @@ export default function Mission() {
           mt: { xs: '8px', sm: '28px' },
           mb: { xs: '8px', sm: '24px' },
           fontSize: { xs: '19px', sm: '36px' },
-          lineHeight: { xs: '24px !important' },
+          lineHeight: { xs: '24px !important', sm: '42px !important' },
         }}
       >
         {isMob ? t('mission.missionTitleMob') : t('mission.missionTitle')}

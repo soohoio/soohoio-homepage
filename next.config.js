@@ -10,6 +10,8 @@ const nextConfig = {
       '/news': { page: '/news' },
       '/product': { page: '/product' },
       '/solution': { page: '/solution' },
+      '/recruit': { page: '/recruit' },
+      '/team': { page: '/team' },
       '/solution/audit': { page: '/solution/audit' },
     };
 
