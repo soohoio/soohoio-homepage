@@ -20,7 +20,11 @@ export default function Package() {
   ];
 
   const goToPackage = () => {
-    router.push('/solution');
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
+    router.push(`/${locale}/solution`);
   };
   return (
     <Container maxWidth="false" sx={{ pt: { xs: '42px', sm: '88px' }, backgroundColor: '#131313' }}>

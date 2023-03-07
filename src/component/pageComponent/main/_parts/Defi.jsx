@@ -63,7 +63,11 @@ export default function Defi() {
   }, [updateScreenSize, contentsSize, padding]);
 
   const goToPage = (link, title) => {
-    router.push({ pathname: link, query: { currentProduct: title } });
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
+    router.push({ pathname: `/${locale}${link}`, query: { currentProduct: title } });
   };
 
   return (

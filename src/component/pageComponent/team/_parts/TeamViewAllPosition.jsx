@@ -13,7 +13,11 @@ export default function TeamViewAllPosition() {
   const { t } = useTranslation('team');
 
   const goToRecruit = () => {
-    router.push('/recruit');
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
+    router.push(`/${locale}/recruit`);
   };
 
   return (

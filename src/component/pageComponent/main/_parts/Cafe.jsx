@@ -36,7 +36,11 @@ export default function Cafe() {
   }, []);
 
   const goToContact = () => {
-    router.push({ pathname: '/contact', query: { currentTypeIndex: 2 } });
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
+    router.push({ pathname: `/${locale}/contact`, query: { currentTypeIndex: 2 } });
   };
 
   return (

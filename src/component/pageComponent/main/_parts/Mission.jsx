@@ -52,17 +52,33 @@ export default function Mission() {
       >
         Mission
       </Typography>
-      {/* lineHeight 24 */}
+      {/* 줄간격 버그로 인해 나눠서 */}
+      {/* Mob lineHeight 24 */}
       <Typography
-        className={isMob || isPc ? 'pcTitle48KR' : ''}
         color={black}
         align="center"
         fontWeight={600}
         sx={{
+          display: { sm: 'none' },
           mt: { xs: '8px', sm: '28px' },
           mb: { xs: '8px', sm: '24px' },
           fontSize: { xs: '19px', sm: '36px' },
           lineHeight: { xs: '24px !important', sm: '42px !important' },
+        }}
+      >
+        {isMob ? t('mission.missionTitleMob') : t('mission.missionTitle')}
+      </Typography>
+      {/* lineHeight 24 */}
+      <Typography
+        className="pcTitle48KR"
+        color={black}
+        align="center"
+        fontWeight={600}
+        sx={{
+          display: { xs: 'none', sm: 'block' },
+          mt: { xs: '8px', sm: '28px' },
+          mb: { xs: '8px', sm: '24px' },
+          fontSize: { xs: '19px', sm: '36px' },
         }}
       >
         {isMob ? t('mission.missionTitleMob') : t('mission.missionTitle')}
