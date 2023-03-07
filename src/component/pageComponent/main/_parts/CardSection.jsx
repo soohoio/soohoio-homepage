@@ -4,9 +4,11 @@ import { borderRadiusMob, borderRadiusPc, gray } from '@/component/style/StyleTh
 import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Grid, Typography } from '@mui/material';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function CardSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('main');
 
   return (
     <BodyContainer ptPc="81px" pbPc="77px" ptMob="44px">
@@ -37,10 +39,13 @@ export default function CardSection() {
                   fontWeight={600}
                   sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '8px', sm: '12px' } }}
                 >
-                  국내 최초 <Box sx={{ fontWeight: 300, display: 'inline' }}>보안 감사</Box>
+                  {t('cardSection.card1Title1')}
+                  <Box sx={{ fontWeight: 300, display: 'inline' }}>
+                    {t('cardSection.card1Title2')}
+                  </Box>
                 </Typography>
                 <Typography className={isMob ? 'mobBody12KR' : 'pcPoint16KR'} color={gray}>
-                  * 한국어 보고서 기준
+                  {t('cardSection.card1Standard')}
                 </Typography>
                 {/* 이미지 */}
                 <CardMedia
@@ -54,7 +59,7 @@ export default function CardSection() {
                   }}
                 />
                 <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'} fontWeight={600}>
-                  누적 28만 건+ 보고서 발행
+                  {t('cardSection.card1Point')}
                 </Typography>
 
                 <Typography
@@ -62,12 +67,9 @@ export default function CardSection() {
                   color={gray}
                   sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                 >
-                  {isPc &&
-                    `2018년 4월 국내 첫 블록체인 보안 감사 보고서 발행을\n시작으로 글로벌 디지털 자산을 보호해왔습니다.`}
-                  {isTablet &&
-                    `2018년 4월 국내 첫 블록체인 보안 감사 보고서 발행을 시작으로 글로벌 디지털 자산을 보호해왔습니다.`}
-                  {isMob &&
-                    `2018년 4월 국내 첫 블록체인 보안 감사 리포트를\n발행하여 디지털 자산을 보호해왔습니다.`}
+                  {isPc && t('cardSection.card1DescriptionPc')}
+                  {isTablet && t('cardSection.card1DescriptionTablet')}
+                  {isMob && t('cardSection.card1DescriptionMob')}
                 </Typography>
               </Box>
             </Box>
@@ -104,10 +106,13 @@ export default function CardSection() {
                   fontWeight={600}
                   sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '8px', sm: '12px' } }}
                 >
-                  <Box sx={{ fontWeight: 300, display: 'inline' }}>클레이튼 DeFi 예치 규모</Box> 2위
+                  <Box sx={{ fontWeight: 300, display: 'inline' }}>
+                    {t('cardSection.card2Title1')}
+                  </Box>
+                  {t('cardSection.card2Title2')}
                 </Typography>
                 <Typography className={isMob ? 'mobBody12KR' : 'pcPoint16KR'} color={gray}>
-                  *2023년 2월 기준
+                  {t('cardSection.card2Standard')}
                 </Typography>
                 {/* 이미지 */}
 
@@ -123,7 +128,7 @@ export default function CardSection() {
                 />
 
                 <Typography className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'} fontWeight={600}>
-                  런칭 2주만에 6,000억 원+ 자산 예치
+                  {t('cardSection.card2Point')}
                 </Typography>
 
                 <Typography
@@ -131,12 +136,9 @@ export default function CardSection() {
                   color={gray}
                   sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                 >
-                  {isPc &&
-                    `위믹스와 협업하여 클레이튼 생태계의 DeFi 서비스\nKLEVA를 성공적으로 런칭하였습니다.`}
-                  {isTablet &&
-                    `위믹스와 협업하여 클레이튼 생태계의 DeFi 서비스 KLEVA를 성공적으로 런칭하였습니다.`}
-                  {isMob &&
-                    `위믹스와 협업하여 클레이튼 생태계의 DeFi\n서비스 KLEVA를 성공적으로 런칭하였습니다.`}
+                  {isPc && t('cardSection.card2DescriptionPc')}
+                  {isTablet && t('cardSection.card2DescriptionTablet')}
+                  {isMob && t('cardSection.card2DescriptionMob')}
                 </Typography>
               </Box>
             </Box>

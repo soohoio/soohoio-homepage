@@ -6,12 +6,16 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'next-i18next';
 
 export default function Reference() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { ref, inView } = useInView({
     threshold: 0.1, // trigger when nn% of the target is visible
   });
+  const { i18n } = useTranslation();
+  const { t } = useTranslation('main');
+  const currentLanguage = i18n.language;
 
   const clientList = [
     { label: 'wemix', width: 134, height: 37 },
@@ -55,12 +59,14 @@ export default function Reference() {
         align="center"
         fontWeight={600}
       >
-        <Box sx={{ fontWeight: 300, display: 'inline' }}>수호의</Box> 기술력,
+        <Box sx={{ fontWeight: 300, display: 'inline' }}>{t('reference.refTitle1')}</Box>
+        {t('reference.refTitle2')}
         <Box sx={{ display: { xs: 'none', sm: 'block' } }} />
-        Fortune 500 기업<Box sx={{ fontWeight: 300, display: 'inline' }}>과</Box>{' '}
+        {t('reference.refTitle3')}
+        <Box sx={{ fontWeight: 300, display: 'inline' }}>{t('reference.refTitle4')}</Box>
         <Box sx={{ display: { sm: 'none' } }} />
-        글로벌 Web3.0 기업
-        <Box sx={{ fontWeight: 300, display: 'inline' }}>이 증명합니다.</Box>
+        {t('reference.refTitle5')}
+        <Box sx={{ fontWeight: 300, display: 'inline' }}>{t('reference.refTitle6')}</Box>
       </Typography>
 
       {/* 클라이언트 */}
@@ -156,7 +162,8 @@ export default function Reference() {
         align="center"
         sx={{ mt: { xs: '56px', sm: '130px' }, mb: { xs: '24px', sm: '56px' } }}
       >
-        15명 규모 팀<Box sx={{ fontWeight: 300, display: 'inline' }}>으로 달성한 누적 투자액</Box>
+        {t('reference.investTitle1')}
+        <Box sx={{ fontWeight: 300, display: 'inline' }}>{t('reference.investTitle2')}</Box>
       </Typography>
 
       <Typography
@@ -165,7 +172,11 @@ export default function Reference() {
         align="center"
         fontWeight={600}
       >
-        {inView && <CountUp end={100} start={35} duration={1} />}억 원+
+        {currentLanguage === 'en' && '$ '}
+        {inView && (
+          <CountUp end={t('reference.moneyAmount')} start={35} duration={1} separator="," />
+        )}
+        {t('reference.moneyCurrency')}
       </Typography>
 
       <Typography
@@ -176,8 +187,8 @@ export default function Reference() {
         align="center"
         sx={{ mt: { xs: '56px', sm: '152px' }, mb: { xs: '35px', sm: '56px' } }}
       >
-        <Box sx={{ fontWeight: 300 }}>Web3.0 대표 주자 컨센시스로부터 </Box>
-        국내 유일 시드 투자 유치
+        <Box sx={{ fontWeight: 300 }}>{t('reference.seedTitle1')}</Box>
+        {t('reference.seedTitle2')}
       </Typography>
       <Stack
         direction="row"

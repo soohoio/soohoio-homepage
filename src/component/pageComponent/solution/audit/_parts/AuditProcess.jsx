@@ -4,10 +4,11 @@ import { Box, CardMedia, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import CountUp from 'react-countup';
+import { useTranslation } from 'next-i18next';
 
 export default function AuditProcess() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('audit');
 
   return (
     <BodyContainer ptPc="128px" pbPc="128px" ptMob="42px" pbMob="42px" backgroundColor={black}>
@@ -19,7 +20,7 @@ export default function AuditProcess() {
           align="center"
           sx={{ mb: { xs: '20px', sm: '32px' } }}
         >
-          오딧 프로세스
+          {t('auditProcess.title')}
         </Typography>
         <Grid container justifyContent="center">
           <CardMedia

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   AppBar,
   Box,
@@ -14,23 +14,40 @@ import Link from 'next/link';
 import MobDrawler from './MobDrawler';
 import { MUIOutlinedButton } from '../ui/Button';
 import { useRouter } from 'next/router';
+import GlobalMenu from './GlobalMenu';
+import { useTranslation } from 'next-i18next';
+import { useContext } from 'react';
+import DeviceContext from '@/module/ContextAPI/DeviceContext';
 
-function NavBar() {
+export default function NavBar() {
   const router = useRouter();
+  const { t, i18n } = useTranslation();
+  const isKorean = i18n.language === 'ko';
+  const { isMob, isTablet, isPc } = useContext(DeviceContext);
 
   const navBarHeight = '96px';
   const pageList = [
-    { label: '기업 솔루션', link: '/solution' },
-    { label: '프로덕트', link: '/product' },
-    { label: '뉴스', link: '/news' },
-    // { label: '팀 소개', link: '/team' },
-    // { label: '채용', link: '/recruit' },
-    { label: '블로그', link: 'https://blog.sooho.io' },
+    { label: isKorean ? '기업 솔루션' : 'B2B Solution', link: '/solution' },
+    { label: isKorean ? '프로덕트' : 'Products', link: '/product' },
+    { label: isKorean ? '뉴스' : 'News', link: '/news' },
+    { label: isKorean ? '팀 소개' : 'SOOHO Team', link: '/team' },
+    { label: isKorean ? '채용' : 'Recruit', link: '/recruit' },
+    { label: isKorean ? '블로그' : 'Blog', link: 'https://blog.sooho.io' },
   ];
 
   const [currentPage, setCurrentPage] = useState('');
+
+  // 드로어
   const [drawerMenu, setDrawerMenu] = useState(null);
 
+  // 글로벌 메뉴
+  const [globalMenu, setGlobalMenu] = useState(false);
+  const [globalMenuHover, setGlobalMenuHover] = useState(false);
+  const globalMenuButtonRefPc = useRef(null);
+  const globalMenuButtonRefMobTablet = useRef(null);
+  const globalMenuRef = useRef(null);
+
+  // 현재 페이지 확인
   useEffect(() => {
     if (router.pathname.includes('solution')) {
       setCurrentPage('/solution');
@@ -47,12 +64,41 @@ function NavBar() {
     }
   }, [router.pathname]);
 
+  // 글로벌 메뉴 (바깥을 누르면 닫히도록)
+  useEffect(() => {
+    if (globalMenu) {
+      const handleClickOutside = event => {
+        if (
+          !globalMenuButtonRefPc.current.contains(event.target) &&
+          !globalMenuButtonRefMobTablet.current.contains(event.target) &&
+          globalMenuRef.current &&
+          !globalMenuRef.current.contains(event.target)
+        ) {
+          closeGlobalMenu();
+        }
+      };
+      document.addEventListener('click', handleClickOutside);
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [globalMenu, globalMenuRef]);
+
   const openMobMenu = event => {
     setDrawerMenu(true);
   };
 
   const closeMobMenu = () => {
     setDrawerMenu(null);
+  };
+
+  const openGlobalMenu = () => {
+    setGlobalMenu(true);
+  };
+
+  const closeGlobalMenu = () => {
+    setGlobalMenu(false);
   };
 
   return (
@@ -108,14 +154,24 @@ function NavBar() {
                 </Box>
 
                 {/* 모바일 우측 글로벌 메뉴 */}
-                <IconButton onClick={() => {}} color="primary" sx={{ p: 0 }}>
-                  <CardMedia
-                    component="img"
-                    image="/image/icon/globalWhite.png"
-                    alt="global"
-                    sx={{ width: '24px', cursor: 'pointer', display: { xs: 'flex', lg: 'none' } }}
-                  />
-                </IconButton>
+                <Box sx={{ position: 'relative', display: { xs: 'flex', lg: 'none' } }}>
+                  <IconButton
+                    ref={globalMenuButtonRefMobTablet}
+                    onClick={openGlobalMenu}
+                    color="primary"
+                    sx={{ p: 0 }}
+                  >
+                    <CardMedia
+                      component="img"
+                      image="/image/icon/global.png"
+                      alt="global"
+                      sx={{ width: '24px', cursor: 'pointer' }}
+                    />
+                  </IconButton>
+                  {globalMenu && (
+                    <GlobalMenu globalMenuRef={globalMenuRef} closeGlobalMenu={closeGlobalMenu} />
+                  )}
+                </Box>
               </Grid>
 
               {/* PC 부분 */}
@@ -139,7 +195,7 @@ function NavBar() {
                   <Link
                     key={page.label}
                     href={page.link}
-                    target={page.label === '블로그' ? '_blank' : undefined}
+                    target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
                   >
                     <Typography
                       color={currentPage === page.link ? 'primary' : '#FFFFFF'}
@@ -160,13 +216,13 @@ function NavBar() {
               </Box>
               <Link href="/contact">
                 <MUIOutlinedButton
-                  text="문의하기"
+                  text={isKorean ? '문의하기' : 'Contact us'}
                   noClass={true}
                   sx={{
                     display: { xs: 'none', lg: 'block' },
                     borderRadius: '16px',
-                    width: '100px',
-                    px: '20px !important',
+                    width: '88px',
+                    px: '10px !important',
                     py: '2px !important',
                     fontWeight: '300 !important',
                     fontSize: 14,
@@ -176,20 +232,25 @@ function NavBar() {
                 />
               </Link>
 
-              <CardMedia
-                className="buttonHover"
-                onClick={() => {
-                  menuClick(0);
-                }}
-                component="img"
-                image="/image/icon/globalWhite.png"
-                alt="logo"
-                sx={{
-                  width: '24px',
-                  display: { xs: 'none', lg: 'flex' },
-                  ml: '12px',
-                }}
-              />
+              <Box sx={{ position: 'relative', display: { xs: 'none', lg: 'flex' } }}>
+                <CardMedia
+                  ref={globalMenuButtonRefPc}
+                  onMouseOut={() => setGlobalMenuHover(false)}
+                  onMouseOver={() => setGlobalMenuHover(true)}
+                  onClick={openGlobalMenu}
+                  component="img"
+                  image={`/image/icon/global${globalMenuHover ? '' : 'White'}.png`}
+                  alt="global"
+                  sx={{
+                    width: '24px',
+                    ml: '12px',
+                    cursor: 'pointer',
+                  }}
+                />
+                {globalMenu && (
+                  <GlobalMenu globalMenuRef={globalMenuRef} closeGlobalMenu={closeGlobalMenu} />
+                )}
+              </Box>
             </Toolbar>
           </Container>
         </AppBar>
@@ -199,5 +260,3 @@ function NavBar() {
     </div>
   );
 }
-
-export default NavBar;

@@ -3,88 +3,89 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import EnlargeAnimation from '@/component/ui/EnlargeAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function NewsList() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('news');
 
   const newsYear = [2022, 2021, 2020, 2019];
   const newsList = [
     [
       {
-        title: "A deep dive into the DeFi Space with Sooho.io's Jisu Park [Q&A]",
+        title: t('newsList.2022title1'),
         date: '2022. 7. 9',
         link: 'https://technode.global/2022/07/09/a-deep-dive-into-the-defi-space-with-sooho-ios-jisu-park-qa/',
       },
       {
-        title: 'South Korea’s Dunamu, Sooho.io to develop SWIFT-like bridge for Web3',
+        title: t('newsList.2022title2'),
         date: '2022. 5. 31',
         link: 'https://finance.yahoo.com/news/south-korea-dunamu-sooho-io-130000264.html?guccounter=1&guce_referrer=aHR0cHM6Ly9zb29ob3JlYnJhbmRpbmctbmV4dC52ZXJjZWwuYXBwLw&guce_referrer_sig=AQAAAABnxbbaobBEGfk7rtK7gu8PeBJml78RoeUmCN6V7eQgHHX0eoPYjJIniQoMB6MY0vskvB0DFtFMxH-O2k9EsUBktR7hE7BbshTFUzX1UwRvAQR5X_g4fv7560rmRxb5UCfqplBZMSZmBkk9LIAwaxjEao-p--1kgaBmEkS4BRWO',
       },
     ],
     [
       {
-        title: '위메이드, 디파이 서비스 ‘클레바(KLEVA)’ 시작…“블록체인 생태계 퍼즐 완성”',
+        title: t('newsList.2021title1'),
         date: '2021. 11. 20',
         link: 'https://www.ftoday.co.kr/news/articleView.html?idxno=227940',
       },
       {
-        title: "세계 첫 '패럴림픽 NFT' 출시 도어랩스, 수호아이오와 NFT 보안감사",
+        title: t('newsList.2021title2'),
         date: '2021. 9. 3',
         link: 'https://www.news1.kr/articles/?4423711',
       },
       {
-        title: '블록체인 스타트업 수호아이오, 위메이드트리로부터 50억원 투자 유치',
+        title: t('newsList.2021title3'),
         date: '2021. 5. 28',
         link: 'https://www.news1.kr/articles/?4321821',
       },
       {
-        title: '크로스앵글·수호아이오, 한국가상자산사업자연합회 감사로 합류',
+        title: t('newsList.2021title4'),
         date: '2021. 5. 21',
         link: 'https://www.hankyung.com/finance/article/202105213572g',
       },
     ],
     [
       {
-        title: '그 유명한 억만장자에게 옆구리 찔린 한국인이 바로 접니다',
+        title: t('newsList.2020title1'),
         date: '2020. 9. 25',
         link: 'https://v.daum.net/v/5d6201113fc43135364991ca',
       },
       {
-        title: '“쉽고 안전한 보안 서비스로 블록체인 계의 V3되겠다” 박지수 수호 대표',
+        title: t('newsList.2020title2'),
         date: '2020. 2. 20',
         link: 'https://www.mk.co.kr/news/economy/9213790',
       },
     ],
     [
       {
-        title: '박지수 수호 대표 “블록체인 허점 막는 보안기술, 법제화 앞당길 것”',
+        title: t('newsList.2019title1'),
         date: '2019. 8. 14',
         link: 'https://www.sedaily.com/NewsView/1VMXXVPCW3',
       },
       {
-        title: '디라이트-수호, 블록체인 관련 MOU 체결',
+        title: t('newsList.2019title2'),
         date: '2019. 7. 8',
         link: 'https://www.legaltimes.co.kr/news/articleView.html?idxno=47566',
       },
       {
-        title: '컨센시스 벤처스 데모데이에 국내기업 수호 참여 外',
+        title: t('newsList.2019title3'),
         date: '2019. 5. 31',
         link: 'https://dealsite.co.kr/articles/49736',
       },
       {
-        title: 'ConsenSys Picks Latest Blockchain Startups for Accelerator Program',
+        title: t('newsList.2019title4'),
         date: '2019. 4. 1',
         link: 'https://www.coindesk.com/markets/2019/04/01/consensys-picks-latest-blockchain-startups-for-accelerator-program/',
       },
       {
-        title: '"블록체인도 보안에 힘써야 비용 줄일 수 있다"',
+        title: t('newsList.2019title5'),
         date: '2019. 3. 8',
         link: 'https://www.mk.co.kr/news/economy/8718267',
       },
       {
-        title: "블록체인 보안회사 수호, '바이낸스 해커톤' 최고기술상",
+        title: t('newsList.2019title6'),
         date: '2019. 1. 5',
         link: 'https://zdnet.co.kr/view/?no=20190125102053',
       },

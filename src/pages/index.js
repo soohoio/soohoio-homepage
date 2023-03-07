@@ -1,5 +1,12 @@
 import Head from 'next/head';
 import Main from '../component/pageComponent/main';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['main'])),
+  },
+});
 
 export default function MainPage() {
   return (

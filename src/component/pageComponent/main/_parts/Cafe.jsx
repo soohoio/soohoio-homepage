@@ -4,10 +4,12 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function Cafe() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const router = useRouter();
+  const { t } = useTranslation('main');
 
   const [scrollOffset, setScrollOffset] = useState(0);
   let calc;
@@ -62,8 +64,7 @@ export default function Cafe() {
               color="primary"
               fontWeight={600}
             >
-              {isMob && `블록체인 프로젝트의 연결과\n시너지를 위한 공간`}
-              {!isMob && `블록체인 프로젝트의 연결과 시너지를 위한 공간`}
+              {isMob ? t('cafe.titleMob') : t('cafe.title')}
             </Typography>
             <Typography
               component="div"
@@ -71,15 +72,12 @@ export default function Cafe() {
               sx={{ mt: { xs: '18px', sm: '32px' }, fontWeight: 300 }}
             >
               <Box sx={{ maxWidth: { xs: '450px', sm: '600px' } }}>
-                {isMob &&
-                  `수호 카페는 한국의 첫 번째 Web3.0 카페이자, 블록체인 커뮤니티 허브입니다.\n다양한 Web3.0 기업, NFT 커뮤니티, 빌더 및 예술 작가분들이 수호 카페와 함께 새로운 프로젝트를 전개해나가고 있습니다.`}
-                {!isMob &&
-                  `수호 카페는 한국의 첫 번째 Web3.0 카페이자, 블록체인 커뮤니티 허브입니다.\n다양한 Web3.0 기업, NFT 커뮤니티, 빌더 및 예술 작가분들이 수호 카페와 함께\n새로운 프로젝트를 전개해나가고 있습니다.`}
+                {isMob ? t('cafe.descriptionMob') : t('cafe.description')}
               </Box>
             </Typography>
           </Grid>
           <MUIOutlinedButton
-            text="카페 대관 문의하기"
+            text={t('cafe.button')}
             onClick={goToContact}
             sx={{ width: { xs: 1, sm: 'auto' }, mt: '42px' }}
           />

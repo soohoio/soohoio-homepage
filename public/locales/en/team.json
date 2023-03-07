@@ -1,0 +1,110 @@
+{
+  "firstSection": {
+    "title1Mob": "SOOHO members are people who have clear goals they want to achieve in an autonomous environment and constantly think about 'why' to achieve those goals.",
+    "title1": "SOOHO members are people who have clear goals they want to achieve in an autonomous environment and constantly think about 'why' to achieve those goals.",
+    "title2": "We aim to demonstrate the value of technology and expand financial opportunities at the forefront of innovation in the blockchain industry."
+  },
+  "teamSection": {
+    "productTeamDescription": "Prove the value of the product through rapid MVP tests and develop it into the spin-off.",
+
+    "defiProductDescription": "Build a gateway for all DeFi products around the world, helping everyone to use DeFi quickly and safely.",
+    "defiHoverDescription1": "As pioneers in the blockchain ecosystem, we develop products like ",
+    "defiHoverDescription2": " and ",
+    "defiHoverDescription3": " that can contribute to the ecosystem.\n\nTo improve the quality and maturity of DeFi products, we conduct research in the areas of technology, tokenomics, and decentralization.\n\nRecognizing the impact of DeFi products on society and economy, we consider proper decentralization based on a sense of responsibility.",
+
+    "stayKingDescription": "Develop in-house DeFi products that are both convenient and efficient.",
+    "stayKingHoverDescription1": "Develop the only leveraged staking service, ",
+    "stayKingHoverDescription2": ", on the Evmos and Cosmos.\n\nResearch how to maximize the amount of staking rewards, proportional to the number of tokens they contribute, for a certain period participating in proof-of-stake.\n\nConsider the ways and utilities of blockchain technology from the user's perspective to enable more people to benefit from it.",
+
+    "headQuarterTeamDescription": "Lead the growth of SOOHO together with expertise in various fields such as organization management and product support.",
+
+    "securityDescription": "Contribute to a safe blockchain ecosystem through security research.",
+    "securityHoverDescription1": "Conduct smart contract security audits to protect blockchain services from security threats.\n\nDevelop and operate tools that automatically detect vulnerabilities and help with blockchain development.\n\nStrengthen our technical skills and develop talents by forming the red team ",
+    "securityHoverDescription2": " for hacking activities and autonomous research.",
+
+    "hrDescription": "Recruit talented people and build a High-Performance Organization(HPO).",
+    "hrHoverDescription": "Establish a recruitment strategy and pipeline suitable for SOOHO, which has strengths in rapid growth and expertise, to recruit people in the right positions.\n\nContinuously improve the recruitment process and give Roles & Responsibilities that enable members to demonstrate their capabilities.\n\nDesign an optimized organizational structure that enables members to achieve high performance as individuals and as a team, considering alignment with our business strategy.",
+
+    "organizationDescription": "Address even the smallest inconveniences that members may feel.",
+    "organizationHoverDescription": "Not only to resolve the issue at hand but also to identify the root cause, implement a resolution, and execute improvements.\n\nIntroduce various workflows/regulations/processes, and continuously improve and manage the on/offline work environment so that members can focus better on their work.\n\nLead the execution of finance/accounting, track and manage the use of limited resources, and generate revenue(subsidies, government projects).",
+
+    "communityDescription": "Understand and activate the community that products target.",
+    "communityHoverDescription": "Manage the community to make people who experience products become true fans of SOOHO.\n\nHold various offline community events at SOOHO Café to promote SOOHO.\n\nPlan and operate NFT projects that can firmly connect communities.",
+
+    "brandDescription": "Create our own brand identity and spread the value of SOOHO.",
+    "brandHoverDescription": "Contribute to creating an environment where all members can move forward in unity by constantly reflecting on our culture.\n\nFigure out the ways to effectively show products in SOOHO and deliver messages to our users.\n\nCreate on/offline experiences and creations that embody the unique qualities of SOOHO so that more people can become our fans.",
+
+    "corpDevDescription": "CEO 직속 팀으로서, 수호가 목표를 달성할 수 있도록\n전략을 세우고 프로덕트의 사업화를 서포트합니다.",
+
+    "corpTeamDescription": "Maximize corporate value to enable SOOHO to make a quantum leap forward.",
+    "corpTeamHoverDescription": "Establish organizational, business, and product strategies in accordance with corporate goals, and manage SOOHO to move forward in line with goals and strategies.\n\nDevelop IR strategies and manage fund-raising for domestic and foreign investors.\n\nReview the feasibility of various projects across the DeFi industry, and identify new opportunities through in-depth macro analysis."
+  },
+  "culturePoint": {
+    "selfManagingDescriptionTablet": "Prove and develop myself to repay the trust.",
+    "selfManagingDescription": "Prove and develop myself to repay the trust.",
+    "selfManagingImgText": "“We believe that high autonomy leads to high productivity.”",
+    "selfManagingHoverText": "At SOOHO, we are trusted to work independently and take responsibility for our goals. We define problems, set clear goals, share them with other team members, and then design and execute the methods to achieve them independently.",
+    "selfManagingPoint1": "1 on 1 Meeting",
+    "selfManagingDescription1Pc": "Through regular meetings with the team lead, we constantly ask and explore together what goals we want to achieve at SOOHO.",
+    "selfManagingDescription1": "Through regular meetings with the team lead, we constantly ask and explore together what goals we want to achieve at SOOHO.",
+    "selfManagingPoint2": "Voluntary TF Projects",
+    "selfManagingDescription2Pc": "If we have projects we want to explore, we voluntarily recruit a team to proceed.",
+    "selfManagingDescription2": "If we have projects we want to explore, we voluntarily recruit a team to proceed.",
+    "selfManagingPoint3": "Autonomous Working Environment",
+    "selfManagingDescription3Pc": "Working hours and locations are flexible according to each team's work schedule. Anywhere, whether it's at home, a spacious company cafe, or a focus room!",
+    "selfManagingDescription3": "Working hours and locations are flexible according to each team's work schedule. Anywhere, whether it's at home, a spacious company cafe, or a focus room!",
+    "selfManagingPoint4": "Personal Corporate Card",
+    "selfManagingDescription4Pc": "Based on high trust, all team members autonomously use one corporate card per person.",
+    "selfManagingDescription4": "Based on high trust, all team members autonomously use one corporate card per person.",
+
+    "openDescriptionTablet": "Share various points of view without distinguishing each other.",
+    "openDescription": "Share various points of view without distinguishing each other.",
+    "openImgText": "“Our differences create synergy”",
+    "openHoverText": "We can freely exchange opinions when it comes to achieving goals. However, it's important to communicate in a healthy way and respect different opinions. We expect to help each other more actively by recognizing our strengths and weaknesses.",
+    "openPoint1": "Onboarding Coffee Chat",
+    "openDescription1Pc": "New members have coffee chat with all teams. Coffee Chat serves as a foundation for us to connect with each other.",
+    "openDescription1": "New members have coffee chat with all teams. Coffee Chat serves as a foundation for us to connect with each other.",
+    "openPoint2": "Business Support Request",
+    "openDescription2Pc": "We have a channel where anyone can freely talk about improvement points or request help one needs to achieve our goals.",
+    "openDescription2": "We have a channel where anyone can freely talk about improvement points or request help one needs to achieve our goals.",
+    "openPoint3": "Open Information",
+    "openDescription3Pc": "Most of the information required for work can be viewed by all members and they can leave a comment if necessary.",
+    "openDescription3": "Most of the information required for work can be viewed by all members and they can leave a comment if necessary.",
+    "openPoint4": "All-hands Session",
+    "openDescription4Pc": "We share company-wide matters and active Q&A through the All-Hands Session every quarter. Anyone can openly ask and answer questions.",
+    "openDescription4": "We share company-wide matters and active Q&A through the All-Hands Session every quarter. Anyone can openly ask and answer questions.",
+
+    "whyDescription": "Keep finding problems and digging into them.",
+    "whyImgText": "“Deep thoughts and experience inspire others”",
+    "whyHoverText": "We continue to ask ‘Why’ in order to think more deeply about problems and explore new areas. The essential process of defining problems leads to more impactful solutions, and to advanced insights for others.",
+    "whyPoint1": "Self-study",
+    "whyDescription1Pc": "We respect all efforts to learn for problem-solving and provide support for books, lectures, and group studies.",
+    "whyDescription1": "We respect all efforts to learn for problem-solving and provide support for books, lectures, and group studies.",
+    "whyPoint2": "Decision-making Process",
+    "whyDescription2Pc": "It goes through a thorough problem definition process to establish corporate goals or systems. The logic and the reason for the process should be shared with the members.",
+    "whyDescription2": "It goes through a thorough problem definition process to establish corporate goals or systems. The logic and the reason for the process should be shared with the members.",
+    "whyPoint3": "Spotlight Session",
+    "whyDescription3Pc": "In the first second half of the year, each team shares insights gained through problem-solving during spotlight sessions.",
+    "whyDescription3": "In the first second half of the year, each team shares insights gained through problem-solving during spotlight sessions.",
+    "whyPoint4": "Interim Review",
+    "whyDescription4Pc": "In addition to retrospectives on the results, we re-examine the problems in the middle of the project to increase the goal achievement rate.",
+    "whyDescription4": "In addition to retrospectives on the results, we re-examine the problems in the middle of the project to increase the goal achievement rate."
+  },
+  "cultureSupport": {
+    "title": "We support you to focus solely on high performance.",
+    "titleTablet": "We support you to focus solely on high performance.",
+    "supportList1": "Transportation allowance for overtime",
+    "supportList2": "Lunch, dinner, and snacks",
+    "supportList3": "Chiropractic",
+    "supportList4": "High-performance equipment suitable for job duties",
+    "supportList5": "Software required for tasks"
+  },
+  "cultureSlideSection": {
+    "interview1": "At SOOHO, they continue to ask me what I want to do, even though it can be a difficult question for companies to ask employees.",
+    "interview2": "We share real insights instead of just reports. While working at a company, there are often cases where you have to report for micro-management purposes. However, SOOHO does not engage in unnecessary tasks like this. We trust each other, so we want to share valuable information necessary to work on projects by ourselves, proactively!",
+    "interview3": "I think one of the advantages of SOOHO is being able to give direct feedback to leaders. It's healthy, objective feedback that doesn't include personal feelings.",
+    "interview4": "I can learn more by having the authority and responsibility that I couldn't experience in other companies. For example, when I'm in charge of a community, it usually ends up just making a Discord or Telegram group. But at SOOHO, I was able to meet various community members and related parties and build better relationships with them.",
+    "interview5": "I feel that there is a well-established environment where we can solve problems together and give feedback with the hope that we can truly do better and grow.",
+    "button": "수호자 인터뷰 더 보기"
+  }
+}

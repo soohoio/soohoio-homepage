@@ -3,12 +3,13 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import { black, paddingHorMob, primary } from '@/component/style/StyleTheme';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function Contact() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const router = useRouter();
+  const { t } = useTranslation('solution');
 
   const goToContact = () => {
     router.push('/contact');
@@ -27,7 +28,7 @@ export default function Contact() {
         <MUIOutlinedButton
           onClick={goToContact}
           noClass={true}
-          text="수호 DeFi 문의하기"
+          text={t('contact.button')}
           color={black}
           hoverColor={black}
           sx={{

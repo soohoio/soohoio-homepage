@@ -1,5 +1,12 @@
 import Team from '@/component/pageComponent/team';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['team'])),
+  },
+});
 
 export default function TeamPage() {
   return (

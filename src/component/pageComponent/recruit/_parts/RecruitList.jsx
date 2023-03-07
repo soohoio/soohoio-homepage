@@ -8,6 +8,7 @@ import { DropDownComponent } from '@/component/ui/DropDown';
 import axios from 'axios';
 import Link from 'next/link';
 import { MUIOutlinedButton } from '@/component/ui/Button';
+import { useRouter } from 'next/router';
 
 export default function RecruitList({
   recruitList,
@@ -18,20 +19,23 @@ export default function RecruitList({
   setRefreshData,
 }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const router = useRouter();
 
   // 노션 & Proxy
   const notionKey = process.env.NEXT_PUBLIC_NOTION_SECRET_KEY;
   const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID;
-  const corsURL = `https://cors-anywhere.herokuapp.com/`;
+  const corsURL = `https://proxy.cors.sh/`;
+  const corsAPI = process.env.NEXT_PUBLIC_CORS_SH_PRODUCTION;
 
   // 초기값 및 인풋 state
   const defaultInput = {
     searchInput: '',
-    team: '소속',
+    team: router.query.team ? router.query.team : '소속',
     position: '직무',
     careerType: '경력 사항',
     employType: '고용 형태',
   };
+
   const [recruitFilter, setRecruitFilter] = useState({ ...defaultInput });
 
   // 카테고리 리스트
@@ -71,6 +75,12 @@ export default function RecruitList({
 
   const reFetchData = () => {
     setLoading(true);
+    setRefreshData(!refreshData);
+  };
+
+  const resetFilter = () => {
+    setLoading(true);
+    setRecruitFilter(defaultInput);
     setRefreshData(!refreshData);
   };
 
@@ -138,6 +148,7 @@ export default function RecruitList({
           headers: {
             Authorization: `Bearer ${notionKey}`,
             'Notion-Version': '2021-08-16',
+            'x-cors-api-key': corsAPI,
           },
         },
       );
@@ -175,6 +186,7 @@ export default function RecruitList({
         headers: {
           Authorization: `Bearer ${notionKey}`,
           'Notion-Version': '2021-08-16',
+          'x-cors-api-key': corsAPI,
         },
       });
 
@@ -419,6 +431,7 @@ export default function RecruitList({
                 sx={{ mt: { sm: '88px' }, display: { xs: 'none', sm: 'block' } }}
               >
                 <MUIOutlinedButton
+                  onClick={resetFilter}
                   text="전체 채용 리스트 보기"
                   color="#FFFFFF"
                   hoverColor="#FFFFFF"

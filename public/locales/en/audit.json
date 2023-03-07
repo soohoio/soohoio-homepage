@@ -1,0 +1,38 @@
+{
+  "firstSection": {
+    "title1Pc": "Vulnerabilities in a smart contract can result in a massive hacking incident.",
+    "title1": "Vulnerabilities in a smart contract can result in a massive hacking incident.",
+    "title2Pc": "By conducting a thorough smart contract auditing with our core technology, SOOHO detects vulnerabilities and suggests ways to patch them.",
+    "title2": "By conducting a thorough smart contract auditing with our core technology, SOOHO detects vulnerabilities and suggests ways to patch them."
+  },
+  "mainClients": {
+    "performanceList1": "Audit Reports Issued",
+    "performanceList2": "Vulnerabilities Found",
+    "performanceList3": "Amount of assets protected",
+    "performanceList4": "Clients & Partners",
+    "title1": "Korea's Leading Blockchain Security Team,\nWho Published the First Audit Report in Korea Since 2018",
+    "title2": "",
+    "title3": "",
+    "title4": ""
+  },
+  "security": {
+    "titlePc": "Fast and Trustworthy Security Solution",
+    "title": "Fast and Trustworthy Security Solution",
+    "description": "Accurate security audits are conducted using two methods: State-of-the-art automated auditing and manual auditing conducted by internal security experts.",
+    "descriptionMob": "Accurate security audits are conducted using two methods: State-of-the-art automated auditing and manual auditing conducted by internal security experts.",
+
+    "inHouseDescriptionPc": "The research group consists of members with doctoral degrees in cyber-security, who have been awarded in domestic and international hacking competitions such as Defcon, Nuit du Hack, White Hat, Samsung CTF, etc. Our team enhances the quality of the audits with a thorough analysis.",
+    "inHouseDescription": "The research group consists of members with doctoral degrees in cyber-security, who have been awarded in domestic and international hacking competitions such as Defcon, Nuit du Hack, White Hat, Samsung CTF, etc. Our team enhances the quality of the audits with a thorough analysis.",
+    "coreDescription1Pc": "The vulnerabilities found during smart contract audits are stored in an internal database to be used to further develop an automatic analyzer, called",
+    "coreDescription1": "The vulnerabilities found during smart contract audits are stored in an internal database to be used to further develop an automatic analyzer, called",
+    "coreDescription2Pc": ". Currently, Blockops supports 29 Solidity analyzers, 150 EVM decompiler patterns, and 559,886 signatures.",
+    "coreDescription2": ". Currently, Blockops supports 29 Solidity analyzers, 150 EVM decompiler patterns, and 559,886 signatures.",
+    "button": "Learn more about BlockOps"
+  },
+  "auditProcess": {
+    "title": "Audit Process"
+  },
+  "contact": {
+    "button": "Request Audit"
+  }
+}

@@ -1,5 +1,12 @@
 import Product from '@/component/pageComponent/product';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['product'])),
+  },
+});
 
 export default function ProductPage() {
   return (

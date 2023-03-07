@@ -6,71 +6,71 @@ import { black, borderRadiusMob, borderRadiusPc, gray } from '@/component/style/
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 
 export default function ThreeIntro() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('solution');
 
   const dataList = [
     {
       name: '01 Bridge',
-      intro: '서로 다른 체인의 자산이나 정보를 전달하여\n편리한 거래 및 교환을 돕는 인프라',
+      intro: t('threeIntro.bridgeIntro'),
       img: 'bridge',
       point1: 'Cross-chain',
       description1: isTablet
-        ? '분리된 체인을 연결하여 생태계의 확장성을 높여줍니다.'
-        : '분리된 체인을 연결하여\n생태계의 확장성을 높여줍니다.',
+        ? t('threeIntro.bridgeDescription1Tablet')
+        : t('threeIntro.bridgeDescription1'),
       point1Image: 'bridge1',
       point2: 'Optimization',
       description2: isTablet
-        ? '각 생태계 특성에 맞는 최적의 브릿지 전략 및 구현 방식을 설정해드립니다.'
-        : '각 생태계 특성에 맞는 최적의 브릿지\n전략 및 구현 방식을 설정해드립니다.',
+        ? t('threeIntro.bridgeDescription2Tablet')
+        : t('threeIntro.bridgeDescription2'),
       point2Image: 'bridge2',
       point3: 'Security-oriented',
       description3: isTablet
-        ? '독자적인 정보 교환 기술 C2CC를 통해 브릿지의 보안성을 극대화했습니다.'
-        : '독자적인 정보 교환 기술 C2CC를 통해\n브릿지의 보안성을 극대화했습니다.',
+        ? t('threeIntro.bridgeDescription3Tablet')
+        : t('threeIntro.bridgeDescription3'),
       point3Image: 'bridge3',
     },
     {
       name: '02 Dapp',
-      intro: '블록체인 플랫폼을 기반으로 작동하는\n탈중앙화 어플리케이션',
+      intro: t('threeIntro.dappIntro'),
       img: 'dapp',
       point1: 'Customizable',
       description1: isTablet
-        ? '다양한 종류의 Dapp과 맞춤형 기능 구현이 가능합니다.'
-        : '다양한 종류의 Dapp과\n맞춤형 기능 구현이 가능합니다.',
+        ? t('threeIntro.dappDescription1Tablet')
+        : t('threeIntro.dappDescription1'),
       point1Image: 'dapp1',
       point2: 'Operational Expert',
       description2: isTablet
-        ? '안정적인 서비스 유지를 위해 개발 이후 지속적인 운영 및 모니터링을 진행합니다.'
-        : '안정적인 서비스 유지를 위해 개발 이후\n지속적인 운영 및 모니터링을 진행합니다.',
+        ? t('threeIntro.dappDescription2Tablet')
+        : t('threeIntro.dappDescription2'),
       point2Image: 'dapp2',
       point3: 'Extensible',
       description3: isTablet
-        ? '체인 내부 혹은 외부의 다른 Dapp과 연결하여 생태계를 확장할 수 있습니다.'
-        : '체인 내부 혹은 외부의 다른 Dapp과\n연결하여 생태계를 확장할 수 있습니다.',
+        ? t('threeIntro.dappDescription3Tablet')
+        : t('threeIntro.dappDescription3'),
       point3Image: 'dapp3',
     },
     {
       name: '03 Audit',
-      intro: isMob
-        ? '스마트 컨트랙트 취약점\n보안 감사 서비스'
-        : '스마트 컨트랙트 취약점 보안 감사 서비스',
+      intro: isMob ? t('threeIntro.auditIntroMob') : t('threeIntro.auditIntro'),
       img: 'audit',
       point1: 'Professional',
       description1: isTablet
-        ? '수호의 전문 보안 연구팀이 보안 사고를 일으킬 수 있는 취약점을 정밀하게 분석합니다.'
-        : '수호의 전문 보안 연구팀이 보안 사고를\n일으킬 수 있는 취약점을 정밀하게 분석합니다.',
+        ? t('threeIntro.auditDescription1Tablet')
+        : t('threeIntro.auditDescription1'),
       point1Image: 'audit1',
       point2: 'Automated',
       description2: isTablet
-        ? '세계 최고 수준의 자동화된 취약점 분석 시스템을 활용합니다.'
-        : '세계 최고 수준의 자동화된\n취약점 분석 시스템을 활용합니다.',
+        ? t('threeIntro.auditDescription2Tablet')
+        : t('threeIntro.auditDescription2'),
       point2Image: 'audit2',
       point3: 'State-of-the-art',
       description3: isTablet
-        ? '2만 4,000건 이상의 최신 취약점 데이터베이스를 보유하고 있습니다.'
-        : '2만 4,000건 이상의 최신 취약점\n데이터베이스를 보유하고 있습니다.',
+        ? t('threeIntro.auditDescription3Tablet')
+        : t('threeIntro.auditDescription3'),
       point3Image: 'audit3',
     },
   ];
@@ -178,7 +178,7 @@ export default function ThreeIntro() {
                 <ObserverAnimation delay={500} sx={{ width: 1 }}>
                   <Link href="/solution/audit">
                     <MUIOutlinedButton
-                      text="Audit 더 알아보기"
+                      text={t('threeIntro.button')}
                       color="#FFFFFF"
                       hoverColor="#FFFFFF"
                       sx={{

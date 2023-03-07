@@ -1,0 +1,41 @@
+{
+  "firstSection": {
+    "title1": "In addition to collaborating with Institutions, SOOHO creates and operates products for individual investors on its own.",
+    "title2": "Our goal is to provide advanced investment experiences on various blockchains by connecting them with bridge technology."
+  },
+  "secondGradation": {
+    "klevaContents": "Providing various investment opportunities in Klaytn with leverage functions.",
+    "stayKingContents": "Providing leveraged investment opportunities on early-stage blockchains with high staking yields, such as Evmos."
+  },
+  "recordSection": {
+    "klevaTitle": "Second-largest TVL in Klaytn DeFi",
+    "klevaStandard": "TVL, Feb. 2023",
+    "klevaRecord1": "Over $90M TVL achieved in 30mins of launch, $500M in 2 weeks.",
+    "klevaRecord2": "",
+    "klevaRecord3": "",
+    "klevaRecord4": "",
+    "klevaRecord5": "",
+    "klevaDescriptionMob": "KLEVA aims to lead the growth of the entire Klaytn ecosystem by providing DeFi opportunities in Klaytn to various types of investors, in partnership with WEMIX.",
+    "klevaDescription": "KLEVA aims to lead the growth of the entire Klaytn ecosystem by providing DeFi opportunities in Klaytn to various types of investors, in partnership with WEMIX.",
+
+    "stayKingRecord1": "StayKing is a DeFi staking service for the Evmos ecosystem and won the Grand Champion award of $80,000 at the Evmos Momentum Hackathon in October 2022.",
+    "stayKingRecord2": "",
+    "stayKingRecord3": "",
+    "stayKingRecord4": "",
+    "stayKingRecord5": "",
+    "stayKingRecord6": "",
+    "stayKingDescriptionMob": "The product goal is to allow the users to obtain staking opportunities on various blockchains on the entire Cosmos ecosystem and to immediately secure liquidity without an unstaking period.",
+    "stayKingDescription": "The product goal is to allow the users to obtain staking opportunities on various blockchains on the entire Cosmos ecosystem and to immediately secure liquidity without an unstaking period."
+  },
+  "description": {
+    "klevaSummaryTablet": "Users can provide liquidity to the DEX pool by investing both their own tokens and borrowed tokens, thereby maximizing their rewards.",
+    "klevaSummary": "Users can provide liquidity to the DEX pool by investing both their own tokens and borrowed tokens, thereby maximizing their rewards.",
+    "klevaDescription1": "Without having to manually withdraw and reinvest, KLEVA helps auto-compound the yields.",
+    "klevaDescription2": "Users can implement various types of investment strategies based on different methods of utilizing DEX and assets.",
+
+    "stayKingSummaryTablet": "Users can maximize the rewards for participating in validating transactions by investing both their own tokens and borrowed tokens into the staking pool.",
+    "stayKingSummary": "Users can maximize the rewards for participating in validating transactions by investing both their own tokens and borrowed tokens into the staking pool.",
+    "stayKingDescription1": "Without having to manually withdraw and reinvest, StayKing helps auto-compound the yields.",
+    "stayKingDescription2": "(Coming soon) The cross-chain staking function will be supported."
+  }
+}

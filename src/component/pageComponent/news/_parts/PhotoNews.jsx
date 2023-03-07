@@ -2,27 +2,28 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { CardMedia, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import EnlargeAnimation from '@/component/ui/EnlargeAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function PhotoNews() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('news');
 
   const newsList = [
     {
-      title: 'DeFi Infrastructure Provider Sooho.io Raises $4.5M for Bridging Blockchains',
+      title: t('photoNews.title1'),
       img: 'binance',
       date: '2022. 12. 13',
       link: 'https://www.binance.com/en/news/top/7322701?utm_source=infoHub',
     },
     {
-      title: 'EVMOS StayKing House protocol wins Evmos Momentum Hackathon grand prize',
+      title: t('photoNews.title2'),
       img: 'technode',
       date: '2022. 10. 19',
       link: 'https://technode.global/2022/10/19/evmos-stayking-house-protocol-wins-evmos-momentum-hackathon-grand-prize/',
     },
     {
-      title: 'Sooho.io to Attend and Host Events at Korea Blockchain Week 2022',
+      title: t('photoNews.title3'),
       img: 'asiaone',
       date: '2022. 8. 4',
       link: 'https://www.asiaone.com/business/soohoio-attend-and-host-events-korea-blockchain-week-2022',

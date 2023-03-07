@@ -4,9 +4,11 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { gray_light } from '@/component/style/StyleTheme';
+import { useTranslation } from 'next-i18next';
 
 export default function SecondGradation({ currentProduct }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('product');
 
   const productData = {
     KLEVA: {
@@ -14,16 +16,14 @@ export default function SecondGradation({ currentProduct }) {
       title: isTablet
         ? `No.1 Leveraged Yield Farming Protocol on Klaytn`
         : `No.1 Leveraged Yield Farming\nProtocol on Klaytn`,
-      contents: `클레이튼 생태계 내부의 다양한 투자 기회와\n레버리지 기능을 제공합니다.`,
+      contents: t('secondGradation.klevaContents'),
       img: 'kleva',
       logo: 'klevaLogo',
     },
     StayKing: {
       name: 'StayKing',
       title: `First Leveraged Staking\nProtocol on Evmos`,
-      contents: isTablet
-        ? `Evmos와 같이 스테이킹 이율이 높은 신생 체인에서 레버리지 투자 기회를 제공합니다.`
-        : `Evmos와 같이 스테이킹 이율이 높은 신생 체인에서 레버리지 투자 기회를 제공합니다.`,
+      contents: t('secondGradation.stayKingContents'),
       img: 'stayKing',
       logo: 'stayKingLogo',
     },

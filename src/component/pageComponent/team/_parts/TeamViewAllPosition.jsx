@@ -1,10 +1,9 @@
-import { Box, Container, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import { black, paddingHorMob, primary } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function TeamViewAllPosition() {

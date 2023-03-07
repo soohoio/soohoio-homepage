@@ -1,6 +1,12 @@
 import ContactPage from '@/component/pageComponent/Contact';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['contact'])),
+  },
+});
 export default function Contact() {
   return (
     <>

@@ -3,16 +3,22 @@ import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/materia
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import { gray_light } from '@/component/style/StyleTheme';
+import { gray_light, paddingHorMob, paddingHorPC } from '@/component/style/StyleTheme';
+import { useTranslation } from 'next-i18next';
 
 // Kleva 섹션
 export function RecordSectionKleva() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('product');
 
   return (
     <Container
       maxWidth="false"
-      sx={{ backgroundColor: '#131313', py: { xs: '48px', sm: '128px' } }}
+      sx={{
+        backgroundColor: '#131313',
+        py: { xs: '48px', sm: '128px' },
+        px: { xs: paddingHorMob, sm: paddingHorPC },
+      }}
     >
       <ObserverAnimation>
         <>
@@ -22,7 +28,7 @@ export function RecordSectionKleva() {
             color="#1A56FF"
             fontWeight={600}
           >
-            클레이튼 DeFi 서비스 전체 2위
+            {t('recordSection.klevaTitle')}
           </Typography>
 
           <Typography
@@ -32,7 +38,7 @@ export function RecordSectionKleva() {
             color="#5F5F5F"
             sx={{ mt: { xs: '10px', sm: '24px' }, mb: { xs: '16px', sm: '24px' } }}
           >
-            TVL, 23년 2월 기준
+            {t('recordSection.klevaStandard')}
           </Typography>
 
           <Typography
@@ -42,11 +48,11 @@ export function RecordSectionKleva() {
             fontWeight={300}
             color={gray_light}
           >
-            <Box sx={{ display: 'inline' }}>{`런칭 34분 만에 `}</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{`1,190억 원`}</Box>
-            <Box sx={{ display: 'inline' }}>{`, 2주 만에 `}</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{`6,000억 원`}</Box>
-            <Box>규모의 자산 예치에 성공했습니다.</Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.klevaRecord1')}</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('recordSection.klevaRecord2')}</Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.klevaRecord3')}</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('recordSection.klevaRecord4')}</Box>
+            <Box>{t('recordSection.klevaRecord5')}</Box>
           </Typography>
 
           <Typography
@@ -85,10 +91,14 @@ export function RecordSectionKleva() {
             fontWeight={300}
             color={gray_light}
           >
-            <Box sx={{ mt: { xs: '20px', sm: '24px' } }}>
-              {isMob
-                ? `위믹스와 협업하여 탄생한 탈중앙화 금융 서비스로,\n다양한 성향의 이용자들에게 클레이튼 내 여러 DeFi 투자\n기회를 제공하여 클레이튼 생태계 전체의\n성장을 이끌고자 합니다.`
-                : `위믹스와 협업하여 탄생한 탈중앙화 금융 서비스로,\n다양한 성향의 이용자들에게 클레이튼 내 여러 DeFi 투자 기회를\n제공하여 클레이튼 생태계 전체의 성장을 이끌고자 합니다.`}
+            <Box
+              sx={{
+                mt: { xs: '20px', sm: '24px' },
+                maxWidth: { xs: '320px', sm: '700px' },
+                mx: 'auto',
+              }}
+            >
+              {isMob ? t('recordSection.klevaDescriptionMob') : t('recordSection.klevaDescription')}
             </Box>
           </Typography>
         </>
@@ -100,11 +110,15 @@ export function RecordSectionKleva() {
 // StayKing 섹션
 export function RecordSectionStayKing() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('product');
 
   return (
     <Container
-      maxWidth="false"
-      sx={{ backgroundColor: '#131313', py: { xs: '48px', sm: '128px' } }}
+      sx={{
+        backgroundColor: '#131313',
+        py: { xs: '48px', sm: '128px' },
+        px: { xs: paddingHorMob, sm: paddingHorPC },
+      }}
     >
       <ObserverAnimation>
         <>
@@ -124,17 +138,19 @@ export function RecordSectionStayKing() {
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
             color={gray_light}
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' }, maxWidth: '700px', mx: 'auto' }}
           >
-            <Box sx={{ mt: { xs: '18px', sm: '32px' } }}>
-              Evmos 체인의 활성화를 위해 탄생한 탈중앙 금융 서비스로,
+            <Box sx={{ mt: { xs: '18px', sm: '32px' } }}>{t('recordSection.stayKingRecord1')}</Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.stayKingRecord2')}</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>
+              {t('recordSection.stayKingRecord3')}
             </Box>
-            <Box sx={{ display: 'inline' }}>22년 10월 Evmos 해커톤에서 전 부문</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{` 1위를 수상`}</Box>
-            <Box sx={{ display: 'inline' }}>하여</Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.stayKingRecord4')}</Box>
             <Box />
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{`$80,000 상금을 획득`}</Box>
-            <Box sx={{ display: 'inline' }}>했습니다.</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>
+              {t('recordSection.stayKingRecord5')}
+            </Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.stayKingRecord6')}</Box>
           </Typography>
 
           {/* 모바일 텍스트 */}
@@ -144,16 +160,20 @@ export function RecordSectionStayKing() {
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
             color={gray_light}
-            sx={{ display: { sm: 'none' } }}
+            sx={{ display: { sm: 'none' }, maxWidth: '320px', mx: 'auto' }}
           >
             <Box sx={{ mt: { xs: '18px', sm: '32px' } }}>
-              Evmos 체인의 활성화를 위해 탄생한 탈중앙 금융
+              {t('recordSection.stayKingRecord1')}&nbsp;
+              {t('recordSection.stayKingRecord2')}
             </Box>
-            <Box>서비스로, 22년 10월 Evmos 해커톤에서 전 부문</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{` 1위를 수상`}</Box>
-            <Box sx={{ display: 'inline' }}>하여</Box>
-            <Box sx={{ display: 'inline', fontWeight: 600 }}>{` $80,000 상금을 획득`}</Box>
-            <Box sx={{ display: 'inline' }}>했습니다.</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>
+              {t('recordSection.stayKingRecord3')}
+            </Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.stayKingRecord4')}</Box>
+            <Box sx={{ display: 'inline', fontWeight: 600 }}>
+              {t('recordSection.stayKingRecord5')}
+            </Box>
+            <Box sx={{ display: 'inline' }}>{t('recordSection.stayKingRecord6')}</Box>
           </Typography>
 
           <CardMedia
@@ -171,10 +191,11 @@ export function RecordSectionStayKing() {
             className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
             fontWeight={300}
             color={gray_light}
+            sx={{ maxWidth: { xs: '320px', sm: '700px' }, mx: 'auto' }}
           >
             {isMob
-              ? `StayKing의 목표는 Evmos 체인을 넘어 Cosmos\n생태계의 다양한 체인에서 유저가 스테이킹 기회를 얻고,\n스테이킹 종료 후에도 빠르게 자산의 유동성을\n확보할 수 있도록 확장하는 것입니다.`
-              : `StayKing의 목표는 Evmos 체인을 넘어 Cosmos 생태계의\n다양한 체인에서 유저가 스테이킹 기회를 얻고, 스테이킹 종료 후에도\n빠르게 자산의 유동성을 확보할 수 있도록 확장하는 것입니다.`}
+              ? t('recordSection.stayKingDescriptionMob')
+              : t('recordSection.stayKingDescription')}
           </Typography>
         </>
       </ObserverAnimation>

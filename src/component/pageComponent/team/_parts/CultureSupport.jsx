@@ -3,16 +3,18 @@ import { Box, Button, CardMedia, Container, Grid, Stack, Tooltip, Typography } f
 import { paddingHorMob, paddingHorPC, primary } from '@/component/style/StyleTheme';
 import { useContext, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { useTranslation } from 'next-i18next';
 
 export default function CultureSupport() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('team');
 
   const supportList = [
-    '야간 택시비',
-    '점심 저녁 식사 및 간식',
-    '교정 테라피',
-    '직무에 맞는 고사양 장비',
-    '업무에 필요한 소프트웨어',
+    t('cultureSupport.supportList1'),
+    t('cultureSupport.supportList2'),
+    t('cultureSupport.supportList3'),
+    t('cultureSupport.supportList4'),
+    t('cultureSupport.supportList5'),
   ];
 
   return (
@@ -35,9 +37,7 @@ export default function CultureSupport() {
         color={primary}
       >
         <Box sx={{ mb: { xs: '32px', sm: '40px' } }}>
-          {isTablet
-            ? `오직 High Performance에만 몰입할 수 있도록`
-            : `오직 High Performance에만 몰입할 수 있도록 지원합니다.`}
+          {isTablet ? t('cultureSupport.titleTablet') : t('cultureSupport.title')}
         </Box>
       </Typography>
 

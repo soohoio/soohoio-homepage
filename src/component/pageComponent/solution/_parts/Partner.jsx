@@ -4,9 +4,11 @@ import { Box, CardMedia, Container, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function Partner() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('solution');
 
   const partnerList = [
     { label: 'wemix', width: 135, height: 38 },
@@ -89,7 +91,7 @@ export default function Partner() {
               align="center"
               fontWeight={600}
             >
-              <Box sx={{ mt: { xs: '42px', sm: '104px' } }}>생태계 맞춤형 솔루션</Box>
+              <Box sx={{ mt: { xs: '42px', sm: '104px' } }}>{t('partner.title')}</Box>
             </Typography>
 
             <Typography
@@ -100,10 +102,8 @@ export default function Partner() {
               color="#FFFFFF"
               sx={{ mt: { xs: '16px', sm: '32px' }, mb: { xs: '16px', sm: '32px' } }}
             >
-              <Box>
-                {isMob
-                  ? `고객의 체인 생태계에 최적화될 수 있는 DeFi 서비스를\n고민하고 협업합니다. 개발부터 운영까지,\n빠르고 간편한 Web3.0 온보딩을 경험할 수 있습니다.`
-                  : `고객의 체인 생태계에 최적화될 수 있는 DeFi 서비스를 고민하고 협업합니다.\n개발부터 운영까지, 빠르고 간편한 Web3.0 온보딩을 경험할 수 있습니다.`}
+              <Box sx={{ maxWidth: '1200px', mx: 'auto' }}>
+                {isMob ? t('partner.descriptionMob') : t('partner.description')}
               </Box>
             </Typography>
 
@@ -114,11 +114,7 @@ export default function Partner() {
               fontWeight={300}
               color={gray}
             >
-              <Box>
-                {isMob
-                  ? `패키지의 세 가지 구성 중\n필요한 서비스를 문의해주세요.`
-                  : `패키지의 세 가지 구성 중 필요한 서비스를 문의해주세요.`}
-              </Box>
+              <Box>{isMob ? t('partner.contactMob') : t('partner.contact')}</Box>
             </Typography>
           </ObserverAnimation>
         </BodyContainer>

@@ -4,6 +4,7 @@ import { black_dark, gray, gray_light, primary } from '../style/StyleTheme';
 import { internationalCode } from '@/constant/internationalcode';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useTranslation } from 'next-i18next';
 
 /** 상위 컴포넌트에서 관리할 staet는 value, onChange에 주입 */
 export function CountryNumUnderline({ value, onChange }) {
@@ -11,6 +12,10 @@ export function CountryNumUnderline({ value, onChange }) {
   // xs, sm 반응형 안먹는 것들을 위한
   const selectFontSize = isMob ? '14px' : '24px';
   const selectPadding = isMob ? '5px 0px 5px 0px' : '13px 0px 0px 0px';
+
+  const { t, i18n } = useTranslation();
+  const isKorean = i18n.language === 'ko';
+
   return (
     <FormControl
       variant="standard"
@@ -90,7 +95,9 @@ export function CountryNumUnderline({ value, onChange }) {
               value={eachdata.code}
               sx={{ backgroundColor: gray, fontWeight: 300 }}
             >
-              {`${eachdata.label} ${eachdata.code}`}
+              {isKorean
+                ? `${eachdata.label} ${eachdata.code}`
+                : `${eachdata.enLabel} ${eachdata.code}`}
             </MenuItem>
           );
         })}

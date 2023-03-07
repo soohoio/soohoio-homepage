@@ -5,15 +5,19 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import CountUp from 'react-countup';
+import { useTranslation } from 'next-i18next';
 
 export default function MainClients() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('audit');
+  const { i18n } = useTranslation();
+  const isKorean = i18n.language === 'ko';
 
   const performanceList = [
-    { label: '보고서 발행', number: 280000 },
-    { label: '취약점 발견', number: 24000 },
-    { label: '보호한 총 자산 가치', number: 2000 },
-    { label: '클라이언트 & 파트너', number: 200 },
+    { label: t('mainClients.performanceList1'), number: 280000 },
+    { label: t('mainClients.performanceList2'), number: 24000 },
+    { label: t('mainClients.performanceList3'), number: 2000 },
+    { label: t('mainClients.performanceList4'), number: 200 },
   ];
 
   const mainClientsList = [
@@ -40,10 +44,10 @@ export default function MainClients() {
           fontWeight={300}
           align="center"
         >
-          <Box sx={{ display: 'inline' }}>2018년 4월, </Box>
-          <Box sx={{ display: 'inline', fontWeight: 600 }}>국내 첫 번째 오딧 보고서를 발행</Box>
-          <Box sx={{ display: 'inline' }}>한</Box>
-          <Box sx={{ mb: { xs: '24px', sm: '56px' } }}>한국 대표 블록체인 보안팀</Box>
+          <Box sx={{ display: 'inline' }}>{t('mainClients.title1')}</Box>
+          <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('mainClients.title2')}</Box>
+          <Box sx={{ display: 'inline' }}>{t('mainClients.title3')}</Box>
+          <Box sx={{ mb: { xs: '24px', sm: '56px' } }}>{t('mainClients.title4')}</Box>
         </Typography>
       </ObserverAnimation>
 
@@ -87,7 +91,19 @@ export default function MainClients() {
                       </Box>
                     ) : (
                       <Box>
-                        <CountUp enableScrollSpy separator="," end={each.number} />+
+                        {each.label !== 'Amount of assets protected' && (
+                          <>
+                            <CountUp enableScrollSpy separator="," end={each.number} />+
+                          </>
+                        )}
+                      </Box>
+                    )}
+                    {each.label === 'Amount of assets protected' && (
+                      <Box>
+                        $
+                        <CountUp enableScrollSpy separator="," end={2} />.
+                        <CountUp enableScrollSpy separator="," end={6} />
+                        &nbsp;B+
                       </Box>
                     )}
                   </Typography>

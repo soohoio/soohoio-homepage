@@ -4,31 +4,30 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { black_dark, borderRadiusMob, borderRadiusPc } from '@/component/style/StyleTheme';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function DescriptionSection({ currentProduct }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('product');
+
   const productData = {
     KLEVA: {
       title: `LEVERAGED\nYIELD FARMING`,
-      summary: isTablet
-        ? `보유한 자산과 대여한 자산을 DEX(탈중앙화 거래소) 풀에 함께 투자하여 유동성을 공급한 대가로 받는 보상을 극대화할 수 있습니다.`
-        : `보유한 자산과 대여한 자산을 DEX(탈중앙화 거래소) 풀에\n함께 투자하여 유동성을 공급한 대가로 받는 보상을\n극대화할 수 있습니다.`,
+      summary: isTablet ? t('description.klevaSummaryTablet') : t('description.klevaSummary'),
       point1: 'Auto-compound',
-      description1: `수동으로 자산을 출금하고 재투자할 필요 없이, 자동 복리 투자 기능을 통해 간편한 재투자가 가능합니다.`,
+      description1: t('description.klevaDescription1'),
       point2: 'Multiple Tactics',
-      description2: `여러 종류의 DEX와 자산을 활용하여 투자 성향에 따른 다양한 전략을 시행해볼 수 있습니다.`,
+      description2: t('description.klevaDescription2'),
       img: isMob ? 'klevaDescMob' : 'klevaDesc',
       aspectRatio: isMob ? '314/210' : '664/387',
     },
     StayKing: {
       title: `LEVERAGED\nSTAKING`,
-      summary: isTablet
-        ? `보유한 자산과 대여한 자산을 스테이킹 풀에 함께 투자하여 블록체인 검증에 참여한 대가로 받는 보상을 극대화할 수 있습니다.`
-        : `보유한 자산과 대여한 자산을 스테이킹 풀에 함께 투자하여\n블록체인 검증에 참여한 대가로 받는 보상을\n극대화할 수 있습니다.`,
+      summary: isTablet ? t('description.stayKingSummaryTablet') : t('description.stayKingSummary'),
       point1: 'Auto-compound',
-      description1: `수동으로 자산을 출금하고 재투자할 필요 없이, 자동 복리 투자 기능을 통해 간편한 재투자가 가능합니다.`,
+      description1: t('description.stayKingDescription1'),
       point2: 'Cross-chain',
-      description2: `추후에는 다양한 체인을 넘나드는 크로스체인 스테이킹을 지원할 예정입니다.`,
+      description2: t('description.stayKingDescription2'),
       img: isMob ? 'stayKingDescMob' : 'stayKingDesc',
       aspectRatio: isMob ? '312/174' : '664/303',
     },

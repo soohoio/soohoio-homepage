@@ -6,15 +6,17 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function Package() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const router = useRouter();
+  const { t } = useTranslation('main');
 
   const packageList = [
-    { title: 'Bridge', contents: `기업 고객의\n생태계 확장성 확보`, img: 'bridge' },
-    { title: 'Dapp', contents: `생태계 맞춤형\nDeFi 서비스`, img: 'dapp' },
-    { title: 'Audit', contents: `안전한 생태계를 위한\n필수 보안 감사`, img: 'audit' },
+    { title: 'Bridge', contents: t('package.bridgeContents'), img: 'bridge' },
+    { title: 'Dapp', contents: t('package.dappContents'), img: 'dapp' },
+    { title: 'Audit', contents: t('package.auditContents'), img: 'audit' },
   ];
 
   const goToPackage = () => {
@@ -30,18 +32,18 @@ export default function Package() {
             align="center"
             fontWeight={600}
           >
-            기업 고객을 위한 패키지 솔루션
+            {t('package.packageTitle')}
           </Typography>
 
           <Typography
+            component="div"
             className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
             align="center"
             sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' } }}
           >
-            {isMob &&
-              `기업들이 쉽고 안전하게 DeFi 생태계를\n구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
-            {!isMob &&
-              `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
+            <Box sx={{ maxWidth: '1050px', mx: 'auto' }}>
+              {isMob ? t('package.packageDescriptionMob') : t('package.packageDescription')}
+            </Box>
           </Typography>
 
           {/* 패키지 에셋 */}
@@ -75,7 +77,7 @@ export default function Package() {
             fontWeight={500}
             sx={{ mb: { xs: '16px', sm: '38px' } }}
           >
-            DeFi 패키지 구성
+            {t('package.defiComposition')}
           </Typography>
 
           <Stack
@@ -106,7 +108,12 @@ export default function Package() {
                       display: 'inline-block',
                     }}
                   >
-                    <Grid container direction="row" justifyContent="space-between">
+                    <Grid
+                      container
+                      direction="row"
+                      justifyContent="space-between"
+                      sx={{ position: 'relative' }}
+                    >
                       <Box sx={{ pl: { xs: '16px', sm: '32px' }, py: { xs: '12px', sm: '24px' } }}>
                         <Typography
                           className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
@@ -115,10 +122,11 @@ export default function Package() {
                           {each.title}
                         </Typography>
                         <Typography
+                          component="div"
                           className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
                           sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                         >
-                          {each.contents}
+                          <Box sx={{ maxWidth: { xs: '160px', sm: '195px' } }}>{each.contents}</Box>
                         </Typography>
                       </Box>
                       <CardMedia
@@ -126,6 +134,8 @@ export default function Package() {
                         sx={{
                           width: { xs: '144px', sm: '207px' },
                           height: { xs: '100px', sm: '150px' },
+                          position: 'absolute',
+                          right: 0,
                         }}
                       />
                     </Grid>
@@ -138,7 +148,7 @@ export default function Package() {
           <Grid container justifyContent="center">
             <MUIOutlinedButton
               onClick={goToPackage}
-              text="패키지 자세히 보기"
+              text={t('package.button')}
               sx={{ width: { xs: 1, sm: 'auto' }, mt: { xs: '42px', sm: '88px' } }}
             />
           </Grid>

@@ -11,9 +11,11 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { MUIOutlinedButton } from '@/component/ui/Button';
+import { useTranslation } from 'next-i18next';
 
 export default function Security() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('audit');
 
   const goToLink = () => {
     window.open('https://blockops.sooho.io/');
@@ -28,19 +30,20 @@ export default function Security() {
           fontWeight={600}
           align="center"
         >
-          {isPc ? '가장 빠르고 정확한 보안 솔루션' : 'SOOHO Audit'}
+          {isPc ? t('security.titlePc') : t('security.title')}
         </Typography>
 
         <Typography
+          component="div"
           className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
           color="#FFFFFF"
           fontWeight={300}
           align="center"
           sx={{ mt: { xs: '22px', sm: '26px' }, mb: { xs: '64px', sm: '64px' } }}
         >
-          {isMob
-            ? `세계 최고 수준의 자동화된 취약점 검증 시스템과\n내부 전문 보안 연구팀이 수동으로 취약점을 식별해내는\n두 가지 방식으로 빠르고 정확한, 확장성 있는\n보안 감사를 진행합니다.`
-            : `내부 전문 보안 연구팀이 수동으로 취약점을 식별해내는 방식과\n세계 최고 수준의 자동화된 취약점 검증 시스템을 활용하여\n빠르고 정확한 보안 감사를 진행합니다.`}
+          <Box sx={{ maxWidth: '800px', mx: 'auto' }}>
+            {isMob ? t('security.descriptionMob') : t('security.description')}
+          </Box>
         </Typography>
 
         {/* 첫 번째 박스 */}
@@ -72,10 +75,8 @@ export default function Security() {
             fontWeight={300}
             sx={{ maxWidth: { xs: '450px', sm: '837px' } }}
           >
-            <Box>
-              {isPc
-                ? `Defcon, Nuit du Hack, 화이트햇, SamsungCTF 등\n국내외 해킹 대회에서 수상하고, 보안 분야 박사 학위의\n학문적 배경을 가지는 등 우수한 실력과 경험을 가진 \n전문 보안 연구팀이 정밀한 분석을 통해 보안 감사의\n정확도를 높이고 있습니다.`
-                : 'Defcon, Nuit du Hack, 화이트햇, SamsungCTF 등 국내외 해킹 대회에서 수상하고, 보안 분야 박사 학위의 학문적 배경을 가지는 등 우수한 실력과 경험을 가진 전문 보안 연구팀이 정밀한 분석을 통해 보안 감사의 정확도를 높이고 있습니다.'}
+            <Box sx={{ maxWidth: '430px' }}>
+              {isPc ? t('security.inHouseDescriptionPc') : t('security.inHouseDescription')}
             </Box>
           </Typography>
           <CardMedia
@@ -132,18 +133,16 @@ export default function Security() {
             className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
             color="#FFFFFF"
             fontWeight={300}
-            sx={{ maxWidth: { xs: '450px', sm: '837px' } }}
+            sx={{ maxWidth: { xs: '450px', sm: '837' } }}
           >
-            <Box sx={{ display: 'inline' }}>
-              {isPc
-                ? `보안 감사를 통해 찾아낸 취약점은 내부 자체 데이터\n베이스 구축을 통해 자동 분석기 개발에 활용됩니다.\n수호의 보안 기술력을 대표하는 블록체인 앱\n자동 분석기 `
-                : '보안 감사를 통해 찾아낸 취약점은 내부 자체 데이터 베이스 구축을 통해 자동 분석기 개발에 활용됩니다. 수호의 보안 기술력을 대표하는 블록체인 앱 자동 분석기 '}
-            </Box>
-            <Box sx={{ display: 'inline', color: primary }}>BlockOps</Box>
-            <Box sx={{ display: 'inline' }}>
-              {isPc
-                ? `는 자동으로 취약점을\n찾아내는 솔루션으로, Solidity 분석기 29개,\nEVM 디컴파일러 패턴 150개, Signature\n559,886개의 기능을 한 번에 지원합니다.`
-                : '는 자동으로 취약점을 찾아내는 솔루션으로, Solidity 분석기 29개, EVM 디컴파일러 패턴 150개, Signature 559,886개의 기능을 한 번에 지원합니다.'}
+            <Box sx={{ maxWidth: '430px' }}>
+              <Box sx={{ display: 'inline' }}>
+                {isPc ? t('security.coreDescription1Pc') : t('security.coreDescription1')}
+              </Box>
+              <Box sx={{ display: 'inline', color: primary }}> BlockOps</Box>
+              <Box sx={{ display: 'inline' }}>
+                {isPc ? t('security.coreDescription2Pc') : t('security.coreDescription2')}
+              </Box>
             </Box>
           </Typography>
 
@@ -171,7 +170,7 @@ export default function Security() {
           </Grid>
 
           <MUIOutlinedButton
-            text="블록옵스 더 알아보기"
+            text={t('security.button')}
             onClick={goToLink}
             color="#FFFFFF"
             hoverColor="#FFFFFF"

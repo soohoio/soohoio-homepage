@@ -2,6 +2,7 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 import { black, black_dark, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useContext } from 'react';
+import { useTranslation } from 'next-i18next';
 
 /** MUI Button 대신 Box로 만든 Outlined 버튼  */
 export function RoundOutlinedButton({ onClick, text, color, icon, py, px, sx }) {
@@ -94,6 +95,10 @@ RoundContainedButton.defaultProps = {
 export function MUIOutlinedButton({ onClick, text, color, hoverColor, noClass, sx }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const noneClass = noClass ? 'XXX' : '';
+
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   return (
     <Button
       // 폰트 사이즈 변경 시
@@ -115,6 +120,8 @@ export function MUIOutlinedButton({ onClick, text, color, hoverColor, noClass, s
             color: black,
           },
           zIndex: 100,
+          boxSizing: 'border-box',
+          fontFamily: currentLanguage === 'ko' ? 'Pretendard' : 'Druk Text Web',
         },
         sx,
       ]}

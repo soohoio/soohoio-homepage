@@ -5,9 +5,11 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { MUIOutlinedButton } from '@/component/ui/Button';
+import { useTranslation } from 'next-i18next';
 
 export default function System() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('solution');
 
   const openLink = () => {
     window.open('https://c2cc.xyz/');
@@ -35,7 +37,7 @@ export default function System() {
               fontWeight={600}
               align="center"
             >
-              안전한 시스템과 기술
+              {t('system.title')}
             </Typography>
 
             {/* PC, 태블릿 텍스트 */}
@@ -51,11 +53,11 @@ export default function System() {
                 display: { xs: 'none', sm: 'block' },
               }}
             >
-              <Box>{`수호는 Fortune 500 기업을 고객으로 보유한 검증된 회사로서\n법규 준수를 위한 시스템을 갖추고 있습니다.`}</Box>
-              <Box sx={{ display: 'inline' }}>또한, 독자적인 </Box>
-              <Box sx={{ display: 'inline', fontWeight: 600 }}>C2CC </Box>
-              <Box sx={{ display: 'inline' }}>기술을 통해 체인과 체인을 안전하게 연결하여</Box>
-              <Box>고객의 체인 생태계 확장을 지원합니다.</Box>
+              <Box>{t('system.description1')}</Box>
+              <Box sx={{ display: 'inline' }}>{t('system.description2')}</Box>
+              <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('system.description3')}</Box>
+              <Box sx={{ display: 'inline' }}>{t('system.description4')}</Box>
+              <Box>{t('system.description5')}</Box>
             </Typography>
 
             {/* Mob 텍스트 */}
@@ -71,11 +73,11 @@ export default function System() {
                 display: { sm: 'none' },
               }}
             >
-              <Box>{`수호는 Fortune 500 기업을 고객으로 보유한 검증된\n회사로서 법규 준수를 위한 시스템을 갖추고 있습니다.`}</Box>
-              <Box sx={{ display: 'inline' }}>또한, 독자적인 </Box>
-              <Box sx={{ display: 'inline', fontWeight: 600 }}>C2CC </Box>
-              <Box sx={{ display: 'inline' }}>기술을 통해 체인과 체인을 안전하게</Box>
-              <Box>연결하여 고객의 체인 생태계 확장을 지원합니다.</Box>
+              <Box>{t('system.description1')}</Box>
+              <Box sx={{ display: 'inline' }}>{t('system.description2')}</Box>
+              <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('system.description3')}</Box>
+              <Box sx={{ display: 'inline' }}>{t('system.description4')}</Box>
+              <Box>{t('system.description5')}</Box>
             </Typography>
 
             <Grid container justifyContent="center">
@@ -95,10 +97,10 @@ export default function System() {
                   },
                 }}
               >
-                C2CC 더 알아보기
+                {t('system.button')}
               </Button>
               <MUIOutlinedButton
-                text="C2CC 더 알아보기"
+                text={t('system.button')}
                 onClick={openLink}
                 color={black}
                 hoverColor={black}

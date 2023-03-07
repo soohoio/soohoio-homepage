@@ -3,10 +3,12 @@ import { Box, Button, Grid, Tooltip, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { borderRadiusPc, gray, gray_light } from '@/component/style/StyleTheme';
+import { useTranslation } from 'next-i18next';
 
 export default function FirstSection({ currentTab, setCurrentTab }) {
   const buttonList = ['Team', 'Culture'];
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('team');
 
   const selectButton = tab => {
     setCurrentTab(tab);
@@ -44,14 +46,17 @@ export default function FirstSection({ currentTab, setCurrentTab }) {
         fontWeight={300}
         color={gray_light}
       >
-        <Box sx={{ mt: { xs: '24px', sm: '40px' }, mb: { xs: '16px', sm: '24px' } }}>
-          {isMob
-            ? `‘수호자'는 자율적인 환경 속에서 이루고 싶은 목표가\n분명하고, 목표를 이루기 위해 끊임없이\n‘Why’를 고민하는 사람들입니다.`
-            : `‘수호자'는 자율적인 환경 속에서 이루고 싶은 목표가 분명하고,\n목표를 이루기 위해 끊임없이 ‘Why’를 고민하는 사람들입니다.`}
+        <Box
+          sx={{
+            mt: { xs: '24px', sm: '40px' },
+            mb: { xs: '16px', sm: '24px' },
+            maxWidth: '800px',
+            mx: 'auto',
+          }}
+        >
+          {isMob ? t('firstSection.title1Mob') : t('firstSection.title1')}
         </Box>
-        <Box>
-          {`우리는 블록체인 산업이라는 변화의 최전선에서\n기술의 가치를 증명하고 금융의 기회를 넓히고자 합니다.`}
-        </Box>
+        <Box sx={{ maxWidth: '800px', mx: 'auto' }}>{t('firstSection.title2')}</Box>
       </Typography>
 
       {/* 버튼 영역 */}

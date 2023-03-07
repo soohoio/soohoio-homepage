@@ -9,46 +9,47 @@ import {
 } from '@/component/style/StyleTheme';
 import { useContext, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { useTranslation } from 'next-i18next';
 
 export default function CulturePoint() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const [selectedCard, setSelectedCard] = useState(null);
+  const { t } = useTranslation('team');
 
   const cultureList = [
     {
       number: '01',
       title: 'Self Managing',
       description: isTablet
-        ? '셀프 매니징을 통해 스스로 검증하고 발전하여 믿음에 보답합니다.'
-        : '셀프 매니징을 통해 스스로 검증하고\n발전하여 믿음에 보답합니다.',
+        ? t('culturePoint.selfManagingDescriptionTablet')
+        : t('culturePoint.selfManagingDescription'),
       img: 'selfManagingBg',
-      imgText: '“높은 자율성이 높은 생산성으로 이어진다고 믿어요.”',
-      hoverText:
-        '수호에서는 서로를 먼저 신뢰함으로써 모두가 높은 자율과 책임을 지닙니다. 문제 정의를 통해 목표를 명확하게 설정하고 다른 팀원들과 공유한 후, 온전히 주도적으로 목표 달성 방법을 설계하고 실행합니다.',
+      imgText: t('culturePoint.selfManagingImgText'),
+      hoverText: t('culturePoint.selfManagingHoverText'),
       pointList: [
         {
-          point: '1 on 1 미팅',
+          point: t('culturePoint.selfManagingPoint1'),
           description: isPc
-            ? '팀 리드와의 주기적인 미팅을 통해 수호에서 이루고 싶은 목표가\n무엇인지 지속적으로 질문하고 함께 탐구해요.'
-            : '팀 리드와의 주기적인 미팅을 통해 수호에서 이루고 싶은 목표가 무엇인지 지속적으로 질문하고 함께 탐구해요.',
+            ? t('culturePoint.selfManagingDescription1Pc')
+            : t('culturePoint.selfManagingDescription1'),
         },
         {
-          point: '자발적인 TF 프로젝트',
+          point: t('culturePoint.selfManagingPoint2'),
           description: isPc
-            ? '누구나 하고 싶은 프로젝트나 탐구하고 싶은 분야가 있다면\n주도적으로 팀을 모집하고 진행해요.'
-            : '누구나 하고 싶은 프로젝트나 탐구하고 싶은 분야가 있다면 주도적으로 팀을 모집하고 진행해요.',
+            ? t('culturePoint.selfManagingDescription2Pc')
+            : t('culturePoint.selfManagingDescription2'),
         },
         {
-          point: '자율적인 근무 환경',
+          point: t('culturePoint.selfManagingPoint3'),
           description: isPc
-            ? '팀별 업무 일정에 맞춰 자율적으로 근무 시간과 장소를 정할 수 있어요.\n집, 넓은 회사 카페, 포커스룸 어디서든!'
-            : '팀별 업무 일정에 맞춰 자율적으로 근무 시간과 장소를 정할 수 있어요. 집, 넓은 회사 카페, 포커스룸 어디서든!',
+            ? t('culturePoint.selfManagingDescription3Pc')
+            : t('culturePoint.selfManagingDescription3'),
         },
         {
-          point: '개인 법인 카드 지급',
+          point: t('culturePoint.selfManagingPoint4'),
           description: isPc
-            ? '높은 신뢰를 바탕으로 팀원 모두가 1인 1개\n법인카드를 자율적으로 사용해요.'
-            : '높은 신뢰를 바탕으로 팀원 모두가 1인 1개 법인카드를 자율적으로 사용해요.',
+            ? t('culturePoint.selfManagingDescription4Pc')
+            : t('culturePoint.selfManagingDescription4'),
         },
       ],
     },
@@ -56,71 +57,69 @@ export default function CulturePoint() {
       number: '02',
       title: 'Open Communication',
       description: isTablet
-        ? '어떠한 이유로도 서로를 구분 짓지 않고 다양한 관점을 나눕니다.'
-        : '어떠한 이유로도 서로를 구분 짓지 않고\n다양한 관점을 나눕니다.',
+        ? t('culturePoint.openDescriptionTablet')
+        : t('culturePoint.openDescription'),
       img: 'openCommunicationBg',
-      imgText: '“서로 다르기 때문에 시너지가 나는 거죠.”',
-      hoverText:
-        '목표를 달성하기 위한 것이라면 언제든지 의견을 자유롭게 주고 받을 수 있습니다. 단, 건강한 방법으로 의견을 전달하고 나와 다른 의견 또한 존중하며 들을 수 있어야 하죠. 나의 강점과 약점을 명확하게 알고 적극적으로 도움을 주고 받기를 기대합니다.',
+      imgText: t('culturePoint.openImgText'),
+      hoverText: t('culturePoint.openHoverText'),
       pointList: [
         {
-          point: 'NEW 수호자 커피챗',
+          point: t('culturePoint.openPoint1'),
           description: isPc
-            ? '신규 입사자는 모든 팀과 커피챗을 진행해요. 커피챗은 우리가\n서로 연결되기 위한 기반을 잘 다져주는 역할을 해요.'
-            : '신규 입사자는 모든 팀과 커피챗을 진행해요. 커피챗은 우리가 서로 연결되기 위한 기반을 잘 다져주는 역할을 해요.',
+            ? t('culturePoint.openDescription1Pc')
+            : t('culturePoint.openDescription1'),
         },
         {
-          point: '비즈니스 지원 요청',
+          point: t('culturePoint.openPoint2'),
           description: isPc
-            ? '수호에서 개선되었으면 하는 점, 목표 달성을 위해 필요한 도움 등을\n자유롭게 이야기하는 창구를 운영하고 있어요.'
-            : '수호에서 개선되었으면 하는 점, 목표 달성을 위해 필요한 도움 등을 자유롭게 이야기하는 창구를 운영하고 있어요.',
+            ? t('culturePoint.openDescription2Pc')
+            : t('culturePoint.openDescription2'),
         },
         {
-          point: '오픈된 정보',
+          point: t('culturePoint.openPoint3'),
           description: isPc
-            ? '업무에 필요한 정보는 전체 공개를 원칙으로 하고 있어요.\n누구나 들여다보고, 필요하다면 의견을 남길 수 있어요.'
-            : '업무에 필요한 정보는 전체 공개를 원칙으로 하고 있어요. 누구나 들여다보고, 필요하다면 의견을 남길 수 있어요.',
+            ? t('culturePoint.openDescription3Pc')
+            : t('culturePoint.openDescription3'),
         },
         {
-          point: '올핸즈 세션',
+          point: t('culturePoint.openPoint4'),
           description: isPc
-            ? '분기마다 수호의 방향성을 공유하고 활발한 Q&A를 주고받아요.\n누구든 공개적으로 질문하고 답변할 수 있어요.'
-            : '분기마다 수호의 방향성을 공유하고 활발한 Q&A를 주고받아요. 누구든 공개적으로 질문하고 답변할 수 있어요.',
+            ? t('culturePoint.openDescription4Pc')
+            : t('culturePoint.openDescription4'),
         },
       ],
     },
     {
       number: '03',
       title: 'Why Questioning',
-      description: '지속적으로 문제를 발견하고\n집요하게 파고듭니다.',
+      description: t('culturePoint.whyDescription'),
       img: 'whyQuestioningBg',
-      imgText: '“깊은 고민과 경험은 타인에게 영감을 줘요.”',
-      hoverText:
-        '수호에서는 계속해서 ‘Why’를 질문합니다. 문제에 대해 더 깊게 고민하고 새로운 영역을 탐구할 수 있게 하기 위함이죠. 본질적인 문제 정의 과정은 더 임팩트 있는 해결로 이어지며, 이를 통해 얻은 인사이트는 다른 사람들까지 성장시킬 수 있습니다.',
+      imgText: t('culturePoint.whyImgText'),
+      hoverText: t('culturePoint.whyHoverText'),
       pointList: [
         {
-          point: '셀프 스터디 지원',
+          point: t('culturePoint.whyPoint1'),
           description: isPc
-            ? '문제 해결을 위해 필요한 모든 배움에 대한 노력을 존중하며, 도서 및\n강의와 사내 스터디를 지원해요.'
-            : '문제 해결을 위해 필요한 모든 배움에 대한 노력을 존중하며, 도서 및 강의와 사내 스터디를 지원해요.',
+            ? t('culturePoint.whyDescription1Pc')
+            : t('culturePoint.whyDescription1'),
         },
         {
-          point: '의사 결정 프로세스',
+          point: t('culturePoint.whyPoint2'),
           description: isPc
-            ? '전사 목표나 제도를 세우는 과정에서도 충분한 문제 정의 과정을 거치며,\n논리와 근거를 전사에 공유해요.'
-            : '전사 목표나 제도를 세우는 과정에서도 충분한 문제 정의 과정을 거치며, 논리와 근거를 전사에 공유해요.',
+            ? t('culturePoint.whyDescription2Pc')
+            : t('culturePoint.whyDescription2'),
         },
         {
-          point: '스포트라이트 세션',
+          point: t('culturePoint.whyPoint3'),
           description: isPc
-            ? '상반기, 하반기에 한 번 팀별 스포트라이트 세션을 통해 지난 문제 해결\n과정에서 얻은 인사이트를 공유해요.'
-            : '상반기, 하반기에 한 번 팀별 스포트라이트 세션을 통해 지난 문제 해결 과정에서 얻은 인사이트를 공유해요.',
+            ? t('culturePoint.whyDescription3Pc')
+            : t('culturePoint.whyDescription3'),
         },
         {
-          point: '중간 회고',
+          point: t('culturePoint.whyPoint4'),
           description: isPc
-            ? '프로젝트 결과에 대한 회고뿐만이 아닌, 중간 과정에서의 회고를\n통해 문제를 다시 한번 점검하고 목표 달성률을 높여요.'
-            : '프로젝트 결과에 대한 회고뿐만이 아닌, 중간 과정에서의 회고를 통해 문제를 다시 한번 점검하고 목표 달성률을 높여요.',
+            ? t('culturePoint.whyDescription4Pc')
+            : t('culturePoint.whyDescription4'),
         },
       ],
     },

@@ -1,3 +1,19 @@
+/* 프리텐다드 웹 폰트 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
+
+body:lang(ko) {
+  margin: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif !important;
+  white-space: pre-wrap;
+}
+
+body:lang(en) {
+  margin: 0;
+  font-family: 'Druk Text Web', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif !important;
+}
+
 /* 폰트 설정 */
 /* vercel 배포 시, important 없으면 안먹히는 현상 (개발환경에서는 important 없어도 O) */
 .pcTitle56KR {
@@ -106,4 +122,613 @@
   font-size: 10px !important;
   line-height: 16px !important;
   letter-spacing: -0.02em;
+}
+
+/* Druk */
+@font-face {
+  font-family: 'Druk XXCond Web';
+  src: url('/font/druk/DrukXXCond-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukXXCond-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukXXCond-SuperItalic-Web {
+  font-family: 'Druk XXCond Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk XXCond Web';
+  src: url('/font/druk/DrukXXCond-Super-Web.woff2') format('woff2'),
+    url('/font/druk/DrukXXCond-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukXXCond-Super-Web {
+  font-family: 'Druk XXCond Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk XCond Web';
+  src: url('/font/druk/DrukXCond-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukXCond-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukXCond-SuperItalic-Web {
+  font-family: 'Druk XCond Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk XCond Web';
+  src: url('/font/druk/DrukXCond-Super-Web.woff2') format('woff2'),
+    url('/font/druk/DrukXCond-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukXCond-Super-Web {
+  font-family: 'Druk XCond Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Cond Web';
+  src: url('/font/druk/DrukCond-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukCond-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukCond-SuperItalic-Web {
+  font-family: 'Druk Cond Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Cond Web';
+  src: url('/font/druk/DrukCond-Super-Web.woff2') format('woff2'),
+    url('/font/druk/DrukCond-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukCond-Super-Web {
+  font-family: 'Druk Cond Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.Druk-SuperItalic-Web {
+  font-family: 'Druk Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-Super-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.Druk-Super-Web {
+  font-family: 'Druk Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-HeavyItalic-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-HeavyItalic-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.Druk-HeavyItalic-Web {
+  font-family: 'Druk Web';
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-Heavy-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-Heavy-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.Druk-Heavy-Web {
+  font-family: 'Druk Web';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-BoldItalic-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-BoldItalic-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.Druk-BoldItalic-Web {
+  font-family: 'Druk Web';
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-Bold-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-Bold-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.Druk-Bold-Web {
+  font-family: 'Druk Web';
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-MediumItalic-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-MediumItalic-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.Druk-MediumItalic-Web {
+  font-family: 'Druk Web';
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Web';
+  src: url('/font/druk/Druk-Medium-Web.woff2') format('woff2'),
+    url('/font/druk/Druk-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.Druk-Medium-Web {
+  font-family: 'Druk Web';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukWide-SuperItalic-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-Super-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukWide-Super-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-HeavyItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-HeavyItalic-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukWide-HeavyItalic-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-Heavy-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-Heavy-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukWide-Heavy-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-BoldItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-BoldItalic-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukWide-BoldItalic-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-Bold-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-Bold-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukWide-Bold-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-MediumItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-MediumItalic-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukWide-MediumItalic-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Wide Web';
+  src: url('/font/druk/DrukWide-Medium-Web.woff2') format('woff2'),
+    url('/font/druk/DrukWide-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukWide-Medium-Web {
+  font-family: 'Druk Wide Web';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukText-SuperItalic-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-Super-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukText-Super-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-HeavyItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-HeavyItalic-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukText-HeavyItalic-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-Heavy-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-Heavy-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukText-Heavy-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-BoldItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-BoldItalic-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukText-BoldItalic-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-Bold-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-Bold-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukText-Bold-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-MediumItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-MediumItalic-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukText-MediumItalic-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Web';
+  src: url('/font/druk/DrukText-Medium-Web.woff2') format('woff2'),
+    url('/font/druk/DrukText-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukText-Medium-Web {
+  font-family: 'Druk Text Web';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-SuperItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-SuperItalic-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukTextWide-SuperItalic-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-Super-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-Super-Web.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukTextWide-Super-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-HeavyItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-HeavyItalic-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukTextWide-HeavyItalic-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 800;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-Heavy-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-Heavy-Web.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukTextWide-Heavy-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-BoldItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-BoldItalic-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukTextWide-BoldItalic-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-Bold-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-Bold-Web.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukTextWide-Bold-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-MediumItalic-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-MediumItalic-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+.DrukTextWide-MediumItalic-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Web';
+  src: url('/font/druk/DrukTextWide-Medium-Web.woff2') format('woff2'),
+    url('/font/druk/DrukTextWide-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.DrukTextWide-Medium-Web {
+  font-family: 'Druk Text Wide Web';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
 }

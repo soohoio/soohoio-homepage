@@ -1,5 +1,12 @@
 import News from '@/component/pageComponent/news';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['news'])),
+  },
+});
 
 export default function NewsPage() {
   return (

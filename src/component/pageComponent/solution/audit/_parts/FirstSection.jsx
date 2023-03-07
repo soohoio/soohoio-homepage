@@ -2,11 +2,12 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Container, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import { borderRadiusPc, gray } from '@/component/style/StyleTheme';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function FirstSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('audit');
 
   return (
     <Container
@@ -43,15 +44,17 @@ export default function FirstSection() {
                 color="#FFFFFF"
                 sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '16px', sm: '48px' } }}
               >
-                <Box sx={{ mt: { xs: '16px', sm: '64px' }, mb: { xs: '16px', sm: '16px' } }}>
-                  {isPc
-                    ? `DeFi 서비스에서 해킹으로 많은 자산이 탈취되는\n이유는 스마트 컨트랙트, 즉 탈중앙화된 실행 코드에서의\n취약점 때문입니다.`
-                    : `DeFi 서비스에서 해킹으로 많은 자산이 탈취되는 이유는 스마트 컨트랙트, 즉 탈중앙화된 실행 코드에서의 취약점 때문입니다.`}
+                <Box
+                  sx={{
+                    mt: { xs: '16px', sm: '64px' },
+                    mb: { xs: '16px', sm: '16px' },
+                    maxWidth: '600px',
+                  }}
+                >
+                  {isPc ? t('firstSection.title1Pc') : t('firstSection.title1')}
                 </Box>
-                <Box>
-                  {isPc
-                    ? `수호는 독자적인 보안 기술력을 기반으로 서비스를 해칠\n수 있는 취약점을 찾아내고 패치할 방법을 제시하는\n스마트 컨트랙트 보안 감사를 진행합니다.`
-                    : `수호는 독자적인 보안 기술력을 기반으로 서비스를 해칠 수 있는 취약점을 찾아내고 패치할 방법을 제시하는 스마트 컨트랙트 보안 감사를 진행합니다.`}
+                <Box sx={{ maxWidth: '600px' }}>
+                  {isPc ? t('firstSection.title2Pc') : t('firstSection.title2')}
                 </Box>
               </Typography>
             </Box>

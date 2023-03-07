@@ -11,10 +11,12 @@ import {
 } from '../../../style/StyleTheme';
 import Draggable from 'react-draggable';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function Tech() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const [screenSize, setScreenSize] = useState(300);
+  const { t } = useTranslation('solution');
 
   // const maximum = (100 * window.innerWidth) / 100 - theme.spacing(37.5);
   const leftLimit = isPc ? 0 : screenSize;
@@ -24,7 +26,7 @@ export default function Tech() {
   const dataList = [
     {
       name: 'Tealswap',
-      contents: 'Oasys 체인 유일의 탈중앙화 거래소(DEX)로\n수호의 기술 지원을 받았습니다.',
+      contents: t('tech.tealswapContents'),
       buttonLabel: 'View website',
       img: 'tealswap',
       patch: ['Dapp', 'Audit'],
@@ -32,7 +34,7 @@ export default function Tech() {
     },
     {
       name: 'Purple Bridge & Swap',
-      contents: `카카오게임즈의 블록체인 플랫폼 Bora와 협업하여\n브릿지와 탈중앙화 거래소(DEX)를 구축했습니다.`,
+      contents: t('tech.purpleContents'),
       buttonLabel: 'Coming soon',
       img: 'purpleBridge',
       patch: ['Bridge', 'Dapp', 'Audit'],
@@ -76,9 +78,7 @@ export default function Tech() {
             align="center"
             fontWeight={600}
           >
-            <Box
-              sx={{ mb: { xs: '50px', sm: '64px' } }}
-            >{`수호의 기술, 제품을 넘어\n생태계의 수준을 변화시킵니다.`}</Box>
+            <Box sx={{ mb: { xs: '50px', sm: '64px' } }}>{t('tech.title')}</Box>
           </Typography>
         </ObserverAnimation>
 

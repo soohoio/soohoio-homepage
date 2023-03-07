@@ -54,4 +54,4 @@ emailJS의 API 정보가 바뀐 경우 .env 파일을 수정 후 배포합니다
 
 ### module
 
-- contextAPI(반응형 유무, 글로벌 적용), GA를 위한 요소 등을 포함하고 있습니다.
+- contextAPI(반응형 스크린 체크 등) 등을 포함하고 있습니다.

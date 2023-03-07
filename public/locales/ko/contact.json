@@ -1,0 +1,45 @@
+{
+  "firstSection": {
+    "title": "더 많은 금융 기회를 ",
+    "title2": "연결하고 수호합니다.",
+    "description": "수호와 함께 DeFi 생태계를 확장하세요."
+  },
+  "contactForm": {
+    "contactCategory": "문의 카테고리",
+    "solutionLabel": "기업 솔루션",
+    "solutionContentsPc": "디파이 패키지의 브릿지, 디앱, 보안 감사에 대한 문의를 남겨주세요.",
+    "solutionContentsTablet": "디파이 패키지의 브릿지, 디앱, 보안 감사에 대한 문의를 남겨주세요.",
+    "solutionContentsMob": "디파이 패키지의 브릿지, 디앱, 보안 감사에 대한 문의를 남겨주세요.",
+    "recruitLabel": "채용",
+    "recruitContents": "수호 합류를 위한 콜챗 신청 및 궁금한 점을 남겨주세요.",
+    "recruitContentsMob": "수호 합류를 위한 콜챗 신청과\n궁금한 점을 남겨주세요.",
+    "cafeLabel": "카페 대관",
+    "cafeContents": "블록체인 커뮤니티를 위한 공간 대관 문의를 남겨주세요.\n(서울 강남구 테헤란로 126 B1 / 9am-10pm)",
+    "cafeContentsMob": "Web3 크리에이터를 위한\n블록체인 커뮤니티 공간입니다.\n(서울 강남구 테헤란로 126 B1 / 9am-10pm)",
+    "etcLabel": "기타",
+    "etcContents": "수호의 프로덕트 및 기타 궁금한 점이 있다면 무엇이든 남겨주세요.",
+    "etcContentsMob": "수호의 프로덕트 및 기타 궁금한 점이 있다면\n무엇이든 남겨주세요.",
+
+    "labelName": "성함",
+    "placeHolderName": "성함을 입력해 주세요",
+    "labelEmail": "이메일",
+    "placeHolderEmail": "이메일을 입력해 주세요",
+    "labelPhoneNumber": "연락처",
+    "placeHolderPhoneNumber": "연락처를 입력해 주세요",
+    "labelTeam": "소속",
+    "placeHolderTeam": "수호아이오",
+
+    "message": "문의 내용",
+    "messagePlaceHolder": "문의 내용을 입력해 주세요.",
+    "policy": "개인정보 수집∙이용 동의 ",
+    "policyAdd": "(필수)",
+    "policyMore": "자세히 보기",
+    "policyContents1": "다음의 사항을 충분히 읽어 보신 후 동의 여부를 체크하여 주시기 바랍니다.\n귀하께서는 위 개인정보 수집∙이용에 대한 동의를 거부하실 수 있습니다.\n그러나 동의를 거부할 경우 문의사항 처리에 제한을 받을 수 있습니다.",
+    "policyContents2": "01   개인정보 수집항목 : 성함, 이메일, 연락처, 소속\n02   개인정보 이용목적 : 고객이 작성한 문의 처리\n03   개인정보 보유 및 이용 기간 : 동의일로부터 문의 처리 후 1년",
+
+    "fileUpload": "파일 업로드",
+    "fileGuide": "파일 업로드 안내",
+    "fileGuideContents": "∙ 첨부 파일 최대 용량은 2MB 입니다.\n∙ 파일은 최대 1개 업로드 가능합니다.\n∙ 업로드 가능 파일 형태 zip, jpg, png, pdf",
+    "send": "보내기"
+  }
+}

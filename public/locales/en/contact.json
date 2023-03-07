@@ -1,0 +1,45 @@
+{
+  "firstSection": {
+    "title": "Secure Gateway for New Financial Opportunities",
+    "title2": "",
+    "description": "Push the boundaries of DeFi ecosystem with us."
+  },
+  "contactForm": {
+    "contactCategory": "Categories",
+    "solutionLabel": "B2B Solution",
+    "solutionContentsPc": "Please leave an inquiry about the bride, dapp, or smart contract audit in DeFi Package.",
+    "solutionContentsTablet": "Please leave an inquiry about the bride, dapp, or smart contract audit in DeFi Package.",
+    "solutionContentsMob": "Please leave an inquiry about the bride, dapp, or smart contract audit in DeFi Package.",
+    "recruitLabel": "Recruit",
+    "recruitContents": "Please leave any questions to join SOOHO or make an arrangement for a call chat.",
+    "recruitContentsMob": "Please leave any questions to join SOOHO or make an arrangement for a call chat.",
+    "cafeLabel": "Cafe Space Rental",
+    "cafeContents": "Please leave a space rental inquiry for the blockchain communities.\n(B1, 126, Teheran-ro, Gangnam-gu, Seoul / 9am-10pm)",
+    "cafeContentsMob": "Please leave a space rental inquiry for the blockchain communities.\n(B1, 126, Teheran-ro, Gangnam-gu, Seoul / 9am-10pm)",
+    "etcLabel": "ETC",
+    "etcContents": "If you have any other questions about SOOHO or our products, do not hesitate to reach out to us.",
+    "etcContentsMob": "If you have any other questions about SOOHO or our products, do not hesitate to reach out to us.",
+
+    "labelName": "Name",
+    "placeHolderName": "Please enter your name.",
+    "labelEmail": "E-mail",
+    "placeHolderEmail": "Please enter your e-mail.",
+    "labelPhoneNumber": "Phone number",
+    "placeHolderPhoneNumber": "Please enter your phonenumber",
+    "labelTeam": "Affiliation",
+    "placeHolderTeam": "SOOHO.IO",
+
+    "message": "Message",
+    "messagePlaceHolder": "Please leave your message.",
+    "policy": "Privacy policy ",
+    "policyAdd": "(required)",
+    "policyMore": "view more",
+    "policyContents1": "By agreeing to the Service in any manner, you acknowledge that you accept the practices and policies outlined in this Privacy Policy, and you hereby consent that SOOHO.IO will collect, use, and share the following information.",
+    "policyContents2": "01 Name, email, phone number, company\n02 The content of the inquiry\n03 Personal information will be stored for 1 year after handling the inquiry",
+
+    "fileUpload": "Upload a file",
+    "fileGuide": "File upload guide",
+    "fileGuideContents": "- The maximum file capacity is 2MB.\n- You can upload up to one file\n- File type: zip, jpg, png, pdf",
+    "send": "Send"
+  }
+}

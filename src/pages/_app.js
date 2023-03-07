@@ -14,7 +14,9 @@ import { useEffect, useState } from 'react';
 import { Router } from 'next/router';
 import LoadingScreen from '@/component/ui/Loading';
 
-export default function App({ Component, pageProps }) {
+import { appWithTranslation } from 'next-i18next';
+
+function App({ Component, pageProps }) {
   // 페이지 전환 로딩 화면 구현
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,3 +46,6 @@ export default function App({ Component, pageProps }) {
     </DeviceProvider>
   );
 }
+
+// 다국어 지원을 위한
+export default appWithTranslation(App);

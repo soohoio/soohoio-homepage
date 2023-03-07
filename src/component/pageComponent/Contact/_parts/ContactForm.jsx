@@ -29,40 +29,36 @@ import emailjs from '@emailjs/browser';
 import { ConfirmModal } from '@/component/ui/Modal';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function ContactForm() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const router = useRouter();
+  const { t } = useTranslation('contact');
 
   const contactTypeList = [
     {
-      label: '기업 솔루션',
+      label: t('contactForm.solutionLabel'),
       contents: isMob
-        ? `탈중앙 금융 생태계 구축&활성화를 위한\nAudit, Dapp, Bridge 서비스를 제공합니다.`
+        ? t('contactForm.solutionContentsMob')
         : isTablet
-        ? 'DeFi 생태계 구축 및 활성화를 위한\nBridge, Dapp, Audit 서비스에 대한 문의를 남겨주세요.'
-        : 'DeFi 생태계 구축 및 활성화를 위한 Bridge, Dapp, Audit 서비스에 대한 문의를 남겨주세요.',
+        ? t('contactForm.solutionContentsTablet')
+        : t('contactForm.solutionContentsPc'),
       img: 'solution',
     },
     {
-      label: '채용',
-      contents: isMob
-        ? `수호 합류를 위한 콜챗 신청과\n궁금한 점을 남겨주세요. `
-        : '수호 합류를 위한 콜챗 신청 및 궁금한 점을 남겨주세요.',
+      label: t('contactForm.recruitLabel'),
+      contents: isMob ? t('contactForm.recruitContentsMob') : t('contactForm.recruitContents'),
       img: 'recruit',
     },
     {
-      label: '카페 대관',
-      contents: isMob
-        ? `Web3 크리에이터를 위한\n블록체인 커뮤니티 공간입니다.`
-        : '블록체인 커뮤니티를 위한 공간 대관 문의를 남겨주세요.',
+      label: t('contactForm.cafeLabel'),
+      contents: isMob ? t('contactForm.cafeContentsMob') : t('contactForm.cafeContents'),
       img: 'cafe',
     },
     {
-      label: '기타',
-      contents: isMob
-        ? `수호의 프로덕트 및 기타 궁금한 점이 있다면\n무엇이든 남겨주세요.`
-        : '수호의 프로덕트 및 기타 궁금한 점이 있다면 무엇이든 남겨주세요.',
+      label: t('contactForm.etcLabel'),
+      contents: isMob ? t('contactForm.etcContentsMob') : t('contactForm.etcContents'),
       img: 'etc',
     },
   ];
@@ -99,21 +95,31 @@ export default function ContactForm() {
   // 폼 목록
   const formList = [
     {
-      label: '성함',
-      placeHolder: '성함을 입력해 주세요.',
+      label: t('contactForm.labelName'),
+      placeHolder: t('contactForm.placeHolderName'),
       isRequired: true,
       keyName: 'name',
       helperText: '성함은 필수 사항입니다.',
     },
     {
-      label: '이메일',
-      placeHolder: '이메일을 입력해 주세요.',
+      label: t('contactForm.labelEmail'),
+      placeHolder: t('contactForm.placeHolderEmail'),
       isRequired: true,
       keyName: 'email',
       helperText: emailFormError ? '유효하지 않은 이메일 양식입니다.' : '이메일은 필수 사항입니다.',
     },
-    { label: '연락처', placeHolder: '010-1234-5678', isRequired: false, keyName: 'phoneNumber' },
-    { label: '소속', placeHolder: '수호아이오 입니다.', isRequired: false, keyName: 'team' },
+    {
+      label: t('contactForm.labelPhoneNumber'),
+      placeHolder: '10-1234-5678',
+      isRequired: false,
+      keyName: 'phoneNumber',
+    },
+    {
+      label: t('contactForm.labelTeam'),
+      placeHolder: t('contactForm.placeHolderTeam'),
+      isRequired: false,
+      keyName: 'team',
+    },
   ];
 
   // 문의 메일 선택
@@ -253,7 +259,7 @@ export default function ContactForm() {
                 component="div"
                 sx={{ mb: { xs: '23px', sm: '28px' } }}
               >
-                문의 카테고리
+                {t('contactForm.contactCategory')}
               </Typography>
               <Stack
                 direction="row"
@@ -360,7 +366,7 @@ export default function ContactForm() {
                   key={each.label}
                   direction="row"
                   alignItems={
-                    (each.label === '이메일' && emailFormError) ||
+                    (each.keyName === 'email' && emailFormError) ||
                     (errorCheck && contactInput[each.keyName] === '' && each.helperText)
                       ? 'flex-start'
                       : 'center'
@@ -372,7 +378,7 @@ export default function ContactForm() {
                       className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
                       component="div"
                       sx={[
-                        (each.label === '이메일' && emailFormError) ||
+                        (each.keyName === 'email' && emailFormError) ||
                         (errorCheck && contactInput[each.keyName] === '' && each.helperText)
                           ? { pt: { sm: '7px' } }
                           : {},
@@ -391,7 +397,7 @@ export default function ContactForm() {
                     spacing={{ xs: '43px', sm: '50px' }}
                     sx={{ width: 1 }}
                   >
-                    {each.label === '연락처' && (
+                    {each.keyName === 'phoneNumber' && (
                       <CountryNumUnderline
                         value={contactInput.countryCode}
                         onChange={onChangeCountryCode}
@@ -406,11 +412,11 @@ export default function ContactForm() {
                       onChange={onChangeContactInput}
                       placeholder={each.placeHolder}
                       error={
-                        (each.label === '이메일' && emailFormError) ||
+                        (each.keyName === 'email' && emailFormError) ||
                         (errorCheck && each.helperText && contactInput[each.keyName] === '')
                       }
                       helperText={
-                        (each.label === '이메일' && emailFormError) ||
+                        (each.keyName === 'email' && emailFormError) ||
                         (errorCheck && contactInput[each.keyName] === '')
                           ? each.helperText
                           : ''
@@ -438,7 +444,8 @@ export default function ContactForm() {
           {/* 문의 내용 */}
           <Grid item xs={12} lg={6.5}>
             <Typography className={isMob ? 'mobBody14KR' : 'pcBody24KR'} component="div">
-              문의 내용<Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
+              {t('contactForm.message')}
+              <Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
             </Typography>
             <Box
               sx={{
@@ -464,7 +471,7 @@ export default function ContactForm() {
                 placeholder={
                   contactInput.contents === '' && errorCheck
                     ? '문의 내용은 필수 사항입니다.'
-                    : '문의 내용을 입력해 주세요.'
+                    : t('contactForm.messagePlaceHolder')
                 }
                 InputLabelProps={{ style: { color: '#10263B' } }}
                 InputProps={{ style: { color: '#10263B' } }}
@@ -515,7 +522,7 @@ export default function ContactForm() {
                 placeholder={
                   contactInput.contents === '' && errorCheck
                     ? '문의 내용은 필수 사항입니다.'
-                    : '문의 내용을 입력해 주세요.'
+                    : t('contactForm.messagePlacHolder')
                 }
                 InputLabelProps={{ style: { color: '#10263B' } }}
                 InputProps={{ style: { color: '#10263B' } }}
@@ -573,14 +580,14 @@ export default function ContactForm() {
                   className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
                   sx={{ fontWeight: 300, ml: { xs: '10px', sm: '12px' } }}
                 >
-                  개인정보 수집∙이용 동의&nbsp;
+                  {t('contactForm.policy')}
                 </Typography>
                 <Typography
                   className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
                   color="primary"
                   sx={{ fontWeight: 300, mr: '12px' }}
                 >
-                  (필수)
+                  {t('contactForm.policyAdd')}
                 </Typography>
                 <Tooltip
                   placement={isPc ? 'bottom' : 'bottom-end'}
@@ -601,13 +608,14 @@ export default function ContactForm() {
                   title={
                     <Box sx={{ width: 1 }}>
                       <Typography className={isMob ? 'mobBody12KR' : 'pcTitle24KR'}>
-                        개인정보 수집 이용 동의
+                        {t('contactForm.policy')}
                       </Typography>
                       <Typography
+                        component="div"
                         className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
                         sx={{ fontWeight: 300, mt: { xs: '8px', sm: '20px' } }}
                       >
-                        {`다음의 사항을 충분히 읽어 보신 후 동의 여부를 체크하여 주시기 바랍니다.\n귀하께서는 위 개인정보 수집∙이용에 대한 동의를 거부하실 수 있습니다.\n그러나 동의를 거부할 경우 문의사항 처리에 제한을 받을 수 있습니다.`}
+                        <Box sx={{ maxWidth: '600px' }}>{t('contactForm.policyContents1')}</Box>
                       </Typography>
                       <Box
                         sx={{
@@ -623,7 +631,7 @@ export default function ContactForm() {
                           color="#AFAFAF"
                           sx={{ fontWeight: 600 }}
                         >
-                          {`01   개인정보 수집항목 : 성함, 이메일, 연락처, 소속\n02   개인정보 이용목적 : 고객이 작성한 문의 처리\n03   개인정보 보유 및 이용 기간 : 동의일로부터 문의 처리 후 1년`}
+                          {t('contactForm.policyContents2')}
                         </Typography>
                       </Box>
                     </Box>
@@ -649,14 +657,14 @@ export default function ContactForm() {
                     color={gray}
                     sx={{ fontWeight: 300, cursor: 'pointer' }}
                   >
-                    자세히 보기
+                    {t('contactForm.policyMore')}
                   </Typography>
                 </Tooltip>
               </Stack>
             </Box>
             <Grid container justifyContent="space-between" alignItems="center">
               <RoundOutlinedButton
-                text="파일 업로드"
+                text={t('contactForm.fileUpload')}
                 onClick={newFile ? null : addFile}
                 color={newFile ? primary : '#FFFFFF'}
                 icon={
@@ -675,7 +683,7 @@ export default function ContactForm() {
               />
               <RoundContainedButton
                 onClick={submitForm}
-                text="보내기"
+                text={t('contactForm.send')}
                 color={black}
                 backgroundColor="#FFFFFF"
                 py={{ xs: '11px', sm: '20px' }}
@@ -699,7 +707,7 @@ export default function ContactForm() {
                   className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
                   sx={{ fontWeight: 300 }}
                 >
-                  {`∙ 첨부 파일 최대 용량은 2mb 입니다.\n∙ 파일은 최대 1개 업로드 가능합니다.\n∙ 업로드 가능 파일 형태 zip, jpg, png, pdf`}
+                  {t('contactForm.fileGuideContents')}
                 </Typography>
               }
               // 여백
@@ -757,7 +765,7 @@ export default function ContactForm() {
                   color={gray_light}
                   sx={{ fontWeight: 300 }}
                 >
-                  파일 업로드 안내
+                  {t('contactForm.fileGuide')}
                 </Typography>
               </Stack>
             </Tooltip>

@@ -2,11 +2,12 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import { borderRadiusPc, gray } from '@/component/style/StyleTheme';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function FirstSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('solution');
 
   return (
     <BodyContainer ptPc="116px" ptMob="56px" pbPc="108px" pbMob="34px">
@@ -32,7 +33,7 @@ export default function FirstSection() {
               fontWeight={600}
             >
               <Box sx={{ mt: { xs: '16px', sm: '64px' }, mb: { xs: '16px', sm: '24px' } }}>
-                기업 고객을 위한 패키지 솔루션
+                {t('firstSection.title')}
               </Box>
             </Typography>
 
@@ -45,10 +46,10 @@ export default function FirstSection() {
             >
               <Box sx={{ maxWidth: '630px' }}>
                 {isMob
-                  ? `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고\n활성화할 수 있도록 브릿지, 디앱, 보안 감사\n서비스를 제공합니다.`
+                  ? t('firstSection.descriptionMob')
                   : isPc
-                  ? `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록\n브릿지, 디앱, 보안 감사 서비스를 제공합니다.`
-                  : `기업들이 쉽고 안전하게 DeFi 생태계를 구축하고 활성화할 수 있도록 브릿지, 디앱, 보안 감사 서비스를 제공합니다.`}
+                  ? t('firstSection.descriptionPc')
+                  : t('firstSection.descriptionTablet')}
               </Box>
             </Typography>
           </Box>

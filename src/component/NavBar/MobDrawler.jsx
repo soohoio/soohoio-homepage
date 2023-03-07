@@ -4,21 +4,24 @@ import Link from 'next/link';
 import { black, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function MobDrawler({ open, onClose }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const router = useRouter();
   const currentPage = router.pathname;
+  const { t, i18n } = useTranslation();
+  const isKorean = i18n.language === 'ko';
 
   const navBarHeight = '96px';
   const pageList = [
-    { label: '기업 솔루션', link: '/solution' },
-    { label: '프로덕트', link: '/product' },
-    { label: '뉴스', link: '/news' },
-    { label: '팀 소개', link: '/team' },
-    { label: '채용', link: '/recruit' },
-    { label: '블로그', link: 'https://blog.sooho.io' },
-    { label: '문의하기', link: '/contact' },
+    { label: isKorean ? '기업 솔루션' : 'B2B Solution', link: '/solution' },
+    { label: isKorean ? '프로덕트' : 'Products', link: '/product' },
+    { label: isKorean ? '뉴스' : 'News', link: '/news' },
+    { label: isKorean ? '팀 소개' : 'SOOHO Team', link: '/team' },
+    { label: isKorean ? '채용' : 'Recruit', link: '/recruit' },
+    { label: isKorean ? '블로그' : 'Blog', link: 'https://blog.sooho.io' },
+    { label: isKorean ? '문의하기' : 'Contact us', link: '/contact' },
   ];
 
   return (
@@ -38,7 +41,7 @@ export default function MobDrawler({ open, onClose }) {
             <Link
               href={page.link}
               onClick={onClose}
-              target={page.label === '블로그' ? '_blank' : undefined}
+              target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
             >
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
@@ -48,7 +51,7 @@ export default function MobDrawler({ open, onClose }) {
                 {page.label}
               </Typography>
             </Link>
-            {page.label === '뉴스' || page.label === '채용' ? (
+            {page.link === '/news' || page.link === '/recruit' ? (
               <Box
                 sx={{ backgroundColor: primary, height: '1px', mt: { xs: '24px', sm: '32px' } }}
               />

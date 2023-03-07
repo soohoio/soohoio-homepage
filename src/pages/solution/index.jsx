@@ -1,5 +1,12 @@
 import Solution from '@/component/pageComponent/solution';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['solution'])),
+  },
+});
 
 export default function SolutionPage() {
   return (

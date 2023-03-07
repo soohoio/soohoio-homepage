@@ -5,9 +5,11 @@ import { useContext, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import Slider from 'react-slick';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function Mission() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('main');
 
   const settings = {
     dots: true,
@@ -23,23 +25,19 @@ export default function Mission() {
   const carouselList = [
     {
       img: 'step1',
-      text: `블록체인 금융 서비스들은 특정 체인 안에\n고립되어 있어 접근성이 떨어집니다.`,
+      text: t('mission.step1'),
     },
     {
       img: 'step2',
-      text: `체인을 연결하는 브릿지를 통해 유저는 자산의 종류와\n관계 없이 금융 서비스를 이용할 수 있습니다.`,
+      text: t('mission.step2'),
     },
     {
       img: 'step3',
-      text: isMob
-        ? `단, 보안에 취약한 브릿지는 막대한 규모의 해킹 사고로 이어질 수 있기 때문에 매우 높은 수준의 보안 기술이 뒷받침되어야만 합니다.`
-        : `단, 보안에 취약한 브릿지는 막대한 규모의 해킹 사고로 이어질 수\n있기 때문에 매우 높은 수준의 보안 기술이 뒷받침되어야만 합니다.`,
+      text: isMob ? t('mission.step3Mob') : t('mission.step3'),
     },
     {
       img: 'step4',
-      text: isMob
-        ? `수호는 가장 안전한 브릿지로 연결된 크로스체인 생태계를 구축하여, 다양한 금융 기회를 간편하게 경험할 수 있는 Gateway가 되고자 합니다.`
-        : `수호는 가장 안전한 브릿지로 연결된 크로스체인 생태계를 구축하여,\n다양한 금융 기회를 간편하게 경험할 수 있는 Gateway가 되고자 합니다.`,
+      text: isMob ? t('mission.step4Mob') : t('mission.step4'),
     },
   ];
 
@@ -67,9 +65,7 @@ export default function Mission() {
           lineHeight: { xs: '24px !important' },
         }}
       >
-        {isMob
-          ? `더 많은 금융 기회를 연결하고\n수호합니다.`
-          : '더 많은 금융 기회를 연결하고 수호합니다.'}
+        {isMob ? t('mission.missionTitleMob') : t('mission.missionTitle')}
       </Typography>
       <Box sx={{ px: { sm: '21vw', lg: '0px' }, mt: { xs: '24px', sm: '36px', lg: '48px' } }}>
         <Slider {...settings} beforeChange={(current, next) => setCarouselIndex(next)}>
@@ -96,27 +92,17 @@ export default function Mission() {
         </Slider>
         <ObserverAnimation key={carouselIndex} animationName="fadeInSlow">
           <Typography
+            component="div"
             className={isMob ? 'mobBody14KR' : isPc ? 'pcBody24KR' : 'pcBody20KR'}
             fontWeight={600}
             color={black}
             align="center"
             sx={{ mt: { xs: '38px', sm: '55px' } }}
           >
-            {carouselList[carouselIndex].text}
+            <Box sx={{ maxWidth: '800px', mx: 'auto' }}>{carouselList[carouselIndex].text}</Box>
           </Typography>
         </ObserverAnimation>
       </Box>
-
-      {/* <Box
-          sx={{
-            backgroundColor: '#DDDDDD',
-            aspectRatio: '1328/720',
-            width: 1,
-            height: 1,
-            maxWidth: { lg: '1328px' },
-            maxHeight: { lg: '720px' },
-          }}
-        /> */}
     </BodyContainer>
   );
 }

@@ -4,10 +4,12 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { borderRadiusPc, gray } from '@/component/style/StyleTheme';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
+import { useTranslation } from 'next-i18next';
 
 export default function FirstSection({ currentProduct, setCurrentProduct }) {
   const buttonList = ['KLEVA', 'StayKing', 'Martian'];
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t } = useTranslation('product');
 
   const selectButton = product => {
     product !== 'Martian' && setCurrentProduct(product);
@@ -22,7 +24,7 @@ export default function FirstSection({ currentProduct, setCurrentProduct }) {
           color="primary"
           fontWeight={600}
         >
-          DeFi Product
+          DeFi Products
         </Typography>
 
         <Typography
@@ -32,7 +34,7 @@ export default function FirstSection({ currentProduct, setCurrentProduct }) {
           color="#5F5F5F"
           sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '16px', sm: '48px' } }}
         >
-          made by SOOHO
+          Developed by SOOHO
         </Typography>
 
         <Typography
@@ -43,12 +45,10 @@ export default function FirstSection({ currentProduct, setCurrentProduct }) {
           color="#FFFFFF"
           sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '16px', sm: '48px' } }}
         >
-          <Box sx={{ mb: { xs: '16px', sm: '24px' } }}>
-            {`수호는 기업과의 협업뿐만 아니라,\n자체적으로 개인 투자자를 위한 프로덕트를\n만들고 운영하고 있습니다.`}
+          <Box sx={{ mb: { xs: '16px', sm: '24px' }, maxWidth: '800px', mx: 'auto' }}>
+            {t('firstSection.title1')}
           </Box>
-          <Box>
-            {`더 많은 체인 위에서 고도화된 투자 경험을 제공하고,\n다양한 체인을 연결하여 경험을 확장하고자 합니다.`}
-          </Box>
+          <Box sx={{ maxWidth: '800px', mx: 'auto' }}>{t('firstSection.title2')}</Box>
         </Typography>
 
         {/* 버튼 영역 */}
