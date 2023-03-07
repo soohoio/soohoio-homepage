@@ -57,7 +57,7 @@ export default function ThreeIntro() {
       name: '03 Audit',
       intro: isMob ? t('threeIntro.auditIntroMob') : t('threeIntro.auditIntro'),
       img: 'audit',
-      point1: 'Professional',
+      point1: 'Top-tier Experts',
       description1: isTablet
         ? t('threeIntro.auditDescription1Tablet')
         : t('threeIntro.auditDescription1'),

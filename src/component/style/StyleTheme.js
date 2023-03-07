@@ -93,7 +93,7 @@ export const StyleTheme = createTheme({
         '"Segoe UI Symbol"',
       ].join(','),
       en: [
-        'Druk Text Web',
+        // 'Druk Text Web',
         'Pretendard',
         '-apple-system',
         'BlinkMacSystemFont',

@@ -11,7 +11,7 @@ const nextConfig = {
       '/product': { page: '/product' },
       '/solution': { page: '/solution' },
       '/recruit': { page: '/recruit' },
-      '/team': { page: '/team' },
+      '/solution': { page: '/solution' },
       '/solution/audit': { page: '/solution/audit' },
     };
 
