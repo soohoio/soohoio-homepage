@@ -17,7 +17,12 @@ export default function GlobalMenu({ globalMenuRef, closeGlobalMenu }) {
       router.push(`/en${router.pathname}`);
       // ko 아닐 때 ko을 누른 경우
     } else if (!isKorean && language === 'ko') {
-      router.push(router.pathname.replace('/[locale]', ''));
+      // index 부분 예외처리
+      if (router.pathname === '/[locale]') {
+        router.push('/');
+      } else {
+        router.push(router.pathname.replace('/[locale]', ''));
+      }
     }
     closeGlobalMenu();
   };
