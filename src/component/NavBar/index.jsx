@@ -30,8 +30,8 @@ export default function NavBar() {
     { label: isKorean ? '기업 솔루션' : 'B2B Solution', link: '/solution' },
     { label: isKorean ? '프로덕트' : 'Products', link: '/product' },
     { label: isKorean ? '뉴스' : 'News', link: '/news' },
-    // { label: isKorean ? '팀 소개' : 'SOOHO Team', link: '/team' },
-    // { label: isKorean ? '채용' : 'Recruit', link: '/recruit' },
+    { label: isKorean ? '팀 소개' : 'SOOHO Team', link: '/team' },
+    { label: isKorean ? '채용' : 'Recruit', link: '/recruit' },
     { label: isKorean ? '블로그' : 'Blog', link: 'https://blog.sooho.io' },
   ];
 
@@ -155,7 +155,7 @@ export default function NavBar() {
 
                 {/* 모바일 우측 글로벌 메뉴 */}
                 <Box sx={{ position: 'relative', display: { xs: 'flex', lg: 'none' } }}>
-                  {/* <IconButton
+                  <IconButton
                     ref={globalMenuButtonRefMobTablet}
                     onClick={openGlobalMenu}
                     color="primary"
@@ -170,7 +170,7 @@ export default function NavBar() {
                   </IconButton>
                   {globalMenu && (
                     <GlobalMenu globalMenuRef={globalMenuRef} closeGlobalMenu={closeGlobalMenu} />
-                  )} */}
+                  )}
                 </Box>
               </Grid>
 
@@ -233,7 +233,7 @@ export default function NavBar() {
               </Link>
 
               <Box sx={{ position: 'relative', display: { xs: 'none', lg: 'flex' } }}>
-                {/* <CardMedia
+                <CardMedia
                   ref={globalMenuButtonRefPc}
                   onMouseOut={() => setGlobalMenuHover(false)}
                   onMouseOver={() => setGlobalMenuHover(true)}
@@ -249,7 +249,7 @@ export default function NavBar() {
                 />
                 {globalMenu && (
                   <GlobalMenu globalMenuRef={globalMenuRef} closeGlobalMenu={closeGlobalMenu} />
-                )} */}
+                )}
               </Box>
             </Toolbar>
           </Container>
