@@ -126,7 +126,7 @@ export default function Package() {
                           className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
                           sx={{ fontWeight: { xs: 300, sm: 300 }, mt: { xs: '8px', sm: '16px' } }}
                         >
-                          <Box sx={{ maxWidth: { xs: '160px', sm: '195px' } }}>{each.contents}</Box>
+                          <Box sx={{ maxWidth: { xs: '160px', sm: '210px' } }}>{each.contents}</Box>
                         </Typography>
                       </Box>
                       <CardMedia

@@ -121,7 +121,7 @@ export function MUIOutlinedButton({ onClick, text, color, hoverColor, noClass, s
           },
           zIndex: 100,
           boxSizing: 'border-box',
-          fontFamily: currentLanguage === 'ko' ? 'Pretendard' : 'Druk Text Web',
+          // fontFamily: currentLanguage === 'ko' ? 'Pretendard' : 'Druk Text Web',
         },
         sx,
       ]}

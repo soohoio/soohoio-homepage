@@ -229,18 +229,7 @@ export default function TeamSection() {
               fontWeight={600}
               color="#FFFFFF"
             >
-              <Box
-                sx={{
-                  display: 'inline-flex',
-                  px: { xs: '12px', sm: '17px' },
-                  py: { xs: '7px', sm: '14px' },
-                  backgroundColor: black,
-                  borderRadius: { xs: '4px', sm: '8px' },
-                  mb: { xs: '12px', sm: '25px' },
-                }}
-              >
-                {eachTeam.label}
-              </Box>
+              <Box sx={{ mb: { xs: '8px', sm: '16px' } }}>{eachTeam.label}</Box>
             </Typography>
 
             <Typography
@@ -260,8 +249,8 @@ export default function TeamSection() {
                     <Box
                       key={each.label}
                       onClick={() => selectCard(each)}
-                      onMouseOver={() => selectCard(each)}
-                      onMouseOut={() => selectCard(null)}
+                      onMouseOver={isMob ? () => {} : () => selectCard(each)}
+                      onMouseOut={isMob ? () => {} : () => selectCard(null)}
                       sx={{
                         width: 1,
                         aspectRatio: '656/570',
@@ -328,6 +317,7 @@ export default function TeamSection() {
                                   key={`${selectedCard?.label}${each.label}Hover`}
                                   sx={{
                                     mt: { xs: '16px', sm: '24px' },
+                                    maxWidth: '480px',
                                   }}
                                 >
                                   {each.hoverDescription}
@@ -342,7 +332,7 @@ export default function TeamSection() {
                               >
                                 <Box
                                   key={`${selectedCard?.label}${each.label}`}
-                                  sx={{ mt: { xs: '16px', sm: '24px' } }}
+                                  sx={{ mt: { xs: '16px', sm: '24px' }, maxWidth: '480px' }}
                                 >
                                   {each.description}
                                 </Box>
@@ -395,7 +385,7 @@ export default function TeamSection() {
                               {each.interview ? (
                                 <MUIOutlinedButton
                                   onClick={() => goToJustLink(each.interview, 'external')}
-                                  text="InterView"
+                                  text="Interview"
                                   color="#FFFFFF"
                                   hoverColor="#FFFFFF"
                                   sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}

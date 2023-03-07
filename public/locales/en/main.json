@@ -1,23 +1,23 @@
 {
   "firstSection": {
-    "title1": "Institutional-Grade DeFi Infrastructure",
-    "title2": "",
+    "title1": "",
+    "title2": "Institutional-Grade ",
     "title3": "",
-    "title4": "",
+    "title4": "DeFi Infrastructure",
     "description": "To invite anyone who wishes to expand their financial opportunities, SOOHO is building a transparent and secure infrastructure with reliable partners.",
     "button": "Request DeFi Partnership"
   },
   "cardSection": {
-    "card1Title1": "Korea's First Blockchain Audit in Korea",
-    "card1Title2": "",
+    "card1Title1": "Korea's First",
+    "card1Title2": " Blockchain Audit",
     "card1Standard": "*The first audit report written in Korean",
     "card1Point": "Over 280,000 audit reports issued",
     "card1DescriptionPc": "We have been protecting digital assets since Korea's first smart contract audit in April 2018.",
     "card1DescriptionTablet": "We have been protecting digital assets since Korea's first smart contract audit in April 2018.",
     "card1DescriptionMob": "We have been protecting digital assets since Korea's first smart contract audit in April 2018.",
 
-    "card2Title1": "",
-    "card2Title2": "Second-largest TVL in Klaytn DeFi",
+    "card2Title1": "Second-largest TVL ",
+    "card2Title2": "in Klaytn DeFi",
     "card2Standard": "* Feb. 2023",
     "card2Point": "Over $500M TVL achieved in two weeks of launch",
     "card2DescriptionPc": "We have successfully launched KLEVA, a DeFi service in the Klaytn ecosystem with WEMIX.",
@@ -31,26 +31,26 @@
     "refTitle4": "",
     "refTitle5": "",
     "refTitle6": "utilize our technology.",
-    "investTitle1": "",
-    "investTitle2": "Total investment achieved by a team of 15 members",
+    "investTitle1": "Total investment achieved ",
+    "investTitle2": "by a team of 15 members",
     "moneyAmount": 9000000,
     "moneyCurrency": " +",
-    "seedTitle1": "The only seed investment in Korea from ConsenSys,\na leading Web3 company.",
-    "seedTitle2": ""
+    "seedTitle1": "The only seed investment in Korea",
+    "seedTitle2": "from ConsenSys, a leading Web3 company."
   },
   "mission": {
-    "missionTitle": "Secure Gateway\nfor New Financial Opportunities",
-    "missionTitleMob": "Secure Gateway for New Financial Opportunities",
-    "step1": "DeFi services are isolated within certain blockchains, making them less accessible.",
-    "step2": "The bridge connecting the blockchains allows users to access DeFi services regardless of types of assets.",
-    "step3": "However, an insecure bridge can lead to massive hacking incidents and must be backed by state-of-the-art security technology.",
-    "step3Mob": "However, an insecure bridge can lead to massive hacking incidents and must be backed by state-of-the-art security technology.",
-    "step4": "SOOHO aims to create a cross-chain ecosystem connected through secure bridges, becoming a gateway where users can experience various financial opportunities easily.",
-    "step4Mob": "SOOHO aims to create a cross-chain ecosystem connected through secure bridges, becoming a gateway where users can experience various financial opportunities easily."
+    "missionTitle": "Secure Gateway for\nNew Financial Opportunities",
+    "missionTitleMob": "Secure Gateway for\nNew Financial Opportunities",
+    "step1": "DeFi services are isolated within certain blockchains,\nmaking them less accessible.",
+    "step2": "The bridge connecting the blockchains allows users to access\nDeFi services regardless of types of assets.",
+    "step3": "However, an insecure bridge can lead to massive hacking incidents\nand must be backed by state-of-the-art security technology.",
+    "step3Mob": "However, an insecure bridge can lead to massive hacking incidents\nand must be backed by state-of-the-art security technology.",
+    "step4": "SOOHO aims to create a cross-chain ecosystem connected through\nsecure bridges, becoming a gateway where users can experience\nvarious financial opportunities easily.",
+    "step4Mob": "SOOHO aims to create a cross-chain ecosystem connected through\nsecure bridges, becoming a gateway where users can experience\nvarious financial opportunities easily."
   },
   "package": {
     "packageTitle": "All-in-one Solution for Institutions",
-    "packageDescription": "We provide the development, operation, and security audit of services to enable institutions to provide DeFi services easily and safely.",
+    "packageDescription": "We provide the development, operation, and security audit of services\nto enable institutions to provide DeFi services easily and safely.",
     "packageDescriptionMob": "We provide the development, operation, and security audit of services to enable institutions to provide DeFi services easily and safely.",
     "defiComposition": "DeFi Package Contents",
     "bridgeContents": "Infrastructure for expanding DeFi ecosystem",
@@ -60,10 +60,10 @@
   },
   "defi": {
     "title": "DeFi Products Developed by SOOHO",
-    "descriptionMob": "SOOHO creates various financial services providing new investment opportunities for DeFi users.",
-    "description": "SOOHO creates various financial services providing new investment opportunities for DeFi users.",
-    "kleva": "Providing various investment opportunities in Klaytn with leverage functions.",
-    "klevaMob": "Providing various investment opportunities in Klaytn with leverage functions.",
+    "descriptionMob": "SOOHO creates various financial services\nproviding new investment opportunities for DeFi users.",
+    "description": "SOOHO creates various financial services\nproviding new investment opportunities for DeFi users.",
+    "kleva": "Providing various investment\nopportunities in Klaytn\nwith leverage functions.",
+    "klevaMob": "Providing various investment\nopportunities in Klaytn\nwith leverage functions.",
     "stayKing": "Providing leveraged investment opportunities on early-stage blockchains with high staking yields, such as Evmos.",
     "stayKingMob": "Providing leveraged investment opportunities on early-stage blockchains with high staking yields, such as Evmos.",
     "martian": "Connecting blockchain and real-world assets to distribute profits to NFT holders and investors.",
@@ -71,8 +71,8 @@
     "button": "View more"
   },
   "cafe": {
-    "titleMob": "A Space for Connection and Synergy Among Blockchain Projects",
-    "title": "A Space for Connection and Synergy Among Blockchain Projects",
+    "titleMob": "A Space for Connection and Synergy\nAmong Blockchain Projects",
+    "title": "A Space for Connection and Synergy\nAmong Blockchain Projects",
     "descriptionMob": "SOOHO Cafe is Korea's first Web3 cafe and blockchain community hub. Various Web3 companies, NFT communities, builders, and artists are building their new projects at SOOHO Cafe.",
     "description": "SOOHO Cafe is Korea's first Web3 cafe and blockchain community hub. Various Web3 companies, NFT communities, builders, and artists are building their new projects at SOOHO Cafe.",
     "button": "Request Cafe Rental"

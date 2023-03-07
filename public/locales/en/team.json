@@ -34,10 +34,13 @@
     "brandDescription": "Create our own brand identity and spread the value of SOOHO.",
     "brandHoverDescription": "Contribute to creating an environment where all members can move forward in unity by constantly reflecting on our culture.\n\nFigure out the ways to effectively show products in SOOHO and deliver messages to our users.\n\nCreate on/offline experiences and creations that embody the unique qualities of SOOHO so that more people can become our fans.",
 
-    "corpDevDescription": "CEO 직속 팀으로서, 수호가 목표를 달성할 수 있도록\n전략을 세우고 프로덕트의 사업화를 서포트합니다.",
+    "corpDevDescription": "Develop corporate strategies and support the commercialization of the product in alignment with the CEO's vision.",
 
     "corpTeamDescription": "Maximize corporate value to enable SOOHO to make a quantum leap forward.",
     "corpTeamHoverDescription": "Establish organizational, business, and product strategies in accordance with corporate goals, and manage SOOHO to move forward in line with goals and strategies.\n\nDevelop IR strategies and manage fund-raising for domestic and foreign investors.\n\nReview the feasibility of various projects across the DeFi industry, and identify new opportunities through in-depth macro analysis."
+  },
+  "teamViewAllPosition": {
+    "button": "View all open positions"
   },
   "culturePoint": {
     "selfManagingDescriptionTablet": "Prove and develop myself to repay the trust.",
@@ -58,7 +61,7 @@
     "selfManagingDescription4": "Based on high trust, all team members autonomously use one corporate card per person.",
 
     "openDescriptionTablet": "Share various points of view without distinguishing each other.",
-    "openDescription": "Share various points of view without distinguishing each other.",
+    "openDescription": "Share various points of view\nwithout distinguishing each other.",
     "openImgText": "“Our differences create synergy”",
     "openHoverText": "We can freely exchange opinions when it comes to achieving goals. However, it's important to communicate in a healthy way and respect different opinions. We expect to help each other more actively by recognizing our strengths and weaknesses.",
     "openPoint1": "Onboarding Coffee Chat",
@@ -101,10 +104,15 @@
   },
   "cultureSlideSection": {
     "interview1": "At SOOHO, they continue to ask me what I want to do, even though it can be a difficult question for companies to ask employees.",
+    "interview1Mob": "At SOOHO, they continue to ask me what I want to do, even though it can be a difficult question for companies to ask employees.",
     "interview2": "We share real insights instead of just reports. While working at a company, there are often cases where you have to report for micro-management purposes. However, SOOHO does not engage in unnecessary tasks like this. We trust each other, so we want to share valuable information necessary to work on projects by ourselves, proactively!",
+    "interview2Mob": "We share real insights instead of just reports. While working at a company, there are often cases where you have to report for micro-management purposes. However, SOOHO does not engage in unnecessary tasks like this. We trust each other, so we want to share valuable information necessary to work on projects by ourselves, proactively!",
     "interview3": "I think one of the advantages of SOOHO is being able to give direct feedback to leaders. It's healthy, objective feedback that doesn't include personal feelings.",
+    "interview3Mob": "I think one of the advantages of SOOHO is being able to give direct feedback to leaders. It's healthy, objective feedback that doesn't include personal feelings.",
     "interview4": "I can learn more by having the authority and responsibility that I couldn't experience in other companies. For example, when I'm in charge of a community, it usually ends up just making a Discord or Telegram group. But at SOOHO, I was able to meet various community members and related parties and build better relationships with them.",
+    "interview4Mob": "I can learn more by having the authority and responsibility that I couldn't experience in other companies. For example, when I'm in charge of a community, it usually ends up just making a Discord or Telegram group. But at SOOHO, I was able to meet various community members and related parties and build better relationships with them.",
     "interview5": "I feel that there is a well-established environment where we can solve problems together and give feedback with the hope that we can truly do better and grow.",
-    "button": "수호자 인터뷰 더 보기"
+    "interview5Mob": "I feel that there is a well-established environment where we can solve problems together and give feedback with the hope that we can truly do better and grow.",
+    "button": "View interviews with our team"
   }
 }

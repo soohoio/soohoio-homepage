@@ -12,6 +12,7 @@ import { DeviceProvider } from '@/module/ContextAPI/DeviceContext';
 import FooterMob from '@/component/Footer/FooterMob';
 import { useEffect, useState } from 'react';
 import { Router } from 'next/router';
+import LoadingScreen from '@/component/ui/Loading';
 
 import { appWithTranslation } from 'next-i18next';
 

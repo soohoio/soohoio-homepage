@@ -5,10 +5,14 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { black_dark, borderRadiusMob, borderRadiusPc } from '@/component/style/StyleTheme';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 export default function DescriptionSection({ currentProduct }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { t } = useTranslation('product');
+
+  const router = useRouter();
+  const isKorean = !router.pathname.includes('locale');
 
   const productData = {
     KLEVA: {
@@ -16,7 +20,7 @@ export default function DescriptionSection({ currentProduct }) {
       summary: isTablet ? t('description.klevaSummaryTablet') : t('description.klevaSummary'),
       point1: 'Auto-compound',
       description1: t('description.klevaDescription1'),
-      point2: 'Multiple Tactics',
+      point2: 'Multiple Positions',
       description2: t('description.klevaDescription2'),
       img: isMob ? 'klevaDescMob' : 'klevaDesc',
       aspectRatio: isMob ? '314/210' : '664/387',
@@ -76,7 +80,7 @@ export default function DescriptionSection({ currentProduct }) {
                   borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
                   maxWidth: { lg: '292px' },
                   boxSizing: 'border-box',
-                  height: { sm: 1, lg: 'auto' },
+                  height: { sm: 1, lg: isKorean ? '180px' : '202px' },
                 }}
               >
                 <Typography
@@ -118,7 +122,7 @@ export default function DescriptionSection({ currentProduct }) {
                   borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
                   maxWidth: { lg: '292px' },
                   boxSizing: 'border-box',
-                  height: { sm: 1, lg: 'auto' },
+                  height: { sm: 1, lg: isKorean ? '180px' : '202px' },
                 }}
               >
                 <Typography

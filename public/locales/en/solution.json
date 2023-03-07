@@ -1,20 +1,21 @@
 {
   "firstSection": {
     "title": "All-in-One Solution for Institutions",
-    "descriptionPc": "We provide the development, operation, and security audit of services to enable institutions to provide DeFi services easily and safely.",
+    "descriptionPc": "We provide the development, operation, and security audit\nof services to enable institutions to provide DeFi services\neasily and safely.",
     "descriptionTablet": "We provide the development, operation, and security audit of services to enable institutions to provide DeFi services easily and safely.",
     "descriptionMob": "We provide the development, operation, and security audit of services to enable institutions to provide DeFi services easily and safely."
   },
   "partner": {
     "title": "Customized Solution for Web3 Builders",
-    "description": "We build and collaborate on DeFi services tailored to the needs of the clients and the characteristics of the blockchain. We provide services such as smart contract development, tokenomics design, and service operation. You can experience fast and easy Web3 onboarding with SOOHO.",
+    "description": "We build and collaborate on DeFi services tailored to the needs of the clients and the characteristics of the blockchain.\nWe provide services such as smart contract development, tokenomics design, and service operation.\nYou can experience fast and easy Web3 onboarding with SOOHO.",
     "descriptionMob": "We build and collaborate on DeFi services tailored to the needs of the clients and the characteristics of the blockchain. We provide services such as smart contract development, tokenomics design, and service operation. You can experience fast and easy Web3 onboarding with SOOHO.",
     "contact": "Please inquire about the service you need out of the three contents of the package.",
     "contactMob": "Please inquire about the service you need out of the three contents of the package."
   },
   "system": {
     "title": "Secure Systems and Technologies",
-    "description1": "Collaborating with Fortune 500 companies, SOOHO strictly complies with laws and regulations.\nOur unparalleled C2CC technology supports an expanded cross-chain DeFi service by securely connecting blockchains.",
+    "description1": "Collaborating with Fortune 500 companies,\nSOOHO strictly complies with laws and regulations.\nOur unparalleled C2CC technology supports an expanded cross-chain DeFi service\nby securely connecting blockchains.",
+    "description1Mob": "Collaborating with Fortune 500 companies, SOOHO strictly complies with laws and regulations.\nOur unparalleled C2CC technology supports an expanded cross-chain DeFi service by securely connecting blockchains.",
     "description2": "",
     "description3": "",
     "description4": "",
@@ -24,33 +25,33 @@
   "threeIntro": {
     "bridgeIntro": "Infrastructure that transfers assets or information\nbetween different blockchain networks to facilitate transactions and exchanges.",
     "bridgeDescription1Tablet": "By connecting separated chains, users can expand the utility of assets and ecosystems.",
-    "bridgeDescription1": "By connecting separated chains, users can expand the utility of assets and ecosystems.",
+    "bridgeDescription1": "By connecting separated chains,\nusers can expand the utility of\nassets and ecosystems.",
     "bridgeDescription2Tablet": "We provide optimized bridge strategies based on our research on specific characteristics of chains.",
-    "bridgeDescription2": "We provide optimized bridge strategies based on our research on specific characteristics of chains.",
+    "bridgeDescription2": "We provide optimized bridge strategies\nbased on our research on specific\ncharacteristics of chains.",
     "bridgeDescription3Tablet": "To maximize the level of security, we integrate our own omnichain messaging protocol C2CC, which improves the verification method of data.",
-    "bridgeDescription3": "To maximize the level of security, we integrate our own omnichain messaging protocol C2CC, which improves the verification method of data.",
+    "bridgeDescription3": "To maximize the level of security, we integrate\nour own omnichain messaging protocol C2CC, which improves the verification method of data.",
 
     "dappIntro": "Decentralized application that operates on blockchain platform.",
     "dappDescription1Tablet": "We can implement various requirements in terms of the type of Dapp, pricing policies, UI/UX, and more.",
-    "dappDescription1": "We can implement various requirements in terms of the type of Dapp, pricing policies, UI/UX, and more.",
+    "dappDescription1": "We can implement various requirements\nin terms of the type of Dapp, pricing policies,\nUI/UX, and more.",
     "dappDescription2Tablet": "Continuous project management and monitoring will be conducted even after the launch to maintain a stable service.",
-    "dappDescription2": "Continuous project management and monitoring will be conducted even after the launch to maintain a stable service.",
+    "dappDescription2": "Continuous project management and\nmonitoring will be conducted even after\nthe launch to maintain a stable service.",
     "dappDescription3Tablet": "Secure potential users inside or outside the chain by connecting with other Dapps.",
     "dappDescription3": "Secure potential users inside or outside the chain by connecting with other Dapps.",
 
     "auditIntro": "Smart Contract Vulnerability Audit Service",
     "auditIntroMob": "Smart Contract Vulnerability Audit Service",
     "auditDescription1Tablet": "In-house security research team, who have a track record of global hacking competition, thoroughly analyzes vulnerabilities.",
-    "auditDescription1": "In-house security research team, who have a track record of global hacking competition, thoroughly analyzes vulnerabilities.",
+    "auditDescription1": "In-house security research team, who have\na track record of global hacking competition,\nthoroughly analyzes vulnerabilities.",
     "auditDescription2Tablet": "We develop and utilize the advanced automated vulnerability analysis system.",
     "auditDescription2": "We develop and utilize the advanced automated vulnerability analysis system.",
-    "auditDescription3Tablet": "More than 24,000 latest vulnerabilities have been collected, which are utilized for enhancing the analysis system. ",
-    "auditDescription3": "More than 24,000 latest vulnerabilities have been collected, which are utilized for enhancing the analysis system. ",
+    "auditDescription3Tablet": "More than 24,000 vulnerability databases are being utilized for enhancing the analysis system.",
+    "auditDescription3": "More than 24,000 vulnerability databases are being utilized for enhancing the analysis system.",
 
     "button": "Learn more about Audit"
   },
   "tech": {
-    "title": "Our Products Empower the Ecosystem with Seamless Connectivity.",
+    "title": "Our Products Empower the Ecosystem\nwith Seamless Connectivity.",
     "tealswapContents": "The only decentralized exchange(DEX)\non Oasys that is technically supported by SOOHO.",
     "purpleContents": "Bridge and decentralized exchange(DEX)\non Bora, Kakao Games' blockchain platform."
   },

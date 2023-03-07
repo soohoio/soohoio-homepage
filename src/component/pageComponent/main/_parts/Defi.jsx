@@ -84,22 +84,24 @@ export default function Defi() {
           overflow: 'visible !important',
         }}
       >
-        <Typography
-          className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
-          color="primary"
-          align="center"
-          fontWeight={600}
-        >
-          {t('defi.title')}
-        </Typography>
+        <Box>
+          <Typography
+            className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
+            color="primary"
+            align="center"
+            fontWeight={600}
+          >
+            {t('defi.title')}
+          </Typography>
 
-        <Typography
-          className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
-          align="center"
-          sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' }, mb: { xs: '20px', sm: '42px' } }}
-        >
-          {isMob ? t('defi.descriptionMob') : t('defi.description')}
-        </Typography>
+          <Typography
+            className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+            align="center"
+            sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' }, mb: { xs: '20px', sm: '42px' } }}
+          >
+            {isMob ? t('defi.descriptionMob') : t('defi.description')}
+          </Typography>
+        </Box>
 
         <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }} cancel="button">
           <Stack
@@ -110,7 +112,13 @@ export default function Defi() {
           >
             {defiList.map(function (each) {
               return (
-                <Box key={each.title} sx={{ backgroundColor: '#060606' }}>
+                <Box
+                  key={each.title}
+                  sx={{
+                    backgroundColor: '#060606',
+                    borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
+                  }}
+                >
                   <Box
                     sx={{
                       pl: { xs: '16px', sm: '48px' },

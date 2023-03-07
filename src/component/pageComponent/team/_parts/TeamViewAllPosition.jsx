@@ -5,10 +5,12 @@ import { MUIOutlinedButton } from '@/component/ui/Button';
 import { black, paddingHorMob, primary } from '@/component/style/StyleTheme';
 import { BodyContainer } from '@/component/ui/BodyContainer';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function TeamViewAllPosition() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const router = useRouter();
+  const { t } = useTranslation('team');
 
   const goToRecruit = () => {
     router.push('/recruit');
@@ -20,7 +22,7 @@ export default function TeamViewAllPosition() {
         <MUIOutlinedButton
           onClick={goToRecruit}
           noClass={true}
-          text="전체 오픈 포지션 보기"
+          text={t('teamViewAllPosition.button')}
           color={black}
           hoverColor={black}
           sx={{

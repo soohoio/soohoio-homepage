@@ -39,10 +39,20 @@ export default function RecruitList({
   const [recruitFilter, setRecruitFilter] = useState({ ...defaultInput });
 
   // 카테고리 리스트
+  const teamList = [
+    'DeFi Product',
+    'StayKing',
+    'Security',
+    'Human Resources',
+    'Organization eXperience',
+    'Community Strategy',
+    'Brand eXperience',
+    'Corporate Development',
+  ];
   const careerTypeList = ['신입', '경력', '무관'];
   const employTypeList = ['정규직', '계약직', '인턴', '프리랜서'];
   const [listData, setListData] = useState({
-    teamList: [],
+    teamList: teamList,
     positionList: [],
     careerTypeList: careerTypeList,
     employTypeList: employTypeList,
@@ -190,16 +200,17 @@ export default function RecruitList({
         },
       });
 
-      const teamList = [];
-      notionListData.data.properties.team.select.options.map(function (each) {
-        teamList.push(each.name);
-      });
+      // 팀 리스트는 고정으로 변경
+      // const teamList = [];
+      // notionListData.data.properties.team.select.options.map(function (each) {
+      //   teamList.push(each.name);
+      // });
       const positionList = [];
       notionListData.data.properties.position.select.options.map(function (each) {
         positionList.push(each.name);
       });
       const tempData = { ...listData };
-      tempData.teamList = teamList;
+      // tempData.teamList = teamList;
       tempData.positionList = positionList;
       setListData(tempData);
     } catch (error) {
@@ -284,6 +295,7 @@ export default function RecruitList({
               name="team"
               value={recruitFilter.team}
               onChange={onChangeFilter}
+              scrollHeight={320}
             />
             <DropDownComponent
               selectList={listData.positionList}

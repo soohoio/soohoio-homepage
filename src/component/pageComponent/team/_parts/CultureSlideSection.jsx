@@ -20,31 +20,41 @@ export default function CultureSlideSection() {
     {
       name: 'Jen',
       position: 'Product Manager',
-      interview: t('cultureSlideSection.interview1'),
+      interview: isMob
+        ? t('cultureSlideSection.interview1Mob')
+        : t('cultureSlideSection.interview1'),
       img: 'jen',
     },
     {
       name: 'Samsong',
       position: 'Product Designer',
-      interview: t('cultureSlideSection.interview2'),
+      interview: isMob
+        ? t('cultureSlideSection.interview2Mob')
+        : t('cultureSlideSection.interview2'),
       img: 'samsong',
     },
     {
       name: 'Chacha',
       position: 'Community Manager',
-      interview: t('cultureSlideSection.interview3'),
+      interview: isMob
+        ? t('cultureSlideSection.interview3Mob')
+        : t('cultureSlideSection.interview3'),
       img: 'chacha',
     },
     {
       name: 'Willy',
       position: 'Community Strategy Lead',
-      interview: t('cultureSlideSection.interview4'),
+      interview: isMob
+        ? t('cultureSlideSection.interview4Mob')
+        : t('cultureSlideSection.interview4'),
       img: 'willy',
     },
     {
       name: 'Michael',
       position: 'Organization eXperience Manager',
-      interview: t('cultureSlideSection.interview5'),
+      interview: isMob
+        ? t('cultureSlideSection.interview5Mob')
+        : t('cultureSlideSection.interview5'),
       img: 'michael',
     },
   ];
@@ -57,6 +67,10 @@ export default function CultureSlideSection() {
     prevArrow: <CustomArrow direction="prev" disabled={currentIndex === 0} />,
     nextArrow: <CustomArrow direction="next" disabled={currentIndex === slideList.length - 1} />,
     beforeChange: handleBeforeChange,
+  };
+
+  const goToInterview = () => {
+    window.open('https://blog.sooho.io/people_interview_qna/');
   };
 
   return (
@@ -110,7 +124,9 @@ export default function CultureSlideSection() {
                 fontWeight={300}
                 color="#FFFFFF"
               >
-                <Box sx={{ maxWidth: '552px', mx: 'auto' }}>{each.interview}</Box>
+                <Box sx={{ maxWidth: { xs: '312px', sm: '552px' }, mx: 'auto' }}>
+                  {each.interview}
+                </Box>
               </Typography>
             </Box>
           );
@@ -119,6 +135,7 @@ export default function CultureSlideSection() {
 
       <Grid container justifyContent="center" sx={{ mt: { xs: '24px', sm: '0px' } }}>
         <MUIOutlinedButton
+          onClick={goToInterview}
           text={t('cultureSlideSection.button')}
           sx={{
             width: { xs: 1, sm: '307px' },

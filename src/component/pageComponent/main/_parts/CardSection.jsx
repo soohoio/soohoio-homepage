@@ -5,10 +5,14 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Grid, Typography } from '@mui/material';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 export default function CardSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { t } = useTranslation('main');
+
+  const router = useRouter();
+  const isKorean = !router.pathname.includes('locale');
 
   return (
     <BodyContainer ptPc="81px" pbPc="77px" ptMob="44px">
@@ -98,15 +102,15 @@ export default function CardSection() {
                   color="primary"
                   fontWeight={600}
                 >
-                  {isTablet ? `To Building DeFi` : `To Building DeFi`}
+                  To Building DeFi
                 </Typography>
                 <Typography
                   className={isMob ? 'mobTitle19KR' : 'pcTitle36KR'}
                   component="div"
-                  fontWeight={600}
+                  fontWeight={isKorean ? 600 : 300}
                   sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '8px', sm: '12px' } }}
                 >
-                  <Box sx={{ fontWeight: 300, display: 'inline' }}>
+                  <Box sx={{ fontWeight: isKorean ? 300 : 600, display: 'inline' }}>
                     {t('cardSection.card2Title1')}
                   </Box>
                   {t('cardSection.card2Title2')}

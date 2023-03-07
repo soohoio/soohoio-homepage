@@ -114,6 +114,7 @@ export function RecordSectionStayKing() {
 
   return (
     <Container
+      maxWidth="false"
       sx={{
         backgroundColor: '#131313',
         py: { xs: '48px', sm: '128px' },

@@ -35,7 +35,7 @@ export default function GlobalMenu({ globalMenuRef, closeGlobalMenu }) {
         height: '100px',
         backgroundColor: '#FFFFFF',
         position: 'absolute',
-        top: { xs: -8, lg: -8 },
+        top: { xs: -4, lg: -4 },
         right: { xs: -4, lg: -4 },
         borderRadius: '50px',
         boxSizing: 'border-box',

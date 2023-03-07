@@ -80,7 +80,13 @@ export default function SecondGradation({ currentProduct }) {
                     fontWeight={600}
                     color="#FFFFFF"
                   >
-                    <Box sx={{ mt: { xs: '16px', sm: '64px' }, mb: { xs: '24px', sm: '24px' } }}>
+                    <Box
+                      sx={{
+                        mt: { xs: '16px', sm: '64px' },
+                        mb: { xs: '24px', sm: '24px' },
+                        maxWidth: '500px',
+                      }}
+                    >
                       {productData[currentProduct].title}
                     </Box>
                   </Typography>
@@ -90,7 +96,9 @@ export default function SecondGradation({ currentProduct }) {
                     fontWeight={300}
                     color={gray_light}
                   >
-                    <Box sx={{ maxWidth: '500px' }}>{productData[currentProduct].contents}</Box>
+                    <Box sx={{ maxWidth: { xs: '350px', sm: '500px' } }}>
+                      {productData[currentProduct].contents}
+                    </Box>
                   </Typography>
                 </Box>
               </ObserverAnimation>

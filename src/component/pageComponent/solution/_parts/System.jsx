@@ -53,7 +53,7 @@ export default function System() {
                 display: { xs: 'none', sm: 'block' },
               }}
             >
-              <Box>{t('system.description1')}</Box>
+              <Box sx={{ mb: { sm: '16px' } }}>{t('system.description1')}</Box>
               <Box sx={{ display: 'inline' }}>{t('system.description2')}</Box>
               <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('system.description3')}</Box>
               <Box sx={{ display: 'inline' }}>{t('system.description4')}</Box>
@@ -73,11 +73,11 @@ export default function System() {
                 display: { sm: 'none' },
               }}
             >
-              <Box>{t('system.description1')}</Box>
+              <Box sx={{ mb: '6px' }}>{t('system.description1Mob')}</Box>
               <Box sx={{ display: 'inline' }}>{t('system.description2')}</Box>
               <Box sx={{ display: 'inline', fontWeight: 600 }}>{t('system.description3')}</Box>
-              <Box sx={{ display: 'inline' }}>{t('system.description4')}</Box>
-              <Box>{t('system.description5')}</Box>
+              <Box sx={{ display: 'inline' }}>{t('system.description4')}</Box>&nbsp;
+              <Box sx={{ display: 'inline' }}>{t('system.description5')}</Box>
             </Typography>
 
             <Grid container justifyContent="center">
@@ -88,24 +88,17 @@ export default function System() {
                 sx={{
                   color: '#FFFFFF',
                   borderRadius: '120px',
-                  px: '80px',
-                  py: '17px',
-                  fontSize: '20px',
-                  display: { xs: 'none', sm: 'block' },
+                  px: { sm: '80px' },
+                  py: { xs: '7.5px', sm: '17px' },
+                  fontSize: { xs: '14px', sm: '20px' },
                   ':hover': {
                     color: primary,
                   },
+                  width: { xs: 1, sm: 'auto' },
                 }}
               >
                 {t('system.button')}
               </Button>
-              <MUIOutlinedButton
-                text={t('system.button')}
-                onClick={openLink}
-                color={black}
-                hoverColor={black}
-                sx={{ width: 1, display: { sm: 'none' }, ':hover': { color: primary } }}
-              />
             </Grid>
           </ObserverAnimation>
         </BodyContainer>

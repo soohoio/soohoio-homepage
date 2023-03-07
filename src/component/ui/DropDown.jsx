@@ -113,7 +113,7 @@ CountryNumUnderline.defaultProps = {
 
 /** 드롭 다운 컴포넌트 - selectList => 목록을 담은 배열
  * 상위 컴포넌트에서 관리할 staet는 value, onChange에 주입 */
-export function DropDownComponent({ selectList, label, name, value, onChange }) {
+export function DropDownComponent({ selectList, label, name, value, onChange, scrollHeight }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   // xs, sm 반응형 안먹는 것들을 위한
   const selectFontSize = isMob ? '14px' : '18px';
@@ -159,7 +159,7 @@ export function DropDownComponent({ selectList, label, name, value, onChange }) 
           MenuListProps: { disablePadding: true },
           style: {
             // 메뉴 최대 높이
-            maxHeight: 300,
+            maxHeight: scrollHeight ? scrollHeight : 300,
           },
           // 메뉴 마우스 오버 시 색상
           PaperProps: {
@@ -175,6 +175,8 @@ export function DropDownComponent({ selectList, label, name, value, onChange }) 
               ':hover': {
                 backgroundColor: primary,
               },
+              // 라운드 값 제거
+              borderRadius: '0px',
             },
           },
         }}

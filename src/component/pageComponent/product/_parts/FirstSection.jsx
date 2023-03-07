@@ -45,10 +45,18 @@ export default function FirstSection({ currentProduct, setCurrentProduct }) {
           color="#FFFFFF"
           sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '16px', sm: '48px' } }}
         >
-          <Box sx={{ mb: { xs: '16px', sm: '24px' }, maxWidth: '800px', mx: 'auto' }}>
+          <Box
+            sx={{
+              mb: { xs: '16px', sm: '24px' },
+              maxWidth: { xs: '300px', sm: '500px', lg: '800px' },
+              mx: 'auto',
+            }}
+          >
             {t('firstSection.title1')}
           </Box>
-          <Box sx={{ maxWidth: '800px', mx: 'auto' }}>{t('firstSection.title2')}</Box>
+          <Box sx={{ maxWidth: { xs: '300px', sm: '500px', lg: '800px' }, mx: 'auto' }}>
+            {t('firstSection.title2')}
+          </Box>
         </Typography>
 
         {/* 버튼 영역 */}

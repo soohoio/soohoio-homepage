@@ -157,13 +157,15 @@ export default function Reference() {
       <Typography
         className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
         component="div"
-        fontWeight={600}
+        fontWeight={currentLanguage === 'ko' ? 600 : 300}
         color="primary"
         align="center"
         sx={{ mt: { xs: '56px', sm: '130px' }, mb: { xs: '24px', sm: '56px' } }}
       >
         {t('reference.investTitle1')}
-        <Box sx={{ fontWeight: 300, display: 'inline' }}>{t('reference.investTitle2')}</Box>
+        <Box sx={{ fontWeight: currentLanguage === 'ko' ? 300 : 600, display: 'inline' }}>
+          {t('reference.investTitle2')}
+        </Box>
       </Typography>
 
       <Typography
@@ -183,11 +185,13 @@ export default function Reference() {
         className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
         component="div"
         color="primary"
-        fontWeight={600}
+        fontWeight={currentLanguage === 'ko' ? 600 : 300}
         align="center"
         sx={{ mt: { xs: '56px', sm: '152px' }, mb: { xs: '35px', sm: '56px' } }}
       >
-        <Box sx={{ fontWeight: 300 }}>{t('reference.seedTitle1')}</Box>
+        <Box sx={{ fontWeight: currentLanguage === 'ko' ? 300 : 600 }}>
+          {t('reference.seedTitle1')}
+        </Box>
         {t('reference.seedTitle2')}
       </Typography>
       <Stack

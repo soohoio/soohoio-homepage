@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Box, Typography, Grid, Drawer } from '@mui/material';
+import { Box, Typography, Grid, Drawer, Stack } from '@mui/material';
 // import Link from 'next/link';
 import Link from '@/module/CustomLink';
-import { black, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
+import { black, gray_light, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -36,30 +36,49 @@ export default function MobDrawler({ open, onClose }) {
       // 백드롭 효과
       BackdropProps={{ invisible: true }}
     >
-      <Box sx={{ px: { xs: paddingHorMob, sm: paddingHorPC }, py: '56px' }}>
-        {pageList.map((page, index) => (
-          <Box key={page.label} sx={{ mb: { xs: '24px', sm: '32px' } }}>
-            <Link
-              href={page.link}
-              onClick={onClose}
-              target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
-            >
-              <Typography
-                className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
-                color={currentPage.includes(page.link) ? 'primary' : '#FFFFFF'}
-                sx={{ ':hover': { color: primary } }}
+      <Stack
+        direction="column"
+        justifyContent="space-between"
+        sx={{
+          px: { xs: paddingHorMob, sm: paddingHorPC },
+          py: '56px',
+          height: 1,
+          boxSizing: 'border-box',
+        }}
+      >
+        <Box>
+          {pageList.map((page, index) => (
+            <Box key={page.label} sx={{ mb: { xs: '24px', sm: '32px' } }}>
+              <Link
+                href={page.link}
+                onClick={onClose}
+                target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
               >
-                {page.label}
-              </Typography>
-            </Link>
-            {page.link === '/news' || page.link === '/recruit' ? (
-              <Box
-                sx={{ backgroundColor: primary, height: '1px', mt: { xs: '24px', sm: '32px' } }}
-              />
-            ) : null}
-          </Box>
-        ))}
-      </Box>
+                <Typography
+                  className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
+                  color={currentPage.includes(page.link) ? 'primary' : '#FFFFFF'}
+                  sx={{ ':hover': { color: primary } }}
+                >
+                  {page.label}
+                </Typography>
+              </Link>
+              {page.link === '/news' || page.link === '/recruit' ? (
+                <Box
+                  sx={{ backgroundColor: primary, height: '1px', mt: { xs: '24px', sm: '32px' } }}
+                />
+              ) : null}
+            </Box>
+          ))}
+        </Box>
+        <Typography
+          component="div"
+          className={isMob ? 'mobBody14KR' : 'pcBody14KR'}
+          color={gray_light}
+          fontWeight={300}
+        >
+          <Box sx={{ mt: `-${navBarHeight}` }}>Ⓒ2023. SOOHO.IO Inc. All Rights Reserved.</Box>
+        </Typography>
+      </Stack>
     </Drawer>
   );
 }

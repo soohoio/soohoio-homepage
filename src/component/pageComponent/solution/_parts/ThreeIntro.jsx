@@ -157,7 +157,12 @@ export default function ThreeIntro() {
                         color={gray}
                         fontWeight={300}
                       >
-                        <Box sx={{ mt: { xs: '16px', sm: '22px' }, mb: { xs: '8px', sm: '8px' } }}>
+                        <Box
+                          sx={{
+                            mt: { xs: '16px', sm: '22px' },
+                            mb: { xs: '8px', sm: '8px' },
+                          }}
+                        >
                           {each[`point${num}`]}
                         </Box>
                       </Typography>
@@ -168,7 +173,7 @@ export default function ThreeIntro() {
                         color="#FFFFFF"
                         fontWeight={300}
                       >
-                        <Box>{each[`description${num}`]}</Box>
+                        <Box sx={{ maxWidth: '387px' }}>{each[`description${num}`]}</Box>
                       </Typography>
                     </ObserverAnimation>
                   </Grid>

@@ -1,13 +1,36 @@
 import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, Button, CardMedia, Container, Grid, Stack, Tooltip, Typography } from '@mui/material';
 import { paddingHorMob, paddingHorPC, primary } from '@/component/style/StyleTheme';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useTranslation } from 'next-i18next';
 
 export default function CultureSupport() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { t } = useTranslation('team');
+  const [scrollOffset, setScrollOffset] = useState(0);
+  let calc;
+  if (isMob) {
+    calc = 0;
+  } else {
+    calc = isPc ? 140 : 300;
+  }
+
+  const handleScroll = event => {
+    setScrollOffset(event.target.scrollTop);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScrollOffset(window.pageYOffset);
+    };
+
+    window.addEventListener('scroll', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleResize);
+    };
+  }, []);
 
   const supportList = [
     t('cultureSupport.supportList1'),
@@ -20,6 +43,7 @@ export default function CultureSupport() {
   return (
     <Container
       maxWidth={false}
+      onScroll={handleScroll}
       sx={{
         background: `url(/image/pageImage/team/supportBg${isMob ? 'Mob' : ''}.png)`,
         backgroundSize: 'cover',
@@ -27,6 +51,8 @@ export default function CultureSupport() {
         backgroundPositionY: 'center',
         py: { xs: '54px', sm: '152px' },
         px: { xs: paddingHorMob, sm: paddingHorPC },
+        backgroundSize: `calc(${calc}% + ${scrollOffset / 4}px)`,
+        transition: 'background-size 0.05s ease-in-out',
       }}
     >
       <Typography

@@ -198,20 +198,23 @@ export default function NavBar() {
                     href={page.link}
                     target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
                   >
-                    <Typography
-                      color={currentPage === page.link ? 'primary' : '#FFFFFF'}
-                      fontWeight={currentPage === page.link ? 600 : 300}
-                      sx={{
-                        mr: { xs: '15px', lg: '24px' },
-                        fontSize: { lg: '15px', xl: '18px' },
-                        ':hover': {
-                          color: primary,
-                          fontWeight: 600,
-                        },
-                      }}
-                    >
-                      {page.label}
-                    </Typography>
+                    {/* 영문 채용 페이지 삭제 */}
+                    {page.label !== 'Recruit' && (
+                      <Typography
+                        color={currentPage === page.link ? 'primary' : '#FFFFFF'}
+                        fontWeight={currentPage === page.link ? 600 : 300}
+                        sx={{
+                          mr: { xs: '15px', lg: '24px' },
+                          fontSize: { lg: '15px', xl: '18px' },
+                          ':hover': {
+                            color: primary,
+                            fontWeight: 600,
+                          },
+                        }}
+                      >
+                        {page.label}
+                      </Typography>
+                    )}
                   </Link>
                 ))}
               </Box>
@@ -222,8 +225,8 @@ export default function NavBar() {
                   sx={{
                     display: { xs: 'none', lg: 'block' },
                     borderRadius: '16px',
-                    width: '88px',
-                    px: '10px !important',
+                    width: isKorean ? '88px' : '98px',
+                    px: '0px !important',
                     py: '2px !important',
                     fontWeight: '300 !important',
                     fontSize: 14,

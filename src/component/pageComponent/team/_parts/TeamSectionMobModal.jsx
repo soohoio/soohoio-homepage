@@ -110,7 +110,7 @@ export default function TeamSectionMobModal({
             {selectedCard && selectedCard.interview && (
               <MUIOutlinedButton
                 onClick={() => goToLink(selectedCard.interview, 'external')}
-                text="InterView"
+                text="Interview"
                 color="#FFFFFF"
                 hoverColor="#FFFFFF"
                 sx={{ width: 1, mt: '12px' }}

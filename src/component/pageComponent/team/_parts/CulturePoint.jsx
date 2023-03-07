@@ -218,11 +218,16 @@ export default function CulturePoint() {
                   </Stack>
                   <Box>
                     <Typography
+                      key={selectedCard?.number}
                       component="div"
                       className={
                         isMob
-                          ? `mobTitle${selectedCard?.number === each.number ? '14' : '16'}KR`
-                          : `pcTitle${selectedCard?.number === each.number ? '32' : '36'}KR`
+                          ? `mobTitle${
+                              selectedCard?.number === each.number ? '14' : '16'
+                            }KR smoothAppearSlow`
+                          : `pcTitle${
+                              selectedCard?.number === each.number ? '32' : '36'
+                            }KR smoothAppearSlow`
                       }
                       fontWeight={600}
                       color="#FFFFFF"
@@ -239,7 +244,10 @@ export default function CulturePoint() {
                       >
                         <Box
                           className="smoothAppearSlow"
-                          sx={{ mt: { xs: '12px', sm: '32px' }, maxWidth: '650px' }}
+                          sx={{
+                            mt: { xs: '12px', sm: '32px' },
+                            maxWidth: { xs: '280px', sm: '540px', lg: '650px' },
+                          }}
                         >
                           {each.hoverText}
                         </Box>
@@ -277,9 +285,9 @@ export default function CulturePoint() {
                         component="div"
                         className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
                         fontWeight={300}
-                        color={gray}
+                        color="#ABABAB"
                       >
-                        <Box>{eachPoint.description}</Box>
+                        <Box sx={{ maxWidth: '455px' }}>{eachPoint.description}</Box>
                       </Typography>
                     </Box>
                   </Grid>

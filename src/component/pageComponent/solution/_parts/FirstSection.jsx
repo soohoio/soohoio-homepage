@@ -24,7 +24,7 @@ export default function FirstSection() {
               color="#FFFFFF"
               fontWeight={600}
             >
-              DeFi Product
+              DeFi Package
             </Typography>
             <Typography
               component="div"
