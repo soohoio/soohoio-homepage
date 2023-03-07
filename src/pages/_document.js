@@ -7,6 +7,7 @@ export default function Document() {
       <Head>
         {/* UTM 코드 */}
         <Script
+          id="utmCode"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
