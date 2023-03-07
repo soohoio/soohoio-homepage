@@ -12,7 +12,11 @@ export default function Contact() {
   const { t } = useTranslation('solution');
 
   const goToContact = () => {
-    router.push('/contact');
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
+    router.push(`/${locale}/contact`);
   };
 
   return (

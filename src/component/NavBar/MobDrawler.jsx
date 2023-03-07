@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Box, Typography, Grid, Drawer } from '@mui/material';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Link from '@/module/CustomLink';
 import { black, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
@@ -45,7 +46,7 @@ export default function MobDrawler({ open, onClose }) {
             >
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
-                color={currentPage === page.link ? 'primary' : '#FFFFFF'}
+                color={currentPage.includes(page.link) ? 'primary' : '#FFFFFF'}
                 sx={{ ':hover': { color: primary } }}
               >
                 {page.label}

@@ -5,7 +5,8 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { black, borderRadiusMob, borderRadiusPc, gray } from '@/component/style/StyleTheme';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Link from '@/module/CustomLink';
 import { useTranslation } from 'next-i18next';
 
 export default function ThreeIntro() {

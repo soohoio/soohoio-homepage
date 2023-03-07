@@ -138,7 +138,7 @@ export default function RecruitList({
         },
       });
 
-    // console.log(body);
+    // console.log('body: ', body);
     try {
       const notionData = await axios.post(
         url,

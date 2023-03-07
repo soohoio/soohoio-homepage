@@ -38,7 +38,7 @@ export default function TeamSection() {
               <Box sx={{ display: 'inline' }}>{t('teamSection.defiHoverDescription2')}</Box>
 
               <Box
-                onClick={() => goToJustLink('/Product')}
+                onClick={() => goToJustLink('/product')}
                 sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}
               >
                 <u>{`KLEVA`}</u>
@@ -195,14 +195,23 @@ export default function TeamSection() {
     if (type === 'external') {
       window.open(link);
     } else {
-      router.push(link);
+      let locale = '';
+      if (router.pathname.includes('locale')) {
+        locale = router.query.locale;
+      }
+      router.push(`/${locale}${link}`);
     }
   };
 
   const goToLinkWithParam = (link, key, value) => {
     const tempMap = {};
     tempMap[key] = value;
-    router.push({ pathname: link, query: tempMap });
+
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
+    router.push({ pathname: `/${locale}${link}`, query: tempMap });
   };
 
   return (

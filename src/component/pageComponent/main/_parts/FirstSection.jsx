@@ -5,7 +5,7 @@ import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/materi
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 export default function FirstSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);

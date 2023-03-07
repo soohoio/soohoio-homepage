@@ -1,12 +1,18 @@
 import News from '@/component/pageComponent/news';
 import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['news'])),
-  },
-});
+// * SSR 배포 시 (SSG 배포시에는 불가합니다 | i18 next export 기능 미지원) / i18로 동적 라우팅 없이 단일 주소로 서브가 가능합니다.
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// export const getStaticProps = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ['news'])),
+//   },
+// });
+
+// * SSG 배포 시,
+import { makeStaticProps } from '@/module/getStatic';
+const getStaticProps = makeStaticProps(['news']);
+export { getStaticProps };
 
 export default function NewsPage() {
   return (

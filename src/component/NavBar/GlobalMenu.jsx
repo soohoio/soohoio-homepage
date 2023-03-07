@@ -9,8 +9,16 @@ export default function GlobalMenu({ globalMenuRef, closeGlobalMenu }) {
   const router = useRouter();
 
   const changeLanguage = language => {
+    const isKorean = !router.pathname.includes('locale');
     i18n.changeLanguage(language);
-    router.push(router.pathname, router.asPath, { locale: language });
+
+    // ko인데 en을 누른 경우
+    if (isKorean && language === 'en') {
+      router.push(`/en${router.pathname}`);
+      // ko 아닐 때 ko을 누른 경우
+    } else if (!isKorean && language === 'ko') {
+      router.push(router.pathname.replace('/[locale]', ''));
+    }
     closeGlobalMenu();
   };
 

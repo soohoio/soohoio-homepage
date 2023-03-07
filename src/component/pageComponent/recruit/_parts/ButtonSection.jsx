@@ -10,8 +10,12 @@ export default function ButtonSection() {
   const router = useRouter();
 
   const goToContact = link => {
+    let locale = '';
+    if (router.pathname.includes('locale')) {
+      locale = router.query.locale;
+    }
     if (link === '/contact') {
-      router.push({ pathname: link, query: { currentTypeIndex: 1 } });
+      router.push({ pathname: `/${locale}${link}`, query: { currentTypeIndex: 1 } });
     } else {
       router.push(link);
     }

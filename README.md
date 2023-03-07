@@ -19,7 +19,7 @@ $> npm run build
 ```
 
 out 폴더 내의 파일들을 업로드합니다  
-emailJS의 API 정보가 바뀐 경우 .env 파일을 수정 후 배포합니다
+emailJS / NotionAPI / CORS.SH API의 정보가 바뀐 경우 .env 파일을 수정 후 배포합니다
 
 # 폴더 구조
 

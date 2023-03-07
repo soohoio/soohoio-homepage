@@ -10,7 +10,8 @@ import {
   CardMedia,
 } from '@mui/material';
 import { paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Link from '@/module/CustomLink';
 import MobDrawler from './MobDrawler';
 import { MUIOutlinedButton } from '../ui/Button';
 import { useRouter } from 'next/router';
