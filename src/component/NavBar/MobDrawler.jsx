@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Box, Typography, Grid, Drawer } from '@mui/material';
 import Link from 'next/link';
-import { black, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
+import { black, gray, paddingHorMob, paddingHorPC, primary } from '../style/StyleTheme';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -18,8 +18,8 @@ export default function MobDrawler({ open, onClose }) {
     { label: isKorean ? '기업 솔루션' : 'B2B Solution', link: '/solution' },
     { label: isKorean ? '프로덕트' : 'Products', link: '/product' },
     { label: isKorean ? '뉴스' : 'News', link: '/news' },
-    { label: isKorean ? '팀 소개' : 'SOOHO Team', link: '/team' },
-    { label: isKorean ? '채용' : 'Recruit', link: '/recruit' },
+    { label: isKorean ? '팀 소개' : 'SOOHO Team', link: '/' },
+    { label: isKorean ? '채용' : 'Recruit', link: '/' },
     { label: isKorean ? '블로그' : 'Blog', link: 'https://blog.sooho.io' },
     { label: isKorean ? '문의하기' : 'Contact us', link: '/contact' },
   ];
@@ -46,12 +46,12 @@ export default function MobDrawler({ open, onClose }) {
               <Typography
                 className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
                 color={currentPage === page.link ? 'primary' : '#FFFFFF'}
-                sx={{ ':hover': { color: primary } }}
+                sx={[page.link === '/' && { color: gray }, { ':hover': { color: primary } }]}
               >
                 {page.label}
               </Typography>
             </Link>
-            {page.link === '/news' || page.link === '/recruit' ? (
+            {page.link === '/news' || page.label === '채용' ? (
               <Box
                 sx={{ backgroundColor: primary, height: '1px', mt: { xs: '24px', sm: '32px' } }}
               />
