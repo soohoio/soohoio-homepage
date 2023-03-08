@@ -5,7 +5,7 @@
 
 /** @type {import('next').NextConfig}*/
 const nextConfig = {
-  // trailingSlash: true,
+  trailingSlash: true,
   // exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
   //   const paths = {
   //     '/': { page: '/' },
