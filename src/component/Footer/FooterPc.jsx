@@ -14,16 +14,16 @@ export default function FooterPc() {
 
   const fileList = [
     { label: 'KR', file: '/file/SOOHO.IO_회사소개서.pdf' },
-    { label: 'JP', file: '/file/SOOHO.IO_会社紹介書.pdf' },
     { label: 'EN', file: '/file/SOOHO.IO_Introduction.pdf' },
+    { label: 'JP', file: '/file/SOOHO.IO_会社紹介書.pdf' },
   ];
-
-  const goToLink = link => {
-    window.open(link);
-  };
 
   const downloadFile = file => {
     window.open(file);
+  };
+
+  const goToLink = link => {
+    window.open(link);
   };
 
   return (

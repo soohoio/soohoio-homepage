@@ -12,6 +12,16 @@ export default function FooterMob() {
     { img: 'linkedIn', link: 'https://www.linkedin.com/company/sooho' },
   ];
 
+  const fileList = [
+    { label: 'KR', file: '/file/SOOHO.IO_회사소개서.pdf' },
+    { label: 'EN', file: '/file/SOOHO.IO_Introduction.pdf' },
+    { label: 'JP', file: '/file/SOOHO.IO_会社紹介書.pdf' },
+  ];
+
+  const downloadFile = file => {
+    window.open(file);
+  };
+
   const goToLink = link => {
     window.open(link);
   };
@@ -41,11 +51,28 @@ export default function FooterMob() {
                 color={gray_light}
                 sx={{ fontWeight: 600 }}
               >
-                <Box sx={{ color: gray }}>SOOHO.IO</Box>
-                {/* <Box className="buttonHover">수호 소개서 다운로드</Box>
-                <Box sx={{ color: gray, mt: '25px' }}>SOOHO.IO</Box> */}
+                <Box sx={{ color: gray, mb: '8px' }}>회사 소개서 다운받기</Box>
+                <Stack direction="row" spacing="12px">
+                  {fileList.map(function (each, index) {
+                    return (
+                      <Stack direction="row" key={each.label} spacing="12px" alignItems="center">
+                        <Box
+                          onClick={() => downloadFile(each.file)}
+                          className="pcBody18KR"
+                          sx={{ fontWeight: 300, cursor: 'pointer' }}
+                        >
+                          {each.label}
+                        </Box>
+                        {index !== fileList.length - 1 && (
+                          <Box sx={{ width: '1px', backgroundColor: '#FFFFFF', height: '13px' }} />
+                        )}
+                      </Stack>
+                    );
+                  })}
+                </Stack>
+                <Box sx={{ color: gray, mt: '16px' }}>SOOHO.IO</Box>
               </Typography>
-              <Stack direction="row" spacing="24px" sx={{ mt: '18px', mb: '32px' }}>
+              <Stack direction="row" spacing="24px" sx={{ mt: '14px', mb: '22px' }}>
                 {snsButtonList.map(function (each) {
                   return (
                     <CardMedia
@@ -73,7 +100,7 @@ export default function FooterMob() {
                 onClick={() => goToLink('https://twitter.com/sooho_cafe')}
                 alt={`soohoio cafe sns link(twitter)`}
                 image={`/image/sns/twitter.png`}
-                sx={{ width: '24px', height: '24px', mt: '22px' }}
+                sx={{ width: '24px', height: '24px', mt: '8px' }}
               />
             </Box>
           </Grid>
