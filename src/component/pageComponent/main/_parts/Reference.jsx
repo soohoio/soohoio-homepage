@@ -157,15 +157,13 @@ export default function Reference() {
       <Typography
         className={isMob ? 'mobTitle16KR' : 'pcTitle32KR'}
         component="div"
-        fontWeight={currentLanguage === 'ko' ? 600 : 300}
+        fontWeight={600}
         color="primary"
         align="center"
         sx={{ mt: { xs: '56px', sm: '130px' }, mb: { xs: '24px', sm: '56px' } }}
       >
         {t('reference.investTitle1')}
-        <Box sx={{ fontWeight: currentLanguage === 'ko' ? 300 : 600, display: 'inline' }}>
-          {t('reference.investTitle2')}
-        </Box>
+        <Box sx={{ fontWeight: 300, display: 'inline' }}>{t('reference.investTitle2')}</Box>
       </Typography>
 
       <Typography

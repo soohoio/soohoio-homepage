@@ -70,6 +70,7 @@ export default function RecruitProcess() {
                 <Box
                   onClick={() => selectProcess(index)}
                   onMouseOver={isMob ? () => {} : () => selectProcess(index)}
+                  onMouseOut={isMob ? () => {} : () => selectProcess(0)}
                   sx={[
                     currentProcess === index && { backgroundColor: '#2B2B2B' },
                     {

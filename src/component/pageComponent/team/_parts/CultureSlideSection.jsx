@@ -35,7 +35,7 @@ export default function CultureSlideSection() {
     },
     {
       name: 'Chacha',
-      position: 'Community Manager',
+      position: 'Community Project Manager',
       interview: isMob
         ? t('cultureSlideSection.interview3Mob')
         : t('cultureSlideSection.interview3'),
@@ -120,7 +120,7 @@ export default function CultureSlideSection() {
               <Typography
                 component="div"
                 align="center"
-                className={isMob ? 'pcBody14KR' : 'pcBody18KR'}
+                className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
                 fontWeight={300}
                 color="#FFFFFF"
               >

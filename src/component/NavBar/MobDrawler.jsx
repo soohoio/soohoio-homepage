@@ -43,6 +43,7 @@ export default function MobDrawler({ open, onClose }) {
           px: { xs: paddingHorMob, sm: paddingHorPC },
           py: '56px',
           height: 1,
+          overflowY: 'scroll',
           boxSizing: 'border-box',
         }}
       >
@@ -70,13 +71,14 @@ export default function MobDrawler({ open, onClose }) {
             </Box>
           ))}
         </Box>
+
         <Typography
           component="div"
           className={isMob ? 'mobBody14KR' : 'pcBody14KR'}
           color={gray_light}
           fontWeight={300}
         >
-          <Box sx={{ mt: `-${navBarHeight}` }}>Ⓒ2023. SOOHO.IO Inc. All Rights Reserved.</Box>
+          <Box sx={{ mb: '56px' }}>Ⓒ2023. SOOHO.IO Inc. All Rights Reserved.</Box>
         </Typography>
       </Stack>
     </Drawer>

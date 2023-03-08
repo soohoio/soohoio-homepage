@@ -12,8 +12,18 @@ export default function FooterPc() {
     { img: 'linkedIn', link: 'https://www.linkedin.com/company/sooho' },
   ];
 
+  const fileList = [
+    { label: 'KR', file: '/file/SOOHO.IO_회사소개서.pdf' },
+    { label: 'JP', file: '/file/SOOHO.IO_会社紹介書.pdf' },
+    { label: 'EN', file: '/file/SOOHO.IO_Introduction.pdf' },
+  ];
+
   const goToLink = link => {
     window.open(link);
+  };
+
+  const downloadFile = file => {
+    window.open(file);
   };
 
   return (
@@ -45,11 +55,28 @@ export default function FooterPc() {
                 color={gray_light}
                 sx={{ fontWeight: 600 }}
               >
-                <Box sx={{ color: gray }}>SOOHO.IO</Box>
-                {/* <Box className="buttonHover">수호 소개서 다운로드</Box>
-                <Box sx={{ color: gray, mt: '32px' }}>SOOHO.IO</Box> */}
+                <Box sx={{ color: gray, mb: '16px' }}>회사 소개서 다운받기</Box>
+                <Stack direction="row" spacing="12px">
+                  {fileList.map(function (each, index) {
+                    return (
+                      <Stack direction="row" key={each.label} spacing="12px" alignItems="center">
+                        <Box
+                          onClick={() => downloadFile(each.file)}
+                          className="pcBody18KR"
+                          sx={{ fontWeight: 300, cursor: 'pointer' }}
+                        >
+                          {each.label}
+                        </Box>
+                        {index !== fileList.length - 1 && (
+                          <Box sx={{ width: '1px', backgroundColor: '#FFFFFF', height: '13px' }} />
+                        )}
+                      </Stack>
+                    );
+                  })}
+                </Stack>
+                <Box sx={{ color: gray, mt: '32px' }}>SOOHO.IO</Box>
               </Typography>
-              <Stack direction="row" spacing="24px" sx={{ mt: '22px', mb: '38px' }}>
+              <Stack direction="row" spacing="24px" sx={{ mt: '20px', mb: '32px' }}>
                 {snsButtonList.map(function (each) {
                   return (
                     <CardMedia

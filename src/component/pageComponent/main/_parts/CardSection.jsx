@@ -12,7 +12,6 @@ export default function CardSection() {
   const { t } = useTranslation('main');
 
   const router = useRouter();
-  const isKorean = !router.pathname.includes('locale');
 
   return (
     <BodyContainer ptPc="81px" pbPc="77px" ptMob="44px">
@@ -107,10 +106,10 @@ export default function CardSection() {
                 <Typography
                   className={isMob ? 'mobTitle19KR' : 'pcTitle36KR'}
                   component="div"
-                  fontWeight={isKorean ? 600 : 300}
+                  fontWeight={600}
                   sx={{ mt: { xs: '8px', sm: '16px' }, mb: { xs: '8px', sm: '12px' } }}
                 >
-                  <Box sx={{ fontWeight: isKorean ? 300 : 600, display: 'inline' }}>
+                  <Box sx={{ fontWeight: 300, display: 'inline' }}>
                     {t('cardSection.card2Title1')}
                   </Box>
                   {t('cardSection.card2Title2')}

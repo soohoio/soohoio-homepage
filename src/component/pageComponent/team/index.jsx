@@ -14,16 +14,20 @@ export default function Team() {
     <div>
       <Container
         maxWidth="false"
-        sx={{ backgroundColor: '#131313', width: { sm: '1439px !important', lg: 1 } }}
+        sx={{
+          backgroundColor: '#131313',
+          width: { sm: currentTab === 'Team' ? '1439px' : 1, lg: 1 },
+          ml: '0px',
+        }}
       >
         <FirstSection currentTab={currentTab} setCurrentTab={setCurrentTab} />
       </Container>
       {currentTab === 'Team' ? (
         <Box>
-          {/* (수정 )강제 적용 요청에 따른 */}
+          {/* (수정)강제 적용 요청에 따른 */}
           <Container
             maxWidth="false"
-            sx={{ backgroundColor: '#131313', width: { sm: '1439px !important', lg: 1 } }}
+            sx={{ backgroundColor: '#131313', width: { sm: '1439px', lg: 'auto' } }}
           >
             <TeamSection />
             <TeamViewAllPosition />

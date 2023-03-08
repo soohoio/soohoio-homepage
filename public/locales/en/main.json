@@ -1,23 +1,23 @@
 {
   "firstSection": {
-    "title1": "",
-    "title2": "Institutional-Grade ",
+    "title1": "Institutional-Grade\nDeFi Infrastructure",
+    "title2": "",
     "title3": "",
-    "title4": "DeFi Infrastructure",
+    "title4": "",
     "description": "To invite anyone who wishes to expand their financial opportunities, SOOHO is building a transparent and secure infrastructure with reliable partners.",
     "button": "Request DeFi Partnership"
   },
   "cardSection": {
-    "card1Title1": "Korea's First",
-    "card1Title2": " Blockchain Audit",
+    "card1Title1": "Korea's First Blockchain Audit",
+    "card1Title2": "",
     "card1Standard": "*The first audit report written in Korean",
     "card1Point": "Over 280,000 audit reports issued",
     "card1DescriptionPc": "We have been protecting digital assets since Korea's first smart contract audit in April 2018.",
     "card1DescriptionTablet": "We have been protecting digital assets since Korea's first smart contract audit in April 2018.",
     "card1DescriptionMob": "We have been protecting digital assets since Korea's first smart contract audit in April 2018.",
 
-    "card2Title1": "Second-largest TVL ",
-    "card2Title2": "in Klaytn DeFi",
+    "card2Title1": "",
+    "card2Title2": "Second-largest TVL in Klaytn DeFi",
     "card2Standard": "* Feb. 2023",
     "card2Point": "Over $500M TVL achieved in two weeks of launch",
     "card2DescriptionPc": "We have successfully launched KLEVA, a DeFi service in the Klaytn ecosystem with WEMIX.",
@@ -31,12 +31,12 @@
     "refTitle4": "",
     "refTitle5": "",
     "refTitle6": "utilize our technology.",
-    "investTitle1": "Total investment achieved ",
-    "investTitle2": "by a team of 15 members",
+    "investTitle1": "Total investment achieved by a team of 15 members",
+    "investTitle2": "",
     "moneyAmount": 9000000,
     "moneyCurrency": " +",
-    "seedTitle1": "The only seed investment in Korea",
-    "seedTitle2": "from ConsenSys, a leading Web3 company."
+    "seedTitle1": "The only seed investment in Korea\nfrom ConsenSys, a leading Web3 company.",
+    "seedTitle2": ""
   },
   "mission": {
     "missionTitle": "Secure Gateway for\nNew Financial Opportunities",

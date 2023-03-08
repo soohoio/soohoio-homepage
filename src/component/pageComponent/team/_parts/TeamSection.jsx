@@ -64,6 +64,7 @@ export default function TeamSection() {
             </Box>
           ),
           background: 'stayking',
+          interview: 'https://blog.sooho.io/people_interview_stayking/',
         },
       ],
     },
@@ -240,7 +241,7 @@ export default function TeamSection() {
               component="div"
               className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
               fontWeight={300}
-              color={gray}
+              color="#ABABAB"
             >
               <Box sx={{ mb: { xs: '24px', sm: '40px' } }}>{eachTeam.description}</Box>
             </Typography>
@@ -452,7 +453,7 @@ export default function TeamSection() {
               component="div"
               className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
               fontWeight={300}
-              color={gray}
+              color="#ABABAB"
             >
               <Box sx={{ mb: { xs: '24px', sm: '40px' } }}>{eachTeam.description}</Box>
             </Typography>

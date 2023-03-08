@@ -162,7 +162,13 @@ export default function CulturePoint() {
               fontWeight={300}
               color="#FFFFFF"
             >
-              <Box sx={{ mt: { xs: '12px', sm: '40px' }, mb: { xs: '18px', sm: '56px' } }}>
+              <Box
+                sx={{
+                  mt: { xs: '12px', sm: '40px' },
+                  mb: { xs: '18px', sm: '56px' },
+                  maxWidth: '800px',
+                }}
+              >
                 {each.description}
               </Box>
             </Typography>
@@ -246,7 +252,7 @@ export default function CulturePoint() {
                           className="smoothAppearSlow"
                           sx={{
                             mt: { xs: '12px', sm: '32px' },
-                            maxWidth: { xs: '280px', sm: '540px', lg: '650px' },
+                            maxWidth: { xs: '280px', sm: '540px', lg: '640px' },
                           }}
                         >
                           {each.hoverText}

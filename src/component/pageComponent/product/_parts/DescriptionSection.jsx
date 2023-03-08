@@ -22,8 +22,8 @@ export default function DescriptionSection({ currentProduct }) {
       description1: t('description.klevaDescription1'),
       point2: 'Multiple Positions',
       description2: t('description.klevaDescription2'),
-      img: isMob ? 'klevaDescMob' : 'klevaDesc',
-      aspectRatio: isMob ? '314/210' : '664/387',
+      img: isMob ? 'klevaDesc' : 'klevaDesc',
+      aspectRatio: isMob ? '664/387' : '664/387',
     },
     StayKing: {
       title: `LEVERAGED\nSTAKING`,
