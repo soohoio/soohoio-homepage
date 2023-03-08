@@ -216,11 +216,15 @@ export default function TeamSection() {
 
   return (
     <BodyContainer ptPc="152px" ptMob="56px" pbPc="12px" pbMob="32px">
+      {/* PC, Mob / 태블릿은 반응형 깨는 식으로 강제 적용 */}
       {teamData.map(function (eachTeam, index) {
         return (
           <Box
             key={eachTeam.label}
-            sx={{ mb: { xs: index === teamData.length - 1 ? '0px' : '56px', sm: '120px' } }}
+            sx={{
+              mb: { xs: index === teamData.length - 1 ? '0px' : '56px', sm: '120px' },
+              display: { sm: 'none', lg: 'block' },
+            }}
           >
             {/* 소개 텍스트 영역 */}
             <Typography
@@ -253,6 +257,222 @@ export default function TeamSection() {
                       onMouseOut={isMob ? () => {} : () => selectCard(null)}
                       sx={{
                         width: 1,
+                        aspectRatio: '656/570',
+                        borderRadius: { xs: '8px', sm: '16px' },
+                        boxSizing: 'border-box',
+                        background: `url(/image/pageImage/team/${each.background}Bg.png)`,
+                        backgroundSize: 'cover',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          p: { xs: '16px', sm: '32px', lg: '48px' },
+                          width: 1,
+                          height: 1,
+                          transition: 'backdrop-filter 0.3s ease-in-out',
+                          backdropFilter:
+                            !isMob && selectedCard?.label === each.label ? 'blur(8px)' : 'none',
+                          boxSizing: 'border-box',
+                        }}
+                      >
+                        <Stack direction="column" justifyContent="space-between" sx={{ height: 1 }}>
+                          <Box>
+                            <Stack direction="row" justifyContent="space-between">
+                              <Typography
+                                component="div"
+                                className={
+                                  isMob
+                                    ? 'mobTitle19KR'
+                                    : `pcTitle${selectedCard?.label === each.label ? '32' : '36'}KR`
+                                }
+                                fontWeight={600}
+                                color="primary"
+                                sx={{ transition: 'font-size 0.55s ease-out' }}
+                              >
+                                {each.label}
+                              </Typography>
+                              {!isMob && selectedCard?.label !== each.label && (
+                                <CardMedia
+                                  image={`/image/icon/plusCircle.png`}
+                                  sx={{
+                                    width: { xs: '20px', sm: '40px' },
+                                    height: { xs: '20px', sm: '40px' },
+                                  }}
+                                />
+                              )}
+                            </Stack>
+
+                            {/* 호버에 따른 텍스트 변화 */}
+                            {!isMob && selectedCard?.label === each.label ? (
+                              <Typography
+                                component="div"
+                                className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
+                                fontWeight={300}
+                                color="#FFFFFF"
+                              >
+                                <Box
+                                  className="smoothAppearSlow"
+                                  key={`${selectedCard?.label}${each.label}Hover`}
+                                  sx={{
+                                    mt: { xs: '16px', sm: '24px' },
+                                    maxWidth: '480px',
+                                  }}
+                                >
+                                  {each.hoverDescription}
+                                </Box>
+                              </Typography>
+                            ) : (
+                              <Typography
+                                component="div"
+                                className={isMob ? 'mobBody14KR' : 'pcBody20KR'}
+                                fontWeight={300}
+                                color="#FFFFFF"
+                              >
+                                <Box
+                                  key={`${selectedCard?.label}${each.label}`}
+                                  sx={{ mt: { xs: '16px', sm: '24px' }, maxWidth: '480px' }}
+                                >
+                                  {each.description}
+                                </Box>
+                              </Typography>
+                            )}
+                          </Box>
+
+                          {/* 버튼 영역(호버시에만 보이는) */}
+                          {!isMob && selectedCard?.label === each.label && (
+                            <Stack direction="row" spacing="16px">
+                              {recruitNumber && recruitNumber[each.label] && (
+                                <Box sx={{ width: 1, position: 'relative' }}>
+                                  {/* 뱃지 */}
+                                  <Typography
+                                    component="div"
+                                    align="center"
+                                    fontSize="14px"
+                                    fontWeight={400}
+                                    color={black}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: 'inline-flex',
+                                        px: '19px',
+                                        py: '3.5px',
+                                        border: '2px solid #00F2C3',
+                                        borderRadius: '120px',
+                                        background: 'rgba(0, 242, 195, 0.8)',
+                                        position: 'absolute',
+                                        top: -23,
+                                        right: 0,
+                                        zIndex: 1000,
+                                      }}
+                                    >
+                                      {recruitNumber[each.label]}
+                                    </Box>
+                                  </Typography>
+
+                                  <MUIOutlinedButton
+                                    onClick={() =>
+                                      goToLinkWithParam('/recruit', 'team', each.label)
+                                    }
+                                    text="Open Position"
+                                    color="#FFFFFF"
+                                    hoverColor="#FFFFFF"
+                                    sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
+                                  />
+                                </Box>
+                              )}
+                              {each.interview ? (
+                                <MUIOutlinedButton
+                                  onClick={() => goToJustLink(each.interview, 'external')}
+                                  text="Interview"
+                                  color="#FFFFFF"
+                                  hoverColor="#FFFFFF"
+                                  sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
+                                />
+                              ) : (
+                                <Box sx={{ width: 1 }} />
+                              )}
+                              {/* 인터뷰 단독 시, 사이즈 조정을 위한 빈 박스 */}
+                              {recruitNumber && !recruitNumber[each.label] && (
+                                <Box sx={{ width: 1 }} />
+                              )}
+                            </Stack>
+                          )}
+
+                          {/* 모바일 플러스 버튼 */}
+                          <Stack
+                            direction="row"
+                            justifyContent="flex-end"
+                            sx={{ display: { sm: 'none' } }}
+                          >
+                            <CardMedia
+                              image={`/image/icon/plusCircle.png`}
+                              sx={{
+                                width: { xs: '20px', sm: '40px' },
+                                height: { xs: '20px', sm: '40px' },
+                              }}
+                            />
+                          </Stack>
+                        </Stack>
+                      </Box>
+                    </Box>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
+        );
+      })}
+
+      {/* (수정) 태블릿 강제 적용 부분 */}
+      {teamData.map(function (eachTeam, index) {
+        return (
+          <Box
+            key={eachTeam.label}
+            sx={{
+              mb: { xs: index === teamData.length - 1 ? '0px' : '56px', sm: '120px' },
+            }}
+          >
+            {/* 소개 텍스트 영역 */}
+            <Typography
+              component="div"
+              className={isMob ? 'mobBody12KR' : 'pcBody24KR'}
+              fontWeight={600}
+              color="#FFFFFF"
+            >
+              <Box sx={{ mb: { xs: '8px', sm: '16px' } }}>{eachTeam.label}</Box>
+            </Typography>
+
+            <Typography
+              component="div"
+              className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
+              fontWeight={300}
+              color={gray}
+            >
+              <Box sx={{ mb: { xs: '24px', sm: '40px' } }}>{eachTeam.description}</Box>
+            </Typography>
+
+            {/* 카드 섹션 */}
+            <Grid
+              container
+              spacing={{ xs: '16px', sm: '16px' }}
+              sx={{ overflowX: 'scroll', width: '1344px !important' }}
+            >
+              {eachTeam.dataList.map(function (each) {
+                return (
+                  <Grid item sm={6} key={each.label}>
+                    <Box
+                      key={each.label}
+                      onClick={() => selectCard(each)}
+                      onMouseOver={isMob ? () => {} : () => selectCard(each)}
+                      onMouseOut={isMob ? () => {} : () => selectCard(null)}
+                      sx={{
+                        width: { xs: 1, sm: '656px', lg: 1 },
                         aspectRatio: '656/570',
                         borderRadius: { xs: '8px', sm: '16px' },
                         boxSizing: 'border-box',

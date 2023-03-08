@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { useState } from 'react';
 import CulturePoint from './_parts/CulturePoint';
 import CultureSlideSection from './_parts/CultureSlideSection';
@@ -12,11 +12,22 @@ export default function Team() {
 
   return (
     <div>
-      <FirstSection currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      <Container
+        maxWidth="false"
+        sx={{ backgroundColor: '#131313', width: { sm: '1439px !important', lg: 1 } }}
+      >
+        <FirstSection currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      </Container>
       {currentTab === 'Team' ? (
         <Box>
-          <TeamSection />
-          <TeamViewAllPosition />
+          {/* (수정 )강제 적용 요청에 따른 */}
+          <Container
+            maxWidth="false"
+            sx={{ backgroundColor: '#131313', width: { sm: '1439px !important', lg: 1 } }}
+          >
+            <TeamSection />
+            <TeamViewAllPosition />
+          </Container>
         </Box>
       ) : (
         <Box>
