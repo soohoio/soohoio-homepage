@@ -522,7 +522,7 @@ export default function ContactForm() {
                 placeholder={
                   contactInput.contents === '' && errorCheck
                     ? '문의 내용은 필수 사항입니다.'
-                    : t('contactForm.messagePlacHolder')
+                    : t('contactForm.messagePlaceHolder')
                 }
                 InputLabelProps={{ style: { color: '#10263B' } }}
                 InputProps={{ style: { color: '#10263B' } }}

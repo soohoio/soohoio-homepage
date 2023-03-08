@@ -50,19 +50,21 @@ export default function MobDrawler({ open, onClose }) {
         <Box>
           {pageList.map((page, index) => (
             <Box key={page.label} sx={{ mb: { xs: '24px', sm: '32px' } }}>
-              <Link
-                href={page.link}
-                onClick={onClose}
-                target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
-              >
-                <Typography
-                  className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
-                  color={currentPage.includes(page.link) ? 'primary' : '#FFFFFF'}
-                  sx={{ ':hover': { color: primary } }}
+              {page.label !== 'Recruit' && (
+                <Link
+                  href={page.link}
+                  onClick={onClose}
+                  target={page.link === 'https://blog.sooho.io' ? '_blank' : undefined}
                 >
-                  {page.label}
-                </Typography>
-              </Link>
+                  <Typography
+                    className={isMob ? 'mobTitle24KR' : 'pcTitle32KR'}
+                    color={currentPage.includes(page.link) ? 'primary' : '#FFFFFF'}
+                    sx={{ ':hover': { color: primary } }}
+                  >
+                    {page.label}
+                  </Typography>
+                </Link>
+              )}
               {page.link === '/news' || page.link === '/recruit' ? (
                 <Box
                   sx={{ backgroundColor: primary, height: '1px', mt: { xs: '24px', sm: '32px' } }}
