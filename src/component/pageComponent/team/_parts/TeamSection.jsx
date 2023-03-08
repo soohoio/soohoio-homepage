@@ -437,6 +437,7 @@ export default function TeamSection() {
             key={eachTeam.label}
             sx={{
               mb: { xs: index === teamData.length - 1 ? '0px' : '56px', sm: '120px' },
+              display: { xs: 'none', sm: 'block', lg: 'none' },
             }}
           >
             {/* 소개 텍스트 영역 */}
