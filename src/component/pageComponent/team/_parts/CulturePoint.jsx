@@ -166,7 +166,7 @@ export default function CulturePoint() {
                 sx={{
                   mt: { xs: '12px', sm: '40px' },
                   mb: { xs: '18px', sm: '56px' },
-                  maxWidth: '800px',
+                  maxWidth: '830px',
                 }}
               >
                 {each.description}
