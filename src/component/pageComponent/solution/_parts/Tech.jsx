@@ -12,6 +12,7 @@ import {
 import Draggable from 'react-draggable';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { useTranslation } from 'next-i18next';
+import { BodyContainer } from '@/component/ui/BodyContainer';
 
 export default function Tech() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -52,23 +53,8 @@ export default function Tech() {
   };
 
   return (
-    <Container
-      maxWidth={false}
-      sx={{
-        pt: { xs: '42px', sm: '128px' },
-        pb: { xs: '42px', sm: '128px' },
-        backgroundColor: black,
-        overflow: 'auto',
-      }}
-    >
-      <Container
-        sx={{
-          backgroundColor: black,
-          pl: { xs: paddingHorMob },
-          px: { sm: paddingHorPC },
-          overflow: 'visible !important',
-        }}
-      >
+    <>
+      <BodyContainer ptPc="128px" ptMob="42px">
         {/* 타이틀 */}
         <ObserverAnimation>
           <Typography
@@ -78,141 +64,160 @@ export default function Tech() {
             align="center"
             fontWeight={600}
           >
-            <Box sx={{ mb: { xs: '50px', sm: '64px' } }}>{t('tech.title')}</Box>
+            <Box sx={{ pb: { xs: '50px', sm: '64px' } }}>{t('tech.title')}</Box>
           </Typography>
         </ObserverAnimation>
+      </BodyContainer>
 
-        {/* 카드 영역 */}
-        <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }}>
-          <Stack
-            ref={ref}
-            direction="row"
-            spacing={{ xs: '8px', sm: '16px' }}
-            sx={{ overflow: 'visible', position: 'relative' }}
-          >
-            {dataList.map(function (each, index) {
-              return (
-                <ObserverAnimation key={each.name} delay={index * 250}>
-                  <Box
-                    sx={{
-                      p: { xs: '16px', sm: '32px' },
-                      minWidth: { xs: '300px', sm: '656px' },
-                      width: { xs: '300px', sm: '656px' },
-                      heigth: '252px',
-                      backgroundColor: black_dark,
-                      borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
-                      boxSizing: 'border-box',
-                    }}
-                  >
-                    {/* 로고 및 이미지 */}
-                    <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
-                      <Stack direction="row" spacing={{ sm: '16px' }} alignItems="flex-end">
-                        <CardMedia
-                          image={`/image/pageImage/solution/${each.img}.png`}
-                          sx={{
-                            width: { xs: '40px', sm: '64px' },
-                            height: { xs: '40px', sm: '64px' },
-                          }}
-                        />
-                        {/* PC & 태블릿 서비스명 */}
+      <Container
+        maxWidth={false}
+        sx={{
+          pb: { xs: '42px', sm: '128px' },
+          backgroundColor: black,
+          overflow: 'auto',
+        }}
+      >
+        <Container
+          sx={{
+            backgroundColor: black,
+            pl: { xs: paddingHorMob },
+            px: { sm: paddingHorPC },
+            overflow: 'visible !important',
+          }}
+        >
+          {/* 카드 영역 */}
+          <ObserverAnimation>
+            <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }}>
+              <Stack
+                ref={ref}
+                direction="row"
+                spacing={{ xs: '8px', sm: '16px' }}
+                sx={{ overflow: 'visible', position: 'relative' }}
+              >
+                {dataList.map(function (each, index) {
+                  return (
+                    <Box
+                      key={each.name}
+                      sx={{
+                        p: { xs: '16px', sm: '32px' },
+                        minWidth: { xs: '300px', sm: '656px' },
+                        width: { xs: '300px', sm: '656px' },
+                        heigth: '252px',
+                        backgroundColor: black_dark,
+                        borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      {/* 로고 및 이미지 */}
+                      <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
+                        <Stack direction="row" spacing={{ sm: '16px' }} alignItems="flex-end">
+                          <CardMedia
+                            image={`/image/pageImage/solution/${each.img}.png`}
+                            sx={{
+                              width: { xs: '40px', sm: '64px' },
+                              height: { xs: '40px', sm: '64px' },
+                            }}
+                          />
+                          {/* PC & 태블릿 서비스명 */}
+                          <Typography
+                            component="div"
+                            className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
+                            color="#FFFFFF"
+                            align="center"
+                            fontWeight={600}
+                            sx={{ display: { xs: 'none', sm: 'block' } }}
+                          >
+                            <Box>{each.name}</Box>
+                          </Typography>
+                        </Stack>
+
+                        {/* 패치 */}
                         <Typography
                           component="div"
-                          className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
-                          color="#FFFFFF"
                           align="center"
-                          fontWeight={600}
-                          sx={{ display: { xs: 'none', sm: 'block' } }}
+                          className={isMob ? 'mobBody12KR' : 'pcBody14KR'}
+                          fontWeight={300}
+                          color="#5F5F5F"
                         >
-                          <Box>{each.name}</Box>
+                          <Stack direction="row" spacing="8px">
+                            {each.patch.map(function (eachPatch) {
+                              return (
+                                <Box
+                                  key={each.name + eachPatch}
+                                  sx={{
+                                    width: { xs: '43px', sm: '56px' },
+                                    py: '0px',
+                                    border: '1px solid #5F5F5F',
+                                    borderRadius: '4px',
+                                  }}
+                                >
+                                  {eachPatch}
+                                </Box>
+                              );
+                            })}
+                          </Stack>
                         </Typography>
                       </Stack>
 
-                      {/* 패치 */}
+                      {/* 모바일 서비스명 */}
                       <Typography
                         component="div"
-                        align="center"
-                        className={isMob ? 'mobBody12KR' : 'pcBody14KR'}
-                        fontWeight={300}
-                        color="#5F5F5F"
-                      >
-                        <Stack direction="row" spacing="8px">
-                          {each.patch.map(function (eachPatch) {
-                            return (
-                              <Box
-                                key={each.name + eachPatch}
-                                sx={{
-                                  width: { xs: '43px', sm: '56px' },
-                                  py: '0px',
-                                  border: '1px solid #5F5F5F',
-                                  borderRadius: '4px',
-                                }}
-                              >
-                                {eachPatch}
-                              </Box>
-                            );
-                          })}
-                        </Stack>
-                      </Typography>
-                    </Stack>
-
-                    {/* 모바일 서비스명 */}
-                    <Typography
-                      component="div"
-                      className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
-                      color="#FFFFFF"
-                      fontWeight={600}
-                      sx={{ display: { sm: 'none' }, mt: { xs: '12px', sm: '0px' } }}
-                    >
-                      <Box>{each.name}</Box>
-                    </Typography>
-
-                    {/* 설명 */}
-                    <Typography
-                      className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
-                      fontWeight={300}
-                      color="#EEEEEE"
-                      sx={{
-                        mt: { xs: '6px', sm: '24px' },
-                        mb: { xs: '16px', sm: '36px' },
-                      }}
-                    >
-                      {each.contents}
-                    </Typography>
-
-                    {each.buttonLabel === 'Coming soon' ? (
-                      <RoundOutlinedButton
-                        text={each.buttonLabel}
-                        // coming soon 전
-                        // px={{ xs: '24px', sm: '56px' }}
-                        px={{ xs: '11px', sm: '10px' }}
-                        py={{ xs: '7px', sm: '18px' }}
-                        sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
-                        color={gray}
-                      />
-                    ) : (
-                      <MUIOutlinedButton
-                        noClass={true}
-                        text={each.buttonLabel}
-                        onClick={() => openLink(each.link)}
-                        // coming soon 전
-                        sx={{
-                          width: { xs: '102px', sm: '202px' },
-                          boxSizing: 'border-box',
-                          px: { xs: '10px', sm: '10px' },
-                          py: { xs: '5px', sm: '15px' },
-                          fontSize: { xs: '12px', sm: '20px' },
-                        }}
+                        className={isMob ? 'mobTitle16KR' : 'pcTitle24KR'}
                         color="#FFFFFF"
-                        hoverColor="#FFFFFF"
-                      />
-                    )}
-                  </Box>
-                </ObserverAnimation>
-              );
-            })}
-          </Stack>
-        </Draggable>
+                        fontWeight={600}
+                        sx={{ display: { sm: 'none' }, mt: { xs: '12px', sm: '0px' } }}
+                      >
+                        <Box>{each.name}</Box>
+                      </Typography>
+
+                      {/* 설명 */}
+                      <Typography
+                        className={isMob ? 'mobBody14KR' : 'pcBody18KR'}
+                        fontWeight={300}
+                        color="#EEEEEE"
+                        sx={{
+                          mt: { xs: '6px', sm: '24px' },
+                          mb: { xs: '16px', sm: '36px' },
+                        }}
+                      >
+                        {each.contents}
+                      </Typography>
+
+                      {each.buttonLabel === 'Coming soon' ? (
+                        <RoundOutlinedButton
+                          text={each.buttonLabel}
+                          // coming soon 전
+                          // px={{ xs: '24px', sm: '56px' }}
+                          px={{ xs: '11px', sm: '10px' }}
+                          py={{ xs: '7px', sm: '18px' }}
+                          sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
+                          color={gray}
+                        />
+                      ) : (
+                        <MUIOutlinedButton
+                          noClass={true}
+                          text={each.buttonLabel}
+                          onClick={() => openLink(each.link)}
+                          // coming soon 전
+                          sx={{
+                            width: { xs: '102px', sm: '202px' },
+                            boxSizing: 'border-box',
+                            px: { xs: '10px', sm: '10px' },
+                            py: { xs: '5px', sm: '15px' },
+                            fontSize: { xs: '12px', sm: '20px' },
+                          }}
+                          color="#FFFFFF"
+                          hoverColor="#FFFFFF"
+                        />
+                      )}
+                    </Box>
+                  );
+                })}
+              </Stack>
+            </Draggable>
+          </ObserverAnimation>
+        </Container>
       </Container>
-    </Container>
+    </>
   );
 }

@@ -12,6 +12,7 @@ import {
 import Draggable from 'react-draggable';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { BodyContainer } from '@/component/ui/BodyContainer';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -71,136 +72,146 @@ export default function Defi() {
   };
 
   return (
-    <Container
-      maxWidth={false}
-      sx={{
-        pt: { xs: '42px', sm: '152px' },
-        pb: { xs: '42px', sm: '184px' },
-        backgroundColor: '#131313',
-        overflow: 'auto',
-      }}
-    >
+    <>
+      <BodyContainer ptMob="42px" ptPc="152px">
+        <Typography
+          className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
+          color="primary"
+          align="center"
+          fontWeight={600}
+        >
+          {t('defi.title')}
+        </Typography>
+
+        <Typography
+          className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+          align="center"
+          sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' }, pb: { xs: '20px', sm: '42px' } }}
+        >
+          {isMob ? t('defi.descriptionMob') : t('defi.description')}
+        </Typography>
+      </BodyContainer>
+
       <Container
+        maxWidth={false}
         sx={{
+          pb: { xs: '42px', sm: '184px' },
           backgroundColor: '#131313',
-          pl: { xs: paddingHorMob },
-          px: { sm: paddingHorPC },
-          overflow: 'visible !important',
+          overflow: 'auto',
         }}
       >
-        <Box>
-          <Typography
-            className={isMob ? 'mobTitle19KR' : 'pcTitle32KR'}
-            color="primary"
-            align="center"
-            fontWeight={600}
+        <Container
+          sx={{
+            backgroundColor: '#131313',
+            pl: { xs: paddingHorMob },
+            px: { sm: paddingHorPC },
+            overflow: 'visible !important',
+          }}
+        >
+          <Draggable
+            axis="x"
+            nodeRef={ref}
+            bounds={{ left: leftLimit, right: 0 }}
+            cancel="button"
+            handle=".dragSection"
           >
-            {t('defi.title')}
-          </Typography>
-
-          <Typography
-            className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
-            align="center"
-            sx={{ fontWeight: 300, mt: { xs: '16px', sm: '32px' }, mb: { xs: '20px', sm: '42px' } }}
-          >
-            {isMob ? t('defi.descriptionMob') : t('defi.description')}
-          </Typography>
-        </Box>
-
-        <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }} cancel="button">
-          <Stack
-            ref={ref}
-            direction="row"
-            spacing="16px"
-            sx={{ overflow: 'visible', position: 'relative' }}
-          >
-            {defiList.map(function (each) {
-              return (
-                <Box
-                  key={each.title}
-                  sx={{
-                    backgroundColor: '#060606',
-                    borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
-                  }}
-                >
+            <Stack
+              className="dragSection"
+              ref={ref}
+              direction="row"
+              spacing="16px"
+              sx={{ overflow: 'visible', position: 'relative' }}
+            >
+              {defiList.map(function (each) {
+                return (
                   <Box
+                    key={each.title}
                     sx={{
-                      pl: { xs: '16px', sm: '48px' },
-                      py: { xs: '12px', sm: '48px' },
-                      pb: { xs: '16px', sm: '48px' },
-                      minWidth: { xs: '300px', sm: '656px' },
-                      width: { xs: '300px', sm: '656px' },
-                      backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background${
-                        isMob ? 'Mob' : ''
-                      }.png)`,
-                      backgroundSize: { xs: '300px 168px', sm: 'cover' },
-                      backgroundRepeat: 'no-repeat',
+                      backgroundColor: '#060606',
                       borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
-                      boxSizing: 'border-box',
                     }}
                   >
-                    <Stack direction="column" justifyContent="space-between" sx={{ height: 1 }}>
-                      <Box>
-                        <Typography
-                          className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'}
-                          fontWeight={600}
-                        >
-                          {each.title}
-                        </Typography>
-                        {/* 여기는 -0.023em... */}
-                        <Typography
-                          component="div"
-                          sx={{
-                            fontWeight: { xs: 300, sm: 300 },
-                            color: '#EEEEEE',
-                            mt: { xs: '8px', sm: '16px' },
-                            mb: { xs: '16px', sm: '42px' },
-                            fontSize: { xs: '14px', sm: '18px' },
-                            lineHeight: { xs: '20px', sm: '28px' },
-                            letterSpacing: { xs: '-0.023em !important', sm: '-0.02em;' },
-                          }}
-                        >
-                          <Box sx={{ maxWidth: { xs: '180px', sm: '330px' } }}>{each.contents}</Box>
-                        </Typography>
-                      </Box>
-                      <Box>
-                        {each.buttonLabel === 'Coming soon' ? (
-                          <RoundOutlinedButton
-                            text={each.buttonLabel}
-                            onClick={() => goToPage(each.link, each.title)}
-                            // coming soon 전
-                            // px={{ xs: '24px', sm: '56px' }}
-                            px={{ xs: '11px', sm: '10px' }}
-                            py={{ xs: '7px', sm: '18px' }}
-                            sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
-                            color={gray}
-                          />
-                        ) : (
-                          <MUIOutlinedButton
-                            noClass={true}
-                            text={each.buttonLabel}
-                            onClick={() => goToPage(each.link, each.title)}
-                            // coming soon 전
+                    <Box
+                      sx={{
+                        pl: { xs: '16px', sm: '48px' },
+                        py: { xs: '12px', sm: '48px' },
+                        pb: { xs: '16px', sm: '48px' },
+                        minWidth: { xs: '300px', sm: '656px' },
+                        width: { xs: '300px', sm: '656px' },
+                        backgroundImage: `url(/image/pageImage/home/${each.title.toLowerCase()}Background${
+                          isMob ? 'Mob' : ''
+                        }.png)`,
+                        backgroundSize: { xs: '300px 168px', sm: 'cover' },
+                        backgroundRepeat: 'no-repeat',
+                        borderRadius: { xs: borderRadiusMob, lg: borderRadiusPc },
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <Stack direction="column" justifyContent="space-between" sx={{ height: 1 }}>
+                        <Box>
+                          <Typography
+                            className={isMob ? 'mobTitle16KR' : 'pcTitle36KR'}
+                            fontWeight={600}
+                          >
+                            {each.title}
+                          </Typography>
+                          {/* 여기는 -0.023em... */}
+                          <Typography
+                            component="div"
                             sx={{
-                              width: { xs: '102px', sm: '202px' },
-                              boxSizing: 'border-box',
-                              px: { xs: '10px', sm: '10px' },
-                              py: { xs: '5px', sm: '15px' },
-                              fontSize: { xs: '12px', sm: '20px' },
+                              fontWeight: { xs: 300, sm: 300 },
+                              color: '#EEEEEE',
+                              mt: { xs: '8px', sm: '16px' },
+                              mb: { xs: '16px', sm: '42px' },
+                              fontSize: { xs: '14px', sm: '18px' },
+                              lineHeight: { xs: '20px', sm: '28px' },
+                              letterSpacing: { xs: '-0.023em !important', sm: '-0.02em;' },
                             }}
-                            color="#FFFFFF"
-                            hoverColor="#FFFFFF"
-                          />
-                        )}
-                      </Box>
-                    </Stack>
+                          >
+                            <Box sx={{ maxWidth: { xs: '185px', sm: '330px' } }}>
+                              {each.contents}
+                            </Box>
+                          </Typography>
+                        </Box>
+                        <Box>
+                          {each.buttonLabel === 'Coming soon' ? (
+                            <RoundOutlinedButton
+                              text={each.buttonLabel}
+                              onClick={() => goToPage(each.link, each.title)}
+                              // coming soon 전
+                              // px={{ xs: '24px', sm: '56px' }}
+                              px={{ xs: '11px', sm: '10px' }}
+                              py={{ xs: '7px', sm: '18px' }}
+                              sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
+                              color={gray}
+                            />
+                          ) : (
+                            <MUIOutlinedButton
+                              noClass={true}
+                              text={each.buttonLabel}
+                              onClick={() => goToPage(each.link, each.title)}
+                              // coming soon 전
+                              sx={{
+                                width: { xs: '102px', sm: '202px' },
+                                boxSizing: 'border-box',
+                                px: { xs: '10px', sm: '10px' },
+                                py: { xs: '5px', sm: '15px' },
+                                fontSize: { xs: '12px', sm: '20px' },
+                              }}
+                              color="#FFFFFF"
+                              hoverColor="#FFFFFF"
+                            />
+                          )}
+                        </Box>
+                      </Stack>
+                    </Box>
                   </Box>
-                </Box>
-              );
-            })}
-          </Stack>
-        </Draggable>
+                );
+              })}
+            </Stack>
+          </Draggable>
+        </Container>
       </Container>
-    </Container>
+    </>
   );
 }
