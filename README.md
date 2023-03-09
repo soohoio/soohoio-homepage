@@ -39,6 +39,11 @@ emailJS / NotionAPI / CORS.SH API의 정보가 바뀐 경우 .env 파일을 수�
     ├── README.md               #
     └── ...
 
+### public
+
+- 글로벌 텍스트(한/영), 이미지, 폰트, pdf 파일, 비디오가 보관되어 있습니다.
+- 텍스트의 경우, 페이지 별 json파일로 구성되어 있습니다.
+
 ### components
 
 - pageComponent는 실제 페이지의 화면단의 소스이며 각 섹션별로 나뉘어져 있습니다.
@@ -50,8 +55,9 @@ emailJS / NotionAPI / CORS.SH API의 정보가 바뀐 경우 .env 파일을 수�
 
 ### constant
 
-- 전화번호 코드 등의 상수값들을 보관합니다.
+- 전화번호 코드 상수값을 보관하고 있습니다.
 
 ### module
 
-- contextAPI(반응형 스크린 체크 등) 등을 포함하고 있습니다.
+- contextAPI(반응형 스크린 체크)를 포함하고 있습니다.
+- 글로벌 모드 지원을 위한 모듈들을 포함하고 있습니다. (i18n 사용 시, SSG 배포 불가능)

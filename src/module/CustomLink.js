@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-// i18 미지원에 따른 커스텀 링크
+/** i18 미지원에 따른 커스텀 링크 (en => en / ko => ko로) */
 const CustomLinkComponent = ({ children, skipLocaleHandling, onClick, style, target, ...rest }) => {
   const router = useRouter();
   const locale = rest.locale || router.query.locale || '';

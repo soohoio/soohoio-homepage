@@ -111,6 +111,7 @@ export default function Defi() {
           <Draggable
             axis="x"
             nodeRef={ref}
+            // 카드 사이즈에 따라 드래그 최대 리미트를 설정
             bounds={{ left: leftLimit, right: 0 }}
             cancel="button"
             handle=".dragSection"

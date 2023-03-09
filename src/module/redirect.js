@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import languageDetector from './languageDetector';
 
+// 기본 도메인 접속 시, 언어에 따라 리다이렉트합니다. (현재 사용하지 않는 모듈입니다. 향후 필요 시, 적용)
 export const useRedirect = to => {
   const router = useRouter();
   to = to || router.asPath;
