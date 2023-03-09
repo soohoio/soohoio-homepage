@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import { black } from '@/component/style/StyleTheme';
+import CustomLinkComponent from '@/module/CustomLink';
 
 // 모바일 모달
 export default function TeamSectionMobModal({
@@ -12,14 +13,6 @@ export default function TeamSectionMobModal({
   recruitNumber,
 }) {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
-
-  const goToLink = (link, type) => {
-    if (type === 'external') {
-      window.open(link);
-    } else {
-      router.push(link);
-    }
-  };
 
   return (
     <Modal open={modalSwitch} onClose={modalClose}>
@@ -99,22 +92,25 @@ export default function TeamSectionMobModal({
                     {recruitNumber[selectedCard.label]}
                   </Box>
                 </Typography>
-                <MUIOutlinedButton
-                  text="Open Position"
-                  color="#FFFFFF"
-                  hoverColor="#FFFFFF"
-                  sx={{ width: 1 }}
-                />
+                <CustomLinkComponent href="/recruit">
+                  <MUIOutlinedButton
+                    text="Open Position"
+                    color="#FFFFFF"
+                    hoverColor="#FFFFFF"
+                    sx={{ width: 1 }}
+                  />
+                </CustomLinkComponent>
               </Box>
             )}
             {selectedCard && selectedCard.interview && (
-              <MUIOutlinedButton
-                onClick={() => goToLink(selectedCard.interview, 'external')}
-                text="Interview"
-                color="#FFFFFF"
-                hoverColor="#FFFFFF"
-                sx={{ width: 1, mt: '12px' }}
-              />
+              <CustomLinkComponent href={selectedCard.interview} target="_blank">
+                <MUIOutlinedButton
+                  text="Interview"
+                  color="#FFFFFF"
+                  hoverColor="#FFFFFF"
+                  sx={{ width: 1, mt: '12px' }}
+                />
+              </CustomLinkComponent>
             )}
           </Box>
         </Stack>

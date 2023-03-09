@@ -238,9 +238,9 @@ export default function ContactForm() {
 
   return (
     <>
-      {/* 문의 카테고리 선택 영역 */}
       <Container maxWidth={false} sx={{ backgroundColor: '#1C1C1C' }}>
         <BodyContainer backgroundColor="transparent">
+          {/* 문의 카테고리 선택 영역 */}
           <Grid
             container
             justifyContent="space-between"
@@ -357,487 +357,489 @@ export default function ContactForm() {
 
       {/* 컨택 작성 폼 영역 */}
       <BodyContainer ptPc="72px" pbPc="50px" ptMob="38px" pbMob="40px">
-        <Grid container spacing={{ lg: '120px' }}>
-          {/* 연락처 등 인적사항 */}
-          <Grid item xs={12} lg={5.5}>
-            {formList.map(function (each) {
-              return (
-                <Stack
-                  key={each.label}
-                  direction="row"
-                  alignItems={
-                    (each.keyName === 'email' && emailFormError) ||
-                    (errorCheck && contactInput[each.keyName] === '' && each.helperText)
-                      ? 'flex-start'
-                      : 'center'
-                  }
-                  sx={{ mb: { xs: '27px', sm: '43px' } }}
-                >
-                  <Box sx={{ width: { xs: '80px', sm: '130px', lg: '140px' } }}>
-                    <Typography
-                      className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
-                      component="div"
-                      sx={[
-                        (each.keyName === 'email' && emailFormError) ||
-                        (errorCheck && contactInput[each.keyName] === '' && each.helperText)
-                          ? { pt: { sm: '7px' } }
-                          : {},
-                        {},
-                      ]}
-                    >
-                      {each.label}
-                      {each.isRequired && (
-                        <Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
-                      )}
-                    </Typography>
-                  </Box>
+        <form>
+          <Grid container spacing={{ lg: '120px' }}>
+            {/* 연락처 등 인적사항 */}
+            <Grid item xs={12} lg={5.5}>
+              {formList.map(function (each) {
+                return (
                   <Stack
+                    key={each.label}
                     direction="row"
-                    alignItems="center"
-                    spacing={{ xs: '43px', sm: '50px' }}
-                    sx={{ width: 1 }}
+                    alignItems={
+                      (each.keyName === 'email' && emailFormError) ||
+                      (errorCheck && contactInput[each.keyName] === '' && each.helperText)
+                        ? 'flex-start'
+                        : 'center'
+                    }
+                    sx={{ mb: { xs: '27px', sm: '43px' } }}
                   >
-                    {each.keyName === 'phoneNumber' && (
-                      <CountryNumUnderline
-                        value={contactInput.countryCode}
-                        onChange={onChangeCountryCode}
-                      />
-                    )}
-
-                    <TextField
-                      fullWidth
-                      variant="standard"
-                      name={each.keyName}
-                      value={contactInput[each.keyName]}
-                      onChange={onChangeContactInput}
-                      placeholder={each.placeHolder}
-                      error={
-                        (each.keyName === 'email' && emailFormError) ||
-                        (errorCheck && each.helperText && contactInput[each.keyName] === '')
-                      }
-                      helperText={
-                        (each.keyName === 'email' && emailFormError) ||
-                        (errorCheck && contactInput[each.keyName] === '')
-                          ? each.helperText
-                          : ''
-                      }
-                      sx={{
-                        '& .MuiInput-underline:before': { borderBottomColor: gray },
-                        '&:hover .MuiInput-underline:before': {
-                          borderBottomColor: '#FFFFFF',
-                        },
-                        '&:hover .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                          borderBottomColor: '#FFFFFF',
-                        },
-                        '& .MuiInputBase-input': {
-                          fontSize: { xs: '14px', sm: '24px' },
-                          fontWeight: 300,
-                        },
-                      }}
-                    />
-                  </Stack>
-                </Stack>
-              );
-            })}
-          </Grid>
-
-          {/* 문의 내용 */}
-          <Grid item xs={12} lg={6.5}>
-            <Typography className={isMob ? 'mobBody14KR' : 'pcBody24KR'} component="div">
-              {t('contactForm.message')}
-              <Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
-            </Typography>
-            <Box
-              sx={{
-                backgroundColor: '#1C1C1C',
-                width: 1,
-                borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
-                mt: { xs: '8px', sm: '12px' },
-                mb: '24px',
-                px: { xs: '12px', sm: '27px' },
-                py: { xs: '7px', sm: '24px' },
-                pb: { xs: '12px', sm: '24px' },
-                boxSizing: 'border-box',
-              }}
-            >
-              <TextField
-                variant="standard"
-                fullWidth
-                multiline
-                minRows={13}
-                name="contents"
-                value={contactInput.contents}
-                onChange={onChangeContactInput}
-                placeholder={
-                  contactInput.contents === '' && errorCheck
-                    ? '문의 내용은 필수 사항입니다.'
-                    : t('contactForm.messagePlaceHolder')
-                }
-                InputLabelProps={{ style: { color: '#10263B' } }}
-                InputProps={{ style: { color: '#10263B' } }}
-                sx={[
-                  contactInput.contents === '' &&
-                    errorCheck && {
-                      '.MuiInputBase-input::placeholder': {
-                        color: '#E33535',
-                        opacity: 0.9,
-                      },
-                    },
-                  {
-                    display: { xs: ' none', sm: 'block' },
-                    py: '0px !important',
-                    // 투명 텍스트 박스를 위한 (언더라인 제거(기본/호버/포커스))
-                    '&:hover .MuiInput-underline:before': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .MuiInput-underline:after': { borderBottomColor: 'transparent' },
-                    '& .MuiInput-underline:before': { borderBottomColor: 'transparent' },
-                    '& .Mui-focused .MuiInput-underline:before': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .Mui-focused .MuiInput-underline:after': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .MuiInputBase-input': {
-                      fontSize: { xs: '14px', sm: '20px' },
-                      fontWeight: { xs: 300, sm: 300 },
-                      lineHeight: { xs: '20px', sm: '28px' },
-                    },
-                    mb: { xs: '0px', sm: '9px' },
-                  },
-                ]}
-              />
-              {/* 모바일 mixRows 변경을 위해 복제 / 반응형 설정 불가한 */}
-              <TextField
-                variant="standard"
-                fullWidth
-                multiline
-                minRows={9}
-                name="contents"
-                value={contactInput.contents}
-                onChange={onChangeContactInput}
-                placeholder={
-                  contactInput.contents === '' && errorCheck
-                    ? '문의 내용은 필수 사항입니다.'
-                    : t('contactForm.messagePlaceHolder')
-                }
-                InputLabelProps={{ style: { color: '#10263B' } }}
-                InputProps={{ style: { color: '#10263B' } }}
-                sx={[
-                  contactInput.contents === '' &&
-                    errorCheck && {
-                      '.MuiInputBase-input::placeholder': {
-                        color: '#E33535',
-                        opacity: 0.9,
-                      },
-                    },
-                  {
-                    display: { sm: 'none' },
-                    py: '0px !important',
-                    // 투명 텍스트 박스를 위한 (언더라인 제거(기본/호버/포커스))
-                    '&:hover .MuiInput-underline:before': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .MuiInput-underline:after': { borderBottomColor: 'transparent' },
-                    '& .MuiInput-underline:before': { borderBottomColor: 'transparent' },
-                    '& .Mui-focused .MuiInput-underline:before': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .Mui-focused .MuiInput-underline:after': {
-                      borderBottomColor: 'transparent',
-                    },
-                    '& .MuiInputBase-input': {
-                      fontSize: { xs: '14px', sm: '20px' },
-                      fontWeight: { xs: 300, sm: 300 },
-                      lineHeight: { xs: '20px', sm: '28px' },
-                    },
-                    mb: { xs: '12px', sm: '9px' },
-                  },
-                ]}
-              />
-              <Stack direction="row" alignItems="center">
-                <Checkbox
-                  name="isAgree"
-                  onChange={onChangeContactInput}
-                  value={contactInput.isAgree}
-                  checked={contactInput.isAgree}
-                  sx={{
-                    color: '#FFFFFF',
-                    p: 0,
-                    '& .MuiSvgIcon-root': {
-                      fontSize: '22px',
-                      color: props => (props.checked ? '#FFFFFF' : '#FFFFFF'),
-                    },
-                  }}
-                />
-                <Typography
-                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                  sx={{ fontWeight: 300, ml: { xs: '10px', sm: '12px' } }}
-                >
-                  {t('contactForm.policy')}
-                </Typography>
-                <Typography
-                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                  color="primary"
-                  sx={{ fontWeight: 300, mr: '12px' }}
-                >
-                  {t('contactForm.policyAdd')}
-                </Typography>
-                <Tooltip
-                  placement={isPc ? 'bottom' : 'bottom-end'}
-                  // 여백
-                  PopperProps={{
-                    modifiers: [
-                      {
-                        name: 'offset',
-                        options: {
-                          offset: [50, 0],
-                        },
-                      },
-                    ],
-                  }}
-                  arrow
-                  enterTouchDelay={0}
-                  leaveTouchDelay={isMob ? 3000 : 1500}
-                  title={
-                    <Box sx={{ width: 1 }}>
-                      <Typography className={isMob ? 'mobBody12KR' : 'pcTitle24KR'}>
-                        {t('contactForm.policy')}
-                      </Typography>
+                    <Box sx={{ width: { xs: '80px', sm: '130px', lg: '140px' } }}>
                       <Typography
+                        className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
                         component="div"
-                        className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
-                        sx={{ fontWeight: 300, mt: { xs: '8px', sm: '20px' } }}
+                        sx={[
+                          (each.keyName === 'email' && emailFormError) ||
+                          (errorCheck && contactInput[each.keyName] === '' && each.helperText)
+                            ? { pt: { sm: '7px' } }
+                            : {},
+                          {},
+                        ]}
                       >
-                        <Box sx={{ maxWidth: '600px' }}>{t('contactForm.policyContents1')}</Box>
+                        {each.label}
+                        {each.isRequired && (
+                          <Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
+                        )}
                       </Typography>
-                      <Box
-                        sx={{
-                          px: { xs: '8px', sm: '16px' },
-                          py: { xs: '10px', sm: '21px' },
-                          backgroundColor: '#3E3E3E',
-                          borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
-                          mt: { xs: '8px', sm: '16px' },
-                        }}
-                      >
-                        <Typography
-                          className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
-                          color="#AFAFAF"
-                          sx={{ fontWeight: 600 }}
-                        >
-                          {t('contactForm.policyContents2')}
-                        </Typography>
-                      </Box>
                     </Box>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      spacing={{ xs: '43px', sm: '50px' }}
+                      sx={{ width: 1 }}
+                    >
+                      {each.keyName === 'phoneNumber' && (
+                        <CountryNumUnderline
+                          value={contactInput.countryCode}
+                          onChange={onChangeCountryCode}
+                        />
+                      )}
+
+                      <TextField
+                        fullWidth
+                        variant="standard"
+                        name={each.keyName}
+                        value={contactInput[each.keyName]}
+                        onChange={onChangeContactInput}
+                        placeholder={each.placeHolder}
+                        error={
+                          (each.keyName === 'email' && emailFormError) ||
+                          (errorCheck && each.helperText && contactInput[each.keyName] === '')
+                        }
+                        helperText={
+                          (each.keyName === 'email' && emailFormError) ||
+                          (errorCheck && contactInput[each.keyName] === '')
+                            ? each.helperText
+                            : ''
+                        }
+                        sx={{
+                          '& .MuiInput-underline:before': { borderBottomColor: gray },
+                          '&:hover .MuiInput-underline:before': {
+                            borderBottomColor: '#FFFFFF',
+                          },
+                          '&:hover .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                            borderBottomColor: '#FFFFFF',
+                          },
+                          '& .MuiInputBase-input': {
+                            fontSize: { xs: '14px', sm: '24px' },
+                            fontWeight: 300,
+                          },
+                        }}
+                      />
+                    </Stack>
+                  </Stack>
+                );
+              })}
+            </Grid>
+
+            {/* 문의 내용 */}
+            <Grid item xs={12} lg={6.5}>
+              <Typography className={isMob ? 'mobBody14KR' : 'pcBody24KR'} component="div">
+                {t('contactForm.message')}
+                <Box sx={{ display: 'inline', color: '#00F2C3' }}> *</Box>
+              </Typography>
+              <Box
+                sx={{
+                  backgroundColor: '#1C1C1C',
+                  width: 1,
+                  borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
+                  mt: { xs: '8px', sm: '12px' },
+                  mb: '24px',
+                  px: { xs: '12px', sm: '27px' },
+                  py: { xs: '7px', sm: '24px' },
+                  pb: { xs: '12px', sm: '24px' },
+                  boxSizing: 'border-box',
+                }}
+              >
+                <TextField
+                  variant="standard"
+                  fullWidth
+                  multiline
+                  minRows={13}
+                  name="contents"
+                  value={contactInput.contents}
+                  onChange={onChangeContactInput}
+                  placeholder={
+                    contactInput.contents === '' && errorCheck
+                      ? '문의 내용은 필수 사항입니다.'
+                      : t('contactForm.messagePlaceHolder')
                   }
-                  componentsProps={{
-                    tooltip: {
-                      sx: {
-                        maxWidth: '1000px',
-                        paddingX: { xs: '12px', sm: '20px' },
-                        paddingY: { xs: '12px', sm: '24px' },
-                        // 툹팁 배경색
-                        bgcolor: gray,
-                        '& .MuiTooltip-arrow': {
-                          // 툴팁 글자 색상
-                          color: '#FFFFFFF',
+                  InputLabelProps={{ style: { color: '#10263B' } }}
+                  InputProps={{ style: { color: '#10263B' } }}
+                  sx={[
+                    contactInput.contents === '' &&
+                      errorCheck && {
+                        '.MuiInputBase-input::placeholder': {
+                          color: '#E33535',
+                          opacity: 0.9,
                         },
                       },
+                    {
+                      display: { xs: ' none', sm: 'block' },
+                      py: '0px !important',
+                      // 투명 텍스트 박스를 위한 (언더라인 제거(기본/호버/포커스))
+                      '&:hover .MuiInput-underline:before': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .MuiInput-underline:after': { borderBottomColor: 'transparent' },
+                      '& .MuiInput-underline:before': { borderBottomColor: 'transparent' },
+                      '& .Mui-focused .MuiInput-underline:before': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .Mui-focused .MuiInput-underline:after': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .MuiInputBase-input': {
+                        fontSize: { xs: '14px', sm: '20px' },
+                        fontWeight: { xs: 300, sm: 300 },
+                        lineHeight: { xs: '20px', sm: '28px' },
+                      },
+                      mb: { xs: '0px', sm: '9px' },
                     },
-                  }}
-                >
+                  ]}
+                />
+                {/* 모바일 mixRows 변경을 위해 복제 / 반응형 설정 불가한 */}
+                <TextField
+                  variant="standard"
+                  fullWidth
+                  multiline
+                  minRows={9}
+                  name="contents"
+                  value={contactInput.contents}
+                  onChange={onChangeContactInput}
+                  placeholder={
+                    contactInput.contents === '' && errorCheck
+                      ? '문의 내용은 필수 사항입니다.'
+                      : t('contactForm.messagePlaceHolder')
+                  }
+                  InputLabelProps={{ style: { color: '#10263B' } }}
+                  InputProps={{ style: { color: '#10263B' } }}
+                  sx={[
+                    contactInput.contents === '' &&
+                      errorCheck && {
+                        '.MuiInputBase-input::placeholder': {
+                          color: '#E33535',
+                          opacity: 0.9,
+                        },
+                      },
+                    {
+                      display: { sm: 'none' },
+                      py: '0px !important',
+                      // 투명 텍스트 박스를 위한 (언더라인 제거(기본/호버/포커스))
+                      '&:hover .MuiInput-underline:before': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .MuiInput-underline:after': { borderBottomColor: 'transparent' },
+                      '& .MuiInput-underline:before': { borderBottomColor: 'transparent' },
+                      '& .Mui-focused .MuiInput-underline:before': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .Mui-focused .MuiInput-underline:after': {
+                        borderBottomColor: 'transparent',
+                      },
+                      '& .MuiInputBase-input': {
+                        fontSize: { xs: '14px', sm: '20px' },
+                        fontWeight: { xs: 300, sm: 300 },
+                        lineHeight: { xs: '20px', sm: '28px' },
+                      },
+                      mb: { xs: '12px', sm: '9px' },
+                    },
+                  ]}
+                />
+                <Stack direction="row" alignItems="center">
+                  <Checkbox
+                    name="isAgree"
+                    onChange={onChangeContactInput}
+                    value={contactInput.isAgree}
+                    checked={contactInput.isAgree}
+                    sx={{
+                      color: '#FFFFFF',
+                      p: 0,
+                      '& .MuiSvgIcon-root': {
+                        fontSize: '22px',
+                        color: props => (props.checked ? '#FFFFFF' : '#FFFFFF'),
+                      },
+                    }}
+                  />
                   <Typography
                     className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                    color={gray}
-                    sx={{ fontWeight: 300, cursor: 'pointer' }}
+                    sx={{ fontWeight: 300, ml: { xs: '10px', sm: '12px' } }}
                   >
-                    {t('contactForm.policyMore')}
+                    {t('contactForm.policy')}
                   </Typography>
-                </Tooltip>
-              </Stack>
-            </Box>
-            <Grid container justifyContent="space-between" alignItems="center">
-              <RoundOutlinedButton
-                text={t('contactForm.fileUpload')}
-                onClick={newFile ? null : addFile}
-                color={newFile ? primary : '#FFFFFF'}
-                icon={
+                  <Typography
+                    className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                    color="primary"
+                    sx={{ fontWeight: 300, mr: '12px' }}
+                  >
+                    {t('contactForm.policyAdd')}
+                  </Typography>
+                  <Tooltip
+                    placement={isPc ? 'bottom' : 'bottom-end'}
+                    // 여백
+                    PopperProps={{
+                      modifiers: [
+                        {
+                          name: 'offset',
+                          options: {
+                            offset: [50, 0],
+                          },
+                        },
+                      ],
+                    }}
+                    arrow
+                    enterTouchDelay={0}
+                    leaveTouchDelay={isMob ? 3000 : 1500}
+                    title={
+                      <Box sx={{ width: 1 }}>
+                        <Typography className={isMob ? 'mobBody12KR' : 'pcTitle24KR'}>
+                          {t('contactForm.policy')}
+                        </Typography>
+                        <Typography
+                          component="div"
+                          className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
+                          sx={{ fontWeight: 300, mt: { xs: '8px', sm: '20px' } }}
+                        >
+                          <Box sx={{ maxWidth: '600px' }}>{t('contactForm.policyContents1')}</Box>
+                        </Typography>
+                        <Box
+                          sx={{
+                            px: { xs: '8px', sm: '16px' },
+                            py: { xs: '10px', sm: '21px' },
+                            backgroundColor: '#3E3E3E',
+                            borderRadius: { xs: borderRadiusMob, sm: borderRadiusPc },
+                            mt: { xs: '8px', sm: '16px' },
+                          }}
+                        >
+                          <Typography
+                            className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
+                            color="#AFAFAF"
+                            sx={{ fontWeight: 600 }}
+                          >
+                            {t('contactForm.policyContents2')}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    }
+                    componentsProps={{
+                      tooltip: {
+                        sx: {
+                          maxWidth: '1000px',
+                          paddingX: { xs: '12px', sm: '20px' },
+                          paddingY: { xs: '12px', sm: '24px' },
+                          // 툹팁 배경색
+                          bgcolor: gray,
+                          '& .MuiTooltip-arrow': {
+                            // 툴팁 글자 색상
+                            color: '#FFFFFFF',
+                          },
+                        },
+                      },
+                    }}
+                  >
+                    <Typography
+                      className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                      color={gray}
+                      sx={{ fontWeight: 300, cursor: 'pointer' }}
+                    >
+                      {t('contactForm.policyMore')}
+                    </Typography>
+                  </Tooltip>
+                </Stack>
+              </Box>
+              <Grid container justifyContent="space-between" alignItems="center">
+                <RoundOutlinedButton
+                  text={t('contactForm.fileUpload')}
+                  onClick={newFile ? null : addFile}
+                  color={newFile ? primary : '#FFFFFF'}
+                  icon={
+                    <CardMedia
+                      component="img"
+                      image={newFile ? '/image/icon/clipMint.png' : '/image/icon/clip.png'}
+                      alt="file upload"
+                      sx={{
+                        width: { xs: '20px', sm: '28px' },
+                        height: { xs: '20px', sm: '28px' },
+                        cursor: 'pointer',
+                      }}
+                    />
+                  }
+                  sx={{ width: { xs: 0.48, sm: 0.48, lg: '316px' }, px: '0px !important' }}
+                />
+                <RoundContainedButton
+                  onClick={submitForm}
+                  text={t('contactForm.send')}
+                  color={black}
+                  backgroundColor="#FFFFFF"
+                  py={{ xs: '11px', sm: '20px' }}
+                  sx={{ width: { xs: 0.48, sm: 0.48, lg: '316px' }, px: '0px !important' }}
+                />
+              </Grid>
+              {/* 파일 업로드 */}
+              <input
+                type="file"
+                hidden
+                onChange={onChangeImage}
+                ref={fileInput}
+                accept=".zip, .jpg, .jpeg, .png, .pdf"
+              />
+
+              <Tooltip
+                arrow
+                enterTouchDelay={0}
+                title={
+                  <Typography
+                    className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                    sx={{ fontWeight: 300 }}
+                  >
+                    {t('contactForm.fileGuideContents')}
+                  </Typography>
+                }
+                // 여백
+                PopperProps={{
+                  modifiers: [
+                    {
+                      name: 'offset',
+                      options: {
+                        offset: [isMob ? 50 : 0, 0],
+                      },
+                    },
+                  ],
+                }}
+                placement={isMob ? 'bottom' : 'right-start'}
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      paddingLeft: { xs: '12px', sm: '20px' },
+                      paddingRight: { xs: '24px', sm: '40px' },
+                      paddingY: { xs: '12px', sm: '24px' },
+                      maxWidth: 1000,
+                      // 툹팁 배경색
+                      bgcolor: gray,
+                      '& .MuiTooltip-arrow': {
+                        // 툴팁 글자 색상
+                        color: '#FFFFFFF',
+                      },
+                    },
+                  },
+                }}
+              >
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  // cardMedia 너비가 다른
+                  spacing={{ xs: '9px', sm: '16px' }}
+                  sx={{
+                    mt: '24px',
+                    pl: { xs: '1.5px', sm: '2px' },
+                    maxWidth: { xs: '105px', sm: '155px' },
+                  }}
+                >
                   <CardMedia
                     component="img"
-                    image={newFile ? '/image/icon/clipMint.png' : '/image/icon/clip.png'}
-                    alt="file upload"
+                    image="/image/icon/question.png"
+                    alt="about file upload question"
                     sx={{
-                      width: { xs: '20px', sm: '28px' },
-                      height: { xs: '20px', sm: '28px' },
+                      width: { xs: '18px', sm: '24px' },
+                      height: { xs: '18px', sm: '24px' },
                       cursor: 'pointer',
                     }}
                   />
-                }
-                sx={{ width: { xs: 0.48, sm: 0.48, lg: '316px' }, px: '0px !important' }}
-              />
-              <RoundContainedButton
-                onClick={submitForm}
-                text={t('contactForm.send')}
-                color={black}
-                backgroundColor="#FFFFFF"
-                py={{ xs: '11px', sm: '20px' }}
-                sx={{ width: { xs: 0.48, sm: 0.48, lg: '316px' }, px: '0px !important' }}
-              />
-            </Grid>
-            {/* 파일 업로드 */}
-            <input
-              type="file"
-              hidden
-              onChange={onChangeImage}
-              ref={fileInput}
-              accept=".zip, .jpg, .jpeg, .png, .pdf"
-            />
-
-            <Tooltip
-              arrow
-              enterTouchDelay={0}
-              title={
-                <Typography
-                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                  sx={{ fontWeight: 300 }}
-                >
-                  {t('contactForm.fileGuideContents')}
-                </Typography>
-              }
-              // 여백
-              PopperProps={{
-                modifiers: [
-                  {
-                    name: 'offset',
-                    options: {
-                      offset: [isMob ? 50 : 0, 0],
-                    },
-                  },
-                ],
-              }}
-              placement={isMob ? 'bottom' : 'right-start'}
-              componentsProps={{
-                tooltip: {
-                  sx: {
-                    paddingLeft: { xs: '12px', sm: '20px' },
-                    paddingRight: { xs: '24px', sm: '40px' },
-                    paddingY: { xs: '12px', sm: '24px' },
-                    maxWidth: 1000,
-                    // 툹팁 배경색
-                    bgcolor: gray,
-                    '& .MuiTooltip-arrow': {
-                      // 툴팁 글자 색상
-                      color: '#FFFFFFF',
-                    },
-                  },
-                },
-              }}
-            >
-              <Stack
-                direction="row"
-                alignItems="center"
-                // cardMedia 너비가 다른
-                spacing={{ xs: '9px', sm: '16px' }}
-                sx={{
-                  mt: '24px',
-                  pl: { xs: '1.5px', sm: '2px' },
-                  maxWidth: { xs: '105px', sm: '155px' },
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image="/image/icon/question.png"
-                  alt="about file upload question"
-                  sx={{
-                    width: { xs: '18px', sm: '24px' },
-                    height: { xs: '18px', sm: '24px' },
-                    cursor: 'pointer',
-                  }}
-                />
-                <Typography
-                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                  color={gray_light}
-                  sx={{ fontWeight: 300 }}
-                >
-                  {t('contactForm.fileGuide')}
-                </Typography>
-              </Stack>
-            </Tooltip>
-            {/* 파일 업로드 에러 메시지 */}
-            {fileLimitCheck && (
-              <Stack
-                direction="row"
-                alignItems="center"
-                spacing={{ xs: '9px', sm: '14px' }}
-                sx={{ mt: { xs: '12px', sm: '16px' } }}
-              >
-                <CardMedia
-                  component="img"
-                  image="/image/icon/error.png"
-                  alt="file upload error message"
-                  sx={{ width: { xs: '20px', sm: '28px' }, height: { xs: '17px', sm: '24px' } }}
-                />
-                <Typography
-                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                  color="error"
-                  sx={{ fontWeight: 300 }}
-                >
-                  파일 용량을 확인해 주세요. (최대 2mb)
-                </Typography>
-              </Stack>
-            )}
-            {/* 업로드 된 파일 확인  */}
-            {newFile && (
-              <Stack
-                direction="row"
-                alignItems="center"
-                spacing={{ xs: '9px', sm: '16px' }}
-                sx={{ mt: { xs: '12px', sm: '16px' }, pl: '2px' }}
-              >
-                <CardMedia
-                  component="img"
-                  image="/image/icon/mintCheckBox.png"
-                  alt={`${newFile.name} file`}
-                  sx={{ width: { xs: '17px', sm: '24px' }, height: { xs: '17px', sm: '24px' } }}
-                />
-                <Box sx={{ width: { xs: '150px', sm: '250px' } }}>
                   <Typography
                     className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
                     color={gray_light}
-                    sx={{
-                      fontWeight: 300,
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
-                      WebkitLineClamp: '1',
-                      WebkitBoxOrient: 'vertical',
-                    }}
+                    sx={{ fontWeight: 300 }}
                   >
-                    {newFile.name}
+                    {t('contactForm.fileGuide')}
                   </Typography>
-                </Box>
-                <CardMedia
-                  onClick={removeFile}
-                  component="img"
-                  image="/image/icon/cancel.png"
-                  alt="file delete Button"
-                  sx={{
-                    width: { xs: '19px', sm: '28px' },
-                    height: { xs: '19px', sm: '28px' },
-                    cursor: 'pointer',
-                    ':hover': { opacity: 0.8 },
-                  }}
-                />
-              </Stack>
-            )}
+                </Stack>
+              </Tooltip>
+              {/* 파일 업로드 에러 메시지 */}
+              {fileLimitCheck && (
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={{ xs: '9px', sm: '14px' }}
+                  sx={{ mt: { xs: '12px', sm: '16px' } }}
+                >
+                  <CardMedia
+                    component="img"
+                    image="/image/icon/error.png"
+                    alt="file upload error message"
+                    sx={{ width: { xs: '20px', sm: '28px' }, height: { xs: '17px', sm: '24px' } }}
+                  />
+                  <Typography
+                    className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                    color="error"
+                    sx={{ fontWeight: 300 }}
+                  >
+                    파일 용량을 확인해 주세요. (최대 2mb)
+                  </Typography>
+                </Stack>
+              )}
+              {/* 업로드 된 파일 확인  */}
+              {newFile && (
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={{ xs: '9px', sm: '16px' }}
+                  sx={{ mt: { xs: '12px', sm: '16px' }, pl: '2px' }}
+                >
+                  <CardMedia
+                    component="img"
+                    image="/image/icon/mintCheckBox.png"
+                    alt={`${newFile.name} file`}
+                    sx={{ width: { xs: '17px', sm: '24px' }, height: { xs: '17px', sm: '24px' } }}
+                  />
+                  <Box sx={{ width: { xs: '150px', sm: '250px' } }}>
+                    <Typography
+                      className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                      color={gray_light}
+                      sx={{
+                        fontWeight: 300,
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: '1',
+                        WebkitBoxOrient: 'vertical',
+                      }}
+                    >
+                      {newFile.name}
+                    </Typography>
+                  </Box>
+                  <CardMedia
+                    onClick={removeFile}
+                    component="img"
+                    image="/image/icon/cancel.png"
+                    alt="file delete Button"
+                    sx={{
+                      width: { xs: '19px', sm: '28px' },
+                      height: { xs: '19px', sm: '28px' },
+                      cursor: 'pointer',
+                      ':hover': { opacity: 0.8 },
+                    }}
+                  />
+                </Stack>
+              )}
+            </Grid>
           </Grid>
-        </Grid>
+        </form>
       </BodyContainer>
 
       <ConfirmModal

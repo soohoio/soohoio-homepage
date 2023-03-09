@@ -8,10 +8,10 @@ import axios from 'axios';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function TeamSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
-  const router = useRouter();
   const { t } = useTranslation('team');
 
   const [selectedCard, setSelectedCard] = useState(null);
@@ -29,20 +29,18 @@ export default function TeamSection() {
           hoverDescription: (
             <Box>
               <Box sx={{ display: 'inline' }}>{t('teamSection.defiHoverDescription1')}</Box>
-              <Box
-                onClick={() => goToJustLink('/solution')}
-                sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}
-              >
-                <u>{`DeFi Package`}</u>
-              </Box>
+              <CustomLinkComponent href="/solution">
+                <Box sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}>
+                  <u>{`DeFi Package`}</u>
+                </Box>
+              </CustomLinkComponent>
               <Box sx={{ display: 'inline' }}>{t('teamSection.defiHoverDescription2')}</Box>
 
-              <Box
-                onClick={() => goToJustLink('/product')}
-                sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}
-              >
-                <u>{`KLEVA`}</u>
-              </Box>
+              <CustomLinkComponent href="/product">
+                <Box sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}>
+                  <u>{`KLEVA`}</u>
+                </Box>
+              </CustomLinkComponent>
               <Box sx={{ display: 'inline' }}>{t('teamSection.defiHoverDescription3')}</Box>
             </Box>
           ),
@@ -54,12 +52,16 @@ export default function TeamSection() {
           hoverDescription: (
             <Box>
               <Box sx={{ display: 'inline' }}>{t('teamSection.stayKingHoverDescription1')}</Box>
-              <Box
-                onClick={() => goToLinkWithParam('/product', 'currentProduct', 'StayKing')}
-                sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}
+              <CustomLinkComponent
+                href={{
+                  pathname: '/product',
+                  query: { currentProduct: 'StayKing' },
+                }}
               >
-                <u>{`StayKing`}</u>
-              </Box>
+                <Box sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}>
+                  <u>{`StayKing`}</u>
+                </Box>
+              </CustomLinkComponent>
               <Box sx={{ display: 'inline' }}>{t('teamSection.stayKingHoverDescription2')}</Box>
             </Box>
           ),
@@ -79,12 +81,11 @@ export default function TeamSection() {
           hoverDescription: (
             <Box>
               <Box sx={{ display: 'inline' }}>{t('teamSection.securityHoverDescription1')}</Box>
-              <Box
-                onClick={() => goToJustLink('https://matzip.xyz/', 'external')}
-                sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}
-              >
-                <u>{`MATZIP`}</u>
-              </Box>
+              <CustomLinkComponent href="https://matzip.xyz/" target="_blank">
+                <Box sx={{ display: 'inline', fontWeight: 500, cursor: 'pointer' }}>
+                  <u>{`MATZIP`}</u>
+                </Box>
+              </CustomLinkComponent>
               <Box sx={{ display: 'inline' }}>{t('teamSection.securityHoverDescription2')}</Box>
             </Box>
           ),
@@ -190,29 +191,6 @@ export default function TeamSection() {
 
   const closeModal = () => {
     setModalSwitch(false);
-  };
-
-  const goToJustLink = (link, type) => {
-    if (type === 'external') {
-      window.open(link);
-    } else {
-      let locale = '';
-      if (router.pathname.includes('locale')) {
-        locale = router.query.locale;
-      }
-      router.push(`/${locale}${link}`);
-    }
-  };
-
-  const goToLinkWithParam = (link, key, value) => {
-    const tempMap = {};
-    tempMap[key] = value;
-
-    let locale = '';
-    if (router.pathname.includes('locale')) {
-      locale = router.query.locale;
-    }
-    router.push({ pathname: `/${locale}${link}`, query: tempMap });
   };
 
   return (
@@ -375,26 +353,34 @@ export default function TeamSection() {
                                       {recruitNumber[each.label]}
                                     </Box>
                                   </Typography>
-
+                                  <CustomLinkComponent
+                                    href={{
+                                      pathname: '/recruit',
+                                      query: { team: each.label },
+                                    }}
+                                  >
+                                    <MUIOutlinedButton
+                                      text="Open Position"
+                                      color="#FFFFFF"
+                                      hoverColor="#FFFFFF"
+                                      sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
+                                    />
+                                  </CustomLinkComponent>
+                                </Box>
+                              )}
+                              {each.interview ? (
+                                <CustomLinkComponent
+                                  href={each.interview}
+                                  target="_blank"
+                                  style={{ width: '100%' }}
+                                >
                                   <MUIOutlinedButton
-                                    onClick={() =>
-                                      goToLinkWithParam('/recruit', 'team', each.label)
-                                    }
-                                    text="Open Position"
+                                    text="Interview"
                                     color="#FFFFFF"
                                     hoverColor="#FFFFFF"
                                     sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
                                   />
-                                </Box>
-                              )}
-                              {each.interview ? (
-                                <MUIOutlinedButton
-                                  onClick={() => goToJustLink(each.interview, 'external')}
-                                  text="Interview"
-                                  color="#FFFFFF"
-                                  hoverColor="#FFFFFF"
-                                  sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
-                                />
+                                </CustomLinkComponent>
                               ) : (
                                 <Box sx={{ width: 1 }} />
                               )}
@@ -593,25 +579,34 @@ export default function TeamSection() {
                                     </Box>
                                   </Typography>
 
+                                  <CustomLinkComponent
+                                    href={{
+                                      pathname: '/recruit',
+                                      query: { team: each.label },
+                                    }}
+                                  >
+                                    <MUIOutlinedButton
+                                      text="Open Position"
+                                      color="#FFFFFF"
+                                      hoverColor="#FFFFFF"
+                                      sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
+                                    />
+                                  </CustomLinkComponent>
+                                </Box>
+                              )}
+                              {each.interview ? (
+                                <CustomLinkComponent
+                                  href={each.interview}
+                                  target="_blank"
+                                  style={{ width: '100%' }}
+                                >
                                   <MUIOutlinedButton
-                                    onClick={() =>
-                                      goToLinkWithParam('/recruit', 'team', each.label)
-                                    }
-                                    text="Open Position"
+                                    text="Interview"
                                     color="#FFFFFF"
                                     hoverColor="#FFFFFF"
                                     sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
                                   />
-                                </Box>
-                              )}
-                              {each.interview ? (
-                                <MUIOutlinedButton
-                                  onClick={() => goToJustLink(each.interview, 'external')}
-                                  text="Interview"
-                                  color="#FFFFFF"
-                                  hoverColor="#FFFFFF"
-                                  sx={{ width: 1, px: { sm: 0 }, cursor: 'pointer' }}
-                                />
+                                </CustomLinkComponent>
                               ) : (
                                 <Box sx={{ width: 1 }} />
                               )}

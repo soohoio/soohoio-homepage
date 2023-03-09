@@ -218,23 +218,24 @@ export default function NavBar() {
                   </Link>
                 ))}
               </Box>
-              <Link href="/contact">
-                <MUIOutlinedButton
-                  text={isKorean ? '문의하기' : 'Contact us'}
-                  noClass={true}
-                  sx={{
-                    display: { xs: 'none', lg: 'block' },
-                    borderRadius: '16px',
-                    width: isKorean ? '88px' : '98px',
-                    px: '0px !important',
-                    py: '2px !important',
-                    fontWeight: '300 !important',
-                    fontSize: 14,
-                    ml: '18px',
-                    borderWidth: '1px !important',
-                  }}
-                />
-              </Link>
+              <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
+                <Link href="/contact">
+                  <MUIOutlinedButton
+                    text={isKorean ? '문의하기' : 'Contact us'}
+                    noClass={true}
+                    sx={{
+                      borderRadius: '16px',
+                      width: isKorean ? '88px' : '98px',
+                      px: '0px !important',
+                      py: '2px !important',
+                      fontWeight: '300 !important',
+                      fontSize: 14,
+                      ml: '18px',
+                      borderWidth: '1px !important',
+                    }}
+                  />
+                </Link>
+              </Box>
 
               <Box sx={{ position: 'relative', display: { xs: 'none', lg: 'flex' } }}>
                 <CardMedia

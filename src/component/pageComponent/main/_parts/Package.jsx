@@ -5,12 +5,11 @@ import { Box, CardMedia, Container, Grid, Stack, Typography } from '@mui/materia
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function Package() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
-  const router = useRouter();
   const { t } = useTranslation('main');
 
   const packageList = [
@@ -19,13 +18,6 @@ export default function Package() {
     { title: 'Audit', contents: t('package.auditContents'), img: 'audit' },
   ];
 
-  const goToPackage = () => {
-    let locale = '';
-    if (router.pathname.includes('locale')) {
-      locale = router.query.locale;
-    }
-    router.push(`/${locale}/solution`);
-  };
   return (
     <Container maxWidth="false" sx={{ pt: { xs: '42px', sm: '88px' }, backgroundColor: '#131313' }}>
       <BodyContainer>
@@ -150,11 +142,12 @@ export default function Package() {
           </Stack>
 
           <Grid container justifyContent="center">
-            <MUIOutlinedButton
-              onClick={goToPackage}
-              text={t('package.button')}
-              sx={{ width: { xs: 1, sm: 'auto' }, mt: { xs: '42px', sm: '88px' } }}
-            />
+            <CustomLinkComponent href="/solution">
+              <MUIOutlinedButton
+                text={t('package.button')}
+                sx={{ width: { xs: 1, sm: 'auto' }, mt: { xs: '42px', sm: '88px' } }}
+              />
+            </CustomLinkComponent>
           </Grid>
         </BodyContainer>
       </Container>

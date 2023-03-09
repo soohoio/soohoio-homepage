@@ -3,12 +3,11 @@ import { MUIOutlinedButton, RoundOutlinedButton } from '@/component/ui/Button';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function Cafe() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
-  const router = useRouter();
   const { t } = useTranslation('main');
 
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -34,14 +33,6 @@ export default function Cafe() {
       window.removeEventListener('scroll', handleResize);
     };
   }, []);
-
-  const goToContact = () => {
-    let locale = '';
-    if (router.pathname.includes('locale')) {
-      locale = router.query.locale;
-    }
-    router.push({ pathname: `/${locale}/contact`, query: { currentTypeIndex: 2 } });
-  };
 
   return (
     <Container
@@ -80,11 +71,17 @@ export default function Cafe() {
               </Box>
             </Typography>
           </Grid>
-          <MUIOutlinedButton
-            text={t('cafe.button')}
-            onClick={goToContact}
-            sx={{ width: { xs: 1, sm: 'auto' }, mt: '42px' }}
-          />
+          <CustomLinkComponent
+            href={{
+              pathname: '/contact',
+              query: { currentTypeIndex: 2 },
+            }}
+          >
+            <MUIOutlinedButton
+              text={t('cafe.button')}
+              sx={{ width: { xs: 1, sm: 'auto' }, mt: '42px' }}
+            />
+          </CustomLinkComponent>
         </Grid>
       </BodyContainer>
     </Container>

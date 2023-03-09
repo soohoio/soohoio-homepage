@@ -17,7 +17,27 @@ export default function Document() {
             })(window,document,'script','dataLayer','GTM-WT7TDFF');`,
           }}
         ></Script>
+
+        {/* 네이버 사이트 인증 */}
+        <meta name="naver-site-verification" content="1ecf35ae9249e807d8a816ba47d00a4c718a5eeb" />
+
+        {/* 구글 사이트 인증 */}
+        <meta
+          name="google-site-verification"
+          content="lHr7RdWx64J5piY0e-NvC_bWX6M_UOmYQPB7grm34Cs"
+        />
+
+        {/* 오픈그래프 설정 */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="수호아이오" />
+        <meta
+          property="og:description"
+          content="금융 기회를 넓히고 싶은 모든 이들이 장애물 없이 블록체인을 넘나들 수 있도록, 수호는 믿을 수 있는 기업 파트너와 함께 투명하고 안전한 인프라를 만듭니다."
+        />
+        <meta property="og:image" content="링크 썸네일 이미지" />
+        <meta property="og:url" content="http://www.sooho.io" />
       </Head>
+
       <body>
         {/* UTM 코드 */}
         <noscript>

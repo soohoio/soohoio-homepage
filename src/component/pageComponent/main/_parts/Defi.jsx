@@ -10,17 +10,15 @@ import {
   borderRadiusPc,
 } from '../../../style/StyleTheme';
 import Draggable from 'react-draggable';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { BodyContainer } from '@/component/ui/BodyContainer';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function Defi() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { t } = useTranslation('main');
 
   const [screenSize, setScreenSize] = useState(1440);
-
-  const router = useRouter();
 
   const leftLimit = isPc ? -676 : screenSize;
   const contentsSize = isMob ? 300 * 3 : 656 * 3;
@@ -62,14 +60,6 @@ export default function Defi() {
     window.addEventListener('resize', updateScreenSize);
     return () => window.removeEventListener('resize', updateScreenSize);
   }, [updateScreenSize, contentsSize, padding]);
-
-  const goToPage = (link, title) => {
-    let locale = '';
-    if (router.pathname.includes('locale')) {
-      locale = router.query.locale;
-    }
-    router.push({ pathname: `/${locale}${link}`, query: { currentProduct: title } });
-  };
 
   return (
     <>
@@ -178,30 +168,33 @@ export default function Defi() {
                           {each.buttonLabel === 'Coming soon' ? (
                             <RoundOutlinedButton
                               text={each.buttonLabel}
-                              onClick={() => goToPage(each.link, each.title)}
-                              // coming soon 전
-                              // px={{ xs: '24px', sm: '56px' }}
                               px={{ xs: '11px', sm: '10px' }}
                               py={{ xs: '7px', sm: '18px' }}
                               sx={{ width: { sm: '202px' }, boxSizing: 'border-box' }}
                               color={gray}
                             />
                           ) : (
-                            <MUIOutlinedButton
-                              noClass={true}
-                              text={each.buttonLabel}
-                              onClick={() => goToPage(each.link, each.title)}
-                              // coming soon 전
-                              sx={{
-                                width: { xs: '102px', sm: '202px' },
-                                boxSizing: 'border-box',
-                                px: { xs: '10px', sm: '10px' },
-                                py: { xs: '5px', sm: '15px' },
-                                fontSize: { xs: '12px', sm: '20px' },
+                            <CustomLinkComponent
+                              href={{
+                                pathname: each.link,
+                                query: { currentProduct: each.title },
                               }}
-                              color="#FFFFFF"
-                              hoverColor="#FFFFFF"
-                            />
+                            >
+                              <MUIOutlinedButton
+                                noClass={true}
+                                text={each.buttonLabel}
+                                // coming soon 전
+                                sx={{
+                                  width: { xs: '102px', sm: '202px' },
+                                  boxSizing: 'border-box',
+                                  px: { xs: '10px', sm: '10px' },
+                                  py: { xs: '5px', sm: '15px' },
+                                  fontSize: { xs: '12px', sm: '20px' },
+                                }}
+                                color="#FFFFFF"
+                                hoverColor="#FFFFFF"
+                              />
+                            </CustomLinkComponent>
                           )}
                         </Box>
                       </Stack>
