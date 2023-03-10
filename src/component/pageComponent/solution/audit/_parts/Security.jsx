@@ -12,14 +12,11 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
 export default function Security() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { t } = useTranslation('audit');
-
-  const goToLink = () => {
-    window.open('https://blockops.sooho.io/');
-  };
 
   return (
     <BodyContainer ptPc="143px" pbPc="128px" ptMob="42px" pbMob="42px">
@@ -169,17 +166,18 @@ export default function Security() {
             />
           </Grid>
 
-          <MUIOutlinedButton
-            text={t('security.button')}
-            onClick={goToLink}
-            color="#FFFFFF"
-            hoverColor="#FFFFFF"
-            sx={{
-              mt: { xs: '24px', lg: '66px' },
-              width: { xs: 1, lg: 'auto' },
-              px: { lg: '56px' },
-            }}
-          />
+          <Link href="https://blockops.sooho.io/" target="_blank">
+            <MUIOutlinedButton
+              text={t('security.button')}
+              color="#FFFFFF"
+              hoverColor="#FFFFFF"
+              sx={{
+                mt: { xs: '24px', lg: '66px' },
+                width: { xs: 1, lg: 'auto' },
+                px: { lg: '56px' },
+              }}
+            />
+          </Link>
         </Box>
       </ObserverAnimation>
     </BodyContainer>

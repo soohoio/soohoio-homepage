@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import EnlargeAnimation from '@/component/ui/EnlargeAnimation';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
 export default function NewsList() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -92,10 +93,6 @@ export default function NewsList() {
     ],
   ];
 
-  const openNews = url => {
-    window.open(url);
-  };
-
   return (
     <BodyContainer ptPc="52px" pbPc="64px" ptMob="22px" pbMob="40px">
       {newsYear.map(function (year, index) {
@@ -126,57 +123,58 @@ export default function NewsList() {
                     <Box key={each.date}>
                       <EnlargeAnimation scale={1.01}>
                         <Box sx={{ pl: { xs: '16px', sm: '35px' } }}>
-                          <Stack
-                            onClick={() => openNews(each.link)}
-                            direction="row"
-                            spacing={{ xs: '0px', sm: '35px' }}
-                            justifyContent="space-between"
-                            alignItems={{ xs: 'flex-end', sm: 'center' }}
-                            sx={{
-                              width: 1,
-                              boxSizing: 'border-box',
-                              pr: { sm: '54px' },
-                              pb: { xs: '17px', sm: '24px' },
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <Box>
-                              <Typography
-                                className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
-                                component="div"
-                                color="#FFFFFF"
-                                fontWeight={600}
-                                sx={{
-                                  display: '-webkit-box',
-                                  overflow: 'hidden',
-                                  WebkitBoxOrient: 'vertical',
-                                  WebkitLineClamp: 2,
-                                }}
-                              >
-                                <Box sx={{ maxWidth: { xs: '360px', sm: '1000px' } }}>
-                                  {each.title}
-                                </Box>
-                              </Typography>
-                              <Typography
-                                className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
-                                component="div"
-                                color="#818181"
-                                fontWeight={300}
-                                sx={{
-                                  mt: { xs: '8px', sm: '16px' },
-                                }}
-                              >
-                                {each.date}
-                              </Typography>
-                            </Box>
-                            <CardMedia
-                              image={`/image/icon/outlink.png`}
+                          <Link href={each.link} target="_blank">
+                            <Stack
+                              direction="row"
+                              spacing={{ xs: '0px', sm: '35px' }}
+                              justifyContent="space-between"
+                              alignItems={{ xs: 'flex-end', sm: 'center' }}
                               sx={{
-                                width: { xs: '20px', sm: '28px' },
-                                height: { xs: '20px', sm: '28px' },
+                                width: 1,
+                                boxSizing: 'border-box',
+                                pr: { sm: '54px' },
+                                pb: { xs: '17px', sm: '24px' },
+                                cursor: 'pointer',
                               }}
-                            />
-                          </Stack>
+                            >
+                              <Box>
+                                <Typography
+                                  className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+                                  component="div"
+                                  color="#FFFFFF"
+                                  fontWeight={600}
+                                  sx={{
+                                    display: '-webkit-box',
+                                    overflow: 'hidden',
+                                    WebkitBoxOrient: 'vertical',
+                                    WebkitLineClamp: 2,
+                                  }}
+                                >
+                                  <Box sx={{ maxWidth: { xs: '360px', sm: '1000px' } }}>
+                                    {each.title}
+                                  </Box>
+                                </Typography>
+                                <Typography
+                                  className={isMob ? 'mobBody10KR' : 'pcBody18KR'}
+                                  component="div"
+                                  color="#818181"
+                                  fontWeight={300}
+                                  sx={{
+                                    mt: { xs: '8px', sm: '16px' },
+                                  }}
+                                >
+                                  {each.date}
+                                </Typography>
+                              </Box>
+                              <CardMedia
+                                image={`/image/icon/outlink.png`}
+                                sx={{
+                                  width: { xs: '20px', sm: '28px' },
+                                  height: { xs: '20px', sm: '28px' },
+                                }}
+                              />
+                            </Stack>
+                          </Link>
                         </Box>
                       </EnlargeAnimation>
                       {/* 아래 선은 확대되지 않기 위함 */}

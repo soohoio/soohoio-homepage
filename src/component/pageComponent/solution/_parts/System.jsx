@@ -4,16 +4,12 @@ import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import { MUIOutlinedButton } from '@/component/ui/Button';
 import { useTranslation } from 'next-i18next';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function System() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const { t } = useTranslation('solution');
-
-  const openLink = () => {
-    window.open('https://c2cc.xyz/');
-  };
 
   return (
     <Container maxWidth="false" sx={{ backgroundColor: primary }}>
@@ -81,24 +77,25 @@ export default function System() {
             </Typography>
 
             <Grid container justifyContent="center">
-              <Button
-                onClick={openLink}
-                variant="contained"
-                color="black"
-                sx={{
-                  color: '#FFFFFF',
-                  borderRadius: '120px',
-                  px: { sm: '80px' },
-                  py: { xs: '7.5px', sm: '17px' },
-                  fontSize: { xs: '14px', sm: '20px' },
-                  ':hover': {
-                    color: primary,
-                  },
-                  width: { xs: 1, sm: 'auto' },
-                }}
-              >
-                {t('system.button')}
-              </Button>
+              <CustomLinkComponent href="https://c2cc.xyz/" target="_blank">
+                <Button
+                  variant="contained"
+                  color="black"
+                  sx={{
+                    color: '#FFFFFF',
+                    borderRadius: '120px',
+                    px: { sm: '80px' },
+                    py: { xs: '7.5px', sm: '17px' },
+                    fontSize: { xs: '14px', sm: '20px' },
+                    ':hover': {
+                      color: primary,
+                    },
+                    width: { xs: 1, sm: 'auto' },
+                  }}
+                >
+                  {t('system.button')}
+                </Button>
+              </CustomLinkComponent>
             </Grid>
           </ObserverAnimation>
         </BodyContainer>

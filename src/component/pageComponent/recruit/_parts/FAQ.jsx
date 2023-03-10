@@ -3,17 +3,12 @@ import { BodyContainer } from '@/component/ui/BodyContainer';
 import { Box, CardMedia, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
-import ObserverAnimation from '@/component/ui/ObserverAnimation';
-import EnlargeAnimation from '@/component/ui/EnlargeAnimation';
 import { gray_light } from '@/component/style/StyleTheme';
+import Link from 'next/link';
 
 export default function FAQ() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const [currentFAQ, setCurrentFAQ] = useState(null);
-
-  const goToLink = () => {
-    window.open('https://gyxk3kqq.ninehire.site/job_posting/8fglGG52/apply');
-  };
 
   const FAQList = [
     {
@@ -23,9 +18,11 @@ export default function FAQ() {
           <Box sx={{ display: 'inline' }}>
             {`수호는 포지션과 채용 인원에 관계 없이 훌륭한 분들을 적극적으로 모셔 오고 있습니다. 현재 채용 중인 포지션에서\n원하는 포지션이 없거나 정하지 못하셨다면, 이 `}
           </Box>
-          <Box onClick={goToLink} sx={{ fontWeight: 600, cursor: 'pointer', display: 'inline' }}>
-            <u>링크</u>
-          </Box>
+          <Link href="https://gyxk3kqq.ninehire.site/job_posting/8fglGG52/apply" target="_blank">
+            <Box sx={{ fontWeight: 600, cursor: 'pointer', display: 'inline' }}>
+              <u>링크</u>
+            </Box>
+          </Link>
           <Box sx={{ display: 'inline' }}>
             {`를 통해 인재풀 등록을 해주세요. 상세히 검토 후 채용 의사가\n있는 분들께 개별적으로 연락을 드리겠습니다.`}
           </Box>
@@ -35,9 +32,11 @@ export default function FAQ() {
           <Box sx={{ display: 'inline' }}>
             {`수호는 포지션과 채용 인원에 관계 없이 훌륭한 분들을 적극적으로 모셔 오고 있습니다.\n현재 채용 중인 포지션에서 원하는 포지션이 없거나 정하지 못하셨다면, 이 `}
           </Box>
-          <Box onClick={goToLink} sx={{ fontWeight: 600, cursor: 'pointer', display: 'inline' }}>
-            <u>링크</u>
-          </Box>
+          <Link href="https://gyxk3kqq.ninehire.site/job_posting/8fglGG52/apply" target="_blank">
+            <Box sx={{ fontWeight: 600, cursor: 'pointer', display: 'inline' }}>
+              <u>링크</u>
+            </Box>
+          </Link>
           <Box sx={{ display: 'inline' }}>
             {`를 통해 인재풀 등록을 해주세요.\n상세히 검토 후 채용 의사가 있는 분들께 개별적으로 연락을 드리겠습니다.`}
           </Box>

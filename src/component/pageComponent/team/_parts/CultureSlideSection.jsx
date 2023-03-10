@@ -6,6 +6,7 @@ import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import Slider from 'react-slick';
 import { MUIOutlinedButton } from '@/component/ui/Button';
 import { useTranslation } from 'next-i18next';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function CultureSlideSection() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -69,10 +70,6 @@ export default function CultureSlideSection() {
     beforeChange: handleBeforeChange,
   };
 
-  const goToInterview = () => {
-    window.open('https://blog.sooho.io/people_interview_qna/');
-  };
-
   return (
     <BodyContainer pbPc="128px" pbMob="80px" backgroundColor={black}>
       <Slider {...sliderSettings}>
@@ -134,16 +131,17 @@ export default function CultureSlideSection() {
       </Slider>
 
       <Grid container justifyContent="center" sx={{ mt: { xs: '24px', sm: '0px' } }}>
-        <MUIOutlinedButton
-          onClick={goToInterview}
-          text={t('cultureSlideSection.button')}
-          sx={{
-            width: { xs: 1, sm: '307px' },
-            height: { xs: '40px', sm: '68px' },
-            boxSizing: 'border-box',
-            px: { sm: '0px' },
-          }}
-        />
+        <CustomLinkComponent href="https://blog.sooho.io/people_interview_qna/" target="_blank">
+          <MUIOutlinedButton
+            text={t('cultureSlideSection.button')}
+            sx={{
+              width: { xs: 1, sm: '307px' },
+              height: { xs: '40px', sm: '68px' },
+              boxSizing: 'border-box',
+              px: { sm: '0px' },
+            }}
+          />
+        </CustomLinkComponent>
       </Grid>
     </BodyContainer>
   );

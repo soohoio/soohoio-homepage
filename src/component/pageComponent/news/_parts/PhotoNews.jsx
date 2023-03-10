@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
 import EnlargeAnimation from '@/component/ui/EnlargeAnimation';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
 export default function PhotoNews() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -30,10 +31,6 @@ export default function PhotoNews() {
     },
   ];
 
-  const openNews = url => {
-    window.open(url);
-  };
-
   return (
     <BodyContainer ptPc="152px" pbPc="100px" ptMob="42px" pbMob="20px">
       {/* 태블릿 & PC용 */}
@@ -44,48 +41,49 @@ export default function PhotoNews() {
               item
               sm={4}
               key={each.img}
-              onClick={() => openNews(each.link)}
               sx={{ cursor: 'pointer', borderRadius: { xs: '4px', sm: '8px' } }}
             >
-              <EnlargeAnimation borderRadius={{ xs: '4px', sm: '8px' }}>
-                <CardMedia
-                  image={`/image/pageImage/news/${each.img}.png`}
+              <Link href={each.link} target="_blank">
+                <EnlargeAnimation borderRadius={{ xs: '4px', sm: '8px' }}>
+                  <CardMedia
+                    image={`/image/pageImage/news/${each.img}.png`}
+                    sx={{
+                      width: 1,
+                      aspectRatio: '432/278',
+                      objectFit: 'contain',
+                      ':hover': {
+                        transform: '16px',
+                      },
+                      borderRadius: { xs: '4px', sm: '8px' },
+                    }}
+                  />
+                </EnlargeAnimation>
+                <Typography
+                  className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
+                  color="#FFFFFF"
+                  fontWeight={600}
                   sx={{
-                    width: 1,
-                    aspectRatio: '432/278',
-                    objectFit: 'contain',
-                    ':hover': {
-                      transform: '16px',
-                    },
-                    borderRadius: { xs: '4px', sm: '8px' },
+                    mt: { sm: '24px', lg: '32px' },
+                    display: '-webkit-box',
+                    overflow: 'hidden',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
                   }}
-                />
-              </EnlargeAnimation>
-              <Typography
-                className={isMob ? 'mobBody14KR' : 'pcBody24KR'}
-                color="#FFFFFF"
-                fontWeight={600}
-                sx={{
-                  mt: { sm: '24px', lg: '32px' },
-                  display: '-webkit-box',
-                  overflow: 'hidden',
-                  WebkitBoxOrient: 'vertical',
-                  WebkitLineClamp: 2,
-                }}
-              >
-                {each.title}
-              </Typography>
-              <Typography
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                component="div"
-                color="#818181"
-                fontWeight={300}
-                sx={{
-                  mt: { sm: '16px' },
-                }}
-              >
-                {each.date}
-              </Typography>
+                >
+                  {each.title}
+                </Typography>
+                <Typography
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  component="div"
+                  color="#818181"
+                  fontWeight={300}
+                  sx={{
+                    mt: { sm: '16px' },
+                  }}
+                >
+                  {each.date}
+                </Typography>
+              </Link>
             </Grid>
           );
         })}
@@ -99,55 +97,53 @@ export default function PhotoNews() {
               item
               xs={5.6}
               key={each.img}
-              onClick={() => openNews(each.link)}
               sx={{ cursor: 'pointer', borderRadius: { xs: '4px', sm: '8px' } }}
             >
-              <CardMedia
-                image={`/image/pageImage/news/${each.img}.png`}
-                sx={{
-                  width: 1,
-                  aspectRatio: '432/278',
-                  objectFit: 'contain',
-                  ':hover': {
-                    transform: '16px',
-                  },
-                  borderRadius: { xs: '4px', sm: '8px' },
-                }}
-              />
+              <Link href={each.link} target="_blank">
+                <CardMedia
+                  image={`/image/pageImage/news/${each.img}.png`}
+                  sx={{
+                    width: 1,
+                    aspectRatio: '432/278',
+                    objectFit: 'contain',
+                    ':hover': {
+                      transform: '16px',
+                    },
+                    borderRadius: { xs: '4px', sm: '8px' },
+                  }}
+                />
+              </Link>
             </Grid>
-            <Grid
-              item
-              xs={6.4}
-              onClick={() => openNews(each.link)}
-              sx={{ cursor: 'pointer', borderRadius: { xs: '4px', sm: '8px' } }}
-            >
-              <Typography
-                className={isMob ? 'mobBody16KR' : 'pcBody24KR'}
-                color="#FFFFFF"
-                fontWeight={600}
-                component="div"
-                sx={{
-                  maxWidth: '300px',
-                  mt: { sm: '24px', lg: '32px' },
-                  display: '-webkit-box',
-                  overflow: 'hidden',
-                  WebkitBoxOrient: 'vertical',
-                  WebkitLineClamp: 2,
-                }}
-              >
-                {each.title}
-              </Typography>
-              <Typography
-                className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
-                component="div"
-                color="#818181"
-                fontWeight={300}
-                sx={{
-                  mt: { xs: '8px', sm: '16px' },
-                }}
-              >
-                {each.date}
-              </Typography>
+            <Grid item xs={6.4} sx={{ cursor: 'pointer', borderRadius: { xs: '4px', sm: '8px' } }}>
+              <Link href={each.link} target="_blank" style={{ width: '100%' }}>
+                <Typography
+                  className={isMob ? 'mobBody16KR' : 'pcBody24KR'}
+                  color="#FFFFFF"
+                  fontWeight={600}
+                  component="div"
+                  sx={{
+                    maxWidth: '300px',
+                    mt: { sm: '24px', lg: '32px' },
+                    display: '-webkit-box',
+                    overflow: 'hidden',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
+                  }}
+                >
+                  {each.title}
+                </Typography>
+                <Typography
+                  className={isMob ? 'mobBody12KR' : 'pcBody18KR'}
+                  component="div"
+                  color="#818181"
+                  fontWeight={300}
+                  sx={{
+                    mt: { xs: '8px', sm: '16px' },
+                  }}
+                >
+                  {each.date}
+                </Typography>
+              </Link>
             </Grid>
           </Grid>
         );

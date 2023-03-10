@@ -13,6 +13,7 @@ import Draggable from 'react-draggable';
 import ObserverAnimation from '@/component/ui/ObserverAnimation';
 import { useTranslation } from 'next-i18next';
 import { BodyContainer } from '@/component/ui/BodyContainer';
+import CustomLinkComponent from '@/module/CustomLink';
 
 export default function Tech() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
@@ -47,10 +48,6 @@ export default function Tech() {
   useEffect(() => {
     setScreenSize(window.innerWidth - contentsSize - 2 * padding);
   }, [isMob, isTablet, isPc]);
-
-  const openLink = link => {
-    window.open(link);
-  };
 
   return (
     <>
@@ -87,7 +84,12 @@ export default function Tech() {
         >
           {/* 카드 영역 */}
           <ObserverAnimation>
-            <Draggable axis="x" nodeRef={ref} bounds={{ left: leftLimit, right: 0 }}>
+            <Draggable
+              axis="x"
+              nodeRef={ref}
+              bounds={{ left: leftLimit, right: 0 }}
+              cancel="button"
+            >
               <Stack
                 ref={ref}
                 direction="row"
@@ -194,21 +196,21 @@ export default function Tech() {
                           color={gray}
                         />
                       ) : (
-                        <MUIOutlinedButton
-                          noClass={true}
-                          text={each.buttonLabel}
-                          onClick={() => openLink(each.link)}
-                          // coming soon 전
-                          sx={{
-                            width: { xs: '102px', sm: '202px' },
-                            boxSizing: 'border-box',
-                            px: { xs: '10px', sm: '10px' },
-                            py: { xs: '5px', sm: '15px' },
-                            fontSize: { xs: '12px', sm: '20px' },
-                          }}
-                          color="#FFFFFF"
-                          hoverColor="#FFFFFF"
-                        />
+                        <CustomLinkComponent target="_blank" href={each.link}>
+                          <MUIOutlinedButton
+                            noClass={true}
+                            text={each.buttonLabel}
+                            sx={{
+                              width: { xs: '102px', sm: '202px' },
+                              boxSizing: 'border-box',
+                              px: { xs: '10px', sm: '10px' },
+                              py: { xs: '5px', sm: '15px' },
+                              fontSize: { xs: '12px', sm: '20px' },
+                            }}
+                            color="#FFFFFF"
+                            hoverColor="#FFFFFF"
+                          />
+                        </CustomLinkComponent>
                       )}
                     </Box>
                   );
