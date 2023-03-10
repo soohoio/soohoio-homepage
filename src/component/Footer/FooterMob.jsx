@@ -3,9 +3,13 @@ import React, { useContext } from 'react';
 import { gray, gray_light } from '../style/StyleTheme';
 import { BodyContainer } from '../ui/BodyContainer';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { useTranslation } from 'next-i18next';
 
 export default function FooterMob() {
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   const snsButtonList = [
     { img: 'twitter', link: 'https://twitter.com/soohoio' },
     // { img: 'facebook', link: '', },
@@ -46,12 +50,18 @@ export default function FooterMob() {
             </Box>
             <Box>
               <Typography
+                align="left"
                 className={isMob ? 'pcBody14KR' : 'pcBody14KR'}
                 component="div"
                 color={gray_light}
                 sx={{ fontWeight: 600 }}
               >
-                <Box sx={{ color: gray, mb: '8px' }}>회사 소개서 다운받기</Box>
+                <Box sx={{ color: gray, mb: '8px' }}>
+                  {currentLanguage === 'ko'
+                    ? '회사 소개서 다운받기'
+                    : 'Download SOOHO\nIntroduction'}
+                </Box>
+
                 <Stack direction="row" spacing="12px">
                   {fileList.map(function (each, index) {
                     return (

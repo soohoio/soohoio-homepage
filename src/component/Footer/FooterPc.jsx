@@ -3,8 +3,12 @@ import React, { useContext } from 'react';
 import { gray, gray_light } from '../style/StyleTheme';
 import { BodyContainer } from '../ui/BodyContainer';
 import DeviceContext from '@/module/ContextAPI/DeviceContext';
+import { useTranslation } from 'next-i18next';
 
 export default function FooterPc() {
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   const { isMob, isTablet, isPc } = useContext(DeviceContext);
   const snsButtonList = [
     { img: 'twitter', link: 'https://twitter.com/soohoio' },
@@ -55,7 +59,11 @@ export default function FooterPc() {
                 color={gray_light}
                 sx={{ fontWeight: 600 }}
               >
-                <Box sx={{ color: gray, mb: '16px' }}>회사 소개서 다운받기</Box>
+                <Box sx={{ color: gray, mb: '16px' }}>
+                  {currentLanguage === 'ko'
+                    ? '회사 소개서 다운받기'
+                    : 'Download SOOHO\nIntroduction'}
+                </Box>
                 <Stack direction="row" spacing="12px">
                   {fileList.map(function (each, index) {
                     return (
